@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenWise TNP 365 - Gifted World</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: none;
+        }
+
+        .nav-desktop {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            position: relative;
+            color: #6b7280;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-item:hover {
+            color: #3b82f6;
+        }
+
+        .nav-item.active {
+            color: #3b82f6;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #374151;
+            border: 1px solid #d1d5db;
+        }
+
+        .btn-outline:hover {
+            background: #f9fafb;
+        }
+
+        .btn-lg {
+            padding: 12px 24px;
+            font-size: 16px;
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            background: transparent;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+            padding: 80px 0 120px;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #fecaca;
+            color: #991b1b;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .feature-card h3 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-info {
+            color: #6b7280;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .actions-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 64px 0;
+        }
+
+        .section-alt {
+            background: #f9fafb;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Why Choose Section */
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .challenge-item {
+            text-align: center;
+        }
+
+        .challenge-icon {
+            width: 64px;
+            height: 64px;
+            background: #fef2f2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .challenge-item h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .benefits-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+            border-radius: 16px;
+            padding: 3rem;
+        }
+
+        .benefits-list {
+            list-style: none;
+            space-y: 1.5rem;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        /* Testimonials */
+        .testimonial-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+
+        .testimonial-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .quote-icon {
+            width: 48px;
+            height: 48px;
+            background: #dbeafe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .testimonial-text {
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .nav-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d1d5db;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .dot.active {
+            background: #3b82f6;
+        }
+
+        /* Eligibility Section */
+        .eligibility-box {
+            background: #dbeafe;
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .eligibility-content {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #93c5fd;
+        }
+
+        .eligibility-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .star-icon {
+            width: 32px;
+            height: 32px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        /* Fees Section */
+        .fees-box {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 16px;
+            padding: 3rem;
+        }
+
+        .fees-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .fees-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 0.75rem;
+        }
+
+        .pricing-image {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            border: 1px solid #10b981;
+        }
+
+        .pricing-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .fees-note {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #10b981;
+        }
+
+        .fees-note-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        /* Form Styles */
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 16px;
+            background: white;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 16px;
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 0.75rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Learning Examples */
+        .accordion {
+            space-y: 1rem;
+        }
+
+        .accordion-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+
+        .accordion-trigger {
+            width: 100%;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: #1f2937;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-trigger:hover {
+            background: #f8fafc;
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem 1.5rem;
+            color: #4b5563;
+            display: none;
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        .accordion-content ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .accordion-content li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .bullet {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 0.5rem;
+        }
+
+        /* Schedule */
+        .schedule-card {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            margin-bottom: 2rem;
+        }
+
+        .schedule-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .schedule-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .schedule-day h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .schedule-sessions {
+            space-y: 0.75rem;
+        }
+
+        .schedule-session {
+            background: #f0f9ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .session-content {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .session-time {
+            font-weight: 600;
+            color: #1f2937;
+            display: block;
+        }
+
+        .session-subject {
+            color: #6b7280;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #1f2937;
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact p {
+            color: #d1d5db;
+            margin-bottom: 1rem;
+        }
+
+        .contact a {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+
+        .contact a:hover {
+            color: #93c5fd;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .social-link:hover {
+            background: #2563eb;
+        }
+
+        .contact-footer {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        .contact-footer p {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 640px) {
+            .logo-text {
+                display: inline-block;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero h2 {
+                font-size: 1.875rem;
+            }
+
+            .actions-buttons {
+                flex-direction: row;
+            }
+
+            .hero-actions {
+                flex-direction: row;
+                gap: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .challenges-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .schedule-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-desktop {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3.75rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .challenges-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .hero {
+                padding: 100px 0 140px;
+            }
+
+            .section {
+                padding: 96px 0;
+            }
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://giftedworld.org/wp-content/uploads/2022/07/GW_logof.jpg" alt="Gifted World">
+                    <span class="logo-text">Gifted World</span>
+                </div>
+
+                <nav class="nav-desktop">
+                    <a href="#" class="nav-item active">TNP 365</a>
+                    <a href="#" class="nav-item">Student</a>
+                    <a href="#" class="nav-item">Teacher</a>
+                    <a href="#" class="nav-item">Parent</a>
+                    <a href="#" class="nav-item">Blog</a>
+                    <a href="#" class="nav-item">About</a>
+                </nav>
+
+                <div class="nav-actions">
+                    <a href="#" class="btn btn-outline">Log in</a>
+                    <button class="mobile-menu-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>GenWise Talent Nurturing Program</h1>
+                <h2>Year-round enrichment for advanced learners in Grades 7–8</h2>
+                <div class="badge">Only 40 seats for the founding cohort. Applications close soon.</div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #dbeafe;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12,6 12,12 16,14"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Paced, Deep Learning</h3>
+                        <p>30 weeks of deep study across five subjects, connecting high school foundations to undergraduate-level ideas.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #d1fae5;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </div>
+                        <h3>Live Online Classes Weekly</h3>
+                        <p>Mentors who care about how you learn. Sessions are about curiosity, understanding, and becoming a sharper thinker, not exam drills.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #e9d5ff;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3>Community & Challenge</h3>
+                        <p>Work with bright peers who love learning like you do. High-ceiling projects and shared problem-solving make even tough ideas fun.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #fed7aa;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3l1.837 4.068L18 8.837l-2.837 1.769L14 15.541L12 13.31 10 15.541l-1.163-4.865L6 8.837l4.163-1.769L12 3Z"></path>
+                            </svg>
+                        </div>
+                        <h3>Spark Electives</h3>
+                        <p>Short summer and winter courses on cutting-edge topics like GenAI, Neuroscience, and more. Explore new worlds of learning.</p>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <div class="hero-info">Starts Oct 3, 2025 · 40 Seats</div>
+                    <div class="actions-buttons">
+                        <a href="#eligibility" class="btn btn-primary btn-lg">Check Eligibility</a>
+                        <a href="#contact" class="btn btn-outline btn-lg">Request School Briefing</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Extraordinary Children Need Extraordinary Mentors</div>
+            
+            <div class="challenges-grid">
+                <div class="challenge-item">
+                    <div class="challenge-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                    </div>
+                    <h3>Schools Can't Go Far Enough</h3>
+                    <p>Schools have to cater to the needs of every child in the classroom. They can't provide the kind of individual attention that Gifted Children need.</p>
+                </div>
+
+                <div class="challenge-item">
+                    <div class="challenge-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12,6 12,12 16,14"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Critical Window of Growth</h3>
+                    <p>Research shows that ages 10–14 are crucial. Without enrichment during this window, advanced students don't achieve their full potential.</p>
+                </div>
+
+                <div class="challenge-item">
+                    <div class="challenge-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                    <h3>The Loneliness of Giftedness</h3>
+                    <p>Gifted children often lack peers who "get" them, which dampens their drive. It is crucial to find curious, like-minded peers, to create a supportive community.</p>
+                </div>
+
+                <div class="challenge-item">
+                    <div class="challenge-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Parents & Teachers Feel Stretched</h3>
+                    <p>By middle school, children's questions exceed what most adults can answer. Parents and teachers can feel helpless.</p>
+                </div>
+            </div>
+
+            <div class="benefits-box">
+                <div class="section-title">Why Schools & Parents Choose GenWise</div>
+                
+                <ul class="benefits-list">
+                    <li>
+                        <div class="check-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polyline points="20,6 9,17 4,12"></polyline>
+                            </svg>
+                        </div>
+                        <p><strong>Genuine enrichment, not tuition</strong> – we go beyond syllabus coverage to spark real curiosity and growth.</p>
+                    </li>
+                    <li>
+                        <div class="check-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polyline points="20,6 9,17 4,12"></polyline>
+                            </svg>
+                        </div>
+                        <p><strong>Advanced challenge with support</strong> – courses are designed 2–3 grades ahead, balancing depth with accessible entry points.</p>
+                    </li>
+                    <li>
+                        <div class="check-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polyline points="20,6 9,17 4,12"></polyline>
+                            </svg>
+                        </div>
+                        <p><strong>Proven expertise</strong> – mentors bring global research and classroom experience, with over a decade of success through our acclaimed Gifted Summer Programs.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="testimonial-container">
+                <div class="section-title">What Parents & Students Say</div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <blockquote class="testimonial-text" id="testimonial-text">
+                                "I think I have learnt a lot more in these past five sessions compared to what I could've learnt in half a school year. I believe learning is one thing and understanding is different. I have no problem learning at school, I do just fine on my own. But here I have understood stuff a lot better."
+                            </blockquote>
+                            <cite class="testimonial-author" id="testimonial-author">Tushita - Grade 8, Mumbai</cite>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-nav">
+                        <button class="btn btn-outline" onclick="previousTestimonial()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15,18 9,12 15,6"></polyline>
+                            </svg>
+                            Previous
+                        </button>
+                        
+                        <div class="nav-dots">
+                            <button class="dot active" onclick="showTestimonial(0)"></button>
+                            <button class="dot" onclick="showTestimonial(1)"></button>
+                            <button class="dot" onclick="showTestimonial(2)"></button>
+                            <button class="dot" onclick="showTestimonial(3)"></button>
+                        </div>
+                        
+                        <button class="btn btn-outline" onclick="nextTestimonial()">
+                            Next
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9,18 15,12 9,6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility and Fees Section -->
+    <section class="section" id="eligibility">
+        <div class="container">
+            <div class="eligibility-box">
+                <div class="section-title">Eligibility Criteria</div>
+                
+                <div class="eligibility-content">
+                    <div class="eligibility-header">
+                        <div class="star-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                            </svg>
+                        </div>
+                        <div>
+                            <p><strong>GenWise Talent Nurturing Program 365</strong> is not a tuition service. It is a program for learners who are eager for advanced learning.</p>
+                            <p style="margin-top: 1rem;">Eligibility can be demonstrated in two ways:<br>
+                            – Students in Grades 7 & 8 who are 75th percentile or above in Ei ASSET Talent Search<br>
+                            – Or, students assessed for readiness through an interview with our mentors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title">Conceptual Learning Track Fees</div>
+            
+            <div class="fees-box">
+                <div class="fees-header">
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                        <svg class="fees-icon" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                            <line x1="1" y1="10" x2="23" y2="10"></line>
+                        </svg>
+                        <span style="font-size: 1.125rem; font-weight: 600;">Student curiosity matters.</span>
+                    </div>
+                    
+                    <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                        That's why joining TNP365 is made easy. <strong>Pay ₹20,000 to register</strong> <strong>(credited towards course fees),</strong> let your child explore every subject in the first month, and then choose what to continue. If you don't wish to proceed, the registration is fully refunded.
+                    </p>
+                    
+                    <p style="margin-bottom: 1.5rem;">
+                        Classes will happen on Fridays and Saturdays. Final schedule will be determined by the cohort of students who sign up, to match the timings of maximum students.
+                    </p>
+                    
+                    <p style="margin-bottom: 2rem;">
+                        For 2+ subjects, fees can be paid over 3 installments.
+                    </p>
+                </div>
+                
+                <div class="pricing-image">
+                    <img src="https://giftedworld.org/wp-content/uploads/2025/08/Screenshot-632-1024x598.png" alt="Pricing Structure" style="max-width: 100%; height: auto;">
+                </div>
+                
+                <div class="fees-note">
+                    <div class="fees-note-header">
+                        <div class="check-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polyline points="20,6 9,17 4,12"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <p style="margin-bottom: 1rem;">
+                                For 2 subjects or more, the fees can be paid in 3 installments. All TNP participants will get 50% discount on Elective courses, even after using their free electives credit. Please contact us at siddharth@genwise.in for details.
+                            </p>
+                            <p style="font-style: italic;">
+                                <strong>Optional exam pathways can be discussed individually; TNP365 prioritizes sincere enrichment and growth</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section class="section section-alt" id="apply">
+        <div class="container">
+            <div class="form-container">
+                <div class="section-title">Apply for the GenWise Talent Nurturing Program</div>
+                
+                <div class="form-card">
+                    <form id="application-form">
+                        <div class="form-group">
+                            <label class="form-label" for="studentName">Student Name</label>
+                            <input type="text" id="studentName" name="studentName" class="form-input" placeholder="Full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="schoolName">School Name</label>
+                            <input type="text" id="schoolName" name="schoolName" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="studentGrade">Student Grade</label>
+                            <select id="studentGrade" name="studentGrade" class="form-select" required>
+                                <option value="">Select grade</option>
+                                <option value="Grade 7">Grade 7</option>
+                                <option value="Grade 8">Grade 8</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91XXXXXXXXXX" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="atsTaken">Have you taken the ATS exam before?</label>
+                            <select id="atsTaken" name="atsTaken" class="form-select" required>
+                                <option value="">Select option</option>
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="atsScore">ATS score (if taken)</label>
+                            <input type="text" id="atsScore" name="atsScore" class="form-input" placeholder="e.g., ATS percentile">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="programInterest">What interested you in the program?</label>
+                            <textarea id="programInterest" name="programInterest" class="form-textarea" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Which subjects are you applying for?</label>
+                            <div class="checkbox-grid">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="math" name="subjects" value="Math" class="checkbox">
+                                    <label for="math">Math</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="english" name="subjects" value="English" class="checkbox">
+                                    <label for="english">English</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="physics" name="subjects" value="Physics" class="checkbox">
+                                    <label for="physics">Physics</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="biology" name="subjects" value="Biology" class="checkbox">
+                                    <label for="biology">Biology</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="chemistry" name="subjects" value="Chemistry" class="checkbox">
+                                    <label for="chemistry">Chemistry</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Examples Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">What does learning look like in TNP365?</div>
+            <div class="section-subtitle">Here are some examples of what it might look like to learn in this program.</div>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(0)">
+                        Physics
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6,9 12,15 18,9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Here's a peek into how a series of classes can go in the physics section of TNP365.</p>
+                        <p>On Day 1, learners predict whether a ball and a feather fall at the same rate, then watch NASA footage before explaining the role of air resistance. This rhythm of predict, observe, explain threads through the course, as students build precise language for motion and forces while testing their own ideas against evidence. Over subsequent sessions –</p>
+                        
+                        <ul>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Prime & predict:</strong> Students surface everyday notions of "push" and "movement," then refine them with net force, inertia, and Newton's laws.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Think in representations:</strong> They sketch and interpret distance-time and velocity-time graphs, linking to slope in mathematics.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Test in the real world:</strong> Ice cubes floating, clay balls sinking, hands on tasks make density and Archimedes' principle more than formulas.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>History to insight:</strong> From Aristotle to Galileo to Newton, learners see how explanations of falling bodies and gravitation sharpened over centuries.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Right level stretch:</strong> Small group challenges such as explaining circular motion or comparing constant speed vs constant velocity give advanced thinkers space to extend.</span>
+                            </li>
+                        </ul>
+                        
+                        <p style="font-style: italic; margin-top: 1rem;">Gifted learners thrive here because the focus is on sense making before formulas, and then fully understanding and using those formulas. You can see the joy when learners grasp of detailed diagrams and graphs, and peer energy in debating claims with evidence. They end the series of classes able to explain why tides follow the law of universal gravitation and why "moving fast" is not enough without direction. TNP365 sustains this level of rigor and mentorship across the year, week after week.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(1)">
+                        Biology
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6,9 12,15 18,9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Here's a peek into how a series of classes can go in the Biology section of TNP365.</p>
+                        <p>Have you ever seen a wasp inside a fig, do you know that relationship is a fascinating story in biology? What if we explored ecosystems as "marketplaces?". A fig is sliced open to reveal a surprise. Inside, students find the tiny wasps without which no fig seed can grow. That moment of surprise seeing a familiar fruit in a new way sets the tone for exploring mutualisms, nature's deep partnerships. Predict, observe, and explain becomes the rhythm of uncovering hidden ecological teamwork.</p>
+                        
+                        <ul>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Prime and predict:</strong> Students meet agricultural, reproductive, housing, and cleaning mutualisms, from ants and aphids to clownfish and sea anemones.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Think in frameworks:</strong> They learn how to trace flows of energy and materials. Ideas like ecological stoichiometry and elemental currencies help them to track carbon, nitrogen, and phosphorus trades in ecosystems.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Test from data in the real world:</strong> From coral bleaching to the gut microbiome, learners connect classroom insights to urgent global and personal health contexts.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>History to insight:</strong> Stories of the Wood Wide Web, bioluminescent squid, and ancient nutrient cycles show how science reframes cooperation and competition.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Right level stretch:</strong> Thought experiment "If you were a plant choosing partners" and design tasks about "cheaters" push gifted learners into evolutionary problem-solving.</span>
+                            </li>
+                        </ul>
+                        
+                        <p style="font-style: italic; margin-top: 1rem;">Gifted learners thrive here because they can question, hypothesize, and connect biological stories across scales, from microbes to forests. They leave with sharper tools for thinking about cooperation, cheating, and balance in nature and by extension, in human systems. TNP365 offers this same blend of rigor and imagination across disciplines all year.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(2)">
+                        Mathematics
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6,9 12,15 18,9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Here's a peek into how a series of classes can go in the math section of TNP365.</p>
+                        <p>In a possible learning track for math in TNP365, learners play with puzzles, challenges and real world situations and predict the hidden rule. As they test and refine their guesses, algebra emerges naturally as the language to explain patterns. This habit of moving from playful curiosity to precise representation anchors the series, showing mathematics as a way of making sense rather than memorising steps.</p>
+                        
+                        <ul>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Prime and predict:</strong> Students uncover number patterns and geometrical patterns in various examples, generalising them into algebraic rules.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Think in representations:</strong> They model those patterns with spreadsheets and digital graphing tools, and explore popular patterns like the Mystic Rose and Sierpinski Triangle.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Test in the real world:</strong> With datasets on real world numbers such as temperatures or population, they identify linear, quadratic, exponential, and sinusoidal relationships through graphs and regression.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>History to insight:</strong> From games like Charlie's Delightful Machine to real-world modelling, learners see algebra evolve from rule-finding to predictive power.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Right level stretch:</strong> Small group investigations and extensions let advanced thinkers explore transformations of linear and quadratic graphs with clarity.</span>
+                            </li>
+                        </ul>
+                        
+                        <p style="font-style: italic; margin-top: 1rem;">Gifted learners connect here because the emphasis is on meaning before method, pattern before procedure, and representation before formula. They end the series able to explain how algebra compresses rules into symbols and graphs, and how this power transfers across science, coding, and daily reasoning. TNP365 ensures basics are thoroughly covered, but enables students to reach for higher applications of the same skills, reaching undergraduate level work.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(3)">
+                        English
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6,9 12,15 18,9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Here's a peek into how a series of classes can go in the English section of TNP365.</p>
+                        <p>This group of sessions focuses on finding your own voice in writing. Students pick up their pens for a seven-minute free write, scribbling without pause or correction. Laughter often follows as surprising images spill out, yet this simple warm-up becomes the gateway to finding a personal writing voice. From there, each session builds toward fluency, choice, and confidence.</p>
+                        
+                        <ul>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Prime and predict:</strong> Free writing helps students uncover authentic voice and style, treating writing as discovery rather than performance.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Think in forms:</strong> They play with poetic structures such as Haikus, Cinquains, limericks, and "Hello Goodbye" poems, distilling meaning into rhythm and pattern.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Test in the real world:</strong> Assignments such as retelling a fairy tale in 50 words, crafting dialogue from images, or mapping imaginary worlds bring precision to creative choices.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>History to insight:</strong> Through mini-lessons, writers learn intentional strategies—audience, purpose, sensory detail—connecting them to a wider tradition of writing craft.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Right level stretch:</strong> Reluctant writers gain scaffolds for expression, while confident ones tackle challenges like weaving alliteration, imagery, and layered perspective into polished drafts.</span>
+                            </li>
+                        </ul>
+                        
+                        <p style="font-style: italic; margin-top: 1rem;">Gifted learners thrive here because the course offers both freedom and structure: a safe space for experimentation, alongside tools that make writing sharper and more deliberate. They leave with the ability to express ideas vividly – whether in verse, description, or argument – and with the habit of revising for clarity.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(4)">
+                        Electives (Like GenAI or Astrophysics)
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6,9 12,15 18,9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Alongside core subjects, students get the chance to pursue short, high-interest courses called electives. These are designed to spark new passions, deepen expertise, and let learners experience how knowledge connects across disciplines.</p>
+                        <p>Electives will be announced 1 month in advance at least. Please note that the following list is representative of the topics we might cover, and exact lists will be announced as courses are scheduled.</p>
+                        
+                        <ul>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Astrophysics:</strong> Explore the mysteries of the universe, not just through popular science and sensationalized videos, but though the lens of an actual physicist who is interested in learning how the world works.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>GenAI (Generative Artificial Intelligence):</strong> Go beyond being a person who relies of AI for glorified googling and learn how they work, their strengths and limits, and how to apply them creatively and responsibly in real-world contexts.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Robotics:</strong> Go beyond kits and prefabricated bots—this elective builds deep mechanical intuition by working through gears, levers, motors, and control systems from first principles.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Neuroscience:</strong> Uncover how the brain learns, remembers, and makes decisions, connecting biology with psychology to understand yourself and the world more deeply.</span>
+                            </li>
+                            <li>
+                                <div class="bullet"></div>
+                                <span><strong>Narrative Thinking:</strong> Strengthen the art of explanation and persuasion by learning how stories shape science, history, and everyday life.</span>
+                            </li>
+                        </ul>
+                        
+                        <p style="font-style: italic; margin-top: 1rem;">Electives range from advanced math puzzles to ecological fieldwork and creative writing, letting students pursue new passions or go deeper in areas of strength, with expert mentors and peers who share their curiosity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="schedule-card">
+                <div class="schedule-header">
+                    <div class="section-title">Tentative Schedule</div>
+                    <div class="schedule-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        Starting Friday, October 03, 2025
+                    </div>
+                </div>
+                
+                <p style="text-align: center; color: #6b7280; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Live online sessions every week. Choose one or multiple subjects based on your passion and interest. The final schedule will be decided after registration, based on what timings work best for the maximum number of students. If a student is unable to attend, the session recording will be available for <strong>3 days</strong>.
+                </p>
+
+                <div class="schedule-grid">
+                    <div class="schedule-day">
+                        <h3>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            Fridays
+                        </h3>
+                        <div class="schedule-sessions">
+                            <div class="schedule-session">
+                                <div class="session-content">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12,6 12,12 16,14"></polyline>
+                                    </svg>
+                                    <div>
+                                        <div class="session-time">3:30–4:00 PM IST</div>
+                                        <div class="session-subject">English</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="schedule-session">
+                                <div class="session-content">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12,6 12,12 16,14"></polyline>
+                                    </svg>
+                                    <div>
+                                        <div class="session-time">4:30–6:00 PM IST</div>
+                                        <div class="session-subject">Biology</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="schedule-day">
+                        <h3>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            Saturdays
+                        </h3>
+                        <div class="schedule-sessions">
+                            <div class="schedule-session" style="background: #f0fdf4; border-color: #86efac;">
+                                <div class="session-content">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12,6 12,12 16,14"></polyline>
+                                    </svg>
+                                    <div>
+                                        <div class="session-time">9:30–11:00 AM IST</div>
+                                        <div class="session-subject">Mathematics</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="schedule-session" style="background: #f0fdf4; border-color: #86efac;">
+                                <div class="session-content">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12,6 12,12 16,14"></polyline>
+                                    </svg>
+                                    <div>
+                                        <div class="session-time">11:30 AM–1:00 PM IST</div>
+                                        <div class="session-subject">Physics</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="schedule-session" style="background: #f0fdf4; border-color: #86efac;">
+                                <div class="session-content">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12,6 12,12 16,14"></polyline>
+                                    </svg>
+                                    <div>
+                                        <div class="session-time">2:00–3:30 PM IST</div>
+                                        <div class="session-subject">Chemistry</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schedule-card">
+                <h3 style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" style="margin-right: 0.75rem;">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                    Electives for TNP365
+                </h3>
+                
+                <p style="color: #6b7280; margin-bottom: 1.5rem;">
+                    GenWise runs short courses during winter and summer breaks. TNP365 students may take some of these as <strong>electives</strong>. Electives will be announced at least <strong>one month in advance</strong>.
+                </p>
+
+                <div style="background: #fff7ed; border: 1px solid #fed7aa; border-radius: 12px; padding: 1.5rem;">
+                    <h4 style="font-weight: 600; margin-bottom: 1rem;">Possible electives (illustrative)</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.5rem;">
+                            <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; flex-shrink: 0; margin-top: 0.5rem;"></div>
+                            <span>Introductory Astrophysics</span>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.5rem;">
+                            <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; flex-shrink: 0; margin-top: 0.5rem;"></div>
+                            <span>Motion Mania: Building Blocks of Robotics</span>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.5rem;">
+                            <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; flex-shrink: 0; margin-top: 0.5rem;"></div>
+                            <span>Series and Sequences: The Mathematics of Change</span>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.5rem;">
+                            <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; flex-shrink: 0; margin-top: 0.5rem;"></div>
+                            <span>Harnessing GenAI: Navigating the Future of Technology</span>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                            <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; flex-shrink: 0; margin-top: 0.5rem;"></div>
+                            <span>Narrative Thinking for Exam Success</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#apply" class="btn btn-primary btn-lg">Apply to TNP365</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">Contact us</div>
+            
+            <div class="contact-grid">
+                <div>
+                    <h3>Get in Touch</h3>
+                    
+                    <p>If you represent a school and would like to explore how TNP365 can support your gifted students, please write to us at <a href="mailto:siddharth@genwise.in">siddharth@genwise.in</a>. We'll be glad to take the conversation forward.</p>
+                    
+                    <p>Parents who'd like to know more about enrollment or have specific questions about TNP365 can write to us at <a href="mailto:janani@genwise.in">janani@genwise.in</a>. We'll be happy to guide you.</p>
+
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-top: 1.5rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span style="color: #d1d5db;">For any enquiries: </span>
+                        <a href="mailto:janani@giftedworld.org">janani@giftedworld.org</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Follow us on social media</h3>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/Gifted.World.Network/" target="_blank" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/74923520/" target="_blank" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@giftedworld" target="_blank" class="social-link" style="background: #dc2626;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <img src="https://giftedworld.org/wp-content/uploads/2022/07/GW_logof.jpg" alt="Gifted World" style="width: 64px; height: 64px; border-radius: 12px;">
+                        <div>
+                            <h4 style="font-size: 1.125rem; font-weight: 600;">Gifted World</h4>
+                            <p style="color: #9ca3af; font-size: 14px; margin: 0;">Nurturing exceptional minds</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-footer">
+                <p>© 2025 Gifted World | All Right Reserved. Powered By <a href="https://creativekatta.com" target="_blank" style="color: #60a5fa;">Creativekatta</a></p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Testimonials functionality
+        const testimonials = [
+            {
+                text: "I think I have learnt a lot more in these past five sessions compared to what I could've learnt in half a school year. I believe learning is one thing and understanding is different. I have no problem learning at school, I do just fine on my own. But here I have understood stuff a lot better.",
+                author: "Tushita - Grade 8, Mumbai"
+            },
+            {
+                text: "Chaitanya is someone who usually just keeps smiling and doesn't say a word. But I was really surprised to see her asking questions and sharing her thoughts. So it's just not astrophysics. The gifted world has brought out what is there in her. Thank you so much.",
+                author: "Meenu, Parent of Grade 7 student, Sharjah"
+            },
+            {
+                text: "In school she only gets exposed to her age specific knowledge. With GenWise, we always wanted to have her exposed to knowledge which is above her age group. If she's able to meet the higher grade knowledge levels, she probably has that skill set towards that particular subject. So that was the total intent behind this.",
+                author: "Sweta, Parent of Grade 7 student, Ahmedabad"
+            },
+            {
+                text: "I joined the Algebra course, and at first I thought it would just be about simple algebra - variables, X, and all that... My expectations were completely exceeded. The questions weren't the kind you finish in five minutes; sometimes they took me an hour or more. That rarely happens in other courses I've done. I learned much more than basic algebra - I discovered a new approach to solving problems, which has really changed the way I think about math.",
+                author: "Aanya, Grade 6, Sharjah"
+            }
+        ];
+
+        let currentTestimonial = 0;
+
+        function showTestimonial(index) {
+            currentTestimonial = index;
+            document.getElementById('testimonial-text').textContent = '"' + testimonials[index].text + '"';
+            document.getElementById('testimonial-author').textContent = testimonials[index].author;
+            
+            // Update dots
+            document.querySelectorAll('.dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+
+        function previousTestimonial() {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+
+        // Accordion functionality
+        function toggleAccordion(index) {
+            const content = document.querySelectorAll('.accordion-content')[index];
+            const trigger = document.querySelectorAll('.accordion-trigger')[index];
+            const icon = trigger.querySelector('svg');
+            
+            // Close all other accordions
+            document.querySelectorAll('.accordion-content').forEach((content, i) => {
+                if (i !== index) {
+                    content.classList.remove('active');
+                    content.parentElement.classList.remove('active');
+                }
+            });
+            
+            // Toggle current accordion
+            content.classList.toggle('active');
+            content.parentElement.classList.toggle('active');
+            
+            // Rotate icon
+            if (content.classList.contains('active')) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Form submission
+        document.getElementById('application-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const subjects = [];
+            document.querySelectorAll('input[name="subjects"]:checked').forEach(checkbox => {
+                subjects.push(checkbox.value);
+            });
+            
+            // You can process the form data here
+            alert('Thank you for your application! We will get back to you soon.');
+        });
+
+        // Auto-advance testimonials every 10 seconds
+        setInterval(nextTestimonial, 10000);
+    </script>
+</body>
+</html>
