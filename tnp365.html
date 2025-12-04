@@ -1422,9 +1422,14 @@
             }
         }
 
-        // Form submission - mailto solution for static hosting
-        document.getElementById('application-form').addEventListener('submit', function(e) {
+        // Form submission - sends to API endpoint
+        document.getElementById('application-form').addEventListener('submit', async function(e) {
             e.preventDefault();
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
 
             // Get form data
             const formData = new FormData(this);
@@ -1433,43 +1438,41 @@
                 subjects.push(checkbox.value);
             });
 
-            // Prepare email content
-            const studentName = formData.get('studentName');
-            const schoolName = formData.get('schoolName');
-            const studentGrade = formData.get('studentGrade');
-            const email = formData.get('email');
-            const phone = formData.get('phone');
-            const atsTaken = formData.get('atsTaken');
-            const atsScore = formData.get('atsScore');
-            const programInterest = formData.get('programInterest');
+            const data = {
+                studentName: formData.get('studentName'),
+                schoolName: formData.get('schoolName'),
+                studentGrade: formData.get('studentGrade'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                atsTaken: formData.get('atsTaken'),
+                atsScore: formData.get('atsScore'),
+                programInterest: formData.get('programInterest'),
+                subjects: subjects
+            };
 
-            const emailSubject = `TNP365 Application - ${studentName}`;
-            const emailBody = `New TNP365 Application:
+            try {
+                const response = await fetch('https://tnp-form.genwise.in/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
 
-Student Name: ${studentName}
-School Name: ${schoolName}
-Grade: ${studentGrade}
-Email: ${email}
-Phone: ${phone}
-ATS Taken: ${atsTaken}
-ATS Score: ${atsScore || 'Not provided'}
-Subjects: ${subjects.join(', ')}
+                const result = await response.json();
 
-Program Interest:
-${programInterest}
-
----
-This application was submitted via the TNP365 webpage.`;
-
-            // Create mailto link with multiple recipients
-            const recipients = 'janani@genwise.in,siddharth@genwise.in,rajesh@genwise.in';
-            const mailtoLink = `mailto:${recipients}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-
-            // Open email client
-            window.location.href = mailtoLink;
-
-            // Show confirmation message
-            alert('Your email client will open with the application details. Please send the email to complete your application.');
+                if (result.success) {
+                    alert('Thank you! Your application has been submitted successfully. We will contact you soon.');
+                    this.reset();
+                } else {
+                    alert('Sorry, there was an error submitting your application. Please try again or contact us directly at janani@genwise.in');
+                }
+            } catch (error) {
+                alert('Sorry, there was an error submitting your application. Please try again or contact us directly at janani@genwise.in');
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
         });
 
         // Auto-advance testimonials every 10 seconds
