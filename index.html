@@ -817,6 +817,77 @@
         .mb-12 { margin-bottom: 3rem; }
         .mt-4 { margin-top: 1rem; }
         .mt-8 { margin-top: 2rem; }
+
+        /* Interest Form */
+        .interest-form {
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            text-align: left;
+        }
+
+        .form-row {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .form-row-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ff8d39;
+            box-shadow: 0 0 0 3px rgba(255, 141, 57, 0.2);
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d1fae5;
+            color: #065f46;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #fee2e2;
+            color: #991b1b;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -1110,7 +1181,52 @@
             <h2>Ready to explore?</h2>
             <p>Leave your details and we'll call you to discuss your child's fit for the programme and the next entry point.</p>
 
-            <a href="mailto:tnp@genwise.in?subject=TNP365 Interest" class="btn btn-primary">Express Interest</a>
+            <form class="interest-form" id="interest-form" onsubmit="submitInterestForm(event)">
+                <div class="form-row form-row-2">
+                    <div class="form-group">
+                        <label for="parent-name">Parent Name *</label>
+                        <input type="text" id="parent-name" name="parent_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="child-name">Child's Name *</label>
+                        <input type="text" id="child-name" name="child_name" required>
+                    </div>
+                </div>
+                <div class="form-row form-row-2">
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                <div class="form-row form-row-2">
+                    <div class="form-group">
+                        <label for="grade">Child's Current Grade *</label>
+                        <select id="grade" name="grade" required>
+                            <option value="">Select grade</option>
+                            <option value="6">Grade 6</option>
+                            <option value="7">Grade 7</option>
+                            <option value="8">Grade 8</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject Interest *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select subject</option>
+                            <option value="both">Both Science & Math</option>
+                            <option value="science">Science only</option>
+                            <option value="math">Mathematics only</option>
+                            <option value="undecided">Not sure yet</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary form-submit" id="submit-btn">Express Interest</button>
+                <div class="form-message" id="form-message"></div>
+            </form>
 
             <p class="cta-dates"><strong>Next entry:</strong> 30 January 2026 | 20 March 2026</p>
             <p class="cta-note">Students currently in Grade 6 will be able to join the programme starting July 2026.</p>
@@ -1229,6 +1345,54 @@
             // Open clicked item if it wasn't open
             if (!wasOpen) {
                 item.classList.add('open');
+            }
+        }
+
+        async function submitInterestForm(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('interest-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const messageDiv = document.getElementById('form-message');
+
+            // Get form data
+            const formData = {
+                parent_name: form.parent_name.value,
+                child_name: form.child_name.value,
+                email: form.email.value,
+                phone: form.phone.value,
+                grade: form.grade.value,
+                subject: form.subject.value
+            };
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            messageDiv.className = 'form-message';
+            messageDiv.style.display = 'none';
+
+            try {
+                const response = await fetch('https://internalapps.giftedworld.org/tnp365-interest', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    messageDiv.textContent = 'Thank you! We have received your interest and will contact you soon.';
+                    messageDiv.className = 'form-message success';
+                    form.reset();
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                messageDiv.textContent = 'Something went wrong. Please email us directly at tnp@genwise.in';
+                messageDiv.className = 'form-message error';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Express Interest';
             }
         }
     </script>
