@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - TNP365 | GenWise</title>
+    <meta name="description" content="Format, schedule, entry points, and fees—everything you need to know about TNP365.">
+    <style>
+        /* Reset & Base */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #f5f6f7;
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: #063852;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2.25rem; }
+        h3 { font-size: 1.5rem; font-weight: 600; }
+        h4 { font-size: 1.25rem; font-weight: 600; }
+
+        @media (min-width: 768px) {
+            h1 { font-size: 3rem; }
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .container-sm {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #063852;
+            transition: color 0.2s;
+        }
+
+        .nav-logo:hover {
+            color: #ff8d39;
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            color: #374151;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background: #f3f4f6;
+            color: #063852;
+        }
+
+        .nav-link.active {
+            background: #ff8d39;
+            color: white;
+            box-shadow: 0 2px 4px rgba(255,141,57,0.3);
+        }
+
+        .nav-cta {
+            padding: 0.5rem 1.5rem;
+            background: #ff8d39;
+            color: white;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(255,141,57,0.3);
+        }
+
+        .nav-cta:hover {
+            background: #e67d30;
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-btn {
+            display: flex;
+            padding: 0.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #374151;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        .mobile-menu {
+            display: none;
+            padding-bottom: 1rem;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+
+        .mobile-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .mobile-link:hover {
+            background: #f3f4f6;
+        }
+
+        .mobile-link.active {
+            background: #ff8d39;
+            color: white;
+        }
+
+        .mobile-cta {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            background: #ff8d39;
+            color: white;
+            font-weight: 600;
+            border-radius: 6px;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: #ff8d39;
+            color: white;
+            box-shadow: 0 4px 6px rgba(255,141,57,0.3);
+        }
+
+        .btn-primary:hover {
+            background: #e67d30;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: #063852;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #053042;
+            transform: scale(1.05);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-white {
+            background: white;
+        }
+
+        .section-gray {
+            background: #f5f6f7;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, white, #f5f6f7);
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #374151;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .info-card {
+            background: #eff6ff;
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .info-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-card li {
+            color: #374151;
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .detail-card {
+            background: #fff7ed;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #063852;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-card h3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .detail-card p {
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        /* Schedule Box */
+        .schedule-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .schedule-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .schedule-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .schedule-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-item p {
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        .highlight-box {
+            background: #eff6ff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .highlight-box p {
+            color: #063852;
+            font-size: 1.125rem;
+        }
+
+        /* Trial Box */
+        .trial-box {
+            background: #fef9c3;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #063852;
+        }
+
+        .trial-box p {
+            color: #374151;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .trial-box ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            color: #374151;
+        }
+
+        .trial-box li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Journey Box */
+        .journey-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .journey-box p {
+            color: #374151;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        /* Pricing Table */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .pricing-table th {
+            background: #063852;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .pricing-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            background: white;
+        }
+
+        .pricing-table tbody tr:nth-child(even) td {
+            background: #f9fafb;
+        }
+
+        .pricing-table tbody tr:last-child td {
+            font-weight: 700;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .payment-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-item {
+            background: #eff6ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .payment-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-item p {
+            color: #374151;
+        }
+
+        .payment-item ul {
+            list-style: none;
+            padding: 0;
+            color: #374151;
+        }
+
+        .payment-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Scholarship Box */
+        .scholarship-box {
+            background: #fef9c3;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #063852;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .scholarship-box h3 {
+            margin-bottom: 1rem;
+        }
+
+        .scholarship-box p {
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        /* Accordion */
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .accordion-item {
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .accordion-trigger {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .accordion-trigger:hover {
+            background: #f3f4f6;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #6b7280;
+            transition: transform 0.3s;
+        }
+
+        .accordion-item.open .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 0 1.5rem 1.25rem;
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        .accordion-item.open .accordion-content {
+            display: block;
+        }
+
+        .accordion-content p {
+            margin-bottom: 1rem;
+        }
+
+        .accordion-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .accordion-content ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .accordion-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+            background: linear-gradient(to bottom, #f5f6f7, white);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .cta-buttons {
+                flex-direction: row;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: #063852;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .footer h3 {
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            color: #d1d5db;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-link {
+            color: #d1d5db;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Utilities */
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mt-8 { margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="tnp365.html" class="nav-logo">TNP365</a>
+
+            <div class="nav-links">
+                <a href="tnp365.html" class="nav-link">Home</a>
+                <a href="tnp365-what-students-learn.html" class="nav-link">What Students Learn</a>
+                <a href="tnp365-how-it-works.html" class="nav-link active">How It Works</a>
+                <a href="tnp365-mentors.html" class="nav-link">Our Mentors</a>
+                <a href="tnp365.html#express-interest" class="nav-cta">Express Interest</a>
+            </div>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg id="close-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+                    <path d="M6 6l12 12M6 18L18 6"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <div style="padding: 0 1rem;">
+                <a href="tnp365.html" class="mobile-link">Home</a>
+                <a href="tnp365-what-students-learn.html" class="mobile-link">What Students Learn</a>
+                <a href="tnp365-how-it-works.html" class="mobile-link active">How It Works</a>
+                <a href="tnp365-mentors.html" class="mobile-link">Our Mentors</a>
+                <a href="tnp365.html#express-interest" class="mobile-cta">Express Interest</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container text-center">
+            <h1>How It Works</h1>
+            <p class="hero-subtitle">
+                Format, schedule, entry points, and fees—everything you need to know.
+            </p>
+        </div>
+    </section>
+
+    <!-- Programme Format -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="mb-8">Programme Format</h2>
+
+            <div class="info-grid mb-8">
+                <div class="info-card">
+                    <h3>Live Sessions</h3>
+                    <ul>
+                        <li><strong>Science:</strong> 2 hours per week (Friday evenings). Integrated Physics, Chemistry, Biology.</li>
+                        <li><strong>Mathematics:</strong> 1.5 hours per week (Saturdays).</li>
+                        <li>Students can take Science only, Mathematics only, or both.</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>How Classes Work</h3>
+                    <ul>
+                        <li>Live online sessions via Zoom with expert mentors</li>
+                        <li>Small cohorts: 20–30 students per group</li>
+                        <li>Discussion-based: Students think, argue, explain—not passive listening</li>
+                        <li>Teaching assistant support for deeper exploration and homework help</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <h3>Independent Work</h3>
+                <p>Expect 2–3 hours per week: readings, short investigations, problem sets. Less time than most competitive activities. Enough to stretch the mind, never to burn it out.</p>
+            </div>
+
+            <div class="detail-card">
+                <h3>Recordings</h3>
+                <p>Session recordings available for 3 days when students must miss class. However, live participation is strongly encouraged—the discussion and peer interaction are central to learning.</p>
+            </div>
+
+            <div class="detail-card">
+                <h3>Technology Requirement</h3>
+                <p><strong>Students should join sessions from a laptop or computer, not a phone or tablet.</strong> A stable internet connection and a quiet space for focused participation are essential.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule & Entry Points -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="mb-8">Schedule & Entry Points</h2>
+
+            <div class="schedule-box">
+                <div class="schedule-item">
+                    <h3>Programme Duration</h3>
+                    <p>30 weeks across the academic year, organised into six 5-week modules.</p>
+                </div>
+
+                <div class="schedule-item">
+                    <h3>Entry Points</h3>
+                    <p>There are six entry points across the year—at the start of each module. If you find us mid-year, you haven't missed the opportunity. We can place your child into a suitable cohort at the next entry point.</p>
+                    <div class="highlight-box">
+                        <p><strong>Next Entry Dates:</strong> 30 January 2026 | 20 March 2026</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <h3>Grade 6 Students</h3>
+                    <p>Students currently in Grade 6 will be able to join the programme starting <strong>July 2026</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trial Period -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="mb-8">Trial Period</h2>
+
+            <div class="trial-box">
+                <p>New students begin with a <strong>1-month trial</strong> (one full module). This lets families experience TNP365 before committing to the full year.</p>
+
+                <ul>
+                    <li>Pay ₹20,000 booking fee at the start of the trial</li>
+                    <li>If you continue, the trial fee adjusts against the annual fee</li>
+                    <li>If it's not the right fit, the booking fee is fully refundable</li>
+                    <li>No pressure to continue</li>
+                </ul>
+
+                <p class="mt-6">During the trial, students can explore both subjects before deciding which to continue with.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multi-Year Journey -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="mb-8">A Multi-Year Journey</h2>
+
+            <div class="journey-box">
+                <p>TNP365 is designed as a 2–3 year pathway, not a one-off course.</p>
+                <p>Many students join in Grade 7 or 8 and continue with the same cohort over multiple years. As the cohort progresses, we design new modules and challenges at their level—instead of making them repeat the same content.</p>
+                <p>Over time, students build a portfolio of explanations, investigations, and projects that shows what they can really do—not just the marks they scored. They develop roughly Grade 10+ breadth of ideas with much greater depth, and the habits of rigorous, joyful, self-directed learning.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fees -->
+    <section class="section section-white">
+        <div class="container-sm">
+            <h2 class="text-center mb-12">Programme Fees</h2>
+
+            <div class="table-wrapper">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Annual Fee (INR)</th>
+                            <th>Annual Fee (AED)</th>
+                            <th>Annual Fee (USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mathematics</td>
+                            <td>₹40,000</td>
+                            <td>1,750 AED</td>
+                            <td>$500</td>
+                        </tr>
+                        <tr>
+                            <td>Science</td>
+                            <td>₹54,000</td>
+                            <td>2,350 AED</td>
+                            <td>$675</td>
+                        </tr>
+                        <tr>
+                            <td>Both subjects</td>
+                            <td>₹90,000</td>
+                            <td>3,940 AED</td>
+                            <td>$1,125</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="payment-info">
+                <div class="payment-item">
+                    <h3>Payment Options</h3>
+                    <ul>
+                        <li>Fees can be paid in <strong>3 instalments</strong></li>
+                        <li>Trial fee (₹20,000) adjusts against annual fee if you continue</li>
+                    </ul>
+                </div>
+
+                <div class="payment-item">
+                    <h3>Electives</h3>
+                    <p>Short courses during school holidays, 8–10 hours each.</p>
+                    <ul>
+                        <li>Students taking <strong>both subjects</strong>: 2 free electives + 50% off additional</li>
+                        <li>Students taking <strong>one subject</strong>: 50% off all electives</li>
+                    </ul>
+                    <p style="font-size: 0.9rem; color: #6b7280; margin-top: 0.75rem;">Past electives include: Astrophysics, Robotics Foundations, GenAI Literacy, Narrative Thinking, Sequences & Series.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scholarships -->
+    <section class="section section-gray">
+        <div class="container-sm">
+            <h2 class="text-center mb-8">Scholarships</h2>
+
+            <div class="scholarship-box">
+                <h3>Need-based scholarships are available.</h3>
+                <p>We believe all gifted students deserve proper enrichment, regardless of financial circumstances. If cost is a barrier for your family, please reach out.</p>
+                <p class="mt-6">Contact <strong>siddharth@genwise.in</strong> with details about your situation. All enquiries are handled with discretion.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section section-white">
+        <div class="container-sm">
+            <h2 class="text-center mb-12">Frequently Asked Questions</h2>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <span>How is this different from tuition or coaching?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p><strong>Tuition</strong> adds more of the same. <strong>Coaching</strong> optimises for exam performance—topics covered in test sequence, understanding secondary to pattern recognition.</p>
+                        <p><strong>TNP365</strong> optimises for thinking. We cover fewer topics but go deeper. We care about whether students can explain <em>why</em>, not just solve <em>how</em>. Students who build understanding here find that exam preparation later becomes format familiarity, not conceptual catch-up.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <span>What if my child misses a session?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Session recordings are available for 3 days. However, live participation is strongly encouraged—discussion and peer interaction are central to learning. If your child will miss multiple sessions, let us know and we'll help them catch up.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <span>Will this distract from school exams?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>TNP365 complements school learning. The concepts we cover appear in standard curricula, but we approach them with greater depth. Students typically find that school science and maths become <em>easier</em> after TNP365 because they actually understand the underlying ideas.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <span>Is this only for students who scored in the top percentiles on ASSET?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>ASSET Talent Search is our primary selection pathway, but not the only one. If your child shows clear signs of advanced ability—through other assessments, school performance, or demonstrated curiosity—we're happy to discuss their fit. Contact us.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <span>My child says they only like physics / don't like biology. Why integrated science?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p><strong>First,</strong> students at this age often haven't encountered inspired teaching in their "disliked" subject. Science taught at a high level dissolves these boundaries. The physics of scaling is inseparable from why elephants can't jump. The chemistry of ATP is inseparable from how muscles generate force.</p>
+                        <p><strong>Second,</strong> competencies transfer. The habits of mind developed in any scientific context—arguing from evidence, constructing models, questioning assumptions—apply everywhere.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <span>My child is already ahead in this subject. Won't TNP365 hold them back?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>We hear this often. When we actually work with these students, we find their fundamentals are less solid than expected. They can solve problems but struggle to explain why. They know formulas but can't derive them. They've memorised content but can't transfer it to unfamiliar contexts.</p>
+                        <p>The pace may feel slower than coaching—but as students tell us, they "cover more" because they actually understand. Students who genuinely need faster progression can access high-ceiling extensions in every module. But most discover that going deeper is more demanding than going faster.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <span>What technology does my child need?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>A <strong>laptop or computer</strong> (not a phone or tablet)</li>
+                            <li>Stable internet connection</li>
+                            <li>A quiet space for focused participation</li>
+                            <li>Zoom installed</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <span>What if my child wants to switch subjects or drop out?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>During the 1-month trial, students can explore both subjects and then decide which to continue with. If the programme isn't the right fit, the booking fee is fully refundable within the first month.</p>
+                        <p>After the trial, if circumstances change, contact us to discuss options.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container text-center">
+            <h2 class="mb-8">Ready to explore?</h2>
+
+            <div class="cta-buttons">
+                <a href="tnp365.html#express-interest" class="btn btn-secondary">Express Interest</a>
+                <a href="tnp365-what-students-learn.html" class="btn btn-secondary">What students learn</a>
+                <a href="tnp365-mentors.html" class="btn btn-secondary">Meet the mentors</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>About GenWise</h3>
+                    <p>GenWise has been nurturing gifted students since 2016 through residential summer programmes, year-round online courses, and teacher development initiatives. We launched India's first residential high-ability programme with Duke TIP. We are an education company run with integrity—focused on conceptual learning, wellbeing, and authentic growth. We are not a test-prep business.</p>
+                </div>
+                <div>
+                    <h3>Contact</h3>
+                    <p><strong>Email:</strong> tnp@genwise.in</p>
+
+                    <div class="footer-links">
+                        <a href="tnp365-what-students-learn.html" class="footer-link">What Students Learn</a>
+                        <a href="tnp365-how-it-works.html" class="footer-link">How It Works</a>
+                        <a href="tnp365-mentors.html" class="footer-link">Our Mentors</a>
+                        <a href="tnp365.html#express-interest" class="footer-link">Express Interest</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 GenWise. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            menu.classList.toggle('open');
+
+            if (menu.classList.contains('open')) {
+                menuIcon.style.display = 'none';
+                closeIcon.style.display = 'block';
+            } else {
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            }
+        }
+
+        function toggleAccordion(trigger) {
+            const item = trigger.parentElement;
+            const wasOpen = item.classList.contains('open');
+
+            // Close all items
+            document.querySelectorAll('.accordion-item').forEach(i => {
+                i.classList.remove('open');
+            });
+
+            // Open clicked item if it wasn't open
+            if (!wasOpen) {
+                item.classList.add('open');
+            }
+        }
+    </script>
+</body>
+</html>

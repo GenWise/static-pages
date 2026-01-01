@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Students Learn - TNP365 | GenWise</title>
+    <meta name="description" content="We don't teach to a syllabus. We develop competencies—habits of mind that transfer across topics and grow over time.">
+    <style>
+        /* Reset & Base */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #f5f6f7;
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: #063852;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2.25rem; }
+        h3 { font-size: 1.875rem; font-weight: 600; }
+        h4 { font-size: 1.5rem; font-weight: 600; }
+
+        @media (min-width: 768px) {
+            h1 { font-size: 3rem; }
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .container-sm {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #063852;
+            transition: color 0.2s;
+        }
+
+        .nav-logo:hover {
+            color: #ff8d39;
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            color: #374151;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background: #f3f4f6;
+            color: #063852;
+        }
+
+        .nav-link.active {
+            background: #ff8d39;
+            color: white;
+            box-shadow: 0 2px 4px rgba(255,141,57,0.3);
+        }
+
+        .nav-cta {
+            padding: 0.5rem 1.5rem;
+            background: #ff8d39;
+            color: white;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(255,141,57,0.3);
+        }
+
+        .nav-cta:hover {
+            background: #e67d30;
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-btn {
+            display: flex;
+            padding: 0.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #374151;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        .mobile-menu {
+            display: none;
+            padding-bottom: 1rem;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+
+        .mobile-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .mobile-link:hover {
+            background: #f3f4f6;
+        }
+
+        .mobile-link.active {
+            background: #ff8d39;
+            color: white;
+        }
+
+        .mobile-cta {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            background: #ff8d39;
+            color: white;
+            font-weight: 600;
+            border-radius: 6px;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: #ff8d39;
+            color: white;
+            box-shadow: 0 4px 6px rgba(255,141,57,0.3);
+        }
+
+        .btn-primary:hover {
+            background: #e67d30;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: #063852;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #053042;
+            transform: scale(1.05);
+        }
+
+        .btn-blue {
+            background: #3399ff;
+            color: white;
+        }
+
+        .btn-blue:hover {
+            background: #2080e6;
+            transform: scale(1.05);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-white {
+            background: white;
+        }
+
+        .section-gray {
+            background: #f5f6f7;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, white, #f5f6f7);
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #374151;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Tabs */
+        .tabs {
+            margin-bottom: 3rem;
+        }
+
+        .tabs-list {
+            display: flex;
+            max-width: 400px;
+            margin: 0 auto;
+            background: #e5e7eb;
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        .tab-trigger {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #374151;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab-trigger.active {
+            background: white;
+            color: #063852;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Competency Cards */
+        .competency-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .competency-card-blue {
+            border-left: 4px solid #3399ff;
+        }
+
+        .competency-card-orange {
+            border-left: 4px solid #ff8d39;
+        }
+
+        .competency-card h4 {
+            margin-bottom: 0.75rem;
+        }
+
+        .competency-card p {
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        /* Module Cards */
+        .modules-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .modules-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .module-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: box-shadow 0.2s;
+        }
+
+        .module-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .module-card h4 {
+            margin-bottom: 0.75rem;
+        }
+
+        .module-card p {
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        /* Quote Cards */
+        .quote-card {
+            background: #eff6ff;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .quote-card blockquote {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #374151;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .quote-card cite {
+            color: #6b7280;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+            background: linear-gradient(to bottom, #063852, white);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .cta-buttons {
+                flex-direction: row;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: #063852;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .footer h3 {
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            color: #d1d5db;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-link {
+            color: #d1d5db;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Utilities */
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mt-8 { margin-top: 2rem; }
+        .mt-12 { margin-top: 3rem; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="tnp365.html" class="nav-logo">TNP365</a>
+
+            <div class="nav-links">
+                <a href="tnp365.html" class="nav-link">Home</a>
+                <a href="tnp365-what-students-learn.html" class="nav-link active">What Students Learn</a>
+                <a href="tnp365-how-it-works.html" class="nav-link">How It Works</a>
+                <a href="tnp365-mentors.html" class="nav-link">Our Mentors</a>
+                <a href="tnp365.html#express-interest" class="nav-cta">Express Interest</a>
+            </div>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg id="close-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+                    <path d="M6 6l12 12M6 18L18 6"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <div style="padding: 0 1rem;">
+                <a href="tnp365.html" class="mobile-link">Home</a>
+                <a href="tnp365-what-students-learn.html" class="mobile-link active">What Students Learn</a>
+                <a href="tnp365-how-it-works.html" class="mobile-link">How It Works</a>
+                <a href="tnp365-mentors.html" class="mobile-link">Our Mentors</a>
+                <a href="tnp365.html#express-interest" class="mobile-cta">Express Interest</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container text-center">
+            <h1>What Students Learn</h1>
+            <p class="hero-subtitle">
+                We don't teach to a syllabus. We develop competencies—habits of mind that transfer across topics and grow over time.
+            </p>
+        </div>
+    </section>
+
+    <!-- Science and Math Tabs -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="tabs">
+                <div class="tabs-list">
+                    <button class="tab-trigger active" onclick="switchTab('science')">Science</button>
+                    <button class="tab-trigger" onclick="switchTab('mathematics')">Mathematics</button>
+                </div>
+            </div>
+
+            <!-- Science Tab Content -->
+            <div id="science-tab" class="tab-content active">
+                <div class="mb-12">
+                    <h2 class="mb-6">Science: Thinking like scientists, not just knowing science</h2>
+                    <p style="font-size: 1.125rem; color: #374151; line-height: 1.8;">
+                        TNP365 Science is an integrated programme spanning Physics, Chemistry, and Biology. We often begin with a familiar phenomenon, build a clean model, and then push it to explain harder cases. Students engage with six modules across the year, each organised around a core idea. The specific selection depends on cohort readiness and mentor availability.
+                    </p>
+                </div>
+
+                <div class="mb-12">
+                    <h3 class="mb-6">Competencies Developed</h3>
+
+                    <div class="competency-card competency-card-blue">
+                        <h4>Construct explanations from first principles.</h4>
+                        <p>When asked why metal feels colder than wood, students don't recite 'thermal conductivity.' They build an argument from particle motion, energy transfer, and what 'temperature' actually measures—then critique their own reasoning for gaps.</p>
+                    </div>
+
+                    <div class="competency-card competency-card-blue">
+                        <h4>See the same concept across contexts.</h4>
+                        <p>A student who understands levers in physics can find them in the human jaw, the mantis shrimp's strike, and a medieval trebuchet. Ideas travel because they're understood, not memorised.</p>
+                    </div>
+
+                    <div class="competency-card competency-card-blue">
+                        <h4>Argue from evidence.</h4>
+                        <p>'I think X because Y' becomes second nature. Students learn to distinguish observation from inference, correlation from causation, confident claims from speculation.</p>
+                    </div>
+
+                    <div class="competency-card competency-card-blue">
+                        <h4>Tolerate productive confusion.</h4>
+                        <p>Real science involves sitting with uncertainty. Our students learn that feeling stuck isn't failure—it's often the signal that deep learning is about to happen.</p>
+                    </div>
+
+                    <div class="competency-card competency-card-blue">
+                        <h4>Explain complex ideas clearly.</h4>
+                        <p>If you can't explain it simply, you don't understand it well enough. Students practise communicating through short videos, diagrams, written arguments, and peer discussion.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="mb-6">Sample Modules</h3>
+
+                    <div class="modules-grid">
+                        <div class="module-card">
+                            <h4>Forces & Motion</h4>
+                            <p>From levers in machines to levers in human limbs. Includes biomechanics, scaling, and motion at the microscopic level.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Energy, Everywhere</h4>
+                            <p>Follow energy through devices, bodies, and ecosystems. Trace transformations from food to motion, batteries to circuits, sunlight to ecosystems.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Heat, Temperature & You</h4>
+                            <p>Why does metal feel colder than wood? Build a particle model of heat transfer that actually explains everyday phenomena.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>The Particulate Nature of Matter</h4>
+                            <p>Use a single framework to explain diffusion, phase changes, chemical reactions, and why 'solid, liquid, gas' is harder to define than it seems.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Waves: The Nature of Vibrations</h4>
+                            <p>How vibrations travel as sound, how humans and animals make sense of them, and why wave behaviour shows up from music to quantum mechanics.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Introduction to Electricity</h4>
+                            <p>Build and reason about circuits. Understand current, voltage, and resistance as concepts that explain how electrons move.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mathematics Tab Content -->
+            <div id="mathematics-tab" class="tab-content">
+                <div class="mb-12">
+                    <h2 class="mb-6">Mathematics: Building thinkers, not just problem-solvers</h2>
+                    <p style="font-size: 1.125rem; color: #374151; line-height: 1.8;">
+                        Mathematical thinking — spotting patterns, reasoning carefully, constructing arguments—is foundational to almost every intellectually demanding field. But most maths education trains students to execute procedures, not to think. We start with simple patterns and questions, then extend them into arguments, proof sketches, and non-routine problems. TNP365 Mathematics uses content as a laboratory for developing thinking capacity that transfers everywhere.
+                    </p>
+                </div>
+
+                <div class="mb-12">
+                    <h3 class="mb-6">Competencies Developed</h3>
+
+                    <div class="competency-card competency-card-orange">
+                        <h4>Tackle unfamiliar problems.</h4>
+                        <p>Students work on non-routine problems where the method isn't obvious. They learn to try approaches, fail productively, and try again. This capacity—staying resourceful when the path forward is unclear—transfers to every challenging domain.</p>
+                    </div>
+
+                    <div class="competency-card competency-card-orange">
+                        <h4>See patterns and test them.</h4>
+                        <p>When students solve a specific problem, we don't move on. We ask: Does this pattern hold more generally? What's the boundary case? What breaks it? Students develop the habit of turning observations into testable claims.</p>
+                    </div>
+
+                    <div class="competency-card competency-card-orange">
+                        <h4>Build careful arguments.</h4>
+                        <p>Students learn to distinguish guesses from justified claims. They construct arguments, spot gaps in reasoning (their own and others'), and refine their thinking when challenged.</p>
+                    </div>
+
+                    <div class="competency-card competency-card-orange">
+                        <h4>Model messy situations.</h4>
+                        <p>Real problems are ill-defined. Students learn to take complex situations and decide what to simplify, what to keep, and how to formulate questions they can actually answer.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="mb-6">Sample Modules</h3>
+
+                    <div class="modules-grid">
+                        <div class="module-card">
+                            <h4>What is a Number?</h4>
+                            <p>Challenge assumptions about basic concepts. Explore ratios, prime numbers, and the origins of mathematical ideas through debate and deep questioning.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Patterns, Bounds & Proof Sketches</h4>
+                            <p>Move from spotting patterns to making claims to justifying them. Work with sequences, parity arguments, and simple invariants. Multiple proof styles without formalising any single approach.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Worlds Made of Points and Lines</h4>
+                            <p>Graph theory and discrete geometry built from scratch. Vertices, edges, paths, cycles. The bridges of Königsberg. Tiny finite geometries where students decide the rules and discover what follows.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Counting, Choice & Chance</h4>
+                            <p>Count systematically: paths on grids, arrangements, cases. Think in spaces of possibilities. Encounter recursion and counterintuitive distributions.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Shape, Symmetry & Similarity</h4>
+                            <p>Geometry through symmetry—reflections, rotations, translations. Similarity and ratio reasoning in triangles. Trigonometric ratios emerge from right triangles as relationships to understand, not formulas to memorise.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Modelling Messy Reality</h4>
+                            <p>Applied contexts: growth, spread, allocation, optimisation. Use tools from previous modules in integrated ways. No model is 'true'—models are approximations that can be critiqued and improved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Voice -->
+    <section class="section section-white">
+        <div class="container-sm">
+            <h2 class="text-center mb-12">What students say</h2>
+
+            <div class="quote-card">
+                <blockquote>
+                    "Usually in maths, there's only one solution... But most of the questions presented can have multiple solutions... multiple different thoughts which can be associated with them."
+                </blockquote>
+                <cite>— Himank, Grade 7</cite>
+            </div>
+
+            <div class="quote-card">
+                <blockquote>
+                    "The main thing I took away from the course is that asking questions is the most important thing... it was probably one of the most helpful 5 months of my life."
+                </blockquote>
+                <cite>— Kairav, Grade 8, UWC Singapore</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container text-center">
+            <h2 class="mb-8" style="color: white;">Ready to explore?</h2>
+
+            <div class="cta-buttons">
+                <a href="tnp365.html#express-interest" class="btn btn-secondary">Express Interest</a>
+                <a href="tnp365-how-it-works.html" class="btn btn-primary">How it works</a>
+                <a href="tnp365-mentors.html" class="btn btn-blue">Meet the mentors</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>About GenWise</h3>
+                    <p>GenWise has been nurturing gifted students since 2016 through residential summer programmes, year-round online courses, and teacher development initiatives. We launched India's first residential high-ability programme with Duke TIP. We are an education company run with integrity—focused on conceptual learning, wellbeing, and authentic growth. We are not a test-prep business.</p>
+                </div>
+                <div>
+                    <h3>Contact</h3>
+                    <p><strong>Email:</strong> tnp@genwise.in</p>
+
+                    <div class="footer-links">
+                        <a href="tnp365-what-students-learn.html" class="footer-link">What Students Learn</a>
+                        <a href="tnp365-how-it-works.html" class="footer-link">How It Works</a>
+                        <a href="tnp365-mentors.html" class="footer-link">Our Mentors</a>
+                        <a href="tnp365.html#express-interest" class="footer-link">Express Interest</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 GenWise. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            menu.classList.toggle('open');
+
+            if (menu.classList.contains('open')) {
+                menuIcon.style.display = 'none';
+                closeIcon.style.display = 'block';
+            } else {
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            }
+        }
+
+        function switchTab(tabName) {
+            // Update tab triggers
+            document.querySelectorAll('.tab-trigger').forEach(trigger => {
+                trigger.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabName + '-tab').classList.add('active');
+        }
+    </script>
+</body>
+</html>
