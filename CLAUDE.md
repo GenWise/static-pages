@@ -89,12 +89,22 @@ print(response.json()["URL"])
 
 ```
 static-pages/
-├── tnp365.html          # ✅ EDIT THIS - Source of truth
-├── index.html           # Copy of tnp365.html (for GitHub Pages root)
-├── iframe-embed-code.html
-├── README.md
-└── CLAUDE.md           # This file
+├── tnp365.html                      # Main landing page
+├── tnp365-what-students-learn.html  # Science/Math tabs, competencies
+├── tnp365-how-it-works.html         # Format, fees, FAQ
+├── tnp365-mentors.html              # Science + Math mentor profiles
+├── index.html                       # Copy of tnp365.html (GitHub Pages root)
+├── HANDOVER.md                      # Session handover state
+├── HISTORY.md                       # Change log
+├── CLAUDE.md                        # This file
+└── iframe-embed-code.html
 ```
+
+## WordPress URLs
+- https://genwise.in/tnp365/
+- https://genwise.in/tnp365-what-students-learn/
+- https://genwise.in/tnp365-how-it-works/
+- https://genwise.in/tnp365-mentors/
 
 ## Testing Changes
 
