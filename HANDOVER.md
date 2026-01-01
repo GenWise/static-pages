@@ -1,59 +1,53 @@
 # Static Pages - Session Handover
 
 ## Session Metadata
-- Date: 2026-01-01 ~17:00 IST
-- Duration: ~1 hour
-- Thread Context: TNP365 Figma redesign
+- Date: 2026-01-01 ~19:30 IST
+- Duration: ~2.5 hours
+- Thread Context: TNP365 polish - logos, photos, form integration
 
 ## Current Status
-TNP365 website redesigned from Figma export, deployed as 4 separate pages with WordPress iframe embeds. Placeholder images used for school logos and mentor photos.
+TNP365 website fully polished with real school logos, mentor photos from Instructor Photos folder, thinner nav bar, and Express Interest form with SMTP2GO email backend.
 
 ## Exact Position
-- ✅ Figma extraction and analysis
-- ✅ 4 HTML pages created (main + 3 sub-pages)
-- ✅ Git push to GitHub Pages
-- ✅ WordPress iframe pages created (3 sub-pages)
-- ⏭️ Next: Add real school logos and mentor photos
+- ✅ Mobile-first CSS verified (was already correct)
+- ✅ School logos added (5 real + 1 placeholder for Sanskriti)
+- ✅ Mentor photos from Instructor Photos folder (8 real + 4 initials placeholders)
+- ✅ Nav bar thinned (64px → 44px)
+- ✅ Express Interest form + SMTP2GO backend deployed
+- ⏭️ Next: Get missing mentor photos (Dhanya K, Siddharth Bharath, Vidhya Govindan, Kanchana Suryakumar)
 
 ## Critical Context
-1. Design is desktop-first (needs mobile-first verification)
-2. School logos are placeholder divs ("Logo" text)
-3. Mentor photos are emoji placeholders (👩‍🔬, 👨‍🏫, etc.)
-4. 6 schools listed: Shiv Nadar, GEMS Dubai, Sri Kumarans, DAIS Mumbai, Fountainhead Surat, Sanskriti Guwahati
-5. 14 mentors total: 7 Science + 7 Math (some overlap like Sukanya Sinha, Siddharth Bharath)
+1. Mentor photos source: `/Company Level/Mentor_Founders/Instructor Photos/` (NOT Mentors folder - that has profile cards with text)
+2. Form backend runs on DO droplet at `https://tnp-form.genwise.in/tnp365-interest`
+3. Emails sent to `tnp@genwise.in` via SMTP2GO API
+4. Sanskriti The Gurukul logo not found - using CSS text placeholder
+5. 4 mentors without photos use initials placeholders (DK, SB, VG, KS)
 
 ## Decisions Made
-- **Decision:** Separate HTML files (Option B) over single scrollable page
-  **Rationale:** User requested; matches original React routing structure; easier WordPress management
+- **Decision:** Use Instructor Photos folder, not Mentors folder
+  **Rationale:** Mentors folder contains profile cards with text overlay, not clean headshots
 
-- **Decision:** Self-contained HTML with inline CSS/JS
-  **Rationale:** WordPress iframe pattern requires no external dependencies
+- **Decision:** Nav bar 44px height (from 64px)
+  **Rationale:** User requested thinner to reduce visual clutter with WordPress dual-nav
+
+- **Decision:** SMTP2GO API on DO droplet (not Formspree/third-party)
+  **Rationale:** User requested SMTP2GO; reused existing tnp-form.genwise.in nginx config
+
+## Backend Details (TNP365 Form)
+- **Endpoint:** `POST https://tnp-form.genwise.in/tnp365-interest`
+- **Service:** `/root/apps/tnp365-form/app.py` (Flask)
+- **Systemd:** `tnp365-form.service` on port 5002
+- **Nginx:** `/etc/nginx/sites-available/tnp-form` (was port 5020, updated to 5002)
+- **API Key:** Uses `SMTP2GO_API_KEY` from systemd Environment
+- **Sends to:** `tnp@genwise.in` from `rajesh@genwise.in`
 
 ## Files Modified This Session
-- `tnp365.html` - Complete redesign from Figma
-- `tnp365-what-students-learn.html` - New file (Science/Math tabs)
-- `tnp365-how-it-works.html` - New file (Format, fees, FAQ)
-- `tnp365-mentors.html` - New file (7 Science + 7 Math mentors)
-- `index.html` - Copy of tnp365.html
-
-## WordPress Pages Created
-- https://genwise.in/tnp365/ (existing, updated iframe)
-- https://genwise.in/tnp365-what-students-learn/ (new)
-- https://genwise.in/tnp365-how-it-works/ (new)
-- https://genwise.in/tnp365-mentors/ (new)
-
-## Next Steps for Next Thread
-1. **Verify mobile-first:** Check if current CSS is mobile-first or needs refactoring
-2. **School logos:** Check repo for existing logos, else web search for:
-   - Shiv Nadar Schools
-   - GEMS Modern Academy Dubai
-   - Sri Kumarans Bengaluru
-   - Dhirubhai Ambani International School Mumbai
-   - Fountainhead School Surat
-   - Sanskriti The Gurukul Guwahati
-3. **Mentor photos:** Check `/Users/rajeshpanchanathan/Library/CloudStorage/GoogleDrive-rajesh@genwise.in/My Drive/Company Level/Mentor_Founders` subfolders for:
-   - Sukanya Sinha, Radha Gopalan, Anusha Krishnan, Rupin Chheda, Dhanya K, Siddharth Bharath, Rachit Rawat (Science)
-   - Utpal Chattopadhyay, Jayasree S, Vidhya Govindan, Saukhin Sarkar, Kanchana Suryakumar (Math)
+- `tnp365.html` - Added logos, form, CSS for form styling
+- `tnp365-mentors.html` - Added real mentor photos, initials placeholders
+- `tnp365-what-students-learn.html` - Thinner nav
+- `tnp365-how-it-works.html` - Thinner nav
+- `images/schools/*` - 5 school logos
+- `images/mentors/*` - 8 mentor photos
 
 ## Handover Prompt
-"Continue TNP365 website polish: (1) Verify mobile-first CSS or refactor, (2) Add school logos from repo or web search, (3) Add mentor photos from Google Drive path in HANDOVER.md. All 4 pages deployed at genwise.in/tnp365*. Read HANDOVER.md for mentor/school lists and file paths."
+"TNP365 website complete with form integration. Missing: 4 mentor photos (Dhanya K, Siddharth Bharath, Vidhya Govindan, Kanchana Suryakumar) and Sanskriti school logo. Backend at tnp-form.genwise.in sends to tnp@genwise.in. Next: source missing photos or keep placeholders."
