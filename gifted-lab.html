@@ -1110,9 +1110,6 @@
                 <div class="pricing-info-item">
                     <p><strong>Payment:</strong> All major methods of online payment are accepted. In case of students taking both math and science, fees can be paid in 3 instalments. For a single subject, fee has to be paid in full upon completion of the trial month.</p>
                 </div>
-                <div class="pricing-info-item">
-                    <p><strong>Electives:</strong> Short courses during holidays (8–10 hours each). Students taking both subjects get 2 free electives; others get 50% off.</p>
-                </div>
             </div>
 
             <div class="scholarship-box">
@@ -1166,17 +1163,16 @@
                             <option value="other">Other</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="subject">Subject Interest *</label>
-                        <select id="subject" name="subject" required>
-                            <option value="">Select subject</option>
-                            <option value="both">Both Science & Math</option>
-                            <option value="science">Science only</option>
-                            <option value="math">Mathematics only</option>
-                            <option value="undecided">Not sure yet</option>
-                        </select>
-                    </div>
                 </div>
+                <div class="form-group">
+                    <label for="hear-about">How did you hear of us? *</label>
+                    <input type="text" id="hear-about" name="hear_about" required>
+                </div>
+                <div class="form-group">
+                    <label for="why-gifted-lab">Why does your child need Gifted Lab? *</label>
+                    <input type="text" id="why-gifted-lab" name="why_gifted_lab" required>
+                </div>
+                <p style="text-align: center; font-size: 0.9rem; color: #6b7280; margin-top: 1rem;">Our team will get in touch with you over phone within 24 hours.</p>
                 <button type="submit" class="btn btn-primary form-submit" id="submit-btn">Express Interest</button>
                 <div class="form-message" id="form-message"></div>
             </form>
@@ -1288,7 +1284,8 @@
                 email: form.email.value,
                 phone: form.phone.value,
                 grade: form.grade.value,
-                subject: form.subject.value
+                hear_about: form.hear_about.value,
+                why_gifted_lab: form.why_gifted_lab.value
             };
 
             // Disable button and show loading
