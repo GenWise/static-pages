@@ -1,0 +1,17 @@
+name = "genwise-tomorrow-makers"
+main = "worker.js"
+compatibility_date = "2026-07-23"
+account_id = "ba29d46f8ee8656d9fd01833d973b77d"
+workers_dev = false
+
+# Route patterns are literal, so /tomorrow-makers and /tomorrow-makers/ need the
+# wildcard to both match. Anything else the wildcard catches falls through to
+# WordPress in the worker.
+routes = [
+  { pattern = "genwise.in/tomorrow-makers*", zone_name = "genwise.in" },
+  { pattern = "genwise.in/gtm-coach", zone_name = "genwise.in" },
+  { pattern = "genwise.in/gtm-operations", zone_name = "genwise.in" },
+  { pattern = "www.genwise.in/tomorrow-makers*", zone_name = "genwise.in" },
+  { pattern = "www.genwise.in/gtm-coach", zone_name = "genwise.in" },
+  { pattern = "www.genwise.in/gtm-operations", zone_name = "genwise.in" },
+]
