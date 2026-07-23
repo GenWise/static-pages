@@ -40,6 +40,30 @@
 - No deadline (not a paid campaign). Added "Applications are reviewed on a rolling basis,
   so earlier is better."
 
+**Cloudflare Worker (deployed 2026-07-23 ~21:15 IST):**
+- Worker `genwise-tomorrow-makers`, source in `cloudflare-worker/`.
+- genwise.in/work-with-us was already taken by the Summer Program hiring page, so this
+  page lives at genwise.in/tomorrow-makers instead. Summer Program page untouched.
+- Reverse-proxy, NOT an iframe. This matters: with an iframe the page's OG tags never
+  reach LinkedIn (the wrapper's tags win) and a #coach hash on the wrapper does not
+  scroll the inner frame, so the short links would land at the top of the page.
+- Short links are gtm- prefixed, not /coach: the Summer Program hires a "Residential
+  Coach", so a bare /coach becomes ambiguous when summer hiring reopens ~November.
+- Page assets use absolute GitHub Pages URLs so only the one document path is proxied.
+- Worker caches upstream for 300s. After pushing to this repo, genwise.in can lag the
+  github.io origin by up to 5 minutes. Not a bug; just wait or purge.
+
+**Gotchas hit:**
+- `CLOUDFLARE_API_TOKEN` in `~/.env` was stale and failed outright. The working token is
+  exported from `~/.zshrc` line 148, and a shell export beats `.env`. The two files held
+  different values. Re-minted 2026-07-23 with Workers Scripts:Edit (account) and Workers
+  Routes:Edit (zone genwise.in); `.env` updated, `.zshrc` still holds the old one.
+- Account-owned tokens (cfat_ prefix) always fail `/user/tokens/verify` - that endpoint is
+  user-token only. Test permissions against a real endpoint instead.
+- Worker route patterns are literal: `/tomorrow-makers` does not match `/tomorrow-makers/`.
+  Hence the `*` on that pattern.
+- Newly created routes can 404 for ~10s before propagating.
+
 **Open:**
 - Both Google Forms appear to require a Google sign-in - needs confirming in an incognito
   window. If true it will suppress applications from the target candidate pool.
