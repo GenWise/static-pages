@@ -48,7 +48,7 @@ export default {
 
     const upstream = await fetch(UPSTREAM, {
       method: request.method,
-      cf: { cacheTtl: 300, cacheEverything: true },
+      cf: { cacheTtl: 60, cacheEverything: true },
     });
 
     if (!upstream.ok) {
@@ -61,7 +61,7 @@ export default {
 
     const headers = new Headers(upstream.headers);
     headers.set("content-type", "text/html; charset=utf-8");
-    headers.set("cache-control", "public, max-age=300");
+    headers.set("cache-control", "public, max-age=60");
     headers.delete("x-github-request-id");
 
     return new Response(upstream.body, { status: 200, headers });

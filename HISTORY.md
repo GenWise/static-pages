@@ -50,8 +50,8 @@
 - Short links are gtm- prefixed, not /coach: the Summer Program hires a "Residential
   Coach", so a bare /coach becomes ambiguous when summer hiring reopens ~November.
 - Page assets use absolute GitHub Pages URLs so only the one document path is proxied.
-- Worker caches upstream for 300s. After pushing to this repo, genwise.in can lag the
-  github.io origin by up to 5 minutes. Not a bug; just wait or purge.
+- Worker caches upstream for 60s. After pushing to this repo, genwise.in can lag the
+  github.io origin by up to a minute. Not a bug; just wait or purge.
 
 **Gotchas hit:**
 - `CLOUDFLARE_API_TOKEN` in `~/.env` was stale and failed outright. The working token is
@@ -64,9 +64,14 @@
   Hence the `*` on that pattern.
 - Newly created routes can 404 for ~10s before propagating.
 
-**Open:**
-- Both Google Forms appear to require a Google sign-in - needs confirming in an incognito
-  window. If true it will suppress applications from the target candidate pool.
+**Open - CONFIRMED BLOCKER:**
+- Both Google Forms require a Google sign-in. Verified 2026-07-23 in a clean headless
+  Chrome profile: both forms.gle links land on "Sign in with your Google Account to
+  continue to Google Forms", and the operations form's page title is literally
+  "Google Forms: Sign-in". Neither form renders for an anonymous visitor.
+  This is invisible to the form owner, whose own session always passes.
+  Fix is in each form's Settings: turn off "Limit to 1 response" and any restriction to
+  GenWise users. Until then every apply button on the page leads to a login wall.
 
 ## 2026-01-01 ~17:00 IST
 **Session:** TNP365 Figma redesign and deployment
