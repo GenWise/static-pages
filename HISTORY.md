@@ -27,9 +27,20 @@
   hear about us" question in the form, or distinct redirect paths logged at the Cloudflare
   Worker. Flagged to Siddharth.
 
-**Open (awaiting Siddharth):**
-- Six content contradictions raised by email on 2026-07-23, incl. Operations Lead billed as
-  both "Full-time" and "Consulting basis". Page should not be promoted until resolved.
+**Content Decisions (Siddharth, 2026-07-23):**
+- Operations Lead is a full-time engagement hired on contract, not salaried employment.
+  Now stated consistently: kicker "Full-time - contract", fact "Full-time, on contract",
+  footer "A full-time engagement, contracted rather than salaried, paid monthly."
+- Operations Lead starts Sept 2026 (was "Aug / Sep 2026"). Coach still starts Aug 2026.
+- Dropped "a small group of" from the Coach one-liner - 30 students is not a small group.
+- Grade 9-10 maths/science for a Std 6-7 cohort is intentional; it is a gifted programme.
+  Left as written.
+- Language: dropped Tamil/Telugu. Hindi and English fluency required; Marathi or another
+  regional language a bonus. Marathi retained since sessions run in Hindi or Marathi.
+- No deadline (not a paid campaign). Added "Applications are reviewed on a rolling basis,
+  so earlier is better."
+
+**Open:**
 - Both Google Forms appear to require a Google sign-in - needs confirming in an incognito
   window. If true it will suppress applications from the target candidate pool.
 
