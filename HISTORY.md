@@ -24,8 +24,10 @@ hours figure. The ~25 hrs number was a leftover from when the role was Godrej-on
 combining Godrej with M3 makes it full-time. Verified against the page via the Forms
 API - type, pay, start, duration, 60/40 split, 1-4 years, and languages all agree.
 
-**Still open:** the Coach form may still carry the Rs 8,000-10,000 stipend figure that
-was just removed from the page. Cannot verify - see below.
+**Coach form - RESOLVED.** Siddharth checked and removed the Rs 8,000-10,000 stipend
+figure. Page and both forms now agree: no compensation number is published anywhere.
+
+**Nothing open on this page as of 2026-07-24.**
 
 **Reading a form you do not own.** The Coach form could not be inspected from here.
 Anonymous curl gets 401 (the sign-in wall), it is not in rajesh's Drive so the Forms
