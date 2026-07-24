@@ -1,5 +1,32 @@
 # Documentation History - Static Pages
 
+## 2026-07-24 ~11:00 IST
+**Session:** Siddharth's post-review edits to the hiring page
+
+- Compensation figures removed from both roles (his call, 2026-07-24). The kicker
+  strips, the fact grids, and both apply-button hints now say compensation is
+  competitive for the role and experience level. No number appears anywhere.
+- Applicant contact switched from siddharth@genwise.in to onlineprograms@genwise.in
+  in the closing CTA, and reworded to cover people who cannot submit the form. Kept
+  the existing WhatsApp number alongside it. **Someone has to actually monitor that
+  mailbox** - it is now the only fallback for anyone the sign-in wall blocks.
+
+**Sign-in wall - closed, not fixed.** Siddharth's decision: leave it. His reasoning
+is that the CV upload forces sign-in regardless, and Android users have Google
+accounts. The first half is correct. The residual risk he is accepting is the
+applicant on a shared or school desktop with no session, and the school teacher who
+has never had a CV as a file on a phone. The email fallback above is the mitigation.
+
+**Still open:** the Operations form says ~25 hrs/week (12-15 in quiet weeks) while
+the page says "Full-time - contract". Raised with him twice, no answer yet. Also
+bears on the contractor classification - 25 hrs/week supports it, "full-time" does not.
+
+**Correction to the note below:** an earlier version of the 2026-07-23 entry warned
+that sharing genwise.in would break the LinkedIn preview. That applied to the iframe
+approach we started with. The shipped Worker is a reverse proxy, so the page's own OG
+tags are served under genwise.in and the preview is correct. genwise.in/tomorrow-makers
+is the right link to share.
+
 ## 2026-07-23 ~18:40 IST
 **Session:** Add work-with-us hiring page (GenWise x Godrej Tomorrow Makers)
 
