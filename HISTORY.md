@@ -17,9 +17,31 @@ accounts. The first half is correct. The residual risk he is accepting is the
 applicant on a shared or school desktop with no session, and the school teacher who
 has never had a CV as a file on a phone. The email fallback above is the mitigation.
 
-**Still open:** the Operations form says ~25 hrs/week (12-15 in quiet weeks) while
-the page says "Full-time - contract". Raised with him twice, no answer yet. Also
-bears on the contractor classification - 25 hrs/week supports it, "full-time" does not.
+**Hours mismatch - RESOLVED.** Siddharth rewrote the Operations form. It now says
+"Full-time role", "Compensation depending on experience and capability", and the
+Time & pay section describes workload varying across the year instead of naming an
+hours figure. The ~25 hrs number was a leftover from when the role was Godrej-only;
+combining Godrej with M3 makes it full-time. Verified against the page via the Forms
+API - type, pay, start, duration, 60/40 split, 1-4 years, and languages all agree.
+
+**Still open:** the Coach form may still carry the Rs 8,000-10,000 stipend figure that
+was just removed from the page. Cannot verify - see below.
+
+**Reading a form you do not own.** The Coach form could not be inspected from here.
+Anonymous curl gets 401 (the sign-in wall), it is not in rajesh's Drive so the Forms
+API has no ID to query, and both browser routes were unavailable (claude-in-chrome
+extension not connected, Chrome not running with a remote debugging port). Note this
+does NOT mean the form is unshared: Drive "shared with me" only lists explicit file
+grants, and a link-accessible Google Form never appears there. Clicking Apply while
+signed in opens it fine for a human. The Operations form was readable only because it
+does sit in rajesh's Drive. To check a form like this, either get the file shared, or
+open it in a signed-in browser.
+
+**Short links were never communicated.** Siddharth asked for genwise.in/coach and
+/operations; what shipped was /gtm-coach and /gtm-operations. The prefix reasoning is
+sound but he was not told until 2026-07-24, a day after deployment and while he was
+drafting ads against the paths he had requested. Tell the requester when a URL they
+asked for changes.
 
 **Correction to the note below:** an earlier version of the 2026-07-23 entry warned
 that sharing genwise.in would break the LinkedIn preview. That applied to the iframe
