@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gifted Lab for Schools | GenWise</title>
+    <meta name="description" content="A structured way for schools to nurture their gifted Grade 5–8 students: weekly sessions with GenWise mentors, on campus or online, with teachers trained alongside as facilitators.">
+    <style>
+        /* Reset & Base — matches gifted-lab.html */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #f5f6f7;
+        }
+        h1, h2, h3, h4, h5 { color: #063852; font-weight: 700; line-height: 1.2; }
+        h1 { font-size: 2.25rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; font-weight: 600; }
+        h4 { font-size: 1.2rem; font-weight: 600; }
+        @media (min-width: 768px) { h1 { font-size: 2.75rem; } }
+        p { font-size: 1.075rem; line-height: 1.7; }
+        a { color: inherit; text-decoration: none; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .container-sm { max-width: 880px; margin: 0 auto; padding: 0 1rem; }
+
+        /* Navigation */
+        .nav { background: white; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; height: 40px; }
+        .nav-logo { font-weight: 700; font-size: 1rem; color: #063852; }
+        .nav-logo:hover { color: #ff8d39; }
+        .nav-links { display: none; align-items: center; gap: 0.25rem; }
+        @media (min-width: 768px) { .nav-links { display: flex; } }
+        .nav-link { padding: 0.375rem 0.75rem; border-radius: 4px; font-weight: 500; font-size: 0.875rem; color: #374151; transition: all 0.2s; }
+        .nav-link:hover { background: #f3f4f6; color: #063852; }
+        .nav-cta { padding: 0.375rem 1rem; background: #ff8d39; color: white; font-weight: 600; font-size: 0.875rem; border-radius: 4px; box-shadow: 0 2px 4px rgba(255,141,57,0.3); }
+        .nav-cta:hover { background: #e67d30; }
+
+        /* Buttons */
+        .btn { display: inline-block; padding: 0.875rem 1.75rem; font-weight: 600; border-radius: 8px; transition: all 0.2s; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-primary { background: #ff8d39; color: white; box-shadow: 0 4px 6px rgba(255,141,57,0.3); }
+        .btn-primary:hover { background: #e67d30; transform: scale(1.05); }
+        .btn-secondary { background: #063852; color: white; }
+        .btn-secondary:hover { background: #053042; transform: scale(1.05); }
+
+        /* Sections */
+        .section { padding: 3.5rem 0; }
+        .section-white { background: white; }
+        .section-gray { background: #f5f6f7; }
+        .text-center { text-align: center; }
+        .section h2 { margin-bottom: 1.25rem; }
+        .section-lead { font-size: 1.075rem; color: #374151; line-height: 1.75; margin-bottom: 2rem; }
+
+        /* Hero */
+        .hero { padding: 4rem 0 3rem; background: linear-gradient(to bottom, white, #f5f6f7); }
+        .hero h1 { margin-bottom: 1.25rem; }
+        .hero-subtitle { font-size: 1.2rem; color: #374151; max-width: 820px; margin: 0 auto 2rem; line-height: 1.75; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* Credibility strip */
+        .credit-strip { background: white; border-bottom: 1px solid #e5e7eb; padding: 1.75rem 0; }
+        .credit-strip p { max-width: 900px; margin: 0 auto; text-align: center; font-size: 0.975rem; color: #6b7280; line-height: 1.8; }
+        .credit-strip strong { color: #063852; }
+
+        /* Prose */
+        .content-prose { font-size: 1.075rem; color: #374151; line-height: 1.75; }
+        .content-prose p { margin-bottom: 1.25rem; }
+        .content-prose p:last-child { margin-bottom: 0; }
+
+        /* Journey cards */
+        .journey-grid { display: grid; gap: 1rem; margin-top: 2rem; }
+        @media (min-width: 768px) { .journey-grid { grid-template-columns: repeat(4, 1fr); } }
+        .journey-card { background: white; padding: 1.25rem; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-top: 4px solid #e5e7eb; }
+        .journey-card.highlight { border-top-color: #ff8d39; }
+        .journey-card h4 { font-size: 1.05rem; margin-bottom: 0.2rem; }
+        .journey-card .journey-stage { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #ff8d39; }
+        .journey-card p { font-size: 0.9rem; color: #374151; line-height: 1.55; margin-top: 0.4rem; }
+
+        /* Panels */
+        .panel { background: white; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1.75rem; margin-bottom: 1.25rem; }
+        .panel h3 { margin-bottom: 0.85rem; }
+        .panel p { color: #374151; margin-bottom: 0.75rem; }
+        .panel p:last-child { margin-bottom: 0; }
+        .panel-accent { border-left: 4px solid #ff8d39; }
+        .panel-blue { background: #eff6ff; border-left: 4px solid #063852; }
+
+        .marked-list { list-style: none; padding-left: 0; }
+        .marked-list li { padding-left: 1.6rem; position: relative; margin-bottom: 0.85rem; color: #374151; font-size: 1.05rem; line-height: 1.65; }
+        .marked-list li:last-child { margin-bottom: 0; }
+        .marked-list li::before { content: "\2022"; position: absolute; left: 0.35rem; color: #ff8d39; font-weight: bold; }
+        .marked-list strong { color: #063852; }
+
+        /* Benefits grid */
+        .benefits-grid { display: grid; gap: 1.25rem; }
+        @media (min-width: 768px) { .benefits-grid { grid-template-columns: repeat(2, 1fr); } }
+        .benefit-card { background: white; padding: 1.4rem; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .benefit-card h4 { margin-bottom: 0.4rem; }
+        .benefit-card p { font-size: 0.975rem; color: #374151; line-height: 1.65; }
+
+        /* Vignettes & testimonials */
+        .vignette-grid { display: grid; gap: 1.25rem; margin-bottom: 2rem; }
+        @media (min-width: 768px) { .vignette-grid { grid-template-columns: repeat(2, 1fr); } }
+        .vignette-card { background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #ff8d39; }
+        .vignette-card h4 { margin-bottom: 0.6rem; }
+        .vignette-card p { font-size: 0.975rem; color: #374151; line-height: 1.65; margin-bottom: 0.6rem; }
+        .vignette-card p:last-child { margin-bottom: 0; }
+        .vignette-card .vignette-quote { font-style: italic; color: #063852; }
+
+        .testimonials-grid { display: grid; gap: 1.25rem; }
+        @media (min-width: 768px) { .testimonials-grid { grid-template-columns: repeat(3, 1fr); } }
+        .testimonial-card { background: white; padding: 1.4rem; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .testimonial-card blockquote { font-style: italic; color: #374151; margin-bottom: 0.85rem; font-size: 0.975rem; line-height: 1.65; }
+        .testimonial-card cite { font-size: 0.85rem; color: #6b7280; }
+
+        /* Facts box */
+        .facts-box { background: white; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1.75rem; }
+        .facts-box ul { list-style: none; padding-left: 0; columns: 1; }
+        @media (min-width: 768px) { .facts-box ul { columns: 2; column-gap: 2.5rem; } }
+        .facts-box li { margin-bottom: 0.7rem; padding-left: 1.4rem; position: relative; color: #374151; font-size: 1rem; break-inside: avoid; }
+        .facts-box li::before { content: "\2022"; position: absolute; left: 0; color: #ff8d39; font-weight: bold; }
+
+        /* CTA */
+        .cta-section { padding: 3.5rem 0; background: linear-gradient(to bottom, #f5f6f7, white); }
+        .cta-content { max-width: 760px; margin: 0 auto; text-align: center; }
+        .cta-content h2 { margin-bottom: 1rem; }
+        .cta-content p { color: #374151; margin-bottom: 1.75rem; font-size: 1.15rem; line-height: 1.7; }
+        .cta-contact { margin-top: 1.25rem; color: #374151; font-size: 1rem; }
+        .cta-contact a { color: #ff8d39; font-weight: 600; }
+        .cta-contact a:hover { text-decoration: underline; }
+
+        /* Footer */
+        .footer { background: #063852; color: #cbd5e1; padding: 2rem 0; text-align: center; font-size: 0.9rem; }
+        .footer a { color: #ff8d39; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="https://genwise.in/" class="nav-logo">&larr; GenWise&nbsp;&nbsp;|&nbsp;&nbsp;Gifted Lab for Schools</a>
+            <div class="nav-links">
+                <a href="#how" class="nav-link">How it works</a>
+                <a href="#partnership" class="nav-link">The partnership</a>
+                <a href="#classroom" class="nav-link">In the classroom</a>
+                <a href="mailto:siddharth@genwise.in" class="nav-cta">Write to us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero text-center">
+        <div class="container">
+            <h1>A structured way to nurture<br>your gifted students.</h1>
+            <p class="hero-subtitle">
+                Gifted Lab gives a school's advanced Grade 5&ndash;8 students a year of weekly sessions with
+                GenWise mentors &ndash; practising researchers, engineers and mathematicians &ndash; going
+                deeper than the syllabus allows, with select teachers trained alongside as facilitators.
+            </p>
+            <div class="hero-buttons">
+                <a href="mailto:siddharth@genwise.in" class="btn btn-primary">Write to us</a>
+                <a href="#how" class="btn btn-secondary">How it works</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="credit-strip">
+        <div class="container">
+            <p>
+                GenWise has worked in gifted education since <strong>2016</strong>, beginning with
+                <strong>Duke University's Talent Identification Program</strong>, handed over to us in India,
+                and alongside <strong>Educational Initiatives</strong>, the makers of ASSET. Students from
+                over a hundred schools &ndash; Sri Kumarans, Shiv Nadar, Dhirubhai Ambani International,
+                GEMS Modern Academy, Fountainhead, Sanskriti The Gurukul &ndash; have learnt with us.
+            </p>
+        </div>
+    </div>
+
+    <!-- The case -->
+    <section class="section section-gray">
+        <div class="container-sm">
+            <h2>Why middle school</h2>
+            <div class="content-prose">
+                <p>
+                    In every grade, 2&ndash;3% of students are well ahead of their class. School systems that
+                    take this seriously serve them formally: Israel screens its top students into weekly
+                    pull-out programmes with trained mentors; nearly 7% of US students are in gifted
+                    programmes. In India, even the most committed teacher &ndash; forty students, a syllabus to
+                    finish &ndash; rarely has the time or the material to keep these students stretched all year.
+                </p>
+                <p>
+                    Ages 10&ndash;14 is the window in which talent has to be converted into competence:
+                    disciplinary ways of thinking, persistence with unfamiliar problems, clear explanation.
+                    Grades 5&ndash;8 still have the time and the flexibility. By Grade 9, boards and admissions
+                    crowd that work out.
+                </p>
+            </div>
+            <div class="journey-grid">
+                <div class="journey-card">
+                    <div class="journey-stage">Find</div>
+                    <h4>Potential</h4>
+                    <p>Primary years: early signs, curiosity, exposure.</p>
+                </div>
+                <div class="journey-card highlight">
+                    <div class="journey-stage">Build</div>
+                    <h4>Competence</h4>
+                    <p>Middle school: foundations, habits, disciplinary thinking. <strong>Where Gifted Lab works.</strong></p>
+                </div>
+                <div class="journey-card">
+                    <div class="journey-stage">Stretch</div>
+                    <h4>Early expertise</h4>
+                    <p>High school: authentic projects, research, stronger choices.</p>
+                </div>
+                <div class="journey-card">
+                    <div class="journey-stage">Specialise</div>
+                    <h4>Expertise</h4>
+                    <p>University and beyond: mentorship, real contribution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section section-white" id="how">
+        <div class="container-sm">
+            <h2>How it works</h2>
+            <p class="section-lead">
+                A school commits to giving its gifted students time for enrichment and learning at their level. Every Friday is a <strong>Gifted Day</strong>: identified children step out of regular academics to work with advanced material, alongside a peer group of bright students from schools across the country.
+            </p>
+
+            <div class="panel panel-accent">
+                <h3>The day</h3>
+                <ul class="marked-list">
+                    <li><strong>Two live 90-minute sessions</strong> with GenWise mentors, a break between, with our teaching assistants supporting.</li>
+                    <li><strong>Supervised practice</strong> on the problems and investigations the sessions open up.</li>
+                    <li><strong>As numbers grow, more</strong> &ndash; challenges, project work, community activities with students from other schools.</li>
+                </ul>
+            </div>
+
+            <div class="panel panel-blue">
+                <h3>On campus, or from home</h3>
+                <p>
+                    Give a room &ndash; which can be branded as the Gifted Lab, with videoconferencing &ndash; and a
+                    coordinator, and the day runs on campus, for however many children there are, even one or two.
+                    Otherwise the children take Gifted Day from home. Either way they learn with the same mentors
+                    and the same peer group.
+                </p>
+            </div>
+
+            <div class="panel panel-accent">
+                <h3>Identifying the children</h3>
+                <p>
+                    Through the ASSET Talent Search, through MAP or a comparable assessment, or through direct
+                    teacher and school recommendation. If a child the school recommends joins and doesn't take
+                    to the programme, <strong>we refund the fee</strong>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The partnership -->
+    <section class="section section-gray" id="partnership">
+        <div class="container-sm">
+            <h2>The partnership</h2>
+
+            <div class="panel panel-accent">
+                <h3>What the school commits</h3>
+                <ul class="marked-list">
+                    <li><strong>Friday as Gifted Day</strong> for the identified children.</li>
+                    <li><strong>A Gifted Lab Coordinator</strong> &ndash; one point of contact, present with the children on the day. Not expected to teach; the mentor does that.</li>
+                    <li><strong>Monthly publicity to parents</strong> of upcoming sessions. We supply ready-to-send material each month.</li>
+                </ul>
+            </div>
+
+            <h3 style="margin: 2rem 0 1.25rem;">What the school gets</h3>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h4>Teachers trained as facilitators</h4>
+                    <p>Select teachers train alongside our mentors to run rich learning tasks with gifted students &ndash; a capability that stays with the school.</p>
+                </div>
+                <div class="benefit-card">
+                    <h4>Priority access to enrichment</h4>
+                    <p>Masterclasses, Career Adda and Parent Hour, with a curated monthly calendar for your families.</p>
+                </div>
+                <div class="benefit-card">
+                    <h4>Teacher resources</h4>
+                    <p>Sample materials for each grade, drawn from what our mentors use in session.</p>
+                </div>
+                <div class="benefit-card">
+                    <h4>Recognition, on the wall and on the web</h4>
+                    <p>A Gifted World certificate/plaque recognising the school as one that identifies and nurtures its gifted children, and its own site at <strong>[school].giftedworld.org</strong> recording its students' participation in gifted enrichment over the years &ndash; both yours to use. See <a href="https://kumarans.giftedworld.org" style="color:#ff8d39; font-weight:600;">kumarans.giftedworld.org</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- In the classroom -->
+    <section class="section section-white" id="classroom">
+        <div class="container-sm">
+            <h2>In the classroom</h2>
+            <p class="section-lead">Two sessions from this year, with Grade 5&ndash;8 students.</p>
+
+            <div class="vignette-grid">
+                <div class="vignette-card">
+                    <h4>Where does the energy go when a diver hits the water?</h4>
+                    <p>
+                        Students defended the 18th-century caloric theory of heat &ndash; then hunted for the
+                        experiment that breaks it. Science as evidence-based argument, not memorisation.
+                    </p>
+                    <p class="vignette-quote">
+                        "We don't see energy forms as different things anymore. There are just two types
+                        &ndash; potential and kinetic &ndash; in the end."
+                    </p>
+                </div>
+                <div class="vignette-card">
+                    <h4>Can paper do geometry better than a ruler and compass?</h4>
+                    <p>
+                        Students folded, cut and repaired paper models; only once an object worked did the
+                        mathematics behind it get named. A single-cut challenge turned a hard cutting problem
+                        into a symmetry problem.
+                    </p>
+                    <p class="vignette-quote">"I wasn't expecting it to be so mathematics related&hellip; happily surprised."</p>
+                </div>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <blockquote>"The mentality goes from 'I have to follow great people' to 'I have to question great people, try, find alternatives, find a more efficient way.'"</blockquote>
+                    <cite>&ndash; Adithya, Grade 7, Sri Kumarans, Bengaluru</cite>
+                </div>
+                <div class="testimonial-card">
+                    <blockquote>"I've seen him getting disconnected with other classes after the class is over, but here it was very much engaging even after the class."</blockquote>
+                    <cite>&ndash; Parent of a Grade 7 student, GEMS Modern Academy, Dubai</cite>
+                </div>
+                <div class="testimonial-card">
+                    <blockquote>"The encouragement to ask questions and explore beyond the textbook has ignited a genuine passion for learning in my twins."</blockquote>
+                    <cite>&ndash; Krishnan and Shyama, parents of twins now at UWC ISAK, Japan and Seisen International School, Tokyo</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Programme facts -->
+    <section class="section section-gray">
+        <div class="container-sm">
+            <h2>The programme, briefly</h2>
+            <div class="facts-box">
+                <ul>
+                    <li>Science and Mathematics, enrichment that is complementary to the syllabus.</li>
+                    <li>30 sessions per subject across the academic year, in six 5-week modules</li>
+                    <li>Grade 5&ndash;6 and Grade 7&ndash;8 bands, in cohorts of 20&ndash;30</li>
+                    <li>Mentors: PhDs and experienced educators who teach for understanding, not exam prep</li>
+                    <li>New students start with a five-week trial module; six entry points a year</li>
+                    <li>Students not yet on a Gifted Day continue in our after-school online slots</li>
+                    <li>Parents pay GenWise directly; the school handles no fees. Need-based scholarships available</li>
+                    <li>An annual understanding with the school, reviewed each academic year</li>
+                    <li>Next entry: <strong>21 August 2026</strong></li>
+                </ul>
+            </div>
+            <p class="content-prose text-center" style="margin-top: 1.75rem;">
+                Full details &ndash; what students learn, mentor profiles, fees &ndash; are on the
+                <a href="https://genwise.in/gifted-lab/" style="color:#ff8d39; font-weight:600;">parent-facing Gifted Lab page</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-content container">
+            <h2>Let's systematise gifted nurturing at your school</h2>
+            <p>Thirty minutes is enough to show you how it would work.</p>
+            <a href="mailto:siddharth@genwise.in" class="btn btn-primary">Write to us</a>
+            <p class="cta-contact">
+                Siddharth Bharath &middot;
+                <a href="mailto:siddharth@genwise.in">siddharth@genwise.in</a>
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            GenWise Gifted Lab &middot; <a href="https://genwise.in/gifted-lab/">For parents</a> &middot; <a href="mailto:siddharth@genwise.in">siddharth@genwise.in</a>
+        </div>
+    </footer>
+
+</body>
+</html>

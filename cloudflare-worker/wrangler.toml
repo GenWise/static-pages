@@ -11,7 +11,9 @@ routes = [
   { pattern = "genwise.in/tomorrow-makers*", zone_name = "genwise.in" },
   { pattern = "genwise.in/gtm-coach", zone_name = "genwise.in" },
   { pattern = "genwise.in/gtm-operations", zone_name = "genwise.in" },
+  { pattern = "genwise.in/gifted-lab-in-schools*", zone_name = "genwise.in" },
   { pattern = "www.genwise.in/tomorrow-makers*", zone_name = "genwise.in" },
   { pattern = "www.genwise.in/gtm-coach", zone_name = "genwise.in" },
   { pattern = "www.genwise.in/gtm-operations", zone_name = "genwise.in" },
+  { pattern = "www.genwise.in/gifted-lab-in-schools*", zone_name = "genwise.in" },
 ]

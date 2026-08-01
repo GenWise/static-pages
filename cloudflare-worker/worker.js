@@ -1,26 +1,29 @@
-// genwise.in - Tomorrow Makers hiring page
+// genwise.in - standalone pages proxied from GitHub Pages
 //
-// Serves the GitHub Pages hiring page under the genwise.in domain, and gives the
-// two roles short URLs for use in posts and messages.
+// Serves self-contained GitHub Pages documents under the genwise.in domain (not an
+// iframe, so each page's own OG tags drive link previews and #anchors actually scroll).
 //
-//   genwise.in/tomorrow-makers  -> proxied from GitHub Pages (not an iframe, so the
-//                                  page's own OG tags drive the LinkedIn preview and
-//                                  #coach / #operations anchors actually scroll)
-//   genwise.in/gtm-coach        -> /tomorrow-makers#coach
-//   genwise.in/gtm-operations   -> /tomorrow-makers#operations
+//   genwise.in/tomorrow-makers        -> work-with-us.html (hiring page)
+//   genwise.in/gtm-coach              -> /tomorrow-makers#coach
+//   genwise.in/gtm-operations         -> /tomorrow-makers#operations
+//   genwise.in/gifted-lab-in-schools  -> gifted-lab-in-schools.html (B2B page)
 //
 // Everything else on the zone falls through to WordPress untouched, including the
 // existing /work-with-us page for the Summer Program.
 //
-// Page assets (logos) are absolute GitHub Pages URLs in the HTML, so only the one
-// document path needs proxying.
+// Page assets (logos) are absolute GitHub Pages URLs in the HTML, so only the
+// document paths need proxying.
 
-const UPSTREAM = "https://genwise.github.io/static-pages/work-with-us.html";
-const PAGE_PATH = "/tomorrow-makers";
+const GHP = "https://genwise.github.io/static-pages";
+
+const PAGES = {
+  "/tomorrow-makers": GHP + "/work-with-us.html",
+  "/gifted-lab-in-schools": GHP + "/gifted-lab-in-schools.html",
+};
 
 const REDIRECTS = {
-  "/gtm-coach": PAGE_PATH + "#coach",
-  "/gtm-operations": PAGE_PATH + "#operations",
+  "/gtm-coach": "/tomorrow-makers#coach",
+  "/gtm-operations": "/tomorrow-makers#operations",
 };
 
 export default {
@@ -34,7 +37,8 @@ export default {
       return Response.redirect(url.origin + target, 301);
     }
 
-    if (path !== PAGE_PATH) {
+    const upstreamUrl = PAGES[path];
+    if (!upstreamUrl) {
       // not ours - let WordPress handle it
       return fetch(request);
     }
@@ -46,7 +50,7 @@ export default {
       });
     }
 
-    const upstream = await fetch(UPSTREAM, {
+    const upstream = await fetch(upstreamUrl, {
       method: request.method,
       cf: { cacheTtl: 60, cacheEverything: true },
     });
