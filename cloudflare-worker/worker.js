@@ -38,6 +38,13 @@ const REDIRECTS = {
   "/tnp365-what-students-learn": "/gifted-lab-what-students-learn",
 };
 
+// Whole path-prefixes proxied to other Workers (Eklavya's account), so their
+// apps live under genwise.in. Forwarded verbatim - method, headers, body -
+// because these are apps (forms, checkout), not static documents.
+const PROXY_PREFIXES = {
+  "/insider-circle": "https://genwise-insider-circle.afoaofa.workers.dev",
+};
+
 export default {
   async fetch(request) {
     const url = new URL(request.url);
@@ -52,6 +59,12 @@ export default {
     const target = REDIRECTS[path];
     if (target) {
       return Response.redirect(url.origin + target, 301);
+    }
+
+    for (const [prefix, upstreamHost] of Object.entries(PROXY_PREFIXES)) {
+      if (path === prefix || path.startsWith(prefix + "/")) {
+        return fetch(new Request(upstreamHost + url.pathname + url.search, request));
+      }
     }
 
     if (request.method !== "GET" && request.method !== "HEAD") {
