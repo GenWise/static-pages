@@ -105,10 +105,13 @@ is the right link to share.
   github.io origin by up to a minute. Not a bug; just wait or purge.
 
 **Gotchas hit:**
-- `CLOUDFLARE_API_TOKEN` in `~/.env` was stale and failed outright. The working token is
-  exported from `~/.zshrc` line 148, and a shell export beats `.env`. The two files held
-  different values. Re-minted 2026-07-23 with Workers Scripts:Edit (account) and Workers
-  Routes:Edit (zone genwise.in); `.env` updated, `.zshrc` still holds the old one.
+- Deploying this Worker needs a Cloudflare API token scoped Workers Scripts:Edit
+  (account) and Workers Routes:Edit (zone genwise.in). Read it from the environment at
+  deploy time; never write a token into a tracked file.
+- If wrangler authenticates as a stale identity, look for a `CLOUDFLARE_API_TOKEN`
+  exported by your shell profile: a shell export silently beats `.env`, so two config
+  sources can hold different values and the stale one can be the one actually in effect.
+  Reconcile them rather than guessing which is live.
 - Account-owned tokens (cfat_ prefix) always fail `/user/tokens/verify` - that endpoint is
   user-token only. Test permissions against a real endpoint instead.
 - Worker route patterns are literal: `/tomorrow-makers` does not match `/tomorrow-makers/`.
