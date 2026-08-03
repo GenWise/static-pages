@@ -50,13 +50,23 @@ WordPress iframe (genwise.in/tnp365)
 
 ### One-Time WordPress Setup
 
+> ⚠️ **RETIRED — do not use.** genwise.in migrated off WordPress on 2026-08-01 and the
+> subscription is deliberately not being renewed; genwise.in is now served by the
+> Cloudflare Worker (see `cloudflare-worker/`). This snippet is kept for historical
+> reference only.
+>
+> The bearer token that used to be hardcoded here was **committed in plaintext to this
+> public repo** (2026-08-03) and must be treated as compromised. Never hardcode a
+> credential in a tracked file — read it from the environment, as below.
+
 If iframe is missing or broken, restore it:
 
 ```python
+import os
 import requests
 
 url = "https://public-api.wordpress.com/rest/v1.1/sites/genwise.in/posts/7841"
-token = "pIdxrOstfkSNI4ENRtxLOVSS^@1*(HB!mLA4PaFbWRPndVZv@VM65CC4)Dfl%ubZ"
+token = os.environ["WPCOM_TOKEN"]  # export in your shell; never commit the value
 
 headers = {
     "Authorization": f"Bearer {token}",
