@@ -28,12 +28,14 @@ WordPress iframe (genwise.in/tnp365)
 
 ### Making Content Changes
 
-1. **Edit the correct file**: `/Users/rajeshpanchanathan/code/websites/static-pages/tnp365.html`
-   - ⚠️ NOT `tnp365_complete.html` or `tnp365_body_only.html` (these are workspace files)
+All paths below are relative to the repo root; run the commands from there.
+
+1. **Edit the correct file**: `tnp365.html`
+   - ⚠️ NOT `tnp365_BROKEN.html`, `tnp365_BROKEN2.html` or
+     `tnp365_backup_before_accordion_fix.html` (dead workspace copies)
 
 2. **Copy to index.html**:
    ```bash
-   cd /Users/rajeshpanchanathan/code/websites/static-pages
    cp tnp365.html index.html
    ```
 
