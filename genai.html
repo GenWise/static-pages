@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAI for Educators | GenWise</title>
+    <meta name="description" content="A 5-session live online course for teachers. Master AI tools like ChatGPT, Claude and Gemini, guide students in responsible AI use, and transform your teaching practice.">
+    <link rel="canonical" href="https://genwise.in/genai">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GenAI for Educators | GenWise">
+    <meta property="og:description" content="A 5-session live online course for teachers. Master AI tools, guide students safely, transform your teaching.">
+    <meta property="og:url" content="https://genwise.in/genai">
+    <meta name="twitter:card" content="summary">
+    <style>
+        /* Reset & Base */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #f5f6f7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 44px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-brand img {
+            height: 26px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .nav-link {
+            padding: 0.375rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.875rem;
+            color: #374151;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #ff8d39;
+            background: #f9fafb;
+        }
+
+        @media (max-width: 480px) {
+            .nav-link {
+                padding: 0.375rem 0.5rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* GENAI IMPROVED HERO SECTION */
+        .genai-hero-improved {
+            background: linear-gradient(135deg, #063852 0%, #1a9df1 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .genai-hero-improved::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(255, 212, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 141, 57, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .genai-hero-content-improved {
+            position: relative;
+            z-index: 1;
+        }
+
+        .genai-urgency-banner-improved {
+            background: linear-gradient(90deg, #ff8d39, #ffd300);
+            color: #063852;
+            border-radius: 50px;
+            padding: 12px 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 141, 57, 0.3);
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .genai-hero-improved h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .genai-hero-subtitle-improved {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffd300;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .genai-hero-improved p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .genai-cta-buttons-improved {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .genai-cta-button-improved {
+            background: #ff8d39;
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 141, 57, 0.2);
+        }
+
+        .genai-cta-button-improved:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 141, 57, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+
+        .genai-cta-secondary-improved {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #ffd300;
+            color: #ffd300;
+            backdrop-filter: blur(10px);
+        }
+
+        .genai-cta-secondary-improved:hover {
+            background: #ffd300;
+            color: #063852;
+            border-color: #ffd300;
+        }
+
+        .genai-stats-banner-improved {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .genai-stat-item-improved {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .genai-stat-item-improved:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .genai-stat-number-improved {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffd300;
+            display: block;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .genai-stat-text-improved {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        @media (max-width: 768px) {
+            .genai-hero-improved {
+                padding: 80px 15px;
+            }
+
+            .genai-hero-improved h1 {
+                font-size: 2.5rem;
+            }
+
+            .genai-hero-improved p {
+                font-size: 1.1rem;
+            }
+
+            .genai-cta-buttons-improved {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .genai-stats-banner-improved {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .genai-urgency-banner-improved {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .genai-hero-improved {
+                padding: 60px 10px;
+            }
+
+            .genai-stat-item-improved {
+                padding: 20px 15px;
+            }
+        }
+
+        /* GENAI WHY NOW SECTION - The Urgency */
+        .genai-urgency {
+            padding: 80px 20px;
+            background: #f5f6f7;
+            text-align: center;
+        }
+
+        .genai-urgency h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #063852;
+        }
+
+        .genai-urgency > p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .genai-challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        .genai-challenge-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: left;
+            border-left: 5px solid #ff8d39;
+            transition: transform 0.3s ease;
+        }
+
+        .genai-challenge-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .genai-challenge-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .genai-challenge-card h3 {
+            color: #063852;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .genai-challenge-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .genai-quote {
+            background: #ffd300;
+            padding: 15px;
+            border-radius: 10px;
+            font-style: italic;
+            color: #063852;
+            font-size: 0.95rem;
+        }
+
+        .genai-quote-content {
+            font-weight: 500;
+            color: #063852;
+            margin-bottom: 8px;
+        }
+
+        .genai-quote-attribution {
+            font-size: 0.85em;
+            font-weight: normal;
+            color: #555;
+            font-style: normal;
+        }
+
+        .genai-solution-highlight {
+            background: linear-gradient(135deg, #063852 0%, #3399ff 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .genai-solution-highlight h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffd300;
+        }
+
+        .genai-solution-highlight p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .genai-benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: left;
+        }
+
+        .genai-benefit-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .genai-benefit-item h4 {
+            color: #ffd300;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .genai-benefit-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .genai-urgency h2 {
+                font-size: 2rem;
+            }
+            .genai-challenge-grid {
+                grid-template-columns: 1fr;
+            }
+            .genai-solution-highlight {
+                padding: 40px 20px;
+            }
+            .genai-benefits-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* GENAI EXPANDABLE CURRICULUM SECTION */
+        .genai-curriculum-expandable {
+            padding: 80px 20px;
+            background: white;
+            text-align: center;
+        }
+
+        .genai-curriculum-expandable h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #063852;
+        }
+
+        .genai-curriculum-expandable > p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .genai-sessions-container-expandable {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .genai-session-card-expandable {
+            background: #f5f6f7;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .genai-session-card-expandable:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .genai-session-card-expandable summary {
+            list-style: none;   /* hide default marker */
+            cursor: pointer;
+        }
+
+        .genai-session-card-expandable summary::-webkit-details-marker {
+            display: none;      /* hide marker in Safari */
+        }
+
+        .genai-session-card-expandable[open] .genai-expand-icon {
+            transform: rotate(180deg);   /* ▼ → ▲ when open */
+        }
+
+        /* SHOW content when <details> is open */
+        .genai-session-card-expandable[open] .genai-session-content-expandable {
+            padding: 30px;
+            max-height: none;   /* let it grow naturally */
+        }
+
+        .genai-session-header-expandable {
+            background: linear-gradient(135deg, #3399ff 0%, #1a9df1 100%);
+            color: white;
+            padding: 25px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .genai-session-header-expandable:hover {
+            background: linear-gradient(135deg, #2980e6 0%, #1890d8 100%);
+        }
+
+        .genai-session-number-expandable {
+            background: rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .genai-session-title-expandable {
+            flex: 1;
+        }
+
+        .genai-session-title-expandable h3 {
+            margin: 0 0 5px;
+            font-size: 1.5rem;
+        }
+
+        .genai-session-duration-expandable {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .genai-expand-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .genai-expand-icon.expanded {
+            transform: rotate(180deg);
+        }
+
+        .genai-session-description-expandable {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .genai-topics-list-expandable {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .genai-topic-item-expandable {
+            background: #f5f6f7;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #ff8d39;
+            font-size: 0.95rem;
+            color: #555;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .genai-topic-item-expandable:hover {
+            background: #e8f4fd;
+            border-left-color: #3399ff;
+        }
+
+        .genai-hands-on-badge-expandable {
+            background: #ffd300;
+            color: #063852;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .genai-instructor-highlight-expandable {
+            background: linear-gradient(135deg, #f5f6f7 0%, #ffffff 100%);
+            padding: 50px;
+            border-radius: 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .genai-instructor-highlight-expandable h3 {
+            color: #063852;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .genai-instructor-card-expandable {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .genai-instructor-info-expandable {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .genai-instructor-photo-expandable {
+            width: 80px;
+            height: 80px;
+            background: #c1c1c1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .genai-instructor-details-expandable h4 {
+            color: #063852;
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+
+        .genai-instructor-credentials-expandable {
+            color: #3399ff;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .genai-instructor-bio-expandable {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .genai-curriculum-expandable {
+                padding: 60px 15px;
+            }
+
+            .genai-curriculum-expandable h2 {
+                font-size: 2rem;
+            }
+
+            .genai-session-header-expandable {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            .genai-session-card-expandable[open] .genai-session-content-expandable {
+                padding: 25px 20px;
+            }
+
+            .genai-topics-list-expandable {
+                grid-template-columns: 1fr;
+            }
+
+            .genai-instructor-highlight-expandable {
+                padding: 40px 20px;
+            }
+
+            .genai-instructor-info-expandable {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .genai-session-header-expandable {
+                padding: 15px;
+            }
+
+            .genai-session-card-expandable[open] .genai-session-content-expandable {
+                padding: 20px 15px;
+            }
+        }
+
+        /* GENAI SIMPLIFIED SCHEDULE SECTION */
+        .genai-schedule-simplified {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #f5f6f7 0%, #ffffff 100%);
+            text-align: center;
+        }
+
+        .genai-schedule-simplified h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #063852;
+        }
+
+        .genai-schedule-simplified > p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .genai-urgency-reminder-simplified {
+            background: linear-gradient(90deg, #ffd300, #ff8d39);
+            color: #063852;
+            padding: 20px 30px;
+            border-radius: 15px;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 5px 15px rgba(255, 212, 0, 0.3);
+        }
+
+        .genai-urgency-reminder-simplified h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .genai-urgency-reminder-simplified p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .genai-schedule-card-simplified {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid #1a9df1;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .genai-schedule-header-simplified {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .genai-schedule-header-simplified h3 {
+            color: #063852;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .genai-ai-icon-simplified {
+            width: 50px;
+            height: 50px;
+            background: #1a9df1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .genai-schedule-subtitle-simplified {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .genai-schedule-visual-simplified {
+            background: linear-gradient(135deg, #f5f6f7 0%, #e8f4fd 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .genai-main-schedule-simplified {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .genai-schedule-badge-simplified {
+            background: #1a9df1;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .genai-quick-details-simplified {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .genai-detail-item-simplified {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 3px solid #ff8d39;
+        }
+
+        .genai-detail-item-simplified h5 {
+            color: #063852;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .genai-detail-item-simplified p {
+            color: #666;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .genai-pricing-section-simplified {
+            background: linear-gradient(90deg, #ffd300, #ff8d39);
+            color: #063852;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .genai-pricing-section-simplified h4 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .genai-price-breakdown-simplified {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .genai-price-item-simplified {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .genai-price-amount-simplified {
+            font-size: 1.3rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .genai-price-label-simplified {
+            font-size: 0.9rem;
+        }
+
+        .genai-recommendation-simplified {
+            background: rgba(6, 56, 82, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            font-style: italic;
+            margin-top: 15px;
+        }
+
+        .genai-includes-section-simplified {
+            background: rgba(26, 157, 241, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .genai-includes-section-simplified h5 {
+            color: #063852;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .genai-includes-grid-simplified {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .genai-include-item-simplified {
+            background: white;
+            padding: 12px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .genai-include-icon-simplified {
+            color: #1a9df1;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .genai-enroll-button-simplified {
+            background: #ff8d39;
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .genai-enroll-button-simplified:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 141, 57, 0.3);
+            text-decoration: none;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .genai-schedule-simplified {
+                padding: 60px 15px;
+            }
+
+            .genai-schedule-simplified h2 {
+                font-size: 2rem;
+            }
+
+            .genai-schedule-card-simplified {
+                padding: 30px 20px;
+            }
+
+            .genai-main-schedule-simplified {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .genai-quick-details-simplified {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+
+            .genai-price-breakdown-simplified {
+                grid-template-columns: 1fr;
+            }
+
+            .genai-includes-grid-simplified {
+                grid-template-columns: 1fr;
+            }
+
+            .genai-urgency-reminder-simplified {
+                padding: 15px 20px;
+                margin-bottom: 40px;
+            }
+
+            .genai-schedule-header-simplified h3 {
+                flex-direction: column;
+                gap: 10px;
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .genai-schedule-simplified {
+                padding: 50px 10px;
+            }
+
+            .genai-schedule-card-simplified {
+                padding: 25px 15px;
+            }
+
+            .genai-enroll-button-simplified {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* GENAI FIXED TESTIMONIALS SECTION */
+        .genai-testimonials-fixed {
+            padding: 80px 20px;
+            background: #063852;
+            color: white;
+            text-align: center;
+        }
+
+        .genai-testimonials-fixed h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .genai-testimonials-fixed > p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .genai-impact-stats-fixed {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+        }
+
+        .genai-impact-stat-fixed {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .genai-impact-stat-fixed:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .genai-stat-number-fixed {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffd300;
+            display: block;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .genai-stat-description-fixed {
+            font-size: 1rem;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .genai-testimonials-grid-fixed {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .genai-testimonial-card-fixed {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .genai-testimonial-card-fixed:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 212, 0, 0.5);
+        }
+
+        .genai-testimonial-header-fixed {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .genai-testimonial-photo-placeholder-fixed {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .genai-testimonial-info-fixed {
+            flex: 1;
+        }
+
+        .genai-testimonial-author-fixed {
+            font-weight: bold;
+            color: #ffd300;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .genai-testimonial-school-fixed {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .genai-testimonial-text-fixed {
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 15px;
+        }
+
+        .genai-testimonial-highlight-fixed {
+            background: #ffd300;
+            color: #063852;
+            border-left: 4px solid #ff8d39;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .genai-usage-increase-fixed {
+            background: linear-gradient(135deg, #ffd300 0%, #ff8d39 100%);
+            color: #063852;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 60px auto 0;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .genai-usage-increase-fixed h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #063852;
+        }
+
+        .genai-usage-list-fixed {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            text-align: left;
+        }
+
+        .genai-usage-item-fixed {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            color: #063852;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .genai-usage-icon-fixed {
+            color: #063852;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .genai-testimonials-fixed {
+                padding: 60px 15px;
+            }
+
+            .genai-testimonials-fixed h2 {
+                font-size: 2rem;
+            }
+
+            .genai-testimonials-grid-fixed {
+                grid-template-columns: 1fr;
+            }
+
+            .genai-impact-stats-fixed {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 20px;
+            }
+
+            .genai-testimonial-header-fixed {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .genai-usage-increase-fixed {
+                padding: 30px 20px;
+            }
+
+            .genai-usage-list-fixed {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .genai-testimonials-fixed {
+                padding: 50px 10px;
+            }
+
+            .genai-testimonial-card-fixed {
+                padding: 25px 20px;
+            }
+
+            .genai-usage-increase-fixed {
+                padding: 25px 15px;
+            }
+        }
+
+        /* GENAI CONTACT & CTA SECTION */
+        .genai-contact {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1a9df1 0%, #3399ff 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .genai-contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .genai-contact > p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.6;
+        }
+
+        .genai-urgency-final {
+            background: rgba(255, 212, 0, 0.2);
+            border: 2px solid #ffd300;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .genai-urgency-final h3 {
+            color: #ffd300;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .genai-urgency-final p {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .genai-contact-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto 50px;
+        }
+
+        .genai-contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .genai-contact-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 212, 0, 0.5);
+        }
+
+        .genai-contact-icon {
+            width: 60px;
+            height: 60px;
+            background: #ffd300;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #063852;
+        }
+
+        .genai-contact-card h3 {
+            color: #ffd300;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .genai-contact-card p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .genai-contact-details {
+            margin-top: 20px;
+        }
+
+        .genai-contact-details a {
+            color: #ffd300;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .genai-contact-details a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .genai-form-button {
+            background: #ff8d39;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .genai-form-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 141, 57, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+
+        .genai-final-cta {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 212, 0, 0.3);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .genai-final-cta h3 {
+            color: #ffd300;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .genai-final-cta p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .genai-social-proof {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .genai-social-proof p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+        }
+
+        .genai-school-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .genai-school-badge {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            width: 120px;
+        }
+
+        .genai-school-badge:hover {
+            transform: translateY(-3px);
+        }
+
+        .genai-school-badge img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .genai-contact {
+                padding: 60px 15px;
+            }
+
+            .genai-contact h2 {
+                font-size: 2rem;
+            }
+
+            .genai-contact-options {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .genai-urgency-final {
+                padding: 20px;
+                margin-bottom: 40px;
+            }
+
+            .genai-final-cta {
+                padding: 30px 20px;
+            }
+
+            .genai-school-badges {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .genai-contact {
+                padding: 50px 10px;
+            }
+
+            .genai-contact-card {
+                padding: 25px 20px;
+            }
+
+            .genai-final-cta {
+                padding: 25px 15px;
+            }
+        }
+
+        /* Footer */
+        .foot {
+            background: #063852;
+            color: rgba(255, 255, 255, 0.85);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .foot a {
+            color: #ffd300;
+        }
+
+        .foot a:hover {
+            text-decoration: underline;
+        }
+
+        .foot-bot {
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand" aria-label="GenWise home">
+                <img src="/images/brand/genwise-logo.png" alt="GenWise">
+            </a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/for-teachers" class="nav-link">For Teachers</a>
+                <a href="/gifted-lab" class="nav-link">Gifted Lab</a>
+                <a href="/tomorrow-makers" class="nav-link">Tomorrow Makers</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="genai-hero-improved">
+        <div class="genai-hero-content-improved">
+            <div class="genai-urgency-banner-improved">
+                🚨 Your students are already using AI — are you ready to guide them?
+            </div>
+            <h1>GenAI for Educators</h1>
+            <div class="genai-hero-subtitle-improved">Master AI Tools • Guide Students Safely • Transform Teaching</div>
+            <p>Don't get left behind in the AI revolution. Learn to harness generative AI tools for enhanced teaching while developing the skills to guide your students in responsible AI usage.</p>
+            <div class="genai-cta-buttons-improved">
+                <!-- <a href="#register" class="genai-cta-button-improved">Join Next Cohort</a> -->
+                <a href="#curriculum" class="genai-cta-button-improved genai-cta-secondary-improved">View Curriculum</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Now / Urgency -->
+    <section class="genai-urgency">
+        <h2>Why AI Literacy is Urgent for Educators</h2>
+        <p>The AI revolution isn't coming—it's here. Your students are already using these tools daily, and the education landscape is transforming rapidly.</p>
+        <div class="genai-challenge-grid">
+            <div class="genai-challenge-card">
+                <span class="genai-challenge-icon">📱</span>
+                <h3>Students Are Already Using AI</h3>
+                <p>Research shows that students across all age groups are actively using ChatGPT, Gemini, and other AI tools for homework, research, and creative projects.</p>
+                <div class="genai-quote">
+                    <div class="genai-quote-content">"Students are anyway using AI a lot…and they may end up with wrong answers."</div>
+                    <div class="genai-quote-attribution">– Ankita Kabra, Fountainhead School</div>
+                </div>
+            </div>
+            <div class="genai-challenge-card">
+                <span class="genai-challenge-icon">⚠️</span>
+                <h3>Teachers Feel Unprepared</h3>
+                <p>Most educators lack the knowledge to guide students safely through AI usage, creating a dangerous knowledge gap in classrooms worldwide.</p>
+                <div class="genai-quote">
+                    <div class="genai-quote-content">"It's a wild beast, and before we unleash it we'll have to use it and see how safely we can introduce it to students."</div>
+                    <div class="genai-quote-attribution">– Rinku Paul, Millennium School</div>
+                </div>
+            </div>
+            <div class="genai-challenge-card">
+                <span class="genai-challenge-icon">🚀</span>
+                <h3>Competitive Advantage</h3>
+                <p>Educators who master AI tools now will have a significant advantage in productivity, creativity, and professional relevance in the coming years.</p>
+                <div class="genai-quote">
+                    <div class="genai-quote-content">"This course is life-changing. A lot of your time will be saved. Also, you will have a personal assistant."</div>
+                    <div class="genai-quote-attribution">– Vijayashree VK, GEAR International</div>
+                </div>
+            </div>
+        </div>
+        <div class="genai-solution-highlight">
+            <h3>The Solution: Structured AI Learning for Educators</h3>
+            <p>Our comprehensive course provides hands-on experience with AI tools while teaching you to guide students responsibly. You'll gain practical skills that transform your teaching immediately.</p>
+            <div class="genai-benefits-list">
+                <div class="genai-benefit-item">
+                    <h4>🎯 Practical Application</h4>
+                    <p>Real tools, real classroom scenarios, immediate results</p>
+                </div>
+                <div class="genai-benefit-item">
+                    <h4>🛡️ Safety First</h4>
+                    <p>Understanding limitations, bias, and responsible usage</p>
+                </div>
+                <div class="genai-benefit-item">
+                    <h4>👨‍🏫 Student Guidance</h4>
+                    <p>Strategies to help students use AI effectively and ethically</p>
+                </div>
+                <div class="genai-benefit-item">
+                    <h4>⚡ Productivity Boost</h4>
+                    <p>Faster work completion; Quality improvement</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expandable Curriculum -->
+    <section class="genai-curriculum-expandable" id="curriculum">
+        <h2>Comprehensive 5-Session Curriculum</h2>
+        <p>Hands-on learning with immediate classroom application. Click each session to explore detailed curriculum content.</p>
+        <div class="genai-sessions-container-expandable">
+            <!-- Session 1 -->
+            <details class="genai-session-card-expandable">
+                <summary class="genai-session-header-expandable">
+                    <span class="genai-session-number-expandable">1</span>
+                    <span class="genai-session-title-expandable">
+                        <h3>Basics of GenAI</h3>
+                        <span class="genai-session-duration-expandable">2 hours • Hands-on Workshop</span>
+                    </span>
+                    <span class="genai-expand-icon">▼</span>
+                </summary>
+                <div class="genai-session-content-expandable">
+                    <div class="genai-session-description-expandable">
+                        Master the fundamentals of generative AI tools and discover their advanced capabilities beyond basic text generation.
+                    </div>
+                    <div class="genai-topics-list-expandable">
+                        <div class="genai-topic-item-expandable">Advanced capabilities: documents, PDFs, images, audio</div>
+                        <div class="genai-topic-item-expandable">Regional language support and translation</div>
+                        <div class="genai-topic-item-expandable">Advanced prompting techniques</div>
+                        <div class="genai-topic-item-expandable">Comparative analysis: Claude, ChatGPT, Gemini, Perplexity</div>
+                        <div class="genai-topic-item-expandable">Understanding paid vs free accounts</div>
+                    </div>
+                    <div class="genai-hands-on-badge-expandable">30 minutes hands-on practice</div>
+                </div>
+            </details>
+            <!-- Session 2 -->
+            <details class="genai-session-card-expandable">
+                <summary class="genai-session-header-expandable">
+                    <span class="genai-session-number-expandable">2</span>
+                    <span class="genai-session-title-expandable">
+                        <h3>AI for Enhanced Teaching</h3>
+                        <span class="genai-session-duration-expandable">2 hours • Practical Applications</span>
+                    </span>
+                    <span class="genai-expand-icon">▼</span>
+                </summary>
+                <div class="genai-session-content-expandable">
+                    <div class="genai-session-description-expandable">
+                        Transform your teaching practice with AI-powered lesson planning, content creation, and student engagement strategies.
+                    </div>
+                    <div class="genai-topics-list-expandable">
+                        <div class="genai-topic-item-expandable">AI-assisted lesson planning and worksheet creation</div>
+                        <div class="genai-topic-item-expandable">Interactive simulations with Claude Artifacts</div>
+                        <div class="genai-topic-item-expandable">Personalized practice sets and adaptive tutoring</div>
+                        <div class="genai-topic-item-expandable">Socratic dialogue facilitation</div>
+                        <div class="genai-topic-item-expandable">Creating engaging content: memes, videos, games</div>
+                    </div>
+                    <div class="genai-hands-on-badge-expandable">30 minutes practical workshop</div>
+                </div>
+            </details>
+            <!-- Session 3 -->
+            <details class="genai-session-card-expandable">
+                <summary class="genai-session-header-expandable">
+                    <span class="genai-session-number-expandable">3</span>
+                    <span class="genai-session-title-expandable">
+                        <h3>The Danger Zone: Safety &amp; Limitations</h3>
+                        <span class="genai-session-duration-expandable">2 hours • Critical Awareness</span>
+                    </span>
+                    <span class="genai-expand-icon">▼</span>
+                </summary>
+                <div class="genai-session-content-expandable">
+                    <div class="genai-session-description-expandable">
+                        Understand AI's limitations and develop strategies for safe, responsible implementation in educational settings.
+                    </div>
+                    <div class="genai-topics-list-expandable">
+                        <div class="genai-topic-item-expandable">Recognizing and addressing AI bias</div>
+                        <div class="genai-topic-item-expandable">Managing hallucinations and fact-checking</div>
+                        <div class="genai-topic-item-expandable">Understanding the "Jagged Frontier" of AI capabilities</div>
+                        <div class="genai-topic-item-expandable">Why AI detectors are problematic</div>
+                        <div class="genai-topic-item-expandable">Developing balanced student AI policies</div>
+                    </div>
+                    <div class="genai-hands-on-badge-expandable">30 minutes safety workshop</div>
+                </div>
+            </details>
+            <!-- Session 4 -->
+            <details class="genai-session-card-expandable">
+                <summary class="genai-session-header-expandable">
+                    <span class="genai-session-number-expandable">4</span>
+                    <span class="genai-session-title-expandable">
+                        <h3>FAQs &amp; Future Implications</h3>
+                        <span class="genai-session-duration-expandable">2 hours • Discussion &amp; Q&amp;A</span>
+                    </span>
+                    <span class="genai-expand-icon">▼</span>
+                </summary>
+                <div class="genai-session-content-expandable">
+                    <div class="genai-session-description-expandable">
+                        Address common concerns and explore the broader implications of AI in education and society.
+                    </div>
+                    <div class="genai-topics-list-expandable">
+                        <div class="genai-topic-item-expandable">AI's impact on future employment and skills</div>
+                        <div class="genai-topic-item-expandable">Security and privacy considerations</div>
+                        <div class="genai-topic-item-expandable">Managing deepfakes and misinformation</div>
+                        <div class="genai-topic-item-expandable">Copyright and intellectual property implications</div>
+                        <div class="genai-topic-item-expandable">Open discussion of participant concerns</div>
+                    </div>
+                    <div class="genai-hands-on-badge-expandable">30 minutes guided discussion</div>
+                </div>
+            </details>
+            <!-- Session 5 -->
+            <details class="genai-session-card-expandable">
+                <summary class="genai-session-header-expandable">
+                    <span class="genai-session-number-expandable">5</span>
+                    <span class="genai-session-title-expandable">
+                        <h3>Hands-on Implementation</h3>
+                        <span class="genai-session-duration-expandable">2 hours • Project Workshop</span>
+                    </span>
+                    <span class="genai-expand-icon">▼</span>
+                </summary>
+                <div class="genai-session-content-expandable">
+                    <div class="genai-session-description-expandable">
+                        Work on real classroom scenarios with instructor support to build confidence and practical skills.
+                    </div>
+                    <div class="genai-topics-list-expandable">
+                        <div class="genai-topic-item-expandable">Individual/group work on real teaching scenarios</div>
+                        <div class="genai-topic-item-expandable">Instructor guidance and feedback</div>
+                        <div class="genai-topic-item-expandable">Doubt clearing and troubleshooting</div>
+                        <div class="genai-topic-item-expandable">Best practice sharing among participants</div>
+                        <div class="genai-topic-item-expandable">Building sustainable AI workflows</div>
+                    </div>
+                    <div class="genai-hands-on-badge-expandable">1.5 hours intensive hands-on practice</div>
+                </div>
+            </details>
+        </div>
+        <div class="genai-instructor-highlight-expandable">
+            <h3>Meet Course Designer &amp; Expert Mentor</h3>
+            <div class="genai-instructor-card-expandable">
+                <div class="genai-instructor-info-expandable">
+                    <img src="/images/teacher-mentoring/navin2.png" alt="Dr. Navin Kabra" class="genai-instructor-photo-expandable">
+                    <div class="genai-instructor-details-expandable">
+                        <h4>Navin Kabra</h4>
+                        <div class="genai-instructor-credentials-expandable">PhD (CS, Univ of Wisconsin Madison), B.Tech (CS, IIT Bombay), CTO ReliScore, Professor of Practice, IIT-Bombay</div>
+                    </div>
+                </div>
+                <div class="genai-instructor-bio-expandable">
+                    Navin holds a PhD in Computer Science from the University of Wisconsin-Madison and a B.Tech from IIT-Bombay. As CTO at ReliScore and Professor of Practice at IIT-Bombay, he brings both academic rigor and real-world experience to AI education. He has consulted on GenAI for software firms, taught intensive courses for students, and delivered workshops to educators, doctors, and industry professionals worldwide.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule -->
+    <section class="genai-schedule-simplified" id="register">
+        <h2>Next Cohort: December 2025</h2>
+        <p>Join educators from around the world in mastering AI tools. Limited seats available for personalized attention and hands-on learning.</p>
+        <div class="genai-urgency-reminder-simplified">
+            <h3>⏰ Early Bird Advantage</h3>
+            <p>Secure your spot now – AI literacy becomes more critical every day</p>
+        </div>
+        <div class="genai-schedule-card-simplified">
+            <div class="genai-schedule-header-simplified">
+                <h3>
+                    <div class="genai-ai-icon-simplified">🤖</div>
+                    GenAI for Educators
+                </h3>
+                <div class="genai-schedule-subtitle-simplified">5 Intensive Sessions • December 2025-January 2026</div>
+            </div>
+            <div class="genai-schedule-visual-simplified">
+                <div class="genai-main-schedule-simplified">
+                    <div class="genai-schedule-badge-simplified">📅 Every Friday</div>
+                    <div class="genai-schedule-badge-simplified">🕐 4:30-6:30 PM IST</div>
+                    <div class="genai-schedule-badge-simplified">🚀 Starting Dec 12, 2025</div>
+                </div>
+                <div class="genai-quick-details-simplified">
+                    <div class="genai-detail-item-simplified">
+                        <h5>Duration</h5>
+                        <p>4 weeks</p>
+                    </div>
+                    <div class="genai-detail-item-simplified">
+                        <h5>Sessions</h5>
+                        <p>5 total</p>
+                    </div>
+                    <div class="genai-detail-item-simplified">
+                        <h5>Format</h5>
+                        <p>Online</p>
+                    </div>
+                    <div class="genai-detail-item-simplified">
+                        <h5>Class Size</h5>
+                        <p>Limited</p>
+                    </div>
+                </div>
+            </div>
+            <div class="genai-pricing-section-simplified">
+                <h4>Investment in Your Future</h4>
+                <div class="genai-price-breakdown-simplified">
+                    <div class="genai-price-item-simplified">
+                        <span class="genai-price-amount-simplified">₹11,800</span>
+                        <span class="genai-price-label-simplified">India (incl. GST)</span>
+                    </div>
+                    <div class="genai-price-item-simplified">
+                        <span class="genai-price-amount-simplified">AED 570</span>
+                        <span class="genai-price-label-simplified">UAE Educators</span>
+                    </div>
+                </div>
+                <div class="genai-recommendation-simplified">
+                    <strong>Recommended:</strong> Paid AI subscription (ChatGPT/Claude/Gemini) for optimal learning experience (~$20/month)
+                </div>
+            </div>
+            <div class="genai-includes-section-simplified">
+                <h5>Complete Learning Package Includes:</h5>
+                <div class="genai-includes-grid-simplified">
+                    <div class="genai-include-item-simplified">
+                        <span class="genai-include-icon-simplified">✓</span>
+                        5 live interactive sessions
+                    </div>
+                    <div class="genai-include-item-simplified">
+                        <span class="genai-include-icon-simplified">✓</span>
+                        Hands-on practice
+                    </div>
+                    <div class="genai-include-item-simplified">
+                        <span class="genai-include-icon-simplified">✓</span>
+                        Session recordings
+                    </div>
+                    <div class="genai-include-item-simplified">
+                        <span class="genai-include-icon-simplified">✓</span>
+                        AI tool templates
+                    </div>
+                    <div class="genai-include-item-simplified">
+                        <span class="genai-include-icon-simplified">✓</span>
+                        Student guidance frameworks
+                    </div>
+                    <div class="genai-include-item-simplified">
+                        <span class="genai-include-icon-simplified">✓</span>
+                        Certificate of completion
+                    </div>
+                </div>
+            </div>
+            <a href="#contact" class="genai-enroll-button-simplified">Secure Your Spot Now</a>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="genai-testimonials-fixed">
+        <h2>Transformative Outcomes for Educators</h2>
+        <p>See how teachers and school leaders are already leveraging AI to enhance their teaching practice and guide students effectively.</p>
+        <div class="genai-testimonials-grid-fixed">
+            <div class="genai-testimonial-card-fixed">
+                <div class="genai-testimonial-header-fixed">
+                    <div class="genai-testimonial-photo-placeholder-fixed">PHOTO</div>
+                    <div class="genai-testimonial-info-fixed">
+                        <div class="genai-testimonial-author-fixed">Ankita Diwekar Kabra</div>
+                        <div class="genai-testimonial-school-fixed">Co-founder, Fountainhead School, Surat</div>
+                    </div>
+                </div>
+                <div class="genai-testimonial-text-fixed">"As educators, we have a huge challenge ahead, helping students navigate the world of AI wisely! I am 3 weeks into this course and it's been hugely insightful."</div>
+                <div class="genai-testimonial-highlight-fixed">
+                    "Students are anyway using AI a lot…and they may end up with wrong answers. We need to guide them effectively."
+                </div>
+            </div>
+            <div class="genai-testimonial-card-fixed">
+                <div class="genai-testimonial-header-fixed">
+                    <div class="genai-testimonial-photo-placeholder-fixed">PHOTO</div>
+                    <div class="genai-testimonial-info-fixed">
+                        <div class="genai-testimonial-author-fixed">Rinku Paul</div>
+                        <div class="genai-testimonial-school-fixed">Head of Senior School, The Millennium School, Dubai</div>
+                    </div>
+                </div>
+                <div class="genai-testimonial-text-fixed">"I experienced child-like curiosity, frustration, and AHA moments while experimenting with ChatGPT, Gemini, Claude and Grok. My conclusion? Human ingenuity and creativity is required, even in the judicious use of AI."</div>
+                <div class="genai-testimonial-highlight-fixed">
+                    "It's a wild beast, and before we unleash it we'll have to use it and see how safely we can introduce it to students."
+                </div>
+            </div>
+            <div class="genai-testimonial-card-fixed">
+                <div class="genai-testimonial-header-fixed">
+                    <div class="genai-testimonial-photo-placeholder-fixed">PHOTO</div>
+                    <div class="genai-testimonial-info-fixed">
+                        <div class="genai-testimonial-author-fixed">Vijayashree VK</div>
+                        <div class="genai-testimonial-school-fixed">GEAR International School, Bengaluru</div>
+                    </div>
+                </div>
+                <div class="genai-testimonial-text-fixed">"This course is life-changing. A lot of your time will be saved. Also, you will have a personal assistant who will help you finish your work."</div>
+            </div>
+            <div class="genai-testimonial-card-fixed">
+                <div class="genai-testimonial-header-fixed">
+                    <div class="genai-testimonial-photo-placeholder-fixed">PHOTO</div>
+                    <div class="genai-testimonial-info-fixed">
+                        <div class="genai-testimonial-author-fixed">Preethi Dayanand</div>
+                        <div class="genai-testimonial-school-fixed">GEAR International School, Bengaluru</div>
+                    </div>
+                </div>
+                <div class="genai-testimonial-text-fixed">"AI is here to stay, and both teachers and students are already using it. If GenAI can handle routine tasks like lesson plans, teachers can focus more on child development."</div>
+                <div class="genai-testimonial-highlight-fixed">
+                    "It's time we see ourselves less as content deliverers and more as mentors and guides."
+                </div>
+            </div>
+            <div class="genai-testimonial-card-fixed">
+                <div class="genai-testimonial-header-fixed">
+                    <div class="genai-testimonial-photo-placeholder-fixed">PHOTO</div>
+                    <div class="genai-testimonial-info-fixed">
+                        <div class="genai-testimonial-author-fixed">Educator</div>
+                        <div class="genai-testimonial-school-fixed">Fountainhead School, Surat</div>
+                    </div>
+                </div>
+                <div class="genai-testimonial-text-fixed">"I find direct application of all the AI tools in my work. This course is an early step and helps you to know about AI, its usage and challenges too."</div>
+            </div>
+            <div class="genai-testimonial-card-fixed">
+                <div class="genai-testimonial-header-fixed">
+                    <div class="genai-testimonial-photo-placeholder-fixed">PHOTO</div>
+                    <div class="genai-testimonial-info-fixed">
+                        <div class="genai-testimonial-author-fixed">Educator</div>
+                        <div class="genai-testimonial-school-fixed">The Millennium School, Dubai</div>
+                    </div>
+                </div>
+                <div class="genai-testimonial-text-fixed">"The course provided valuable insights into how AI can be used effectively in education. The explanations were clear, and the examples were practical."</div>
+            </div>
+        </div>
+        <div class="genai-usage-increase-fixed">
+            <h3>How Teachers Use AI After Our Course</h3>
+            <div class="genai-usage-list-fixed">
+                <div class="genai-usage-item-fixed">
+                    <span class="genai-usage-icon-fixed">✓</span>
+                    Creating artifacts and simulations for teaching
+                </div>
+                <div class="genai-usage-item-fixed">
+                    <span class="genai-usage-icon-fixed">✓</span>
+                    Generating lesson plans and engaging quizzes
+                </div>
+                <div class="genai-usage-item-fixed">
+                    <span class="genai-usage-icon-fixed">✓</span>
+                    Providing personalized feedback to students
+                </div>
+                <div class="genai-usage-item-fixed">
+                    <span class="genai-usage-icon-fixed">✓</span>
+                    Creating graphics, presentations, and content
+                </div>
+                <div class="genai-usage-item-fixed">
+                    <span class="genai-usage-icon-fixed">✓</span>
+                    Analyzing student and parent surveys
+                </div>
+                <div class="genai-usage-item-fixed">
+                    <span class="genai-usage-icon-fixed">✓</span>
+                    Writing report card comments and profiles
+                </div>
+                <div class="genai-usage-item-fixed">
+                    <span class="genai-usage-icon-fixed">✓</span>
+                    Establishing cross-curricular relationships
+                </div>
+                <div class="genai-usage-item-fixed">
+                    <span class="genai-usage-icon-fixed">✓</span>
+                    Using NotebookLM for deep analysis and insights
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & CTA -->
+    <section class="genai-contact" id="contact">
+        <h2>Don't Get Left Behind in the AI Revolution</h2>
+        <p>Join forward-thinking educators who are already transforming their teaching with AI. The future of education is here – secure your place in it.</p>
+        <div class="genai-urgency-final">
+            <h3>⚡ Limited Seats Available</h3>
+            <p>We keep cohorts small for personalized attention and hands-on learning. December 2025 cohort filling fast.</p>
+        </div>
+        <div class="genai-contact-options">
+            <div class="genai-contact-card">
+                <div class="genai-contact-icon">🚀</div>
+                <h3>Enroll Now</h3>
+                <p>Secure your spot in the December 2025 cohort. Join educators from leading schools worldwide.</p>
+                <a href="mailto:prakhar.ghildyal@ei.study,siddharth@genwise.in?subject=GenAI Program Inquiry&amp;body=Hi,%0A%0AI am interested in the GenAI program.%0A%0AName:%0ASchool Name:%0AInterest:%0A%0APlease contact me at:%0A%0AThank you!" class="genai-form-button">Register Interest</a>
+            </div>
+            <div class="genai-contact-card">
+                <div class="genai-contact-icon">💬</div>
+                <h3>Have Questions?</h3>
+                <p>Speak with our program coordinators about how GenAI training can benefit your teaching practice.</p>
+                <div class="genai-contact-details">
+                    <a href="mailto:prakhar.ghildyal@ei.study">prakhar.ghildyal@ei.study</a>
+                    <a href="mailto:siddharth@genwise.in">siddharth@genwise.in</a>
+                    <a href="tel:+918762703967">+91-8762703967</a>
+                </div>
+            </div>
+            <div class="genai-contact-card">
+                <div class="genai-contact-icon">🏫</div>
+                <h3>School Programs</h3>
+                <p>Enroll multiple teachers from your school. We offer group rates and customized implementation support.</p>
+                <a href="mailto:prakhar.ghildyal@ei.study,siddharth@genwise.in?subject=GenAI Program Inquiry&amp;body=Hi,%0A%0AI am interested in the GenAI program for my school.%0A%0AName:%0ASchool Name:%0ARole: %0AInterest:%0A%0APlease contact me at:%0A%0AThank you!" class="genai-form-button">Send Enquiry Email</a>
+            </div>
+        </div>
+        <div class="genai-final-cta">
+            <h3>Join Educators from Leading Institutions</h3>
+            <div class="genai-social-proof">
+                <div class="genai-school-badges">
+                    <div class="genai-school-badge">
+                        <img src="/images/teacher-mentoring/gems-modern-academy.png" alt="GEMS Modern Academy">
+                    </div>
+                    <div class="genai-school-badge">
+                        <img src="/images/teacher-mentoring/gear-innovative-international-school-logo.png" alt="GEAR International">
+                    </div>
+                    <div class="genai-school-badge">
+                        <img src="/images/teacher-mentoring/fountainhead-school-surat-logo.png" alt="Fountainhead School">
+                    </div>
+                    <div class="genai-school-badge">
+                        <img src="/images/teacher-mentoring/sns-shiv-nadar-school-logo-e1751187640940.png" alt="Shiv Nadar School">
+                    </div>
+                    <div class="genai-school-badge">
+                        <img src="/images/teacher-mentoring/gems-education.png" alt="GEMS Education">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="foot">
+        <div>
+            GenWise Talent Development &middot;
+            <a href="mailto:gifted@genwise.in">gifted@genwise.in</a> &middot;
+            <a href="tel:+917046466866">+91 70464 66866</a>
+        </div>
+        <div class="foot-bot">&copy; 2026 GenWise &middot; D-003, Purva Park, Jeevanahalli Main Rd, Coxtown, Bengaluru 560005</div>
+    </footer>
+</body>
+</html>

@@ -10,6 +10,9 @@
 //   /gifted-lab-in-schools           -> B2B page
 //   /tomorrow-makers                 -> hiring page
 //   /images/*                        -> page assets (mentor/school photos)
+//   /for-teachers, /genai            -> teacher-mentoring pages (restored from
+//                                       the WordPress export, 2026-08-14)
+//   /my-misconception-mentor         -> 301 to the MMM app on Cloudflare Pages
 //   /tnp365* (old URLs)              -> 301 to the gifted-lab equivalents
 //   /gtm-coach, /gtm-operations      -> 301 to /tomorrow-makers anchors
 //   anything else                    -> 302 to / (temporary, new site coming)
@@ -27,8 +30,11 @@ const PAGES = {
   "/gifted-lab-mentors": GHP + "/gifted-lab-mentors.html",
   "/gifted-lab-what-students-learn": GHP + "/gifted-lab-what-students-learn.html",
   "/gifted-lab-in-schools": GHP + "/gifted-lab-in-schools.html",
+  "/for-teachers": GHP + "/for-teachers.html",
+  "/genai": GHP + "/genai.html",
 };
 
+// Values may be site-relative or absolute (absolute ones leave genwise.in).
 const REDIRECTS = {
   "/gtm-coach": "/tomorrow-makers#coach",
   "/gtm-operations": "/tomorrow-makers#operations",
@@ -36,6 +42,10 @@ const REDIRECTS = {
   "/tnp365-how-it-works": "/gifted-lab-how-it-works",
   "/tnp365-mentors": "/gifted-lab-mentors",
   "/tnp365-what-students-learn": "/gifted-lab-what-students-learn",
+  "/teacher-mentoring": "/for-teachers",
+  // MMM is a React SPA on Cloudflare Pages; its old WordPress page was just an
+  // iframe wrapper around it, so send visitors straight to the app.
+  "/my-misconception-mentor": "https://misconception-mentor.pages.dev/",
 };
 
 // Whole path-prefixes proxied to other Workers (Eklavya's account), so their
@@ -58,7 +68,8 @@ export default {
 
     const target = REDIRECTS[path];
     if (target) {
-      return Response.redirect(url.origin + target, 301);
+      const dest = target.startsWith("https://") ? target : url.origin + target;
+      return Response.redirect(dest, 301);
     }
 
     for (const [prefix, upstreamHost] of Object.entries(PROXY_PREFIXES)) {
