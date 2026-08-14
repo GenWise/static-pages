@@ -39,7 +39,7 @@
             max-width: 100%;
         }
 
-        /* Navigation (shared site pattern, from gifted-lab.html) */
+        /* Family navigation (shared with gifted-lab pattern) */
         .nav {
             background: white;
             border-bottom: 1px solid #e5e7eb;
@@ -56,18 +56,38 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 48px;
+            height: 44px;
         }
 
-        .nav-logo img {
-            height: 30px;
-            display: block;
+        .nav-home {
+            color: #ff8d39;
+            font-weight: 600;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #063852;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-logo:hover {
+            color: #ff8d39;
         }
 
         .nav-links {
-            display: flex;
+            display: none;
             align-items: center;
             gap: 0.25rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
         }
 
         .nav-link {
@@ -77,16 +97,94 @@
             font-size: 0.875rem;
             color: #374151;
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
         .nav-link:hover {
-            color: #ff8d39;
-            background: #f9fafb;
+            background: #f3f4f6;
+            color: #063852;
         }
 
         .nav-link.active {
-            color: #063852;
-            font-weight: 700;
+            background: #ff8d39;
+            color: white;
+            box-shadow: 0 2px 4px rgba(255,141,57,0.3);
+        }
+
+        .nav-cta {
+            padding: 0.375rem 1rem;
+            background: #ff8d39;
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(255,141,57,0.3);
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            background: #e67d30;
+            transform: scale(1.02);
+        }
+
+        .mobile-menu-btn {
+            display: flex;
+            padding: 0.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #374151;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        .mobile-menu {
+            display: none;
+            padding-bottom: 1rem;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+
+        .mobile-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .mobile-link:hover {
+            background: #f3f4f6;
+        }
+
+        .mobile-link.active {
+            background: #ff8d39;
+            color: white;
+        }
+
+        .mobile-cta {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            background: #ff8d39;
+            color: white;
+            font-weight: 600;
+            border-radius: 6px;
+            text-align: center;
+            margin-top: 0.5rem;
         }
 
         /* Hero */
@@ -1070,14 +1168,36 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-inner">
-            <a href="/" class="nav-logo" aria-label="GenWise home">
-                <img src="/images/brand/genwise-logo.png" alt="GenWise">
-            </a>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <a href="/" class="nav-home">← GenWise</a>
+                <span style="color: #d1d5db;">|</span>
+                <a href="/for-teachers" class="nav-logo">For Teachers</a>
+            </div>
+
             <div class="nav-links">
-                <a href="/" class="nav-link">Home</a>
-                <a href="/for-teachers" class="nav-link active">For Teachers</a>
-                <a href="/gifted-lab" class="nav-link">Gifted Lab</a>
-                <a href="/tomorrow-makers" class="nav-link">Tomorrow Makers</a>
+                <a href="/for-teachers" class="nav-link active">Overview</a>
+                <a href="/my-misconception-mentor" class="nav-link">Misconception Mentor</a>
+                <a href="/genai" class="nav-link">GenAI for Educators</a>
+                <a href="#contact" class="nav-cta">Enquire</a>
+            </div>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg id="close-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+                    <path d="M6 6l12 12M6 18L18 6"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <div style="padding: 0 1rem;">
+                <a href="/" class="mobile-link" style="color: #ff8d39; font-weight: 600;">← GenWise</a>
+                <a href="/for-teachers" class="mobile-link active">Overview</a>
+                <a href="/my-misconception-mentor" class="mobile-link">Misconception Mentor</a>
+                <a href="/genai" class="mobile-link">GenAI for Educators</a>
+                <a href="#contact" class="mobile-cta">Enquire</a>
             </div>
         </div>
     </nav>
@@ -1445,6 +1565,22 @@
         <p>&copy; GenWise &middot; <a href="/">genwise.in</a></p>
     </footer>
 <script>
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    menu.classList.toggle('open');
+
+    if (menu.classList.contains('open')) {
+        menuIcon.style.display = 'none';
+        closeIcon.style.display = 'block';
+    } else {
+        menuIcon.style.display = 'block';
+        closeIcon.style.display = 'none';
+    }
+}
+
 document.getElementById("tm-enquiry-form").addEventListener("submit", async function (e) {
     e.preventDefault();
     const form = e.target;

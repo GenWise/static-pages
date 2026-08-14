@@ -10,9 +10,9 @@
 //   /gifted-lab-in-schools           -> B2B page
 //   /tomorrow-makers                 -> hiring page
 //   /images/*                        -> page assets (mentor/school photos)
-//   /for-teachers, /genai            -> teacher-mentoring pages (restored from
-//                                       the WordPress export, 2026-08-14)
-//   /my-misconception-mentor         -> 301 to the MMM app on Cloudflare Pages
+//   /for-teachers, /genai,
+//   /my-misconception-mentor         -> the For Teachers family (restored/
+//                                       consolidated 2026-08-14)
 //   /tnp365* (old URLs)              -> 301 to the gifted-lab equivalents
 //   /gtm-coach, /gtm-operations      -> 301 to /tomorrow-makers anchors
 //   anything else                    -> 302 to / (temporary, new site coming)
@@ -32,6 +32,7 @@ const PAGES = {
   "/gifted-lab-in-schools": GHP + "/gifted-lab-in-schools.html",
   "/for-teachers": GHP + "/for-teachers.html",
   "/genai": GHP + "/genai.html",
+  "/my-misconception-mentor": GHP + "/my-misconception-mentor.html",
 };
 
 // Values may be site-relative or absolute (absolute ones leave genwise.in).
@@ -43,9 +44,6 @@ const REDIRECTS = {
   "/tnp365-mentors": "/gifted-lab-mentors",
   "/tnp365-what-students-learn": "/gifted-lab-what-students-learn",
   "/teacher-mentoring": "/for-teachers",
-  // MMM is a React SPA on Cloudflare Pages; its old WordPress page was just an
-  // iframe wrapper around it, so send visitors straight to the app.
-  "/my-misconception-mentor": "https://misconception-mentor.pages.dev/",
 };
 
 // Whole path-prefixes proxied to other Workers (Eklavya's account), so their
