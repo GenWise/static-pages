@@ -957,6 +957,113 @@
         .site-footer a:hover {
             color: #ffd300;
         }
+
+        /* Enquiry form (posts to /api/enquiry on the Cloudflare Worker) */
+        .tm-contact-form-fixed {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .tm-contact-form-fixed h3 {
+            color: #063852;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .tm-form-group-fixed {
+            margin-bottom: 20px;
+        }
+
+        .tm-form-group-fixed label {
+            display: block;
+            margin-bottom: 8px;
+            color: #063852;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .tm-form-group-fixed input,
+        .tm-form-group-fixed select,
+        .tm-form-group-fixed textarea {
+            width: 100%;
+            max-width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .tm-form-group-fixed input:focus,
+        .tm-form-group-fixed select:focus,
+        .tm-form-group-fixed textarea:focus {
+            border-color: #3399ff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(51, 153, 255, 0.1);
+        }
+
+        .tm-submit-button-fixed {
+            background: #ff8d39;
+            color: white;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .tm-submit-button-fixed:hover {
+            background: #e67c22;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 141, 57, 0.3);
+        }
+
+        .tm-submit-button-fixed:disabled {
+            background: #ccc;
+            cursor: default;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .tm-form-status {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        .tm-form-status.ok {
+            display: block;
+            background: #e8f7ee;
+            color: #1c7c40;
+        }
+
+        .tm-form-status.err {
+            display: block;
+            background: #fdecea;
+            color: #b3261e;
+        }
+
+        .tm-hp-field {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -1253,6 +1360,67 @@
         <h2>Ready to Transform Your Teaching?</h2>
         <p>Join leading educators who are already seeing remarkable results. Get started today.</p>
 
+        <form class="tm-contact-form-fixed" id="tm-enquiry-form" novalidate>
+            <h3>Get Program Information</h3>
+
+            <div class="tm-form-group-fixed">
+                <label for="tm-name">Full Name *</label>
+                <input type="text" id="tm-name" name="name" required autocomplete="name">
+            </div>
+
+            <div class="tm-form-group-fixed">
+                <label for="tm-email">Email Address *</label>
+                <input type="email" id="tm-email" name="email" required autocomplete="email">
+            </div>
+
+            <div class="tm-form-group-fixed">
+                <label for="tm-phone">Phone Number</label>
+                <input type="tel" id="tm-phone" name="phone" autocomplete="tel">
+            </div>
+
+            <div class="tm-form-group-fixed">
+                <label for="tm-school">School/Organization</label>
+                <input type="text" id="tm-school" name="school" autocomplete="organization">
+            </div>
+
+            <div class="tm-form-group-fixed">
+                <label for="tm-role">Your Role</label>
+                <select id="tm-role" name="role">
+                    <option value="">Select your role</option>
+                    <option>Teacher</option>
+                    <option>Academic Coordinator</option>
+                    <option>Principal/Head</option>
+                    <option>School Administrator</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="tm-form-group-fixed">
+                <label for="tm-program">Program Interest</label>
+                <select id="tm-program" name="program">
+                    <option value="">Select program(s) of interest</option>
+                    <option>My Misconception Mentor – Math</option>
+                    <option>My Misconception Mentor – Science</option>
+                    <option>GenAI for Educators</option>
+                    <option>Both Programs</option>
+                    <option>General Inquiry</option>
+                </select>
+            </div>
+
+            <div class="tm-form-group-fixed">
+                <label for="tm-message">Message (Optional)</label>
+                <textarea id="tm-message" name="message" rows="4"></textarea>
+            </div>
+
+            <div class="tm-hp-field" aria-hidden="true">
+                <label for="tm-website">Website</label>
+                <input type="text" id="tm-website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <button type="submit" class="tm-submit-button-fixed">Get Program Details</button>
+            <div class="tm-form-status" id="tm-form-status" role="status"></div>
+        </form>
+
         <div class="tm-contact-info-fixed">
             <h4>Questions? Contact Our Team Directly</h4>
             <div class="tm-contact-details-fixed">
@@ -1276,5 +1444,44 @@
     <footer class="site-footer">
         <p>&copy; GenWise &middot; <a href="/">genwise.in</a></p>
     </footer>
+<script>
+document.getElementById("tm-enquiry-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const status = document.getElementById("tm-form-status");
+    const button = form.querySelector("button[type=submit]");
+    const data = Object.fromEntries(new FormData(form));
+    data.page = "for-teachers";
+
+    if (!data.name.trim() || !data.email.includes("@")) {
+        status.className = "tm-form-status err";
+        status.textContent = "Please fill in your name and a valid email address.";
+        return;
+    }
+
+    button.disabled = true;
+    status.className = "tm-form-status";
+    try {
+        const resp = await fetch("/api/enquiry", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(data),
+        });
+        const result = await resp.json();
+        if (result.ok) {
+            status.className = "tm-form-status ok";
+            status.textContent = "Thank you! We have received your enquiry and will get back to you shortly.";
+            form.reset();
+        } else {
+            throw new Error(result.error || "failed");
+        }
+    } catch {
+        status.className = "tm-form-status err";
+        status.textContent = "Something went wrong. Please email siddharth@genwise.in instead.";
+    } finally {
+        button.disabled = false;
+    }
+});
+</script>
 </body>
 </html>

@@ -55,8 +55,55 @@ const PROXY_PREFIXES = {
   "/insider-circle": "https://genwise-insider-circle.afoaofa.workers.dev",
 };
 
+// Enquiry form endpoint (teacher-mentoring pages). Sends mail over SMTP2GO's
+// HTTPS API — no droplet, no SMTP. Secret: `wrangler secret put SMTP2GO_API_KEY`.
+const ENQUIRY_TO = "rajesh@genwise.in";
+
+async function handleEnquiry(request, env) {
+  let data;
+  try {
+    data = await request.json();
+  } catch {
+    return Response.json({ ok: false, error: "Bad request" }, { status: 400 });
+  }
+
+  // honeypot: real users never fill "website"
+  if (data.website) return Response.json({ ok: true });
+
+  const name = (data.name || "").trim().slice(0, 200);
+  const email = (data.email || "").trim().slice(0, 200);
+  if (!name || !email.includes("@")) {
+    return Response.json({ ok: false, error: "Name and a valid email are required" }, { status: 400 });
+  }
+
+  const field = (label, value) =>
+    value ? `${label}: ${String(value).trim().slice(0, 1000)}\n` : "";
+  const body =
+    `New enquiry from genwise.in${data.page ? " (" + data.page + ")" : ""}\n\n` +
+    field("Name", name) + field("Email", email) + field("Phone", data.phone) +
+    field("School", data.school) + field("Role", data.role) +
+    field("Programme interest", data.program) + field("Message", data.message);
+
+  const resp = await fetch("https://api.smtp2go.com/v3/email/send", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      api_key: env.SMTP2GO_API_KEY,
+      sender: "rajesh@genwise.in",
+      to: [ENQUIRY_TO],
+      subject: `[genwise.in] Teacher-mentoring enquiry from ${name}`,
+      text_body: body,
+    }),
+  });
+
+  if (!resp.ok) {
+    return Response.json({ ok: false, error: "Mail service error" }, { status: 502 });
+  }
+  return Response.json({ ok: true });
+}
+
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     const url = new URL(request.url);
 
     if (url.hostname === "www.genwise.in") {
@@ -65,6 +112,10 @@ export default {
 
     // treat /foo and /foo/ as the same path
     const path = url.pathname.replace(/\/+$/, "") || "/";
+
+    if (path === "/api/enquiry" && request.method === "POST") {
+      return handleEnquiry(request, env);
+    }
 
     const target = REDIRECTS[path];
     if (target) {
