@@ -1,5 +1,44 @@
 # Documentation History - Static Pages
 
+## 2026-08-14 ~09:45 IST
+**Session:** Teacher-mentoring pages restored; For Teachers family built
+
+The /for-teachers, /genai and /my-misconception-mentor pages had silently dropped in
+the 2026-08-01 WordPress lapse (the stopgap Worker only mapped 7 pages; everything
+else 302'd home). Restored and then consolidated into a proper page family.
+
+- **/for-teachers + /genai** rebuilt from `~/code/websites/wordpress-export-2026-08-01/`.
+  The REST export strips `<style>/<script>/<form>/<iframe>` TAGS but keeps inner text;
+  wp.com image URLs 403 since the lapse — all images now live in this repo under
+  `images/teacher-mentoring/`.
+- **/my-misconception-mentor** consolidated from the React SPA at
+  misconception-mentor.pages.dev into a static family page (same design language).
+  The SPA + its D1 chatbot DB are retirable. The mmm.genwise.in custom-domain idea
+  was closed as moot. Gotcha: SPA tab content (Middle School topics) is not in a
+  rendered DOM dump — had to be clicked out via chrome-devtools.
+- **Family nav** (canonical for page families, copied from gifted-lab's): `← GenWise |
+  For Teachers` + Overview / My Misconception Mentor / GenAI + navy Enquire CTA;
+  hamburger under 768px. Active page = orange pill; CTA deliberately navy so the
+  you-are-here marker and the action button don't look alike (Rajesh's call).
+  The first-pass navs had links overflowing the bar at phone widths — the homepage
+  nav pattern is NOT reusable on sub-pages (it hides all links on mobile).
+- **Enquiry endpoint**: POST /api/enquiry on the Worker → SMTP2GO HTTPS API (secret
+  set via `wrangler secret put SMTP2GO_API_KEY`). Forms on /for-teachers and MMM.
+  **Leads go to rajesh@genwise.in only** (`ENQUIRY_TO` in worker.js) pending a
+  routing decision.
+- **Homepage nav** got a "For Teachers" link (only edit to Eklavya's page).
+- /genai cohort dates neutralized to "To Be Announced" (Dec 2025 was stale);
+  pricing ₹11,800 / AED 570 kept but unverified. **Rajesh owns GenAI** — dates wait
+  on him.
+- Follow-ups tracked in **issue #2** (redesign to new design language when a cohort
+  is live; GenAI dates/pricing; lead routing).
+- Verification gotcha: plain headless-Chrome `--window-size=375` clamps to a ~500px
+  minimum and crops the screenshot — false overflow signal. Use chrome-devtools MCP
+  `emulate` for real mobile viewports.
+- Why this surfaced: after the lapse, Chrome had cached WordPress's 301
+  genwise.in → ashish5fd091456a.wordpress.com; Rajesh's browser kept landing on the
+  dead WP backend. "genwise.in doesn't load" → check incognito first, then clear cache.
+
 ## 2026-07-24 ~11:00 IST
 **Session:** Siddharth's post-review edits to the hiring page
 
