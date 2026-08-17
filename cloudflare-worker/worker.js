@@ -8,7 +8,9 @@
 //   /                                -> genwise-home.html (holding homepage)
 //   /gifted-lab (+3 siblings)        -> the parent-facing Gifted Lab pages
 //   /gifted-lab-in-schools           -> B2B page
-//   /tomorrow-makers                 -> hiring page
+//   /tomorrow-makers                 -> programme page (GenWise x Godrej)
+//   /work-with-us                    -> hiring page (was at /tomorrow-makers
+//                                       until 2026-08-17)
 //   /images/*                        -> page assets (mentor/school photos)
 //   /for-teachers, /genai,
 //   /my-misconception-mentor         -> the For Teachers family (restored/
@@ -24,7 +26,8 @@ const GHP = "https://genwise.github.io/static-pages";
 
 const PAGES = {
   "/": GHP + "/genwise-home.html",
-  "/tomorrow-makers": GHP + "/work-with-us.html",
+  "/tomorrow-makers": GHP + "/tomorrow-makers.html",
+  "/work-with-us": GHP + "/work-with-us.html",
   "/gifted-lab": GHP + "/gifted-lab.html",
   "/gifted-lab-how-it-works": GHP + "/gifted-lab-how-it-works.html",
   "/gifted-lab-mentors": GHP + "/gifted-lab-mentors.html",
@@ -37,8 +40,8 @@ const PAGES = {
 
 // Values may be site-relative or absolute (absolute ones leave genwise.in).
 const REDIRECTS = {
-  "/gtm-coach": "/tomorrow-makers#coach",
-  "/gtm-operations": "/tomorrow-makers#operations",
+  "/gtm-coach": "/work-with-us#coach",
+  "/gtm-operations": "/work-with-us#operations",
   "/tnp365": "/gifted-lab",
   "/tnp365-how-it-works": "/gifted-lab-how-it-works",
   "/tnp365-mentors": "/gifted-lab-mentors",

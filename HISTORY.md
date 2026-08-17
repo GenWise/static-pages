@@ -1,6 +1,25 @@
 # Documentation History - Static Pages
 
-## 2026-08-17 ~08:15 IST
+## 2026-08-17 ~15:45 IST
+**Session:** Tomorrow Makers programme page; hiring page moved to /work-with-us
+
+/tomorrow-makers had been serving the *hiring* page (work-with-us.html) since July —
+there was no page describing the programme itself. Prompted by the IITM Pravartak
+proposal (external parties need to see the Godrej work, not job ads).
+
+- **tomorrow-makers.html** (new): programme page in the gifted-lab-in-schools design
+  language — hero, Godrej/partner credit strip, why/how sections, three session
+  vignettes from the opening-cohort design, facts box, hiring CTA. Content sourced
+  from `genwiki/partners/godrej.md`; deliberately external-safe (no enrolment
+  numbers, no compensation, no internal timelines).
+- **Worker routes**: /tomorrow-makers → tomorrow-makers.html; /work-with-us (freed
+  by the WordPress lapse — the old Summer Program hiring page died with it) →
+  work-with-us.html; /gtm-coach and /gtm-operations now 301 to /work-with-us
+  anchors. Old LinkedIn links to /tomorrow-makers land on the programme page, which
+  carries a "We're hiring" button — acceptable.
+- **work-with-us.html**: canonical + og:url updated to /work-with-us.
+- **Homepage**: fourth Programs card (Tomorrow Makers, dsc01611.webp), intro sentence
+  extended, footer Work-with-us row repointed. Cards grid stays 3-col → 3+1 layout.
 **Session:** Homepage For Teachers link now visible on mobile
 
 Vishnu reported (GWG, 16 Aug) no route to /for-teachers from genwise.in on his phone.
