@@ -1,5 +1,19 @@
 # Documentation History - Static Pages
 
+## 2026-08-17 ~08:15 IST
+**Session:** Homepage For Teachers link now visible on mobile
+
+Vishnu reported (GWG, 16 Aug) no route to /for-teachers from genwise.in on his phone.
+The 14 Aug fix had added the link to the desktop nav only: the homepage's mobile rule
+hides every nav link except the Write-to-us button under 860px, and the homepage has
+no hamburger. Fix: exempt that one link (`.nav-teachers` — the only off-page
+destination; the rest are same-page anchors reachable by scrolling) and add a
+sub-400px sizing rule (smaller logo/gaps/button) so logo + link + button fit down to
+320px. Watch the specificity: the base `.btn-sm` rule sits *after* the media block,
+so mobile overrides need `.nav-links .btn-sm`. Verified live at 320/390px emulated
+widths; /for-teachers, /genai and /my-misconception-mentor mobile navs re-checked OK.
+GWG told it's fixed.
+
 ## 2026-08-14 ~09:45 IST
 **Session:** Teacher-mentoring pages restored; For Teachers family built
 
