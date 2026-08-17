@@ -72,7 +72,20 @@
   .nav-links{display:flex;align-items:center;gap:1.6rem}
   .nav-links a{font-size:.9rem;font-weight:500;color:var(--ink-2);transition:color .3s}
   .nav-links a:hover{color:var(--flame-deep)}
-  @media (max-width:860px){.nav-links a:not(.btn-sm){display:none}}
+  /* Mobile keeps For Teachers: the other links are same-page anchors reachable by
+     scrolling, but For Teachers is an off-page destination with no other route. */
+  @media (max-width:860px){
+    .nav-links{gap:1rem}
+    .nav-links a:not(.btn-sm):not(.nav-teachers){display:none}
+    .nav-teachers{white-space:nowrap}
+  }
+  @media (max-width:400px){
+    .nav-in{padding:0 .85rem}
+    .nav-links{gap:.6rem}
+    .nav-links a.nav-teachers{font-size:.8rem}
+    .nav-links .btn-sm{padding:.35rem .7rem;font-size:.75rem}
+    .brand,.brand img{width:96px}
+  }
   .btn-sm{padding:.46rem 1.05rem;background:var(--navy);color:#fff!important;border-radius:999px;
           font-weight:600;font-size:.85rem;white-space:nowrap;transition:background .18s}
   .btn-sm:hover{background:var(--flame-deep)}
@@ -414,7 +427,7 @@
       <a href="#life">Life at GSP</a>
       <a href="#voices">Voices</a>
       <a href="#watch">Watch</a>
-      <a href="https://genwise.in/for-teachers">For Teachers</a>
+      <a href="https://genwise.in/for-teachers" class="nav-teachers">For Teachers</a>
       <a href="mailto:gifted@genwise.in" class="btn-sm">Write to us</a>
     </div>
   </div>
