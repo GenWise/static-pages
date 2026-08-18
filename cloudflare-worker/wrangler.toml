@@ -6,6 +6,15 @@ workers_dev = false
 
 # Full-site takeover while WordPress is gone (2026-08-01). When the new site is
 # ready, repoint DNS and narrow these back to the specific proxied paths.
+# Form submissions are written here before the notification email is attempted.
+# Blocked 2026-08-18: no Cloudflare API token in ~/.env carries "Workers KV
+# Storage: Edit", so the namespace cannot be created from here yet. Until this is
+# uncommented the Worker falls back to email-only (i.e. current behaviour).
+#   npx wrangler kv namespace create FORMS_KV      → paste the id below
+# [[kv_namespaces]]
+# binding = "FORMS_KV"
+# id = "<id from the create command>"
+
 routes = [
   { pattern = "genwise.in/*", zone_name = "genwise.in" },
   { pattern = "www.genwise.in/*", zone_name = "genwise.in" },

@@ -56,11 +56,55 @@ const PROXY_PREFIXES = {
   "/insider-circle": "https://genwise-insider-circle.afoaofa.workers.dev",
 };
 
-// Enquiry form endpoint (teacher-mentoring pages). Sends mail over SMTP2GO's
-// HTTPS API — no droplet, no SMTP. Secret: `wrangler secret put SMTP2GO_API_KEY`.
-const ENQUIRY_TO = "rajesh@genwise.in";
+// ---------------------------------------------------------------------------
+// Forms
+//
+// One endpoint for every form on the site: POST /api/forms/<slug>. Adding a
+// form means adding an entry to FORMS below — not a new Worker, route, or KV
+// namespace. Everything lands in the single FORMS_KV namespace, keyed by slug,
+// so the Cloudflare dashboard stays at one Worker + one namespace no matter how
+// many forms exist.
+//
+// Every submission is written to KV BEFORE the email is attempted. A lead must
+// never depend on the mail hop succeeding — that failure mode killed ~18 Gifted
+// Lab leads between May and Aug 2026 (wiki/incidents/2026-08-18-gifted-lab-form-dead.md).
+//
+// Secret: `wrangler secret put SMTP2GO_API_KEY`.
+// ---------------------------------------------------------------------------
 
-async function handleEnquiry(request, env) {
+const MAIL_FROM = "rajesh@genwise.in";
+
+const FORMS = {
+  "teacher-mentoring": {
+    to: ["rajesh@genwise.in"],
+    subject: (d) => `[genwise.in] Teacher-mentoring enquiry from ${d.name}`,
+    heading: "New enquiry from genwise.in",
+    fields: [
+      ["Name", "name"], ["Email", "email"], ["Phone", "phone"],
+      ["School", "school"], ["Role", "role"],
+      ["Programme interest", "program"], ["Message", "message"],
+    ],
+  },
+  "gifted-lab": {
+    to: ["tnp@genwise.in"],
+    subject: (d) => `Gifted Lab Interest: ${d.child_name || "Unknown"} (Grade ${d.grade || "?"})`,
+    heading: "New Gifted Lab Interest Form Submission",
+    fields: [
+      ["Parent Name", "parent_name"], ["Child's Name", "child_name"],
+      ["Email", "email"], ["Phone", "phone"], ["Grade", "grade"],
+      ["How did you hear of us", "hear_about"],
+      ["Why does your child need Gifted Lab", "why_gifted_lab"],
+    ],
+  },
+};
+
+// Name lives under different keys per form; accept either.
+const nameOf = (d) => (d.name || d.parent_name || "").trim().slice(0, 200);
+
+async function handleForm(request, env, slug) {
+  const form = FORMS[slug];
+  if (!form) return Response.json({ ok: false, error: "Unknown form" }, { status: 404 });
+
   let data;
   try {
     data = await request.json();
@@ -71,35 +115,65 @@ async function handleEnquiry(request, env) {
   // honeypot: real users never fill "website"
   if (data.website) return Response.json({ ok: true });
 
-  const name = (data.name || "").trim().slice(0, 200);
+  const name = nameOf(data);
   const email = (data.email || "").trim().slice(0, 200);
   if (!name || !email.includes("@")) {
-    return Response.json({ ok: false, error: "Name and a valid email are required" }, { status: 400 });
+    return Response.json(
+      { ok: false, error: "Name and a valid email are required" },
+      { status: 400 }
+    );
   }
 
-  const field = (label, value) =>
-    value ? `${label}: ${String(value).trim().slice(0, 1000)}\n` : "";
+  // 1. Persist first. If this throws we genuinely cannot accept the lead.
+  const record = { ...data, form: slug, received_at: new Date().toISOString() };
+  if (env.FORMS_KV) {
+    try {
+      await env.FORMS_KV.put(
+        `sub:${slug}:${record.received_at}:${crypto.randomUUID().slice(0, 8)}`,
+        JSON.stringify(record)
+      );
+    } catch (e) {
+      console.log(`KV write failed for ${slug}: ${e}`);
+      return Response.json({ ok: false, error: "Could not save — please try again" }, { status: 503 });
+    }
+  }
+
+  // 2. Then notify. A failed email no longer loses the lead, so report success.
+  const field = (label, key) =>
+    data[key] ? `${label}: ${String(data[key]).trim().slice(0, 1000)}\n` : "";
   const body =
-    `New enquiry from genwise.in${data.page ? " (" + data.page + ")" : ""}\n\n` +
-    field("Name", name) + field("Email", email) + field("Phone", data.phone) +
-    field("School", data.school) + field("Role", data.role) +
-    field("Programme interest", data.program) + field("Message", data.message);
+    `${form.heading}${data.page ? " (" + data.page + ")" : ""}\n\n` +
+    form.fields.map(([label, key]) => field(label, key)).join("") +
+    `\n---\nReceived ${record.received_at}\n`;
 
-  const resp = await fetch("https://api.smtp2go.com/v3/email/send", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      api_key: env.SMTP2GO_API_KEY,
-      sender: "rajesh@genwise.in",
-      to: [ENQUIRY_TO],
-      subject: `[genwise.in] Teacher-mentoring enquiry from ${name}`,
-      text_body: body,
-    }),
-  });
-
-  if (!resp.ok) {
-    return Response.json({ ok: false, error: "Mail service error" }, { status: 502 });
+  try {
+    const resp = await fetch("https://api.smtp2go.com/v3/email/send", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        api_key: env.SMTP2GO_API_KEY,
+        sender: MAIL_FROM,
+        to: form.to,
+        subject: form.subject(data),
+        text_body: body,
+      }),
+    });
+    // SMTP2GO returns HTTP 200 with the real outcome in the body, so `resp.ok`
+    // alone does not tell you the mail was sent.
+    const result = await resp.json();
+    if (!resp.ok || !(result?.data?.succeeded > 0)) {
+      console.log(`SMTP2GO failed for ${slug}: ${JSON.stringify(result)}`);
+      if (!env.FORMS_KV) {
+        return Response.json({ ok: false, error: "Mail service error" }, { status: 502 });
+      }
+    }
+  } catch (e) {
+    console.log(`SMTP2GO threw for ${slug}: ${e}`);
+    if (!env.FORMS_KV) {
+      return Response.json({ ok: false, error: "Mail service error" }, { status: 502 });
+    }
   }
+
   return Response.json({ ok: true });
 }
 
@@ -114,8 +188,15 @@ export default {
     // treat /foo and /foo/ as the same path
     const path = url.pathname.replace(/\/+$/, "") || "/";
 
-    if (path === "/api/enquiry" && request.method === "POST") {
-      return handleEnquiry(request, env);
+    if (request.method === "POST") {
+      // canonical: /api/forms/<slug>
+      if (path.startsWith("/api/forms/")) {
+        return handleForm(request, env, path.slice("/api/forms/".length));
+      }
+      // legacy alias — live pages still POST here; keep until they are repointed
+      if (path === "/api/enquiry") {
+        return handleForm(request, env, "teacher-mentoring");
+      }
     }
 
     const target = REDIRECTS[path];
