@@ -94,6 +94,8 @@ const FORMS = {
       ["Email", "email"], ["Phone", "phone"], ["Grade", "grade"],
       ["How did you hear of us", "hear_about"],
       ["Why does your child need Gifted Lab", "why_gifted_lab"],
+      // older tnp365 copies of this form send `subject` instead of the two above
+      ["Subject", "subject"],
     ],
   },
 };
