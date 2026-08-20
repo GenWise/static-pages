@@ -19,6 +19,10 @@
 //   /gtm-coach, /gtm-operations      -> 301 to /tomorrow-makers anchors
 //   anything else                    -> 302 to / (temporary, new site coming)
 //
+// games.genwise.in is served by the same Worker (own route): / -> games.html, the
+// hub fronting RamP's games. Each game itself sits on its own subdomain, on his
+// hosting — we serve only the hub.
+//
 // www.genwise.in is 301'd to the apex. When the new site takes over the domain,
 // delete the genwise.in/* route (or repoint DNS) and trim this back down.
 
@@ -185,6 +189,30 @@ export default {
 
     if (url.hostname === "www.genwise.in") {
       return Response.redirect("https://genwise.in" + url.pathname + url.search, 301);
+    }
+
+    // games.genwise.in — the hub fronting RamP's games. Its own host rather than a
+    // path, because each game lives on his hosting under its own subdomain and the
+    // hub is the only page we serve. GitHub Pages can't take this domain (one custom
+    // domain per repo, and static-pages already serves from genwise.github.io).
+    if (url.hostname === "games.genwise.in") {
+      const p = url.pathname.replace(/\/+$/, "") || "/";
+      const src = p === "/" ? GHP + "/games.html"
+                : p.startsWith("/images/") ? GHP + p
+                : null;
+      if (!src) return Response.redirect("https://games.genwise.in/", 302);
+
+      const upstream = await fetch(src, { cf: { cacheTtl: 60, cacheEverything: true } });
+      if (!upstream.ok) {
+        return new Response("This page is temporarily unavailable.", {
+          status: 502,
+          headers: { "content-type": "text/plain; charset=utf-8" },
+        });
+      }
+      const headers = new Headers(upstream.headers);
+      headers.delete("x-github-request-id");
+      headers.set("cache-control", "public, max-age=60");
+      return new Response(upstream.body, { status: 200, headers });
     }
 
     // treat /foo and /foo/ as the same path

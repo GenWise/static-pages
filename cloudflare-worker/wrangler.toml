@@ -14,6 +14,7 @@ workers_dev = false
 routes = [
   { pattern = "genwise.in/*", zone_name = "genwise.in" },
   { pattern = "www.genwise.in/*", zone_name = "genwise.in" },
+  { pattern = "games.genwise.in/*", zone_name = "genwise.in" },
 ]
 
 # Form submissions are written here BEFORE the notification email is attempted,

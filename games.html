@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GenWise Games — daily puzzles worth your ten minutes</title>
+<meta name="description" content="Short, sharp daily puzzles — words, maps, history. Free to play, nothing to sign up for. Built by people who like hard questions.">
+<meta property="og:title" content="GenWise Games">
+<meta property="og:description" content="Short, sharp daily puzzles — words, maps, history. Free to play.">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --ink: #05202f;
+  --ink-2: #0a2f44;
+  --orange: #ff8d39;
+  --blue: #3399ff;
+  --paper: #f6f4ef;
+  --muted: rgba(246,244,239,.62);
+  --line: rgba(246,244,239,.14);
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: ui-rounded, 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--ink);
+  color: var(--paper);
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+/* moving field of colour behind everything — cheap, GPU-only, no images */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -30vmax;
+  z-index: -1;
+  background:
+    radial-gradient(38vmax 38vmax at 18% 12%, rgba(255,141,57,.30), transparent 62%),
+    radial-gradient(34vmax 34vmax at 84% 24%, rgba(51,153,255,.28), transparent 62%),
+    radial-gradient(40vmax 40vmax at 62% 92%, rgba(126,87,255,.22), transparent 64%);
+  filter: blur(12px);
+  animation: drift 26s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  from { transform: translate3d(-2%, -1%, 0) scale(1); }
+  to   { transform: translate3d(3%, 2%, 0) scale(1.08); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+  * { transition: none !important; }
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap { width: min(1140px, 100% - 2.5rem); margin-inline: auto; }
+
+/* ---------- header ---------- */
+header {
+  padding: 1.4rem 0;
+  position: sticky; top: 0; z-index: 10;
+  backdrop-filter: blur(14px);
+  background: linear-gradient(to bottom, rgba(5,32,47,.88), rgba(5,32,47,.55));
+  border-bottom: 1px solid var(--line);
+}
+.bar { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.bar img { height: 30px; width:auto; display:block; }
+.back {
+  font-size:.9rem; color: var(--muted); letter-spacing:.01em;
+  border:1px solid var(--line); padding:.45rem .9rem; border-radius:999px;
+  transition: color .2s, border-color .2s;
+}
+.back:hover { color: var(--paper); border-color: rgba(246,244,239,.4); }
+
+/* ---------- hero ---------- */
+.hero { padding: clamp(3.5rem, 11vw, 7rem) 0 clamp(2.5rem, 6vw, 4rem); }
+.eyebrow {
+  display:inline-block; font-size:.78rem; font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color: var(--orange);
+  border:1px solid rgba(255,141,57,.42); border-radius:999px; padding:.4rem .95rem;
+  margin-bottom:1.6rem;
+}
+h1 {
+  font-size: clamp(2.6rem, 8.5vw, 5.4rem);
+  font-weight: 800; line-height: 1.02; letter-spacing: -.03em;
+  max-width: 15ch;
+}
+h1 em {
+  font-style: normal;
+  background: linear-gradient(100deg, var(--orange), #ffd08a 45%, var(--blue));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero p {
+  margin-top: 1.5rem; max-width: 46ch;
+  font-size: clamp(1.05rem, 2.4vw, 1.3rem); color: var(--muted);
+}
+.facts { margin-top:2rem; display:flex; flex-wrap:wrap; gap:.6rem; }
+.fact {
+  font-size:.85rem; font-weight:600; color: var(--paper);
+  background: rgba(246,244,239,.09); border:1px solid var(--line);
+  padding:.5rem 1rem; border-radius:999px;
+}
+
+/* ---------- game cards ---------- */
+.games {
+  display:grid; gap:1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
+  padding-bottom: 1rem;
+}
+.card {
+  position:relative; display:flex; flex-direction:column;
+  min-height: 340px; padding: 1.9rem 1.7rem 1.6rem;
+  border-radius: 26px; overflow:hidden; isolation:isolate;
+  background: rgba(255,255,255,.055);
+  border:1px solid var(--line);
+  transition: transform .28s cubic-bezier(.2,.9,.3,1.2), border-color .28s, box-shadow .28s;
+}
+.card::before {
+  content:""; position:absolute; inset:0; z-index:-1; opacity:.9;
+  background: var(--tint);
+  transition: opacity .28s, transform .5s ease;
+}
+.card:hover, .card:focus-visible {
+  transform: translateY(-8px);
+  border-color: rgba(246,244,239,.34);
+  box-shadow: 0 24px 60px -22px rgba(0,0,0,.75);
+}
+.card:hover::before { transform: scale(1.12); opacity:1; }
+
+/* a big translucent glyph, so each game reads as itself at a glance */
+.glyph {
+  position:absolute; right:-.4rem; bottom:-2.6rem; z-index:-1;
+  font-size: 11rem; line-height:1; opacity:.16; pointer-events:none;
+  transition: transform .5s cubic-bezier(.2,.9,.3,1.2), opacity .3s;
+}
+.card:hover .glyph { transform: rotate(-8deg) scale(1.06); opacity:.24; }
+
+.card h2 {
+  font-size: clamp(1.75rem, 4vw, 2.1rem); font-weight:800; letter-spacing:-.02em;
+}
+.card .blurb { margin-top:.85rem; font-size:1rem; color: rgba(255,255,255,.86); }
+.chips { margin-top:auto; padding-top:1.6rem; display:flex; flex-wrap:wrap; gap:.45rem; }
+.chip {
+  font-size:.76rem; font-weight:700; letter-spacing:.03em;
+  padding:.35rem .75rem; border-radius:999px;
+  background: rgba(0,0,0,.28); border:1px solid rgba(255,255,255,.18);
+}
+.play {
+  margin-top:1.2rem; display:inline-flex; align-items:center; gap:.5rem;
+  font-weight:800; font-size:1.02rem;
+}
+.play span { transition: transform .25s; }
+.card:hover .play span { transform: translateX(6px); }
+
+/* stretch the link over the whole card so the entire tile is the target */
+.card > a.cover { position:absolute; inset:0; z-index:1; }
+
+.card.soon { min-height: 260px; opacity:.75; }
+.card.soon:hover { transform:none; box-shadow:none; border-color: var(--line); }
+.card.soon .blurb { color: var(--muted); }
+
+/* ---------- footer ---------- */
+footer {
+  margin-top: clamp(3rem, 8vw, 5rem); padding: 2.5rem 0 3.5rem;
+  border-top:1px solid var(--line); color: var(--muted); font-size:.92rem;
+}
+footer strong { color: var(--paper); font-weight:700; }
+footer p + p { margin-top:.7rem; }
+footer a { border-bottom:1px solid rgba(246,244,239,.3); }
+footer a:hover { color: var(--paper); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a href="https://genwise.in/" aria-label="GenWise home">
+      <img src="https://genwise.in/images/brand/genwise-logo-reversed.png" alt="GenWise">
+    </a>
+    <a class="back" href="https://genwise.in/">genwise.in &rarr;</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <span class="eyebrow">GenWise Games</span>
+    <h1>Ten minutes. <em>One good puzzle.</em></h1>
+    <p>Words, maps, history — a fresh challenge every day. Play in a browser, on any
+       phone or laptop. No app, no sign-up, no ads.</p>
+    <div class="facts">
+      <span class="fact">Free to play</span>
+      <span class="fact">New puzzle daily</span>
+      <span class="fact">Nothing to install</span>
+    </div>
+  </section>
+
+  <section class="games" aria-label="Games">
+
+    <article class="card" style="--tint: linear-gradient(150deg, #1d3f8a 0%, #2f6fd0 55%, #17a3a3 100%)">
+      <a class="cover" href="https://borderline.genwise.in" aria-label="Play Borderline"></a>
+      <span class="glyph" aria-hidden="true">🗺️</span>
+      <h2>Borderline</h2>
+      <p class="blurb">Can you name the mystery countries before the clock runs out?
+        A new map challenge every day — five questions, getting trickier as you go —
+        or practise at your own pace and explore the world one border at a time.</p>
+      <div class="chips">
+        <span class="chip">Ages 10–14</span>
+        <span class="chip">~3 min a round</span>
+        <span class="chip">Geography</span>
+      </div>
+      <p class="play">Play Borderline <span aria-hidden="true">&rarr;</span></p>
+    </article>
+
+    <article class="card" style="--tint: linear-gradient(150deg, #7a2d86 0%, #c2455f 55%, #ff8d39 100%)">
+      <a class="cover" href="https://cluechain.genwise.in" aria-label="Play ClueChain"></a>
+      <span class="glyph" aria-hidden="true">🔤</span>
+      <h2>ClueChain</h2>
+      <p class="blurb">A daily word puzzle hidden inside real writing. Decode the clues,
+        guess the hidden words, chase a perfect 100. For anyone who likes English and
+        collects good words.</p>
+      <div class="chips">
+        <span class="chip">Class 7 and up</span>
+        <span class="chip">~10 min a round</span>
+        <span class="chip">Words</span>
+      </div>
+      <p class="play">Play ClueChain <span aria-hidden="true">&rarr;</span></p>
+    </article>
+
+    <article class="card soon" style="--tint: linear-gradient(150deg, #1c3b4a 0%, #274b5e 100%)">
+      <span class="glyph" aria-hidden="true">⏳</span>
+      <h2>More on the way</h2>
+      <p class="blurb">ChronoSense, ChronoLogic and HistoryGolf are being finished now —
+        puzzles about time, sequence and how the past actually fits together.</p>
+      <div class="chips"><span class="chip">Coming soon</span></div>
+    </article>
+
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <p>The games here are made by <strong>Ram Narasimhan</strong>, who builds them because
+     he enjoys a good puzzle. GenWise gives them a home.</p>
+  <p>Free for schools and families to use and share. Something broken, or an idea for a
+     puzzle? Write to <a href="mailto:rajesh@genwise.in">rajesh@genwise.in</a>.</p>
+  <p>&copy; 2026 <a href="https://genwise.in/">GenWise</a></p>
+</footer>
+
+</body>
+</html>
