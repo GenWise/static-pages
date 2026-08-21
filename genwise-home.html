@@ -498,7 +498,7 @@
            peer group that finally matches them. Tell us you're interested and we'll come to
            you first when the 2027 dates and courses are announced.</p>
         <div class="feature-actions">
-          <!-- Scrolls to the real form below; posts to this Worker's /api/interest (D1).
+          <!-- Scrolls to the real form below; posts to /api/forms/gsp-interest (KV).
                Deliberately NOT the Insider Circle link — that page charges ₹20,000 at
                checkout, which is not what "register your interest" should do to someone. -->
           <a href="#register" class="btn-flame">Register your interest</a>
@@ -518,7 +518,7 @@
            are announced. Nothing else — this list is only for the summer program.</p>
       </div>
 
-      <form class="reg-form" method="POST" action="https://genwise-landing.afoaofa.workers.dev/api/interest">
+      <form class="reg-form" method="POST" action="https://genwise.in/api/forms/gsp-interest">
         <div class="f-row">
           <label>Parent's name
             <input name="parent_name" required minlength="2" maxlength="100" autocomplete="name">
@@ -978,7 +978,7 @@
       regBtn.classList.add('busy');
       var data = {};
       new FormData(regForm).forEach(function (v, k) { data[k] = v; });
-      fetch('https://genwise-landing.afoaofa.workers.dev/api/interest', {
+      fetch('https://genwise.in/api/forms/gsp-interest', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(data)

@@ -102,7 +102,39 @@ const FORMS = {
       ["Subject", "subject"],
     ],
   },
+  "gsp-interest": {
+    to: ["rajesh@genwise.in", "eklavya@genwise.in"],
+    subject: (d) => `GSP'27 interest: ${d.parent_name || "Unknown"} (Grade ${d.grade || "?"})`,
+    heading: "New GSP'27 register-interest submission",
+    fields: [
+      ["Parent Name", "parent_name"], ["Email", "email"], ["Phone", "phone"],
+      ["Child's grade", "grade"],
+    ],
+  },
 };
+
+// Eklavya's Worker (which this endpoint replaces for the homepage form) carried
+// an origin allowlist and a per-IP rate limit alongside the honeypot; he asked
+// for both to survive the move (WhatsApp, 19 Aug 2026).
+const ALLOWED_ORIGINS = new Set([
+  "https://genwise.in",
+  "https://www.genwise.in",
+  "https://genwise.github.io",
+]);
+
+const RATE_LIMIT = 5;        // submissions per IP
+const RATE_WINDOW = 600;     // seconds
+
+// Returns true when this IP has already spent its allowance. KV is eventually
+// consistent, so this is a speed bump for bots rather than a hard guarantee.
+async function rateLimited(env, ip) {
+  if (!env.FORMS_KV || !ip) return false;
+  const key = `rl:${ip}`;
+  const n = Number((await env.FORMS_KV.get(key)) || 0);
+  if (n >= RATE_LIMIT) return true;
+  await env.FORMS_KV.put(key, String(n + 1), { expirationTtl: RATE_WINDOW });
+  return false;
+}
 
 // Name lives under different keys per form; accept either.
 const nameOf = (d) => (d.name || d.parent_name || "").trim().slice(0, 200);
@@ -110,6 +142,19 @@ const nameOf = (d) => (d.name || d.parent_name || "").trim().slice(0, 200);
 async function handleForm(request, env, slug) {
   const form = FORMS[slug];
   if (!form) return Response.json({ ok: false, error: "Unknown form" }, { status: 404 });
+
+  // A missing Origin is fine - server-side posts and older browsers send none.
+  const origin = request.headers.get("origin");
+  if (origin && !ALLOWED_ORIGINS.has(origin)) {
+    return Response.json({ ok: false, error: "Forbidden" }, { status: 403 });
+  }
+
+  if (await rateLimited(env, request.headers.get("cf-connecting-ip"))) {
+    return Response.json(
+      { ok: false, error: "Too many submissions - please try again in a few minutes" },
+      { status: 429 }
+    );
+  }
 
   let data;
   try {
