@@ -80,7 +80,9 @@ const MAIL_FROM = "rajesh@genwise.in";
 
 const FORMS = {
   "teacher-mentoring": {
-    to: ["rajesh@genwise.in"],
+    // Vishnu and Sowmya added 2026-08-24: seven Aster Public School teachers
+    // enquired on 23 Aug and only Rajesh saw them, so nobody could follow up.
+    to: ["rajesh@genwise.in", "vishnu@genwise.in", "sowmya@genwise.in"],
     subject: (d) => `[genwise.in] Teacher-mentoring enquiry from ${d.name}`,
     heading: "New enquiry from genwise.in",
     fields: [
