@@ -160,6 +160,17 @@ h1 em {
 .card.soon:hover { transform:none; box-shadow:none; border-color: var(--line); }
 .card.soon .blurb { color: var(--muted); }
 
+/* ---------- row headings ---------- */
+.rowhead {
+  margin: clamp(2rem, 5vw, 3rem) 0 1.1rem;
+  display:flex; align-items:baseline; gap:.9rem; flex-wrap:wrap;
+}
+.rowhead h2 {
+  font-size: clamp(1.3rem, 3.2vw, 1.65rem); font-weight:800; letter-spacing:-.02em;
+}
+.rowhead p { font-size:.95rem; color: var(--muted); }
+.games + .rowhead { margin-top: clamp(2.5rem, 6vw, 3.5rem); }
+
 /* ---------- footer ---------- */
 footer {
   margin-top: clamp(3rem, 8vw, 5rem); padding: 2.5rem 0 3.5rem;
@@ -196,17 +207,17 @@ footer a:hover { color: var(--paper); }
     </div>
   </section>
 
-  <section class="games" aria-label="Games">
+  <section class="games" aria-label="Daily puzzles">
 
     <article class="card" style="--tint: linear-gradient(150deg, #1d3f8a 0%, #2f6fd0 55%, #17a3a3 100%)">
       <a class="cover" href="https://borderline.genwise.in" aria-label="Play Borderline"></a>
       <span class="glyph" aria-hidden="true">🗺️</span>
       <h2>Borderline</h2>
       <p class="blurb">Can you name the mystery countries before the clock runs out?
-        A new map challenge every day — five questions, getting trickier as you go —
+        A new map challenge every day &mdash; five questions, getting trickier as you go &mdash;
         or practise at your own pace and explore the world one border at a time.</p>
       <div class="chips">
-        <span class="chip">Ages 10–14</span>
+        <span class="chip">Ages 10&ndash;14</span>
         <span class="chip">~3 min a round</span>
         <span class="chip">Geography</span>
       </div>
@@ -228,19 +239,27 @@ footer a:hover { color: var(--paper); }
       <p class="play">Play ClueChain <span aria-hidden="true">&rarr;</span></p>
     </article>
 
-    <article class="card" style="--tint: linear-gradient(150deg, #4a2b12 0%, #a9631f 55%, #ffb74a 100%)">
-      <a class="cover" href="https://chronologic.genwise.in" aria-label="Play ChronoLogic"></a>
-      <span class="glyph" aria-hidden="true">⏳</span>
-      <h2>ChronoLogic</h2>
-      <p class="blurb">Two historical figures appear — how far apart did they live?
-        A new five-question challenge every day, drawn from 1,200-odd figures across
-        every era. Easy, medium or expert.</p>
+  </section>
+
+  <div class="rowhead">
+    <h2>History Bar</h2>
+    <p>Five ways into the same idea &mdash; where things sit in time. Start with DatePick and work up.</p>
+  </div>
+
+  <section class="games" aria-label="History Bar">
+
+    <article class="card" style="--tint: linear-gradient(150deg, #123246 0%, #1f6f8b 55%, #58c6d6 100%)">
+      <span class="glyph" aria-hidden="true">🗓️</span>
+      <h2>DatePick</h2>
+      <p class="blurb">Eight moments that changed the world, and eight years they could
+        have happened in. Match each one to the right year &mdash; a fresh set every day,
+        and the easiest way into the history games.</p>
       <div class="chips">
-        <span class="chip">Class 7 and up</span>
+        <span class="chip">Ages 11&ndash;14</span>
         <span class="chip">~5 min a round</span>
-        <span class="chip">History</span>
+        <span class="chip">8 questions</span>
       </div>
-      <p class="play">Play ChronoLogic <span aria-hidden="true">&rarr;</span></p>
+      <p class="play">Opening shortly</p>
     </article>
 
     <article class="card" style="--tint: linear-gradient(150deg, #14351f 0%, #2f7a45 55%, #6fd08a 100%)">
@@ -248,21 +267,64 @@ footer a:hover { color: var(--paper); }
       <span class="glyph" aria-hidden="true">⛳</span>
       <h2>DateGolf</h2>
       <p class="blurb">Five holes, five target years. Pick the event that lands closest
-        to each one — miss by a century and it costs you. Like golf, the lowest score
+        to each one &mdash; miss by a century and it costs you. Like golf, the lowest score
         wins, and a new round drops every day.</p>
       <div class="chips">
-        <span class="chip">Class 7 and up</span>
+        <span class="chip">Ages 11 and up</span>
         <span class="chip">~5 min a round</span>
-        <span class="chip">History</span>
+        <span class="chip">5 holes</span>
       </div>
       <p class="play">Play DateGolf <span aria-hidden="true">&rarr;</span></p>
     </article>
 
+    <article class="card" style="--tint: linear-gradient(150deg, #4a2b12 0%, #a9631f 55%, #ffb74a 100%)">
+      <a class="cover" href="https://chronologic.genwise.in" aria-label="Play ChronoLogic"></a>
+      <span class="glyph" aria-hidden="true">⏳</span>
+      <h2>ChronoLogic</h2>
+      <p class="blurb">Leonardo da Vinci and Abraham Lincoln &mdash; same century, or five
+        centuries apart? Estimate the gap between history&rsquo;s famous figures and rank them
+        on the timeline. Nothing to memorise; you are building a feel for the shape of time.</p>
+      <div class="chips">
+        <span class="chip">Ages 10&ndash;14</span>
+        <span class="chip">~5 min a round</span>
+        <span class="chip">5 questions</span>
+      </div>
+      <p class="play">Play ChronoLogic <span aria-hidden="true">&rarr;</span></p>
+    </article>
+
+    <article class="card" style="--tint: linear-gradient(150deg, #3a1c5c 0%, #6b3fa0 55%, #b98cff 100%)">
+      <span class="glyph" aria-hidden="true">🤝</span>
+      <h2>CoExist</h2>
+      <p class="blurb">Did Shakespeare and Galileo ever share the same world? Did Napoleon
+        and Mozart? Work out which figures lived at the same time and which never crossed
+        paths &mdash; history as overlapping lives, not a list of dates.</p>
+      <div class="chips">
+        <span class="chip">Ages 11&ndash;14</span>
+        <span class="chip">~6 min a round</span>
+        <span class="chip">5 questions</span>
+      </div>
+      <p class="play">Opening shortly</p>
+    </article>
+
+    <article class="card" style="--tint: linear-gradient(150deg, #5c1f1f 0%, #a83b32 55%, #ff9f7a 100%)">
+      <span class="glyph" aria-hidden="true">🏛️</span>
+      <h2>Historia</h2>
+      <p class="blurb">Was Newton alive during the English Civil War? Was Mozart born
+        before or after the American Revolution? Place each figure in time alongside the
+        wars, discoveries and revolutions that shaped their world.</p>
+      <div class="chips">
+        <span class="chip">Ages 12&ndash;14</span>
+        <span class="chip">~8 min a round</span>
+        <span class="chip">5 questions</span>
+      </div>
+      <p class="play">Opening shortly</p>
+    </article>
+
     <article class="card soon" style="--tint: linear-gradient(150deg, #1c3b4a 0%, #274b5e 100%)">
-      <span class="glyph" aria-hidden="true">⛳</span>
-      <h2>More on the way</h2>
-      <p class="blurb">Ram keeps building. New puzzles land here as they are finished —
-        check back, or play today's four.</p>
+      <span class="glyph" aria-hidden="true">📏</span>
+      <h2>Estimation Bar</h2>
+      <p class="blurb">Four new games on guessing well &mdash; how big, how many, how far.
+        Ram is building them now; they land here when they are ready.</p>
       <div class="chips"><span class="chip">Coming soon</span></div>
     </article>
 
