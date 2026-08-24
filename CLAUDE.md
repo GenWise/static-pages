@@ -54,7 +54,7 @@ All paths below are relative to the repo root; run the commands from there.
 
 > ⚠️ **RETIRED — do not use.** genwise.in migrated off WordPress on 2026-08-01 and the
 > subscription is deliberately not being renewed; genwise.in is now served by the
-> Cloudflare Worker (see `cloudflare-worker/`). This snippet is kept for historical
+> Cloudflare Worker (see `GenWise/genwise-worker`). This snippet is kept for historical
 > reference only.
 >
 > The bearer token that used to be hardcoded here was **committed in plaintext to this

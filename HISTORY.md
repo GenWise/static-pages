@@ -164,7 +164,7 @@ is the right link to share.
   so earlier is better."
 
 **Cloudflare Worker (deployed 2026-07-23 ~21:15 IST):**
-- Worker `genwise-tomorrow-makers`, source in `cloudflare-worker/`.
+- Worker `genwise-tomorrow-makers`, source in `GenWise/genwise-worker` (was `cloudflare-worker/` here until 2026-08-24).
 - genwise.in/work-with-us was already taken by the Summer Program hiring page, so this
   page lives at genwise.in/tomorrow-makers instead. Summer Program page untouched.
 - Reverse-proxy, NOT an iframe. This matters: with an iframe the page's OG tags never
