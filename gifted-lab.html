@@ -834,6 +834,87 @@
             color: #991b1b;
             display: block;
         }
+
+        /* Trial payment panel */
+        .pay-panel {
+            background: white;
+            border: 2px solid #ff8d39;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .pay-entry {
+            background: #fff7ed;
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            color: #374151;
+            margin-bottom: 1.5rem;
+        }
+
+        .pay-check {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            font-size: 0.9rem;
+            color: #374151;
+            margin-top: 1.25rem;
+        }
+
+        .pay-check input {
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .pay-amount {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+        }
+
+        .pay-amount .amt {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #063852;
+        }
+
+        .pay-note {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .pay-success {
+            text-align: center;
+        }
+
+        .pay-success h3 {
+            color: #065f46;
+            margin-bottom: 1rem;
+        }
+
+        .pay-success p {
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+
+        .pay-success .ref {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        .hp {
+            position: absolute;
+            left: -9999px;
+        }
     </style>
 </head>
 <body>
@@ -1018,7 +1099,7 @@
                     </div>
                     <div class="info-box-step">
                         <h4>2. Trial one module</h4>
-                        <p>Attend 5 weekends of classes. <a href="#fees" style="color: #ff8d39;">See details</a></p>
+                        <p>Attend 5 weekends of classes. <a href="#start-trial" style="color: #ff8d39;">Pay for a trial</a> &middot; <a href="#fees" style="color: #ff8d39;">See details</a></p>
                     </div>
                     <div class="info-box-step">
                         <h4>3. Join the program</h4>
@@ -1124,8 +1205,104 @@
             </div>
 
             <p class="text-center mt-8">
+                <a href="#start-trial" class="link-arrow">→ Pay for a trial module</a><br>
                 <a href="https://genwise.in/gifted-lab-how-it-works/" class="link-arrow" target="_top">→ Full details on fees, trial, and scholarships</a>
             </p>
+        </div>
+    </section>
+
+
+    <!-- Pay for a trial -->
+    <section class="section section-gray" id="start-trial">
+        <div class="container-sm">
+            <h2 class="text-center mb-4">Start a trial</h2>
+            <p class="text-center mb-12" style="font-size: 1.25rem; color: #374151;">Pay for one 5-week trial module and join at the next entry point. If you continue, the trial fee comes off the annual fee in full.</p>
+
+            <form class="pay-panel" id="pay-form" onsubmit="startTrialPayment(event)">
+                <p class="pay-entry" id="pay-entry">Loading the next entry point&hellip;</p>
+
+                <div class="form-row form-row-2">
+                    <div class="form-group">
+                        <label for="pay-grade">Child's grade *</label>
+                        <select id="pay-grade" name="grade" required onchange="renderTrialAmount()">
+                            <option value="5">Grade 5</option>
+                            <option value="6">Grade 6</option>
+                            <option value="7">Grade 7</option>
+                            <option value="8">Grade 8</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pay-subjects">Trial module *</label>
+                        <select id="pay-subjects" name="subjects" required onchange="renderTrialAmount()">
+                            <option value="both">Math and Science</option>
+                            <option value="math">Math only</option>
+                            <option value="science">Science only</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row form-row-2">
+                    <div class="form-group">
+                        <label for="pay-student">Student's name *</label>
+                        <input type="text" id="pay-student" name="student_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pay-parent">Parent's name *</label>
+                        <input type="text" id="pay-parent" name="parent_name" required>
+                    </div>
+                </div>
+
+                <div class="form-row form-row-2">
+                    <div class="form-group">
+                        <label for="pay-email">Email *</label>
+                        <input type="email" id="pay-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pay-whatsapp">WhatsApp number *</label>
+                        <input type="tel" id="pay-whatsapp" name="whatsapp" required>
+                    </div>
+                </div>
+
+                <div class="form-row form-row-2">
+                    <div class="form-group">
+                        <label for="pay-school">School *</label>
+                        <input type="text" id="pay-school" name="school" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pay-city">City *</label>
+                        <input type="text" id="pay-city" name="city" required>
+                    </div>
+                </div>
+
+                <div class="form-row form-row-2">
+                    <div class="form-group">
+                        <label for="pay-country">Country you live in *</label>
+                        <select id="pay-country" name="country" required onchange="renderTrialAmount()">
+                            <option value="IN">India</option>
+                            <option value="AE">United Arab Emirates</option>
+                            <option value="XX">Rest of the world</option>
+                        </select>
+                    </div>
+                </div>
+
+                <input type="text" class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                <label class="pay-check">
+                    <input type="checkbox" id="pay-ack" name="credit_ack" required>
+                    <span>I understand that the trial fee is credited in full against the annual fee if we continue, and that it is not refundable once the trial has begun.</span>
+                </label>
+
+                <div class="pay-amount">
+                    <span>5-week trial module</span>
+                    <span class="amt" id="pay-amount">&mdash;</span>
+                </div>
+
+                <button type="submit" class="btn btn-primary form-submit" id="pay-btn" disabled>Pay now</button>
+                <p class="pay-note">Fees are inclusive of GST. Payment opens in a secure Razorpay window over this page &mdash; you stay here.</p>
+                <div class="form-message" id="pay-message"></div>
+            </form>
+
+            <p class="text-center mt-8" style="color: #374151;">Grades 5&ndash;8 only. Not sure yet? <a href="#express-interest" style="color: #ff8d39;">Talk to us first</a>.</p>
         </div>
     </section>
 
@@ -1244,6 +1421,7 @@
         </div>
     </section>
 
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
@@ -1324,6 +1502,140 @@
                 submitBtn.textContent = 'Express Interest';
             }
         }
+
+        // ---- Gifted Lab trial payment ------------------------------------
+        // The panel never decides what a trial costs: it quotes the Worker's
+        // price list, and the Worker prices the order again before Razorpay
+        // sees it. See genwise-worker/worker.js, "Gifted Lab trial payments".
+
+        let trialCtx = null;
+
+        function trialMoney(currency, amount) {
+            return new Intl.NumberFormat(currency === 'INR' ? 'en-IN' : 'en-US', {
+                style: 'currency', currency: currency, maximumFractionDigits: 0
+            }).format(amount);
+        }
+
+        function trialCurrency() {
+            const c = document.getElementById('pay-country').value;
+            return c === 'IN' ? 'INR' : c === 'AE' ? 'AED' : 'USD';
+        }
+
+        function renderTrialAmount() {
+            if (!trialCtx) return;
+            const grade = document.getElementById('pay-grade').value;
+            const subjects = document.getElementById('pay-subjects').value;
+            const band = (grade === '5' || grade === '6') ? '5-6' : '7-8';
+            const plan = subjects === 'both' ? 'both' : 'single';
+            const amount = trialCtx.prices[band][plan][trialCurrency()];
+            document.getElementById('pay-amount').textContent = trialMoney(trialCurrency(), amount);
+        }
+
+        async function initTrialPanel() {
+            const entry = document.getElementById('pay-entry');
+            try {
+                const resp = await fetch('https://genwise.in/api/gifted-lab/context');
+                trialCtx = await resp.json();
+                if (!trialCtx.ok) throw new Error('context unavailable');
+            } catch (e) {
+                entry.textContent = 'Online payment is unavailable just now — please email gifted-lab@genwise.in.';
+                return;
+            }
+
+            // Cloudflare's country guess only pre-selects the dropdown; the
+            // parent's own answer is what we price on.
+            document.getElementById('pay-country').value = trialCtx.country;
+
+            if (trialCtx.module_start) {
+                const d = new Date(trialCtx.module_start + 'T00:00:00');
+                entry.innerHTML = '<strong>Next module starts ' +
+                    d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) +
+                    '.</strong> Five weekends of classes.';
+                document.getElementById('pay-btn').disabled = false;
+            } else {
+                entry.textContent = 'No entry point is open at the moment — please email gifted-lab@genwise.in.';
+            }
+            renderTrialAmount();
+        }
+
+        async function startTrialPayment(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('pay-form');
+            const btn = document.getElementById('pay-btn');
+            const messageDiv = document.getElementById('pay-message');
+
+            messageDiv.className = 'form-message';
+            btn.disabled = true;
+            btn.textContent = 'Opening payment…';
+
+            const fail = (msg) => {
+                messageDiv.textContent = msg;
+                messageDiv.className = 'form-message error';
+                btn.disabled = false;
+                btn.textContent = 'Pay now';
+            };
+
+            if (typeof Razorpay === 'undefined') {
+                fail('The payment window could not load. Please refresh, or email gifted-lab@genwise.in.');
+                return;
+            }
+
+            let order;
+            try {
+                const resp = await fetch('https://genwise.in/api/gifted-lab/order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        student_name: form.student_name.value,
+                        parent_name: form.parent_name.value,
+                        email: form.email.value,
+                        whatsapp: form.whatsapp.value,
+                        school: form.school.value,
+                        city: form.city.value,
+                        country: form.country.value,
+                        grade: form.grade.value,
+                        subjects: form.subjects.value,
+                        credit_ack: form.credit_ack.checked,
+                        website: form.website.value
+                    })
+                });
+                order = await resp.json();
+                if (!resp.ok || !order.ok) throw new Error(order.error || 'Could not start the payment');
+            } catch (error) {
+                fail(error.message + '. If this keeps happening, email gifted-lab@genwise.in.');
+                return;
+            }
+
+            const rzp = new Razorpay({
+                key: order.key_id,
+                order_id: order.order_id,
+                amount: order.amount,
+                currency: order.currency,
+                name: 'GenWise Gifted Lab',
+                description: '5-week trial module',
+                prefill: order.prefill,
+                theme: { color: '#ff8d39' },
+                modal: {
+                    ondismiss: function () {
+                        btn.disabled = false;
+                        btn.textContent = 'Pay now';
+                    }
+                },
+                handler: function (response) {
+                    form.innerHTML =
+                        '<div class="pay-success">' +
+                        '<h3>You\u2019re in.</h3>' +
+                        '<p>Thank you for registering for a trial of GenWise Gifted Lab. ' +
+                        'We will contact you shortly via email and WhatsApp with enrolment details.</p>' +
+                        '<p class="ref">Payment reference: ' + response.razorpay_payment_id + '</p>' +
+                        '</div>';
+                }
+            });
+            rzp.open();
+        }
+
+        document.addEventListener('DOMContentLoaded', initTrialPanel);
     </script>
 </body>
 </html>
