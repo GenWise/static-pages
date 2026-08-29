@@ -1597,7 +1597,11 @@
                         grade: form.grade.value,
                         subjects: form.subjects.value,
                         credit_ack: form.credit_ack.checked,
-                        website: form.website.value
+                        website: form.website.value,
+                        // ?paytest=<token> prices the order at ₹5 so we can prove
+                        // the confirmation email without paying a real fee. Only
+                        // the Worker's secret makes it count; absent, it is ignored.
+                        test_token: new URLSearchParams(location.search).get('paytest') || ''
                     })
                 });
                 order = await resp.json();
