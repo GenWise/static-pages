@@ -916,6 +916,27 @@
             left: -9999px;
         }
 
+        /* A single quote set beside the claim it evidences, rather than
+           stacked with the others in the testimonial strip. */
+        .pull-quote {
+            border-left: 4px solid #ff8d39;
+            padding: 0.25rem 0 0.25rem 1.5rem;
+            margin: 0 0 2rem;
+        }
+
+        .pull-quote blockquote {
+            font-style: italic;
+            color: #374151;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .pull-quote cite {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
         /* Separates the "or talk to us first" path from the payment panel
            above it, so the second form does not read as part of checkout. */
         .path-divider {
@@ -1004,7 +1025,7 @@
             <a href="#express-interest" class="btn btn-primary">Express Interest</a>
 
             <p class="hero-note">
-                For students working in the top 10% of their class. An ASSET Talent Search score is welcome, not required. Next entry: <strong class="next-entry">9 October 2026</strong>
+                For students in roughly the top 10% of their class, or the top 10% on the Ei-ASSET Talent Search. No test score required. Next entry: <strong class="next-entry">9 October 2026</strong>
             </p>
         </div>
     </section>
@@ -1013,10 +1034,10 @@
     <section class="section section-white">
         <div class="container text-center">
             <p class="trust-text">
-                GenWise is the leader in gifted education in India. Every year since 2016, our team has run rigorous programmes for gifted learners with world-class mentors.
+                Since 2016, GenWise has worked with advanced learners from more than 800 schools across India and overseas. Our work began with Duke University's Talent Identification Program in India and with Educational Initiatives, the makers of ASSET.
             </p>
 
-            <h3 class="trust-heading">Trusted by families from leading schools across India and the UAE:</h3>
+            <h3 class="trust-heading">Students have joined Gifted Lab from schools including:</h3>
 
             <div class="schools-grid">
                 <div class="school-item">
@@ -1072,14 +1093,6 @@
                     <cite>— Adithya, Grade 8, Sri Kumarans, Bengaluru</cite>
                 </div>
                 <div class="testimonial-card">
-                    <blockquote>"I learned the importance of asking small questions that can lead you to a bigger realisation — and that you can solve difficult problems using very simple concepts."</blockquote>
-                    <cite>— Prisha, Kunskapsskolan, Gurgaon</cite>
-                </div>
-                <div class="testimonial-card">
-                    <blockquote>"Sukanya ma'am is different from all the other teachers I've had. I've understood concepts I haven't been able to in the past because of her teaching style."</blockquote>
-                    <cite>— Ridhi, Deens Academy, Bengaluru</cite>
-                </div>
-                <div class="testimonial-card">
                     <blockquote>"I've seen him getting disconnected with other classes after the class is over, but here it was very much engaging even after the class."</blockquote>
                     <cite>— Parent of a Grade 7 student, GEMS Modern Academy, Dubai</cite>
                 </div>
@@ -1107,7 +1120,7 @@
                     <li><strong>Integrated Science</strong> (Physics, Chemistry, Biology) and <strong>Mathematics</strong> beyond the school syllabus - starting from fundamentals and extending to advanced applications and reasoning.</li>
                     <li><strong>30 weeks</strong> across the academic year, organised into six 5-week modules</li>
                     <li><strong>Small cohorts</strong> of 10–20 students, meeting week after week with the same mentor and the same peers</li>
-                    <li><strong>Open to the top 10%:</strong> students working in the top 10% of their class, or in the top 10% on the ASSET Talent Search. No test score is required — we ask parents to judge honestly.</li>
+                    <li><strong>Open to the top 10%:</strong> students working at roughly the top 10% of their class, or scoring in the top 10% on the Ei-ASSET Talent Search run by Educational Initiatives. A test score is not required — sustained school performance is enough, and the five-week trial helps everyone judge fit.</li>
                     <li><strong>Discussion-based classes:</strong> Students think, argue, explain—they aren't passive listeners</li>
                     <li><strong>Expert mentors:</strong> PhDs and experienced educators who teach for understanding, not exam prep</li>
                     <li><strong>Depth-first progression:</strong> We begin with core ideas, then extend to harder cases and unfamiliar contexts (that's where the 'advanced' comes from).</li>
@@ -1115,15 +1128,25 @@
 
                 <p>Students can take Science only, Mathematics only, or both.</p>
 
+                <div class="pull-quote">
+                    <blockquote>"Sukanya ma'am is different from all the other teachers I've had. I've understood concepts I haven't been able to in the past because of her teaching style."</blockquote>
+                    <cite>— Ridhi, Deens Academy, Bengaluru</cite>
+                </div>
+
                 <a href="https://genwise.in/gifted-lab-what-students-learn/" class="link-arrow" target="_top">→ See what students learn</a>
             </div>
 
             <!-- What 'advanced' means here -->
             <div class="info-box info-box-blue">
                 <h3>What 'advanced' means here</h3>
-                <p><strong>Not:</strong> "Racing ahead in the school syllabus or coaching-style coverage."</p>
-                <p><strong>Yes:</strong> "Starting from first principles, then extending ideas to advanced cases—derivations, boundary cases, transfer."</p>
-                <p><strong>In practice:</strong> "It can feel slower and more challenging, because the thinking goes deeper."</p>
+                <p><strong>Not:</strong> racing ahead through the school syllabus, or coaching-style coverage.</p>
+                <p><strong>Yes:</strong> starting from first principles, then pushing an idea further — deriving it, testing where it breaks down, and applying it to an unfamiliar problem.</p>
+                <p><strong>In practice:</strong> it can feel slower and more challenging, because the thinking goes deeper.</p>
+
+                <div class="pull-quote mt-8" style="margin-bottom: 0;">
+                    <blockquote>"I learned the importance of asking small questions that can lead you to a bigger realisation — and that you can solve difficult problems using very simple concepts."</blockquote>
+                    <cite>— Prisha, Kunskapsskolan, Gurgaon</cite>
+                </div>
             </div>
 
             <!-- How to get started -->
@@ -1380,7 +1403,7 @@
                         <label for="grade">Child's Current Grade *</label>
                         <select id="grade" name="grade" required>
                             <option value="">Select grade</option>
-                            <option value="4">Grade 4</option>
+                            <option value="4">Grade 4 (join us next year)</option>
                             <option value="5">Grade 5</option>
                             <option value="6">Grade 6</option>
                             <option value="7">Grade 7</option>
@@ -1390,12 +1413,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="hear-about">How did you hear of us? *</label>
-                    <input type="text" id="hear-about" name="hear_about" required>
+                    <label for="hear-about">How did you hear of us?</label>
+                    <input type="text" id="hear-about" name="hear_about">
                 </div>
                 <div class="form-group">
-                    <label for="why-gifted-lab">Why does your child need Gifted Lab? *</label>
-                    <input type="text" id="why-gifted-lab" name="why_gifted_lab" required>
+                    <label for="why-gifted-lab">What makes you think Gifted Lab might suit your child?</label>
+                    <input type="text" id="why-gifted-lab" name="why_gifted_lab">
                 </div>
                 <p style="text-align: center; font-size: 0.9rem; color: #6b7280; margin-top: 1rem;">We'll be in touch by email and WhatsApp within one working day.</p>
                 <button type="submit" class="btn btn-primary form-submit" id="submit-btn">Express Interest</button>
@@ -1441,8 +1464,8 @@
                         <span class="accordion-icon">+</span>
                     </button>
                     <div class="accordion-content">
-                        <p>It can feel slower because we don't skip steps. But that's exactly why it becomes advanced: we take a concept further—to boundary cases, derivations, and transfer across contexts. When we work with these students, we find their fundamentals are often less solid than expected. They can solve problems but struggle to explain why their solution works. They know formulas but can't derive them.</p>
-                        <p>Gifted Lab addresses this gap. The pace may feel slower than coaching—but students tell us they "cover more" because they actually understand. Going deeper is often harder than going faster.</p>
+                        <p>It can feel slower because we don't skip steps. That is exactly what makes it advanced: we take a concept further—deriving it, testing where it breaks down, applying it to an unfamiliar problem.</p>
+                        <p>Being ahead does not always mean every foundation has been explored deeply. Some students solve familiar problems quickly but have had fewer chances to derive an idea, explain why it works, or use it somewhere they haven't seen it before. Gifted Lab gives them that chance. The pace may feel slower than coaching—but students tell us they "cover more" because they actually understand. Going deeper is often harder than going faster.</p>
                     </div>
                 </div>
 
