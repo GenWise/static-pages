@@ -915,6 +915,55 @@
             position: absolute;
             left: -9999px;
         }
+
+        /* A single quote set beside the claim it evidences, rather than
+           stacked with the others in the testimonial strip. */
+        .pull-quote {
+            border-left: 4px solid #ff8d39;
+            padding: 0.25rem 0 0.25rem 1.5rem;
+            margin: 0 0 2rem;
+        }
+
+        .pull-quote blockquote {
+            font-style: italic;
+            color: #374151;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .pull-quote cite {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        /* Separates the "or talk to us first" path from the payment panel
+           above it, so the second form does not read as part of checkout. */
+        .path-divider {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .path-divider hr {
+            border: none;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .path-divider p {
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-top: -0.75rem;
+        }
+
+        .path-divider span {
+            background: #f5f6f7;
+            padding: 0 1rem;
+        }
     </style>
 </head>
 <body>
@@ -963,20 +1012,20 @@
             <h1>Year-round advanced learning for bright students who are ready for more.</h1>
 
             <p class="hero-subtitle">
-                A rigorous online Science and Mathematics programme for curious students in Grades 5–8. Expert mentors. Deep understanding. The challenge bright minds deserve. We start from first principles, then push ideas to their limits—so learning feels clearer and more advanced.
+                A rigorous online Science and Mathematics programme for curious students in Grades 5–8. Expert mentors. Deep understanding. The challenge bright minds deserve. We start from first principles, then push ideas to their limits - so learning feels clearer and more advanced.
             </p>
 
             <div class="hero-quote">
                 <blockquote>
                     "I think I have learnt a lot more in these past five sessions compared to what I could've learnt in half a school year. Learning is one thing and understanding is different... Here I have understood stuff a lot better."
                 </blockquote>
-                <cite>— Grade 8 student, Vasudev C Wadhwa Arya Vidya Mandir, Mumbai</cite>
+                <cite>&ndash; Grade 8 student, Vasudev C Wadhwa Arya Vidya Mandir, Mumbai</cite>
             </div>
 
             <a href="#express-interest" class="btn btn-primary">Express Interest</a>
 
             <p class="hero-note">
-                Selective admission via ASSET Talent Search or equivalent. Next entry: <strong>9 October 2026</strong>
+                For students in roughly the top 10% of their class, or the top 10% on the Ei-ASSET. No test score required. Next entry: <strong class="next-entry">9 October 2026</strong>
             </p>
         </div>
     </section>
@@ -985,10 +1034,10 @@
     <section class="section section-white">
         <div class="container text-center">
             <p class="trust-text">
-                GenWise is the leader in gifted education in India. Every year since 2016, our team has run rigorous programmes for gifted learners with world-class mentors.
+                Since 2016, GenWise has worked with advanced learners from more than 800 schools across India and overseas. Our work began with Duke University's Talent Identification Program in India and with Educational Initiatives, the makers of ASSET.
             </p>
 
-            <h3 class="trust-heading">Trusted by families from leading schools across India and the UAE:</h3>
+            <h3 class="trust-heading">Students have joined Gifted Lab from schools including:</h3>
 
             <div class="schools-grid">
                 <div class="school-item">
@@ -1036,20 +1085,20 @@
         <div class="container">
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <blockquote>"I think I have learnt a lot more in these past five sessions compared to what I could've learnt in half a school year... Here I have understood stuff a lot better."</blockquote>
-                    <cite>— Grade 8 student, Vasudev C Wadhwa Arya Vidya Mandir School, Mumbai</cite>
+                    <blockquote>"I can easily top my class in school. But here, everyone is very intelligent. I felt challenged and that made me interested in the course."</blockquote>
+                    <cite>&ndash; Student, GEMS Modern Academy, Dubai</cite>
                 </div>
                 <div class="testimonial-card">
-                    <blockquote>"The content feels slow-paced compared to school and Olympiad classes... even at a slower pace, we are covering more."</blockquote>
-                    <cite>— Adithya, Grade 7</cite>
-                </div>
-                <div class="testimonial-card">
-                    <blockquote>"Here we learned the formulas, but also learned how to derive them, and why they work... not just memorising things."</blockquote>
-                    <cite>— Advaiy, Grade 8</cite>
+                    <blockquote>"In school, they write points on the board and ask us to copy notes. Here, they ask why this happens - if I change this, how does that change the outcome."</blockquote>
+                    <cite>&ndash; Adithya, Grade 8, Sri Kumarans, Bengaluru</cite>
                 </div>
                 <div class="testimonial-card">
                     <blockquote>"I've seen him getting disconnected with other classes after the class is over, but here it was very much engaging even after the class."</blockquote>
-                    <cite>— Parent of Grade 7, GEMS Modern Academy, Dubai</cite>
+                    <cite>&ndash; Parent of a Grade 7 student, GEMS Modern Academy, Dubai</cite>
+                </div>
+                <div class="testimonial-card">
+                    <blockquote>"Not coaching, not increasing your marks from 90 to 100% - that was never the goal. The goal was to make sure the child understands, and enjoys the real deep understanding."</blockquote>
+                    <cite>&ndash; Parent of a Grade 8 student, Sri Kumarans, Bengaluru</cite>
                 </div>
             </div>
         </div>
@@ -1062,7 +1111,7 @@
 
             <div class="content-prose">
                 <p>
-                    Gifted Lab is GenWise's year-round programme for advanced learners. Most smart students want to go faster. Gifted Lab goes deeper. We start with simple foundations, then extend concepts to advanced cases — so students don't just know, they can explain and apply.
+                    Gifted Lab is GenWise's year-round programme for advanced learners. Most smart students want to go faster. Gifted Lab goes deeper. We start with simple foundations, then extend concepts to advanced cases - so students don't just know, they can explain and apply.
                 </p>
 
                 <h3 class="mb-4">The programme in a nutshell:</h3>
@@ -1070,13 +1119,19 @@
                 <ul>
                     <li><strong>Integrated Science</strong> (Physics, Chemistry, Biology) and <strong>Mathematics</strong> beyond the school syllabus - starting from fundamentals and extending to advanced applications and reasoning.</li>
                     <li><strong>30 weeks</strong> across the academic year, organised into six 5-week modules</li>
-                    <li><strong>Small cohorts</strong> of 20–30 students, selected via ASSET Talent Search, meeting week after week</li>
-                    <li><strong>Discussion-based classes:</strong> Students think, argue, explain—they aren't passive listeners</li>
+                    <li><strong>Small cohorts</strong> of 10–20 students, meeting week after week with the same mentor and the same peers</li>
+                    <li><strong>Open to the top 10%:</strong> students working at roughly the top 10% of their class, or scoring in the top 10% on the Ei-ASSET from Educational Initiatives. A test score is not required - sustained school performance is enough, and the five-week trial helps everyone judge fit.</li>
+                    <li><strong>Discussion-based classes:</strong> Students think, argue, explain - they aren't passive listeners</li>
                     <li><strong>Expert mentors:</strong> PhDs and experienced educators who teach for understanding, not exam prep</li>
                     <li><strong>Depth-first progression:</strong> We begin with core ideas, then extend to harder cases and unfamiliar contexts (that's where the 'advanced' comes from).</li>
                 </ul>
 
                 <p>Students can take Science only, Mathematics only, or both.</p>
+
+                <div class="pull-quote">
+                    <blockquote>"Sukanya ma'am is different from all the other teachers I've had. I've understood concepts I haven't been able to in the past because of her teaching style."</blockquote>
+                    <cite>&ndash; Ridhi, Deens Academy, Bengaluru</cite>
+                </div>
 
                 <a href="https://genwise.in/gifted-lab-what-students-learn/" class="link-arrow" target="_top">→ See what students learn</a>
             </div>
@@ -1084,9 +1139,14 @@
             <!-- What 'advanced' means here -->
             <div class="info-box info-box-blue">
                 <h3>What 'advanced' means here</h3>
-                <p><strong>Not:</strong> "Racing ahead in the school syllabus or coaching-style coverage."</p>
-                <p><strong>Yes:</strong> "Starting from first principles, then extending ideas to advanced cases—derivations, boundary cases, transfer."</p>
-                <p><strong>In practice:</strong> "It can feel slower and more challenging, because the thinking goes deeper."</p>
+                <p><strong>Not:</strong> racing ahead through the school syllabus, or coaching-style coverage.</p>
+                <p><strong>Yes:</strong> starting from first principles, then pushing an idea further - deriving it, testing where it breaks down, and applying it to an unfamiliar problem.</p>
+                <p><strong>In practice:</strong> it can feel slower and more challenging, because the thinking goes deeper.</p>
+
+                <div class="pull-quote mt-8" style="margin-bottom: 0;">
+                    <blockquote>"I learned the importance of asking small questions that can lead you to a bigger realisation - and that you can solve difficult problems using very simple concepts."</blockquote>
+                    <cite>&ndash; Prisha, Kunskapsskolan, Gurgaon</cite>
+                </div>
             </div>
 
             <!-- How to get started -->
@@ -1094,16 +1154,16 @@
                 <h3>How to get started</h3>
                 <div class="info-box-steps">
                     <div class="info-box-step">
-                        <h4>1. <a href="#express-interest" style="color: #ff8d39;">Express your interest</a></h4>
-                        <p>Talk to our team to understand your fit.</p>
+                        <h4>1. <a href="https://giftedworld.org/parent-hours/" style="color: #ff8d39;" target="_blank" rel="noopener">Come to a Parent Hour</a></h4>
+                        <p>A free online session, every second week, where we explain how Gifted Lab works and answer your questions directly. It is the best way to judge fit before you spend anything. Prefer to write to us instead? <a href="#express-interest" style="color: #ff8d39;">Leave your details</a>.</p>
                     </div>
                     <div class="info-box-step">
                         <h4>2. Trial one module</h4>
                         <p>Attend 5 weekends of classes. <a href="#start-trial" style="color: #ff8d39;">Pay for a trial</a> &middot; <a href="#fees" style="color: #ff8d39;">See details</a></p>
                     </div>
                     <div class="info-box-step">
-                        <h4>3. Join the program</h4>
-                        <p>If the trial worked, upgrade to the full program! Next module starts: <strong>9 October 2026</strong></p>
+                        <h4>3. Join the programme</h4>
+                        <p>If the trial worked, continue for the year and the trial fee comes off the annual fee in full. Next module starts: <strong class="next-entry">9 October 2026</strong></p>
                     </div>
                 </div>
             </div>
@@ -1119,7 +1179,7 @@
             <div class="profiles-grid">
                 <div class="profile-card">
                     <h3>The Coaster</h3>
-                    <p>Finishes classwork early. Gets bored. Tests are fine, so everyone says 'They're doing well.' But you sense they're not pushing to their full potential—and they haven't learned how to struggle productively.</p>
+                    <p>Finishes classwork early. Gets bored. Tests are fine, so everyone says 'They're doing well.' But you sense they're not pushing to their full potential - and they haven't learned how to struggle productively.</p>
                 </div>
                 <div class="profile-card">
                     <h3>The Anxious Topper</h3>
@@ -1138,8 +1198,8 @@
             <div class="system-gap">
                 <h3>The System Gap</h3>
                 <p>School moves at the median pace. Tuition adds more of the same. Coaching promises acceleration but optimises for exams, not understanding.</p>
-                <p>The result? Bright students become experts at reproducing answers, not thinking deeply. They may do well through school—then hit a wall later, in Olympiads, university, or any place that rewards genuine understanding.</p>
-                <p><strong>Ages 10–14 are the critical window.</strong> This is when habits form: whether your child learns to coast, to crumble under pressure—or to enjoy being challenged.</p>
+                <p>The result? Bright students become experts at reproducing answers, not thinking deeply. They may do well through school - then hit a wall later, in Olympiads, university, or any place that rewards genuine understanding.</p>
+                <p><strong>Ages 10–14 are the critical window.</strong> This is when habits form: whether your child learns to coast, to crumble under pressure - or to enjoy being challenged.</p>
                 <p>Gifted Lab exists for families who don't want to wait and see which habits stick.</p>
             </div>
         </div>
@@ -1149,7 +1209,7 @@
     <section class="section section-white" id="fees">
         <div class="container-sm">
             <h2 class="text-center mb-4">Programme Fees</h2>
-            <p class="text-center mb-12" style="font-size: 1.25rem; color: #374151;">GenWise Gifted Lab — Full Year Online Enrichment for Gifted Students</p>
+            <p class="text-center mb-12" style="font-size: 1.25rem; color: #374151;">GenWise Gifted Lab - Full Year Online Enrichment for Gifted Students</p>
 
             <div class="table-wrapper">
                 <table class="pricing-table">
@@ -1192,7 +1252,7 @@
 
             <div class="pricing-info">
                 <div class="pricing-info-item">
-                    <p><strong>1-month trial:</strong> New students begin with a trial period as listed above. If you upgrade to the full year program, trial fee adjusts against the annual fee.</p>
+                    <p><strong>1-month trial:</strong> New students begin with a trial module as listed above - five weekends, in one subject or both. If you continue for the year, the trial fee is credited in full against the annual fee. The trial fee is not refundable once the trial has begun.</p>
                 </div>
                 <div class="pricing-info-item">
                     <p><strong>Payment:</strong> All major methods of online payment are accepted. In case of students taking both math and science, fees can be paid in two instalments. For a single subject, fee has to be paid in full upon completion of the trial month.</p>
@@ -1298,19 +1358,24 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary form-submit" id="pay-btn" disabled>Pay now</button>
-                <p class="pay-note">Fees are inclusive of GST. Payment opens in a secure Razorpay window over this page &mdash; you stay here.</p>
+                <p class="pay-note">Fees are inclusive of GST. Payment opens in a secure Razorpay window over this page - you stay here.</p>
                 <div class="form-message" id="pay-message"></div>
             </form>
 
-            <p class="text-center mt-8" style="color: #374151;">Grades 5&ndash;8 only. Not sure yet? <a href="#express-interest" style="color: #ff8d39;">Talk to us first</a>.</p>
+            <p class="text-center mt-8" style="color: #374151;">Grades 5&ndash;8 only. Not ready to pay yet? Come to a <a href="https://giftedworld.org/parent-hours/" style="color: #ff8d39;" target="_blank" rel="noopener">Parent Hour</a> first - it is free.</p>
+        </div>
+
+        <div class="path-divider mt-8">
+            <hr>
+            <p><span>Or</span></p>
         </div>
     </section>
 
     <!-- CTA Block -->
     <section class="cta-section" id="express-interest">
         <div class="cta-content container">
-            <h2>Ready to explore?</h2>
-            <p>Leave your details and we'll call you to discuss your child's fit for the programme and the next entry point.</p>
+            <h2>Not ready to decide?</h2>
+            <p>Leave your details. We'll send you the programme details and an invitation to the next Parent Hour, where you can ask us anything before you commit.</p>
 
             <form class="interest-form" id="interest-form" onsubmit="submitInterestForm(event)">
                 <div class="form-row form-row-2">
@@ -1338,7 +1403,7 @@
                         <label for="grade">Child's Current Grade *</label>
                         <select id="grade" name="grade" required>
                             <option value="">Select grade</option>
-                            <option value="4">Grade 4</option>
+                            <option value="4">Grade 4 (join us next year)</option>
                             <option value="5">Grade 5</option>
                             <option value="6">Grade 6</option>
                             <option value="7">Grade 7</option>
@@ -1348,19 +1413,19 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="hear-about">How did you hear of us? *</label>
-                    <input type="text" id="hear-about" name="hear_about" required>
+                    <label for="hear-about">How did you hear of us?</label>
+                    <input type="text" id="hear-about" name="hear_about">
                 </div>
                 <div class="form-group">
-                    <label for="why-gifted-lab">Why does your child need Gifted Lab? *</label>
-                    <input type="text" id="why-gifted-lab" name="why_gifted_lab" required>
+                    <label for="why-gifted-lab">What makes you think Gifted Lab might suit your child?</label>
+                    <input type="text" id="why-gifted-lab" name="why_gifted_lab">
                 </div>
-                <p style="text-align: center; font-size: 0.9rem; color: #6b7280; margin-top: 1rem;">Our team will get in touch with you over phone within 24 hours.</p>
+                <p style="text-align: center; font-size: 0.9rem; color: #6b7280; margin-top: 1rem;">We'll be in touch by email and WhatsApp within one working day.</p>
                 <button type="submit" class="btn btn-primary form-submit" id="submit-btn">Express Interest</button>
                 <div class="form-message" id="form-message"></div>
             </form>
 
-            <p class="cta-dates"><strong>Next entry:</strong> 9 October 2026</p>
+            <p class="cta-dates"><strong>Next entry:</strong> <span class="next-entry">9 October 2026</span></p>
             <p class="cta-contact">Questions? Email <a href="mailto:gifted-lab@genwise.in">gifted-lab@genwise.in</a></p>
         </div>
     </section>
@@ -1388,8 +1453,8 @@
                         <span class="accordion-icon">+</span>
                     </button>
                     <div class="accordion-content">
-                        <p>We deliberately calibrate workload. Science is 2 hours live per week; Math is 1.5 hours. Add 2–3 hours of independent work. Less time than most sports or music commitments. Enough to stretch the mind, never to burn it out.</p>
-                        <p>Sessions are scheduled on Friday evenings (Science) and Saturdays (Math). Recordings are available for 3 days if your child must miss a session.</p>
+                        <p>We deliberately calibrate workload. Mathematics is 1.5 hours live per week. Science is 1.5 hours for Grades 5–6 and 2 hours for Grades 7–8. Add 2–3 hours of independent work. Less time than most sports or music commitments. Enough to stretch the mind, never to burn it out.</p>
+                        <p>Every session falls on a Friday evening or a weekend, so no school day is affected. Grades 5–6 have Science on Friday evening and Mathematics on Saturday morning; Grades 7–8 have Mathematics on Friday evening and Science on Saturday afternoon. Recordings are available for a week if your child must miss a session.</p>
                     </div>
                 </div>
 
@@ -1399,8 +1464,8 @@
                         <span class="accordion-icon">+</span>
                     </button>
                     <div class="accordion-content">
-                        <p>It can feel slower because we don't skip steps. But that's exactly why it becomes advanced: we take a concept further—to boundary cases, derivations, and transfer across contexts. When we work with these students, we find their fundamentals are often less solid than expected. They can solve problems but struggle to explain why their solution works. They know formulas but can't derive them.</p>
-                        <p>Gifted Lab addresses this gap. The pace may feel slower than coaching—but students tell us they "cover more" because they actually understand. Going deeper is often harder than going faster.</p>
+                        <p>It can feel slower because we don't skip steps. That is exactly what makes it advanced: we take a concept further - deriving it, testing where it breaks down, applying it to an unfamiliar problem.</p>
+                        <p>Being ahead does not always mean every foundation has been explored deeply. Some students solve familiar problems quickly but have had fewer chances to derive an idea, explain why it works, or use it somewhere they haven't seen it before. Gifted Lab gives them that chance. The pace may feel slower than coaching - but students tell us they "cover more" because they actually understand. Going deeper is often harder than going faster.</p>
                     </div>
                 </div>
 
@@ -1510,6 +1575,17 @@
 
         let trialCtx = null;
 
+        // One source for the next entry date. Every <span class="next-entry">
+        // on the page follows the Worker's module_start, so the date is
+        // changed in one place and not in four bits of hand-edited HTML. The
+        // date written into the HTML is the fallback if the fetch fails.
+        function paintNextEntry(ctx) {
+            if (!ctx || !ctx.module_start) return;
+            const d = new Date(ctx.module_start + 'T00:00:00');
+            const text = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+            document.querySelectorAll('.next-entry').forEach(el => { el.textContent = text; });
+        }
+
         function trialMoney(currency, amount) {
             return new Intl.NumberFormat(currency === 'INR' ? 'en-IN' : 'en-US', {
                 style: 'currency', currency: currency, maximumFractionDigits: 0
@@ -1538,9 +1614,11 @@
                 trialCtx = await resp.json();
                 if (!trialCtx.ok) throw new Error('context unavailable');
             } catch (e) {
-                entry.textContent = 'Online payment is unavailable just now — please email gifted-lab@genwise.in.';
+                entry.textContent = 'Online payment is unavailable just now - please email gifted-lab@genwise.in.';
                 return;
             }
+
+            paintNextEntry(trialCtx);
 
             // Cloudflare's country guess only pre-selects the dropdown; the
             // parent's own answer is what we price on.
@@ -1553,7 +1631,7 @@
                     '.</strong> Five weekends of classes.';
                 document.getElementById('pay-btn').disabled = false;
             } else {
-                entry.textContent = 'No entry point is open at the moment — please email gifted-lab@genwise.in.';
+                entry.textContent = 'No entry point is open at the moment - please email gifted-lab@genwise.in.';
             }
             renderTrialAmount();
         }
