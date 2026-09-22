@@ -598,7 +598,13 @@ function startKumaransPayment(e){
     method: 'POST', headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(payload)
   }).then(function(r){ return r.json(); }).then(function(d){
-    if (!d || !d.ok) { throw new Error((d && d.error) || 'Could not start the payment'); }
+    /* The Worker's message says what to go back and fix, so it is shown as it
+       comes. Only a request that never got an answer gets our own wording. */
+    if (!d || !d.ok) {
+      fail((d && d.error) ||
+           'We could not start the payment. Please try again, or write to siddharth@genwise.in.');
+      return;
+    }
     new Razorpay({
       key: d.key_id, order_id: d.order_id, amount: d.amount, currency: d.currency,
       name: 'GenWise Gifted Lab', description: 'Trial module at Sri Kumaran Schools',
@@ -612,9 +618,9 @@ function startKumaransPayment(e){
           '<p class="ref">Payment reference: ' + response.razorpay_payment_id + '</p></div>';
       }
     }).open();
-  }).catch(function(err){
-    fail((err && err.message ? err.message : 'Something went wrong') +
-         '. If this keeps happening, write to siddharth@genwise.in and we will send you a payment link.');
+  }).catch(function(){
+    fail('We could not reach the payment page. Please check your connection and try again ' +
+         '— or write to siddharth@genwise.in and we will send you a payment link.');
   });
 }
 
