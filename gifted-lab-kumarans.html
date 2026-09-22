@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gifted Lab at Sri Kumaran Schools | GenWise</title>
+<meta name="description" content="Advanced Saturday Mathematics and Science on campus at Sri Kumaran Schools, for invited students in Grades 5-8. Starts Saturday 24 October 2026.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;line-height:1.6;color:#1a1a1a;background:#fff}
+h1,h2,h3,h4,h5{color:#063852;font-weight:700;line-height:1.2}
+h1{font-size:2.5rem}h2{font-size:2rem}h3{font-size:1.25rem}
+p{margin-bottom:1rem}
+a{color:#ff8d39}
+.container{max-width:1100px;margin:0 auto;padding:0 1rem}
+.container-sm{max-width:900px;margin:0 auto;padding:0 1rem}
+.section{padding:4rem 0}
+section[id]{scroll-margin-top:76px}
+.section-gray{background:#f5f6f7}
+.text-center{text-align:center}
+.mb-4{margin-bottom:1rem}.mb-8{margin-bottom:2rem}.mb-12{margin-bottom:3rem}
+.mt-8{margin-top:2rem}
+.lead{font-size:1.25rem;color:#374151}
+.muted{color:#6b7280;font-size:.95rem}
+
+/* Nav */
+.nav{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:50;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{font-weight:700;color:#063852;text-decoration:none;font-size:1.05rem}
+.nav-links{display:flex;align-items:center;gap:1.25rem}
+.nav-link{color:#374151;text-decoration:none;font-size:.9rem;font-weight:500}
+.nav-link:hover{color:#ff8d39}
+.nav-cta{background:#ff8d39;color:#063852;text-decoration:none;padding:.5rem 1.1rem;border-radius:8px;font-weight:700;font-size:.9rem}
+
+/* Buttons */
+.btn{display:inline-block;padding:1rem 2rem;font-weight:700;border-radius:8px;transition:all .2s;cursor:pointer;border:none;font-size:1rem;text-decoration:none;text-align:center}
+.btn-primary{background:#ff8d39;color:#063852;box-shadow:0 4px 6px rgba(255,141,57,.3)}
+.btn-primary:hover{background:#e67d30;color:#063852}
+.btn-outline{background:#fff;color:#063852;border:2px solid #063852;font-weight:600}
+.btn-outline:hover{background:#063852;color:#fff}
+.btn-row{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+
+/* Hero */
+.hero{padding:4rem 0 3rem;background:linear-gradient(to bottom,#fff,#f5f6f7)}
+.eyebrow{display:inline-block;background:#fff7ed;color:#c2410c;font-weight:600;font-size:.85rem;letter-spacing:.03em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1.25rem}
+.price-strip{margin-top:1rem;font-size:1.02rem;color:#063852;font-weight:600}
+.price-strip span{color:#6b7280;font-weight:400}
+
+/* At a glance */
+.glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:#e5e7eb;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;margin-top:2.5rem}
+.glance div{background:#fff;padding:1.1rem 1.25rem}
+.glance dt{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;font-weight:600;margin-bottom:.2rem}
+.glance dd{font-weight:600;color:#063852;font-size:1.02rem}
+
+/* Fee cards - no tables, so nothing to swipe sideways */
+.fee-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:1.5rem 0}
+.fee-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:1.5rem}
+.fee-card h3{font-size:1.15rem;margin-bottom:1rem}
+.fee-line{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.6rem 0;border-bottom:1px solid #f0f1f2}
+.fee-line span{font-size:.94rem;color:#374151}
+.fee-line b{color:#063852;font-variant-numeric:tabular-nums;white-space:nowrap}
+.fee-line.dim span,.fee-line.dim b{color:#6b7280;font-weight:400}
+.fee-line.grand{border-bottom:none;border-top:2px solid #063852;margin-top:.4rem;padding-top:.7rem}
+.fee-line.grand span{font-weight:600;color:#063852}
+.fee-line.grand b{font-size:1.02rem}
+.fee-save{margin:.9rem 0 0;font-size:.92rem;color:#065f46;font-weight:600}
+.fee-line .stage{display:inline-block;width:1.35rem;color:#6b7280;font-weight:700}
+
+/* Notices */
+.notice{background:#fff7ed;border:2px solid #ff8d39;border-radius:12px;padding:1.5rem}
+.notice h3{margin-bottom:.6rem;font-size:1.1rem}
+.notice p:last-child{margin-bottom:0}
+.notice-plain{background:#f5f6f7;border:1px solid #e5e7eb;border-radius:10px;padding:1.15rem 1.35rem;font-size:.95rem;color:#374151}
+.notice-plain p:last-child{margin-bottom:0}
+
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:1.5rem}
+.card h3{font-size:1.05rem;margin-bottom:.5rem}
+.card p{font-size:.95rem;color:#374151;margin:0}
+.story{background:#fff;border-left:4px solid #ff8d39;border-radius:0 12px 12px 0;padding:1.5rem 1.75rem;margin-bottom:1.5rem}
+.story h3{font-size:1.05rem;margin-bottom:.6rem}
+.story .watch{margin:.9rem 0 0;font-size:.92rem}
+.mentor{margin-bottom:1.25rem}
+.mentor strong{color:#063852}
+
+/* Pay panel */
+.pay-panel{background:#fff;border:2px solid #ff8d39;border-radius:12px;padding:2rem;max-width:660px;margin:0 auto;text-align:left}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{margin-bottom:1rem}
+label{display:block;font-weight:600;font-size:.9rem;color:#374151;margin-bottom:.35rem}
+input[type=text],input[type=email],input[type=tel],select{width:100%;padding:.7rem .8rem;border:1px solid #d1d5db;border-radius:8px;font-size:1rem;font-family:inherit;background:#fff}
+input:focus,select:focus{outline:2px solid #ff8d39;outline-offset:1px;border-color:#ff8d39}
+.hint{font-size:.85rem;color:#6b7280;margin:.35rem 0 0}
+.subj{border:1px solid #d1d5db;border-radius:8px;padding:.6rem .75rem .75rem;margin-bottom:1rem}
+.subj legend{font-weight:600;font-size:.9rem;color:#374151;padding:0 .35rem}
+.radio{display:flex;align-items:center;gap:.65rem;padding:.55rem .35rem;margin:0;font-weight:400;font-size:.98rem;color:#1a1a1a;cursor:pointer;border-radius:6px}
+.radio:hover{background:#fff7ed}
+.radio input{flex-shrink:0;margin:0}
+.radio b{margin-left:auto;color:#063852;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pay-check{display:flex;gap:.65rem;align-items:flex-start;font-weight:400;font-size:.92rem;color:#374151;margin:1.1rem 0 .5rem}
+.pay-check input{margin-top:.3rem;flex-shrink:0}
+.pay-summary{border-top:1px solid #e5e7eb;margin-top:1.35rem;padding-top:1.1rem}
+.pay-today{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.pay-today strong{color:#063852;font-size:1.05rem}
+.pay-today .amt{font-size:1.7rem;font-weight:700;color:#063852;white-space:nowrap}
+.pay-sub{font-size:.86rem;color:#6b7280;margin:.2rem 0 0}
+.pay-later{background:#fff7ed;border:1px solid #fbcf9d;border-radius:8px;padding:.9rem 1.05rem;margin-top:1rem;font-size:.93rem;color:#374151}
+.pay-later p{margin:0 0 .5rem}
+.pay-later p:last-child{margin-bottom:0}
+.pay-later b{color:#063852}
+.pay-note{font-size:.85rem;color:#6b7280;margin-top:.75rem;margin-bottom:0}
+.form-submit{width:100%;margin-top:1.1rem}
+.hp{position:absolute;left:-9999px}
+.pay-success{text-align:center}
+.pay-success h3{color:#065f46;margin-bottom:1rem}
+.pay-success p{color:#374151;margin-bottom:1rem}
+.pay-success .ref{font-size:.85rem;color:#6b7280}
+
+/* FAQ */
+.accordion{border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;margin-bottom:.75rem;background:#fff}
+.accordion-trigger{width:100%;text-align:left;background:#fff;border:none;padding:1.1rem 1.25rem;font-size:1rem;font-weight:600;color:#063852;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;font-family:inherit}
+.accordion-trigger:hover{background:#f9fafb}
+.accordion-body{padding:0 1.25rem 1.25rem;color:#374151;font-size:.96rem;display:none}
+.accordion.open .accordion-body{display:block}
+.accordion-trigger span{color:#ff8d39;font-size:1.3rem;line-height:1}
+
+/* Module list */
+.modules{border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;background:#fff;margin:1.25rem 0}
+.modules div{display:flex;gap:1rem;padding:.85rem 1.1rem;border-bottom:1px solid #e5e7eb;flex-wrap:wrap}
+.modules div:last-child{border-bottom:none}
+.modules strong{color:#063852;min-width:6.5rem}
+
+/* Sticky mobile pay bar */
+.paybar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e5e7eb;box-shadow:0 -2px 10px rgba(0,0,0,.08);padding:.7rem 1rem;display:none;z-index:60;align-items:center;justify-content:space-between;gap:1rem}
+.paybar strong{color:#063852;font-size:.9rem;line-height:1.3}
+.paybar .btn{padding:.7rem 1.4rem;font-size:.95rem;flex-shrink:0}
+.paybar.hidden{display:none !important}
+
+footer{background:#063852;color:#b9c9d4;padding:2.5rem 0;font-size:.9rem}
+footer a{color:#ff8d39}
+
+@media(max-width:768px){
+ h1{font-size:1.85rem}h2{font-size:1.5rem}
+ .section{padding:2.75rem 0}
+ .nav-links{display:none}
+ .form-row-2{grid-template-columns:1fr}
+ .fee-cards{grid-template-columns:1fr}
+ .pay-panel{padding:1.15rem}
+ .paybar{display:flex}
+ body{padding-bottom:4.75rem}
+ .btn-row .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div style="display:flex;align-items:center;gap:.75rem">
+      <a href="https://genwise.in/" class="nav-link" target="_top" style="color:#ff8d39;font-weight:600;font-size:.8rem">&larr; GenWise</a>
+      <span style="color:#d1d5db">|</span>
+      <a href="https://genwise.in/gifted-lab-kumarans/" class="nav-logo" target="_top">Gifted Lab at Kumarans</a>
+    </div>
+    <div class="nav-links">
+      <a href="#fees" class="nav-link">Fees</a>
+      <a href="#saturdays" class="nav-link">The Saturdays</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="#pay" class="nav-cta">Pay for the trial</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container-sm text-center">
+    <span class="eyebrow">By invitation &middot; Grades 5&ndash;8</span>
+    <h1>Gifted Lab at Sri Kumaran Schools</h1>
+    <p class="lead mb-8">Advanced Mathematics and Science, on campus, on Saturday mornings. For children who are ready to be stretched &mdash; not pushed further ahead, but taken further in.</p>
+    <div class="btn-row">
+      <a href="#pay" class="btn btn-primary">Pay for the trial module</a>
+      <a href="#what" class="btn btn-outline">Read about the programme</a>
+    </div>
+    <p class="price-strip">&#8377;12,500 both subjects &middot; &#8377;7,000 one subject <span>&mdash; the five-session trial module, GST included</span></p>
+
+    <dl class="glance">
+      <div><dt>First session</dt><dd>Saturday 24 October 2026</dd></div>
+      <div><dt>Where</dt><dd>DKS &amp; MLS campuses</dd></div>
+      <div><dt>When</dt><dd>Saturdays, 8:30 AM &ndash; 12 noon</dd></div>
+      <div><dt>This year</dt><dd>3 modules, 15 Saturdays, Oct&ndash;Feb</dd></div>
+      <div><dt>Trial module</dt><dd>&#8377;12,500 both / &#8377;7,000 one</dd></div>
+      <div><dt>Early bird closes</dt><dd>Sunday 4 October 2026</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ================= FEES + EARLY BIRD ================= -->
+<section class="section section-gray" id="fees">
+  <div class="container-sm">
+    <h2 class="text-center mb-4">Fees, and how the trial works</h2>
+    <p class="lead text-center mb-12">Every child starts with the same five-session trial module, at the same price. You decide about the rest of the 2026&ndash;27 programme only after you have seen it.</p>
+
+    <div class="fee-cards">
+      <div class="fee-card">
+        <h3>Both subjects</h3>
+        <div class="fee-line"><span><span class="stage">1.</span>Pay now &mdash; five-session trial module</span><b>&#8377;12,500</b></div>
+        <div class="fee-line"><span><span class="stage">2.</span>If you continue &mdash; balance when the trial is paid by 4 October</span><b>&#8377;21,250</b></div>
+        <div class="fee-line dim"><span><span class="stage"></span>Balance when the trial is paid after 4 October</span><b>&#8377;25,000</b></div>
+        <div class="fee-line grand"><span>Total for all 3 modules &mdash; early / standard</span><b>&#8377;33,750 / &#8377;37,500</b></div>
+        <p class="fee-save">You save &#8377;3,750 by paying the trial by 4 October.</p>
+      </div>
+      <div class="fee-card">
+        <h3>One subject</h3>
+        <div class="fee-line"><span><span class="stage">1.</span>Pay now &mdash; five-session trial module</span><b>&#8377;7,000</b></div>
+        <div class="fee-line"><span><span class="stage">2.</span>If you continue &mdash; balance when the trial is paid by 4 October</span><b>&#8377;11,450</b></div>
+        <div class="fee-line dim"><span><span class="stage"></span>Balance when the trial is paid after 4 October</span><b>&#8377;13,500</b></div>
+        <div class="fee-line grand"><span>Total for all 3 modules &mdash; early / standard</span><b>&#8377;18,450 / &#8377;20,500</b></div>
+        <p class="fee-save">You save &#8377;2,050 by paying the trial by 4 October.</p>
+      </div>
+    </div>
+
+    <p class="muted">The 2026&ndash;27 programme is three modules, October to February. Fees are inclusive of GST. The trial fee counts in full towards the programme, so you never pay it twice, and the balance for both subjects may be paid in two instalments. <strong>If your child leaves at the end of any module, the fee for modules not yet delivered is refunded</strong> &mdash; no reason needed, no notice period.</p>
+
+    <div class="notice mt-8">
+      <h3>What the early bird actually gives you</h3>
+      <p>It does <strong>not</strong> change what you pay today. It changes what you pay later.</p>
+      <p><strong>1. Pay the trial fee by Sunday 4 October 2026.</strong> It is the same &#8377;12,500 or &#8377;7,000 that everyone pays. There is no cheaper trial.</p>
+      <p><strong>2. If you then continue, 10% comes off the three-module fee</strong> &mdash; &#8377;33,750 instead of &#8377;37,500 for both subjects, so the balance after the trial falls from &#8377;25,000 to &#8377;21,250.</p>
+      <p><strong>3. Complete all three modules and you also get 5% off the GenWise residential Gifted Summer Program in 2027</strong> &mdash; a saving of &#8377;5,000 to &#8377;6,500 depending on the track.</p>
+      <p>Paying early costs you nothing extra and commits you to nothing beyond the trial. If you decide after five sessions that the programme is not for your child, you simply stop.</p>
+    </div>
+
+    <p class="text-center mt-8"><strong>Need-based scholarships are available.</strong> If the fee is the only thing standing in the way, write privately to <a href="mailto:siddharth@genwise.in">siddharth@genwise.in</a>. Several families are already on support and no one at the school is told.</p>
+  </div>
+</section>
+
+<!-- ================= PAY ================= -->
+<section class="section" id="pay">
+  <div class="container-sm">
+    <h2 class="text-center mb-4">Enrol your child</h2>
+    <p class="lead text-center mb-8" id="pay-intro">Pay for the trial module. Enrolment for Module 1 closes <strong>Saturday 10 October 2026</strong>. Pay by <strong>Sunday 4 October</strong> to qualify for the discount on the rest of the programme.</p>
+    <p class="text-center mb-12" style="max-width:660px;margin-left:auto;margin-right:auto;color:#374151">Students learn together on campus, with a GenWise mentor teaching live by video and a trained facilitator present in the classroom. Saturdays run from 8:30 AM to noon at Doddakalasandra and Mallasandra.</p>
+
+    <form class="pay-panel" id="pay-form" onsubmit="startKumaransPayment(event)">
+      <div class="form-row-2">
+        <div class="form-group">
+          <label for="pay-campus">Child's current school/campus *</label>
+          <select id="pay-campus" name="campus" required>
+            <option value="">Select&hellip;</option>
+            <option value="DKS">Children's Academy, Doddakalasandra (CBSE)</option>
+            <option value="MLS">Children's Home, Mallasandra (CBSE)</option>
+            <option value="ICSE">Sri Kumarans Public School (ICSE)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="pay-grade">Child's grade *</label>
+          <select id="pay-grade" name="grade" required>
+            <option value="">Select&hellip;</option>
+            <option value="5">Grade 5</option><option value="6">Grade 6</option>
+            <option value="7">Grade 7</option><option value="8">Grade 8</option>
+          </select>
+        </div>
+      </div>
+
+      <fieldset class="subj">
+        <legend>Subjects *</legend>
+        <label class="radio"><input type="radio" name="subjects" value="both" checked onchange="renderAmount()"><span>Mathematics and Science</span><b>&#8377;12,500</b></label>
+        <label class="radio"><input type="radio" name="subjects" value="math" onchange="renderAmount()"><span>Mathematics only</span><b>&#8377;7,000</b></label>
+        <label class="radio"><input type="radio" name="subjects" value="science" onchange="renderAmount()"><span>Science only</span><b>&#8377;7,000</b></label>
+      </fieldset>
+
+      <div class="form-row-2">
+        <div class="form-group"><label for="pay-student">Student's full name *</label><input type="text" id="pay-student" name="student_name" autocomplete="off" required></div>
+        <div class="form-group"><label for="pay-section">Section (optional)</label><input type="text" id="pay-section" name="section" placeholder="e.g. B"></div>
+      </div>
+      <div class="form-row-2">
+        <div class="form-group"><label for="pay-parent">Parent's name *</label><input type="text" id="pay-parent" name="parent_name" autocomplete="name" required></div>
+        <div class="form-group"><label for="pay-whatsapp">WhatsApp number *</label><input type="tel" id="pay-whatsapp" name="whatsapp" autocomplete="tel" required></div>
+      </div>
+      <div class="form-group"><label for="pay-email">Email *</label><input type="email" id="pay-email" name="email" autocomplete="email" required></div>
+      <div class="form-group">
+        <label for="pay-transport">Will your child use school transport on Saturdays? *</label>
+        <select id="pay-transport" name="transport" required>
+          <option value="">Select&hellip;</option>
+          <option value="yes">Yes, both ways</option>
+          <option value="drop">Only the return trip</option>
+          <option value="pickup">Only the morning pickup</option>
+          <option value="no">No, we will drop and collect</option>
+          <option value="unsure">Not sure yet &mdash; please contact me</option>
+        </select>
+        <p class="hint">This helps the school plan transport. Routes and timings will be confirmed separately.</p>
+      </div>
+
+      <input type="text" class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <label class="pay-check">
+        <input type="checkbox" id="pay-ack" name="credit_ack" required>
+        <span>I understand that this payment covers the trial module only. I will decide whether to continue afterwards.</span>
+      </label>
+      <p class="hint" style="margin-bottom:0">The trial fee counts in full towards the programme fee. If you leave at a module boundary, any fees already paid for undelivered modules are refunded.</p>
+
+      <div class="pay-summary" id="pay-summary"></div>
+
+      <button type="submit" class="btn btn-primary form-submit" id="pay-btn">Pay for the trial</button>
+      <p class="pay-note">Fees are inclusive of GST. Payment opens in a secure Razorpay window over this page &mdash; you stay here. You will get a confirmation by email and on WhatsApp within one working day, with the campus, room and Saturday timings.</p>
+      <div id="pay-message"></div>
+    </form>
+
+    <div class="pay-panel" id="pay-closed" style="display:none;border-color:#e5e7eb">
+      <h3 class="mb-4">Enrolment for Module 1 has closed</h3>
+      <p>Module 1 began on 24 October 2026 and is no longer open for new students. Children can join at the start of <strong>Module 2 or Module 3</strong> rather than waiting for next year.</p>
+      <p style="margin-bottom:0">Write to <a href="mailto:siddharth@genwise.in">siddharth@genwise.in</a> or <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2Vo-t0cP9ojQYM5fJSpY1Zj6vD143gy_S6b7QgqiJHzzOB3kL7OV8AQPUk2X2xLcyl1aZGbEeJ" target="_blank" rel="noopener">book a short call</a> and we will tell you when the next module starts and what it costs.</p>
+    </div>
+
+    <p class="text-center mt-8" id="pay-alt">Not ready to pay yet? <a href="https://docs.google.com/forms/d/e/1FAIpQLSePLdi7hTJlasjuE1wN7SqENw6gvL-f414XNPY6XWd0UKz8Ng/viewform?usp=dialog" target="_blank" rel="noopener">Fill the expression-of-interest form</a> and we will write to you.</p>
+  </div>
+</section>
+
+<!-- ================= WHAT IS IT ================= -->
+<section class="section section-gray" id="what">
+  <div class="container-sm">
+    <h2 class="text-center mb-8">What Gifted Lab is</h2>
+    <p class="lead">Gifted Lab is GenWise's programme in Mathematics and Science for advanced learners in Grades 5&ndash;8. At Kumarans it runs on Saturdays, on campus, in separate rooms for Grades 5&ndash;6 and Grades 7&ndash;8. Your child may take Mathematics, Science or both.</p>
+    <p>It is worth being precise about what <em>advanced</em> means here.</p>
+    <div class="cards mb-8">
+      <div class="card"><h3>It does not mean</h3><p>Racing ahead through the school syllabus, or covering Grade 9 material in Grade 7.</p></div>
+      <div class="card"><h3>It means</h3><p>Spending sustained time deriving an idea, testing its limits and applying it in unfamiliar situations.</p></div>
+      <div class="card"><h3>In practice</h3><p>It can feel slower than conventional instruction, and considerably harder. Children may spend a long time on a single question. That is the point.</p></div>
+    </div>
+    <p>A GenWise mentor teaches live by video; a trained facilitator is in the room throughout to run experiments, group work and discussion. Children work mainly with pencil, paper, simple materials and each other &mdash; not individually at screens.</p>
+    <p><strong>There are no examinations, marks or rankings, and no compulsory homework.</strong> Between sessions there is about an hour of independent work per subject, most of it open exploration and much of it away from a screen.</p>
+  </div>
+</section>
+
+<!-- ================= WHAT A SESSION LOOKS LIKE ================= -->
+<section class="section">
+  <div class="container-sm">
+    <h2 class="text-center mb-4">What a session actually looks like</h2>
+    <p class="lead text-center mb-12">Two real Gifted Lab sessions, taught in 2026.</p>
+
+    <div class="story">
+      <h3>Mathematics, Grades 5&ndash;6 &mdash; the number machine</h3>
+      <p>The mentor drew a row of empty boxes and placed five dots in the rightmost one. The rule was simple: wherever two dots sat together, they exploded and became one dot in the box to their left. The children worked out that five dots settled into a pattern reading 1-0-1, then tried ten, thirteen and fifteen.</p>
+      <p>Within thirty minutes the class had moved from calculating examples to finding general rules. One child worked out how to predict, for any number, how many boxes and explosions would be needed, and explained it using powers of two. Another asked what would happen if <em>three</em> dots exploded instead of two. By the end the children had constructed binary and base-three arithmetic for themselves &mdash; and only then did anyone introduce those words.</p>
+      <p><strong>Nobody was given a rule and asked to apply it.</strong> They were given a machine, and the number systems came out of investigating how it behaved.</p>
+      <p class="watch">Watch it: <a href="https://youtu.be/b7cnC2eKuek" target="_blank" rel="noopener">Grades 5&ndash;6 Mathematics &mdash; building a number machine</a> &middot; <a href="https://youtu.be/BgdSAQg-htw" target="_blank" rel="noopener">Grades 7&ndash;8 Mathematics &mdash; passwords to graph theory</a></p>
+    </div>
+
+    <div class="story">
+      <h3>Science, Grades 7&ndash;8 &mdash; watching ice melt</h3>
+      <p>The first class of a module on Heat and Temperature began with students watching ice melt. For half an hour they placed ice cubes on plates, observed carefully, described what they saw and asked questions &mdash; without trying to answer them.</p>
+      <p>By the end they had made dozens of observations and devised experiments of their own. Ice melted faster with the fan on. It melted more slowly on plastic than on steel. The edges of the cube rounded. One student investigated whether pressure made ice melt faster, and found that rubber bands instead cut through the melting cubes.</p>
+      <p><strong>The mentor did not begin with a theory or a lecture.</strong> She helped students separate observation from explanation, turn their questions into investigations, and reason from what they found.</p>
+      <p class="watch">Watch it: <a href="https://youtu.be/2mRzoj636fY" target="_blank" rel="noopener">Grades 5&ndash;6 Science &mdash; the mystery tube</a> &middot; <a href="https://youtu.be/07KsSer0K8s" target="_blank" rel="noopener">Grades 7&ndash;8 Science &mdash; Aristotle to Newton</a></p>
+    </div>
+
+    <blockquote style="border-left:3px solid #ff8d39;padding-left:1.25rem;margin-top:2rem;color:#374151;font-style:italic">
+      &ldquo;The mentality goes from &lsquo;I have to follow great people&rsquo; to &lsquo;I have to question great people, try, find alternatives, find a more efficient way.&rsquo;&rdquo;
+      <cite style="display:block;font-style:normal;font-size:.9rem;color:#6b7280;margin-top:.5rem">&mdash; Adithya, Grade 8, Sri Kumarans, Bengaluru</cite>
+    </blockquote>
+    <p class="text-center mt-8">More than a hundred Kumarans children have taken part in GenWise programmes since 2016. Their work is at <a href="https://kumarans.giftedworld.org/" target="_blank" rel="noopener">kumarans.giftedworld.org</a>.</p>
+  </div>
+</section>
+
+<!-- ================= IS THIS YOUR CHILD ================= -->
+<section class="section section-gray">
+  <div class="container">
+    <h2 class="text-center mb-4">Is this your child?</h2>
+    <p class="lead text-center mb-12">Parents often recognise their child in one or more of these.</p>
+    <div class="cards">
+      <div class="card"><h3>The child who finishes early</h3><p>They do well in tests and are rarely stuck, but seldom have to work near the limits of their ability.</p></div>
+      <div class="card"><h3>The quietly advanced child</h3><p>They read widely, ask unusually sharp questions or study ahead on their own, but do not draw attention to themselves.</p></div>
+      <div class="card"><h3>The self-directed child</h3><p>Already watching science videos and solving puzzles for pleasure, but without a mentor, a coherent sequence, or peers to test ideas against.</p></div>
+    </div>
+    <p class="lead text-center mt-8" style="max-width:720px;margin-left:auto;margin-right:auto">The years between ten and fourteen are when children form lasting habits around challenge &mdash; whether they avoid difficulty because success has always come easily, attach their confidence to marks, or learn that being stuck is an interesting and necessary part of learning.</p>
+  </div>
+</section>
+
+<!-- ================= THE SATURDAYS ================= -->
+<section class="section" id="saturdays">
+  <div class="container-sm">
+    <h2 class="text-center mb-8">The Saturdays at Kumarans</h2>
+    <p><strong>The morning.</strong> Classes run on campus at Mallasandra and Doddakalasandra, on Saturdays the school itself works. The first session is <strong>Saturday 24 October 2026</strong>, the first working Saturday after the Dussehra break. Each subject has a 90-minute session. All participating children attend from <strong>8:30 AM to noon</strong>. Children enrolled in one subject have separate work or activities during the other session.</p>
+    <p><strong>Transport.</strong> Kumarans arranges both morning pickup and return transport for participating students. When the CBSE schools are closed on a Saturday, selected ICSE bus routes are adjusted to bring students to DKS and MLS; when the ICSE schools are closed, selected CBSE routes are adjusted the same way. Because the buses follow the timing of the whole morning, children arrive at 8:30 and leave at noon whether they take one subject or two. The school will confirm routes and timings directly with enrolled families.</p>
+    <p><strong>The calendar.</strong> The 2026&ndash;27 programme is three modules &mdash; fifteen Saturdays from October to February, finishing well before the March examinations. The schedule is aligned with the school's own calendar so sessions do not fall on school examinations. <strong>A child who qualifies later can join at the start of Module 2 or Module 3</strong> rather than waiting a year.</p>
+    <div class="modules">
+      <div><strong>Module 1</strong><span>24 October &ndash; 28 November 2026 <span class="muted">(includes a weekend off for Diwali)</span></span></div>
+      <div><strong>Module 2</strong><span>Two Saturdays in December, three in January 2027</span></div>
+      <div><strong>Module 3</strong><span>Five Saturdays across January and February 2027</span></div>
+    </div>
+    <p class="muted">Exact dates are being settled with each campus principal and will be confirmed to enrolled families.</p>
+  </div>
+</section>
+
+<!-- ================= WHO TEACHES ================= -->
+<section class="section section-gray">
+  <div class="container-sm">
+    <h2 class="text-center mb-4">Meet some of our mentors</h2>
+    <p class="lead text-center mb-4">Gifted Lab mentors are people who have practised their subjects, not only taught them.</p>
+    <p class="muted text-center mb-12">These four illustrate who teaches in Gifted Lab across our programmes. The mentors for each Kumarans cohort will be introduced before the first session.</p>
+    <div class="mentor"><p><strong>Dr Jyothi V Nair</strong> leads the science team at Seed2Sapling Education and holds a PhD in behavioural ecology from the National Centre for Biological Sciences. Her work combines scientific research with inquiry-based teaching across age groups.</p></div>
+    <div class="mentor"><p><strong>Sathvika Krishnan</strong> is a mathematics educator at Seed2Sapling Education with a degree in Mathematics and Education from Azim Premji University. Her work explores how inquiry, creativity and the arts can enrich mathematical learning.</p></div>
+    <div class="mentor"><p><strong>Dr Utpal Chattopadhyay</strong>, senior mentor and course designer at GenWise, has taught advanced Physics at the Indian Statistical Institute, Bengaluru since 2010. He holds a PhD from Stony Brook University and a degree in Physics from IIT Kharagpur, and previously worked at Bell Labs and Motorola.</p></div>
+    <div class="mentor"><p><strong>Sayali Tamane</strong> is an engineer and educator focused on investigative, evidence-based science for young learners. She helps children distinguish observation from assumption, design and test their own investigations, and live productively with uncertainty.</p></div>
+  </div>
+</section>
+
+<!-- ================= HOW PARENTS SEE PROGRESS ================= -->
+<section class="section">
+  <div class="container-sm">
+    <h2 class="text-center mb-8">How you will know it is working</h2>
+    <p>The absence of examinations and grades raises a fair question. Mentors review and respond to the work children do between sessions. <strong>At the end of every module, parents receive a written report</strong> describing how their child reasons, what they have made or investigated, how they respond when a problem does not yield, and how they work with others. It is a specific account of your child's learning rather than a score.</p>
+    <p>For many children the most valuable part of Gifted Lab is being in a room where they are not always the quickest, where being wrong is ordinary, and where other children take unusual questions seriously.</p>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section section-gray" id="faq">
+  <div class="container-sm">
+    <h2 class="text-center mb-12">Questions parents asked</h2>
+
+    <div class="accordion"><button class="accordion-trigger" onclick="toggleAcc(this)">Who is the programme for?<span>+</span></button>
+      <div class="accordion-body"><p>Invited Kumarans students in Grades 5&ndash;8 who scored in the top 10 percentile nationally for their grade on the Ei-ASSET assessment in English, Mathematics <em>or</em> Science, in 2025 or 2026. Qualifying through one subject does not restrict your child to it &mdash; a child who qualified on English may take Mathematics, Science or both.</p><p>If you believe your child qualifies and has not been invited, write to us. The invitation list was built from ASSET 2025 and the 2026 results are still coming in from the campuses; we would rather check than have your child miss out.</p></div></div>
+
+    <div class="accordion"><button class="accordion-trigger" onclick="toggleAcc(this)">How is this different from coaching or tuition?<span>+</span></button>
+      <div class="accordion-body"><p>Gifted Lab focuses on sustained mathematical and scientific inquiry. Children explore fewer topics in greater depth, explain their reasoning and test ideas in unfamiliar situations. Sessions do not follow an examination-preparation syllabus. It is not an accelerated syllabus either, and it will not move your child prematurely into higher-grade material.</p></div></div>
+
+    <div class="accordion"><button class="accordion-trigger" onclick="toggleAcc(this)">Will this add stress to my child's week?<span>+</span></button>
+      <div class="accordion-body"><p>Allow one Saturday morning, inside school hours on a Saturday the school already runs, plus about an hour of optional exploration per subject between sessions. There are no marks, no ranks, no long examinations and no compulsory homework.</p></div></div>
+
+    <div class="accordion"><button class="accordion-trigger" onclick="toggleAcc(this)">What if my child misses a class?<span>+</span></button>
+      <div class="accordion-body"><p>Sessions are recorded so a child who is absent can catch up, and worksheets, slides, articles or links are shared when useful. Children are encouraged to keep their own notes and follow questions that interest them between sessions, but none of that is compulsory homework.</p></div></div>
+
+    <div class="accordion"><button class="accordion-trigger" onclick="toggleAcc(this)">What exactly does the early bird give me?<span>+</span></button>
+      <div class="accordion-body"><p>Two things, and neither of them changes the fee you pay today. Pay the trial fee by <strong>Sunday 4 October 2026</strong> and (1) <strong>10% comes off the fee for the three-module programme</strong> if you continue after the trial &mdash; &#8377;33,750 instead of &#8377;37,500 for both subjects, so the balance falls from &#8377;25,000 to &#8377;21,250; and (2) if your child completes all three modules, you get <strong>5% off the GenWise residential Gifted Summer Program in 2027</strong>.</p><p>Paying early does not commit you to the rest of the programme. If you decide after the five-session trial that it is not right for your child, you simply stop.</p><p>This replaces the earlier offer of 20% off the trial fee. If you were quoted that one, please write to <a href="mailto:siddharth@genwise.in">siddharth@genwise.in</a>.</p></div></div>
+
+    <div class="accordion"><button class="accordion-trigger" onclick="toggleAcc(this)">What if we start and then want to stop?<span>+</span></button>
+      <div class="accordion-body"><p>A child who leaves at the end of any module is refunded pro rata for the modules not yet delivered. No reason is required and there is no notice period. This is specific to the school programme and is the reason we ask every family to treat the first module as a trial.</p></div></div>
+
+    <div class="accordion"><button class="accordion-trigger" onclick="toggleAcc(this)">Can my child join later in the year?<span>+</span></button>
+      <div class="accordion-body"><p>Yes. Children can join at the start of Module 2 or Module 3 rather than waiting for next year. This matters particularly for children who qualify on ASSET 2026 results that are still being finalised at some campuses &mdash; we will onboard them onto the next module that starts.</p></div></div>
+
+    <div class="accordion"><button class="accordion-trigger" onclick="toggleAcc(this)">What if the fee is a problem for us?<span>+</span></button>
+      <div class="accordion-body"><p>Need-based scholarships are available and are decided case by case. Write privately to <a href="mailto:siddharth@genwise.in">siddharth@genwise.in</a>. The school is not told which families are on support.</p></div></div>
+
+    <p class="text-center mt-8">Still have a question? Write to <a href="mailto:siddharth@genwise.in">siddharth@genwise.in</a> or <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2Vo-t0cP9ojQYM5fJSpY1Zj6vD143gy_S6b7QgqiJHzzOB3kL7OV8AQPUk2X2xLcyl1aZGbEeJ" target="_blank" rel="noopener">book a short call</a>. It is better asked now than after the first Saturday.</p>
+  </div>
+</section>
+
+<!-- ================= RESOURCES ================= -->
+<section class="section">
+  <div class="container-sm text-center">
+    <h2 class="mb-8">Look before you decide</h2>
+    <div class="cards" style="text-align:left">
+      <div class="card"><h3>Watch a real class</h3><p>
+        <a href="https://youtu.be/b7cnC2eKuek" target="_blank" rel="noopener">Grades 5&ndash;6 Mathematics &mdash; building a number machine</a><br>
+        <a href="https://youtu.be/2mRzoj636fY" target="_blank" rel="noopener">Grades 5&ndash;6 Science &mdash; the mystery tube</a><br>
+        <a href="https://youtu.be/BgdSAQg-htw" target="_blank" rel="noopener">Grades 7&ndash;8 Mathematics &mdash; passwords to graph theory</a><br>
+        <a href="https://youtu.be/07KsSer0K8s" target="_blank" rel="noopener">Grades 7&ndash;8 Science &mdash; Aristotle to Newton</a></p></div>
+      <div class="card"><h3>Read the academic brochure</h3><p>
+        <a href="https://drive.google.com/file/d/1YQ_AOeJRyKXNtrMQxi3K6u8uExBzzJDq/view" target="_blank" rel="noopener">Grades 5&ndash;6, Mathematics and Science</a><br>
+        <a href="https://drive.google.com/file/d/1fw1OyT9thyDQgKJDWt9iHIgLFrLu-Xxd/view" target="_blank" rel="noopener">Grades 7&ndash;8, Mathematics</a><br>
+        <a href="https://drive.google.com/file/d/1hPqd0Fug4ggVrlhTE4p_je35HfqPM2rx/view" target="_blank" rel="noopener">Grades 7&ndash;8, Science</a></p></div>
+      <div class="card"><h3>From the parent orientation</h3><p>
+        <a href="https://youtu.be/bTP2WwUwXGw" target="_blank" rel="noopener">Recording of the 12 September session</a><br>
+        <span class="muted">Recorded before the revised dates and fees. Please use the dates and fees on this page.</span></p></div>
+    </div>
+    <div class="btn-row mt-8"><a href="#pay" class="btn btn-primary">Pay for the trial module</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container-sm">
+    <p style="margin-bottom:.5rem"><strong style="color:#fff">GenWise Gifted Lab at Sri Kumaran Schools</strong></p>
+    <p style="margin-bottom:.5rem">Questions: <a href="mailto:siddharth@genwise.in">siddharth@genwise.in</a> &middot; WhatsApp +91 87627 03967</p>
+    <p style="margin-bottom:0">Siddharth Bharath (PhD), Director of Online Programs &middot; <a href="https://genwise.in/gifted-lab/" target="_top">Gifted Lab</a> &middot; <a href="https://giftedworld.org" target="_blank" rel="noopener">Gifted World</a></p>
+  </div>
+</footer>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<div class="paybar" id="paybar">
+  <strong>Trial module<br>&#8377;12,500 both &middot; &#8377;7,000 one</strong>
+  <a href="#pay" class="btn btn-primary">Enrol</a>
+</div>
+
+<script>
+var PLANS = {
+  both:    { label: 'Both subjects',    today: 12500, balEarly: 21250, balStd: 25000, totEarly: 33750, totStd: 37500, save: 3750 },
+  math:    { label: 'Mathematics only', today:  7000, balEarly: 11450, balStd: 13500, totEarly: 18450, totStd: 20500, save: 2050 },
+  science: { label: 'Science only',     today:  7000, balEarly: 11450, balStd: 13500, totEarly: 18450, totStd: 20500, save: 2050 }
+};
+var EARLY_BIRD_END = new Date('2026-10-04T23:59:59+05:30');
+var ENROLMENT_END  = new Date('2026-10-10T23:59:59+05:30');
+
+function fmt(n){ return '\u20B9' + n.toLocaleString('en-IN'); }
+function isEarlyBird(){ return new Date() <= EARLY_BIRD_END; }
+
+function subjVal(){
+  var r = document.getElementsByName('subjects');
+  for (var i = 0; i < r.length; i++) { if (r[i].checked) return r[i].value; }
+  return 'both';
+}
+
+function renderAmount(){
+  var p = PLANS[subjVal()];
+  var eb = isEarlyBird();
+  var later;
+  if (eb) {
+    later =
+      '<p><b>Pay by 4 October to save ' + fmt(p.save) + ' if you continue.</b></p>' +
+      '<p>After the trial you would pay ' + fmt(p.balEarly) + ' instead of ' + fmt(p.balStd) +
+      ' for the remaining two modules. Total for all three modules: ' + fmt(p.totEarly) +
+      ', including today\u2019s payment.</p>' +
+      '<p>Families who pay by 4 October and whose child completes all three modules also receive 5% off the 2027 residential Gifted Summer Program.</p>' +
+      '<p>You decide whether to continue after the trial.</p>';
+  } else {
+    later =
+      '<p><b>The early-bird deadline has passed.</b></p>' +
+      '<p>If you continue after the trial, the balance for the remaining two modules is ' + fmt(p.balStd) +
+      '. Total for all three modules: ' + fmt(p.totStd) + ', including today\u2019s payment.</p>' +
+      '<p>You decide whether to continue after the trial.</p>';
+  }
+  document.getElementById('pay-summary').innerHTML =
+    '<div class="pay-today"><strong>Pay today</strong><span class="amt">' + fmt(p.today) + '</span></div>' +
+    '<p class="pay-sub">Five-session trial module &middot; ' + p.label + ' &middot; GST included</p>' +
+    '<div class="pay-later">' + later + '</div>';
+  document.getElementById('pay-btn').textContent = 'Pay ' + fmt(p.today) + ' for the trial';
+}
+
+function renderDeadlines(){
+  if (!isEarlyBird()) {
+    document.getElementById('pay-intro').innerHTML =
+      'Pay for the trial module. Enrolment for Module 1 closes <strong>Saturday 10 October 2026</strong>. ' +
+      'The early-bird deadline of 4 October has passed.';
+  }
+  if (new Date() > ENROLMENT_END) {
+    document.getElementById('pay-form').style.display = 'none';
+    document.getElementById('pay-intro').style.display = 'none';
+    document.getElementById('pay-alt').style.display = 'none';
+    document.getElementById('pay-closed').style.display = 'block';
+    var bar = document.getElementById('paybar');
+    if (bar) { bar.classList.add('hidden'); }
+  }
+}
+
+/* Hide the sticky bar while the form itself is on screen. */
+function watchPayBar(){
+  var bar = document.getElementById('paybar');
+  var form = document.getElementById('pay-form');
+  if (!bar || !form || !('IntersectionObserver' in window)) { return; }
+  new IntersectionObserver(function(entries){
+    bar.style.visibility = entries[0].isIntersecting ? 'hidden' : 'visible';
+  }, { threshold: 0 }).observe(form);
+}
+
+function toggleAcc(btn){
+  var acc = btn.parentElement;
+  acc.classList.toggle('open');
+  btn.querySelector('span').textContent = acc.classList.contains('open') ? '\u2212' : '+';
+}
+
+/* Razorpay handoff - mirrors startTrialPayment() on /gifted-lab. The Worker
+   prices the order; nothing here decides what is paid. */
+function startKumaransPayment(e){
+  e.preventDefault();
+  var f = e.target;
+  var subjects = subjVal();
+  var btn = document.getElementById('pay-btn');
+  var original = btn.textContent;
+  var msg = document.getElementById('pay-message');
+
+  function fail(text){
+    msg.innerHTML = '<p style="color:#b91c1c">' + text + '</p>';
+    btn.disabled = false; btn.textContent = original;
+  }
+
+  msg.innerHTML = '';
+  btn.disabled = true; btn.textContent = 'Opening payment\u2026';
+
+  if (typeof Razorpay === 'undefined') {
+    fail('The payment window could not load. Please refresh, or write to siddharth@genwise.in.');
+    return;
+  }
+
+  var payload = {
+    campus: f.campus.value, grade: f.grade.value, subjects: subjects,
+    student_name: f.student_name.value, section: f.section.value,
+    parent_name: f.parent_name.value, email: f.email.value,
+    whatsapp: f.whatsapp.value, transport: f.transport.value,
+    credit_ack: f.credit_ack.checked, website: f.website.value,
+    /* ?paytest=<token> prices the order at \u20B95 so the confirmation email can be
+       proved without a real fee. Only the Worker's secret makes it count. */
+    test_token: new URLSearchParams(location.search).get('paytest') || ''
+  };
+
+  fetch('https://genwise.in/api/gifted-lab-kumarans/order', {
+    method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(payload)
+  }).then(function(r){ return r.json(); }).then(function(d){
+    if (!d || !d.ok) { throw new Error((d && d.error) || 'Could not start the payment'); }
+    new Razorpay({
+      key: d.key_id, order_id: d.order_id, amount: d.amount, currency: d.currency,
+      name: 'GenWise Gifted Lab', description: 'Trial module at Sri Kumaran Schools',
+      prefill: d.prefill, theme: { color: '#ff8d39' },
+      modal: { ondismiss: function(){ btn.disabled = false; btn.textContent = original; } },
+      handler: function(response){
+        f.innerHTML =
+          '<div class="pay-success"><h3>You\u2019re in.</h3>' +
+          '<p>Thank you for registering for the Gifted Lab trial module at Sri Kumaran Schools. ' +
+          'We will contact you by email and WhatsApp with the campus, room and Saturday timings.</p>' +
+          '<p class="ref">Payment reference: ' + response.razorpay_payment_id + '</p></div>';
+      }
+    }).open();
+  }).catch(function(err){
+    fail((err && err.message ? err.message : 'Something went wrong') +
+         '. If this keeps happening, write to siddharth@genwise.in and we will send you a payment link.');
+  });
+}
+
+
+renderAmount(); renderDeadlines(); watchPayBar();
+</script>
+</body>
+</html>
