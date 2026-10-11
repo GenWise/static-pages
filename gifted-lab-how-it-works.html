@@ -577,6 +577,11 @@
         .mb-12 { margin-bottom: 3rem; }
         .mt-6 { margin-top: 1.5rem; }
         .mt-8 { margin-top: 2rem; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .video-card h4 { margin: 0.75rem 0 0.25rem; }
+        .video-card p { margin: 0; color: #4b5563; font-size: 0.95rem; }
+        .video-frame { position: relative; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #000; }
+        .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     </style>
 </head>
 <body>
@@ -594,7 +599,7 @@
                 <a href="https://genwise.in/gifted-lab-what-students-learn/" class="nav-link" target="_top">What Students Learn</a>
                 <a href="https://genwise.in/gifted-lab-how-it-works/" class="nav-link active" target="_top">How It Works</a>
                 <a href="https://genwise.in/gifted-lab-mentors/" class="nav-link" target="_top">Our Mentors</a>
-                <a href="https://genwise.in/gifted-lab/#express-interest" class="nav-cta" target="_top">Express Interest</a>
+                <a href="https://genwise.in/gifted-lab/#start-trial" class="nav-cta" target="_top">Book a Trial</a>
             </div>
 
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
@@ -614,7 +619,7 @@
                 <a href="https://genwise.in/gifted-lab-what-students-learn/" class="mobile-link" target="_top">What Students Learn</a>
                 <a href="https://genwise.in/gifted-lab-how-it-works/" class="mobile-link active" target="_top">How It Works</a>
                 <a href="https://genwise.in/gifted-lab-mentors/" class="mobile-link" target="_top">Our Mentors</a>
-                <a href="https://genwise.in/gifted-lab/#express-interest" class="mobile-cta" target="_top">Express Interest</a>
+                <a href="https://genwise.in/gifted-lab/#start-trial" class="mobile-cta" target="_top">Book a Trial</a>
             </div>
         </div>
     </nav>
@@ -656,6 +661,17 @@
             </div>
 
             <div class="detail-card">
+                <h3>Problem-Solving Weeks</h3>
+                <p>Alongside the 30 teaching weeks, annual students get <strong>12 problem-solving weeks</strong>, held between modules. Each is a one-hour live session (Grades 5–6 on Saturday morning, Grades 7–8 on Friday evening) where students work together on one hard, enjoyable problem. Every child can make a start, the strongest can keep going, and there are many routes through. No lecture, no homework. Problem-solving weeks are part of the annual programme, not the trial.</p>
+                <div class="video-grid" style="max-width: 560px; grid-template-columns: 1fr; margin-top: 1rem;">
+                <div class="video-card">
+                    <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/1KhpqeqAXwA" title="Why does a paper flower open in water?" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    <h4>Why does a paper flower open in water?</h4>
+                    <p>Observe Gifted Lab students in a problem-solving session</p>
+                </div>
+                </div>
+            </div>
+            <div class="detail-card">
                 <h3>Independent Work</h3>
                 <p>Expect 2–3 hours per week: readings, short investigations, problem sets. Less time than most competitive activities. Enough to stretch the mind, never to burn it out.</p>
             </div>
@@ -680,14 +696,14 @@
             <div class="schedule-box">
                 <div class="schedule-item">
                     <h3>Programme Duration</h3>
-                    <p>30 weeks across the academic year, organised into six 5-week modules.</p>
+                    <p>30 weeks across the academic year, organised into six 5-week modules, plus 12 problem-solving weeks between modules for annual students.</p>
                 </div>
 
                 <div class="schedule-item">
                     <h3>Entry Points</h3>
                     <p>There are six entry points across the year - at the start of each module. If you find us mid-year, you haven't missed the opportunity. We can place your child into a suitable cohort at the next entry point.</p>
                     <div class="highlight-box">
-                        <p><strong>Next Entry Date:</strong> <span class="next-entry">9 October 2026</span></p>
+                        <p><strong>Next Entry Date:</strong> <span class="next-entry">23 October 2026</span></p>
                     </div>
                 </div>
 
@@ -751,13 +767,13 @@
                     <tbody>
                         <tr>
                             <td>Math or Science</td>
-                            <td>30 weeks, 6 Modules</td>
+                            <td>30 weeks, 6 Modules<br><span style="font-size: 0.9rem;">+ 12 problem-solving weeks</span></td>
                             <td>₹40,000<br>AED 1,920<br>$530</td>
                             <td>₹50,000<br>AED 2,400<br>$660</td>
                         </tr>
                         <tr>
                             <td>Both</td>
-                            <td>30 weeks, 6 Modules</td>
+                            <td>30 weeks, 6 Modules<br><span style="font-size: 0.9rem;">+ 12 problem-solving weeks</span></td>
                             <td>₹75,000<br>AED 3,620<br>$1,000</td>
                             <td>₹90,000<br>AED 4,350<br>$1,200</td>
                         </tr>
@@ -909,7 +925,7 @@
             <h2 class="mb-8">Ready to explore?</h2>
 
             <div class="cta-buttons">
-                <a href="https://genwise.in/gifted-lab/#express-interest" class="btn btn-secondary" target="_top">Express Interest</a>
+                <a href="https://genwise.in/gifted-lab/#start-trial" class="btn btn-secondary" target="_top">Book a Trial</a>
                 <a href="https://genwise.in/gifted-lab-what-students-learn/" class="btn btn-secondary" target="_top">What students learn</a>
                 <a href="https://genwise.in/gifted-lab-mentors/" class="btn btn-secondary" target="_top">Meet the mentors</a>
             </div>
