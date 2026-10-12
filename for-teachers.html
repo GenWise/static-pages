@@ -1537,6 +1537,8 @@
                 <input type="text" id="tm-website" name="website" tabindex="-1" autocomplete="off">
             </div>
 
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAFUsGx-t-5vUZ-iI"></div>
+
             <button type="submit" class="tm-submit-button-fixed">Get Program Details</button>
             <div class="tm-form-status" id="tm-form-status" role="status"></div>
         </form>
@@ -1616,8 +1618,11 @@ document.getElementById("tm-enquiry-form").addEventListener("submit", async func
         status.textContent = "Something went wrong. Please email siddharth@genwise.in instead.";
     } finally {
         button.disabled = false;
+        // a Turnstile token is single-use
+        if (window.turnstile) turnstile.reset();
     }
 });
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
