@@ -71,18 +71,12 @@
   .stat b { display: block; font-family: "Schibsted Grotesk", system-ui, sans-serif; font-size: 36px; line-height: 1.1; }
   .stat span { color: var(--ink-2); font-size: 15px; }
   .offers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 48px; }
-  .offers h3, .story h3 { font-family: "Schibsted Grotesk", system-ui, sans-serif; font-size: 19px; margin: 0 0 6px; }
+  .offers h3 { font-family: "Schibsted Grotesk", system-ui, sans-serif; font-size: 19px; margin: 0 0 6px; }
   .offers p { margin: 0; }
-  .story { list-style: none; padding: 0; margin: 0; max-width: 760px; }
-  .story li { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 14px 0; border-bottom: 1px solid var(--line); }
-  .story li:last-child { border-bottom: 0; }
-  .story .yr { font-weight: 600; color: var(--ink-2); }
-  .story p { margin: 0; }
   @media (max-width: 860px) {
     .stats { grid-template-columns: repeat(2, 1fr); }
     .offers { grid-template-columns: 1fr; }
-    .story li { grid-template-columns: 1fr; gap: 2px; }
-  }
+    }
 </style>
 </head>
 <body>
@@ -97,7 +91,7 @@
 <main class="wrap">
   <section class="intro lede">
     <h1>About GenWise</h1>
-    <p>GenWise is an education company that supports gifted children. Three founders with backgrounds in student assessment, technology and management consulting started it in 2017. We run India's only residential enrichment programme for gifted students, teach gifted students year-round online, and work with schools and their teachers.</p>
+    <p>GenWise is an education company that supports gifted children. Three founders with backgrounds in student assessment, technology and management consulting started it in 2017. We run India's only residential enrichment programme for gifted students, teach gifted students year-round online, and work with schools and their teachers. With Educational Initiatives and Northwestern University's Center for Talent Development, we co-founded Gifted World, a community for gifted students, parents and educators.</p>
     <div class="stats">
       <div class="stat"><b>1,000+</b><span>students graduated from our residential programme</span></div>
       <div class="stat"><b>200+</b><span>schools those students come from</span></div>
@@ -110,7 +104,7 @@
     <h2>What we do</h2>
     <div class="offers">
       <div>
-        <h3>GenWise Summer Programme</h3>
+        <h3><a href="https://summer.genwise.in/">GenWise Summer Programme</a></h3>
         <p>India's only residential enrichment programme for gifted students, held each May and June at MAHE Manipal. About one in ten students attends on a scholarship.</p>
       </div>
       <div>
@@ -136,15 +130,6 @@
     </div>
   </section>
 
-  <section class="block">
-    <h2>How we got here</h2>
-    <ol class="story">
-      <li><span class="yr">2008&ndash;2015</span><p>Duke TIP runs gifted summer programmes in India, using the Ei ASSET Talent Search to find students.</p></li>
-      <li><span class="yr">2015</span><p>When Duke TIP leaves India, Shrikant Patil and Vishnu Agnihotri start the Ei ASSET Summer Program to take its place.</p></li>
-      <li><span class="yr">2017</span><p>Shrikant, Vishnu and Rajesh Panchanathan found GenWise to work with gifted students year-round.</p></li>
-      <li><span class="yr">2021</span><p>Ei, GenWise and Northwestern University's Center for Talent Development form Gifted India, a community for gifted students, parents and educators. It later grows into Gifted World.</p></li>
-    </ol>
-  </section>
 
   <section class="block" id="founders">
     <h2>Our founders</h2>
