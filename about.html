@@ -75,12 +75,6 @@
   .offers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 48px; }
   .offers h3 { font-family: "Schibsted Grotesk", system-ui, sans-serif; font-size: 19px; margin: 0 0 6px; }
   .offers p { margin: 0; }
-  /* Desktop: line up each row (photo, name, bio paragraphs, education) across the three columns */
-  @media (min-width: 861px) {
-    .founders { row-gap: 0; }
-    .founder { display: grid; grid-row: span 6; grid-template-rows: subgrid; row-gap: 0; }
-    .founder p.edu { align-self: start; }
-  }
   @media (max-width: 860px) {
     .stats { grid-template-columns: repeat(2, 1fr); }
     .offers { grid-template-columns: 1fr; }
