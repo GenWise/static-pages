@@ -1,0 +1,1264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Two Maths Explorations</title>
+<meta name="description" content="Godrej Tomorrow Makers × GenWise: two maths explorations to try at home.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap">
+<style>
+/* Layout: one narrow column for phones; squared-paper bands mark the start of each exploration. */
+:root {
+  --bg: #F3F5F9; --paper: #FFFFFF; --ink: #1A2332; --muted: #576274; --line: #D5DCE7;
+  --navy: #1F3B63; --accent: #DE6B1C; --accent-ink: #FFFFFF; --soft: #EBF0F7;
+  --ok: #1B7542; --okbg: #E4F3EA; --warn: #8A5300; --warnbg: #FFF1DC; --no: #A5392A; --nobg: #FCEAE6;
+  --gridline: rgba(31, 59, 99, .08);
+  --display: "Baloo 2", "Noto Sans", system-ui, sans-serif;
+  --body: "Noto Sans", "Noto Sans Devanagari", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0E131B; --paper: #161E2A; --ink: #E5EAF1; --muted: #9AA5B6; --line: #2A3546;
+    --navy: #A9C2E8; --accent: #F08A3E; --accent-ink: #1B1207; --soft: #1D2837;
+    --ok: #74D39D; --okbg: #14301F; --warn: #F2BC6B; --warnbg: #33260F; --no: #F29A8C; --nobg: #3A1C17;
+    --gridline: rgba(169, 194, 232, .08);
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.55 var(--body);
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+[hidden] { display: none !important; }
+img { max-width: 100%; }
+.wrap {
+  max-width: 640px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 56px;
+}
+html[lang="hi"] { --display: "Noto Sans Devanagari", "Noto Sans", sans-serif; }
+.langbar { display:flex; align-items:center; justify-content:space-between; gap:10px; max-width:640px; margin:auto; padding:10px 16px; flex-wrap:wrap; }
+.langbar button { border:1.5px solid var(--line); padding:8px 14px; border-radius:999px; background:var(--paper); color:var(--ink); min-height:44px; }
+.langbar button[aria-pressed="true"] { border-color:var(--accent); background:var(--soft); font-weight:700; }
+.storage-status { max-width:608px; margin:0 auto 12px; }
+.optional { margin-top:24px; border:1px solid var(--line); border-radius:14px; padding:14px; }
+.optional > summary { font-weight:700; color:var(--navy); cursor:pointer; padding:4px; }
+.optional .section { margin-top:16px; }
+html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3 { line-height:1.5; }
+h1, h2, h3 { font-family: var(--display); color: var(--navy); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: 2.1rem; }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.25rem; color: var(--accent); }
+p { margin: 0; }
+b, strong { font-weight: 700; }
+.stack { display: flex; flex-direction: column; gap: 14px; }
+.muted { color: var(--muted); }
+.small { font-size: .88rem; }
+
+/* brand + hero */
+.brand { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-block: 14px 10px; }
+.brand .chip { background: #FFFFFF; border-radius: 10px; padding: 6px 10px; display: flex; align-items: center; }
+.brand img.gtm { height: 44px; }
+.brand img.gw { height: 22px; }
+.paperband {
+  background-color: var(--paper);
+  background-image: linear-gradient(var(--gridline) 1px, transparent 1px), linear-gradient(90deg, var(--gridline) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border: 1px solid var(--line); border-radius: 14px; padding: 20px 18px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eyebrow { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+
+/* sticky bar inside an exploration */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 10px; padding-block: 10px; margin-bottom: 14px;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.bar .t { flex: 1; min-width: 0; font-weight: 700; color: var(--navy); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.prog { font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.meter { height: 6px; border-radius: 3px; background: var(--soft); overflow: hidden; }
+.meter i { display: block; height: 100%; background: var(--accent); }
+
+/* boxes */
+.defs { background: var(--soft); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+.section { display: flex; flex-direction: column; gap: 14px; margin-top: 26px; }
+.q { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.q.done { border-color: color-mix(in srgb, var(--ok) 45%, var(--line)); }
+.qhead { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.qlabel { font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.pill { font-size: .78rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; background: var(--okbg); color: var(--ok); }
+.pill.seen { background: var(--warnbg); color: var(--warn); }
+.prompt { font-size: 1.02rem; }
+
+/* inputs */
+label.fld, div.fld { display: flex; flex-direction: column; gap: 6px; }
+.fld > span:first-child { font-weight: 600; font-size: .95rem; }
+.inrow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+input[type=text], textarea, select {
+  font: inherit; font-size: 16px; color: var(--ink); background: var(--bg);
+  border: 1.5px solid var(--line); border-radius: 9px; padding: 9px 11px; min-width: 0;
+}
+input[type=text]:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+input:disabled, textarea:disabled { opacity: .75; }
+input.n { width: 6.5em; }
+input.s { width: 4.6em; text-align: center; }
+textarea { width: 100%; min-height: 4.6em; resize: vertical; }
+.unit { color: var(--muted); }
+.times { color: var(--muted); font-weight: 700; }
+fieldset.choices { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+fieldset.choices legend { font-weight: 600; font-size: .95rem; padding: 0; margin-bottom: 6px; }
+label.opt { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1.5px solid var(--line); border-radius: 10px; cursor: pointer; }
+label.opt:has(input:checked) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+label.opt input { margin-top: 4px; accent-color: var(--accent); }
+.reasonhint { font-size: .85rem; color: var(--muted); }
+
+/* buttons */
+.actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+button { font: inherit; cursor: pointer; }
+.btn { background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 999px; padding: 10px 20px; font-weight: 700; }
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+.btn.ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--line); }
+.link { background: none; border: 0; padding: 4px 0; color: var(--navy); text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+button:focus-visible, .opt:focus-within { outline: 3px solid color-mix(in srgb, var(--accent) 50%, transparent); outline-offset: 2px; }
+.why { font-size: .85rem; color: var(--muted); }
+
+/* feedback */
+.fb { border-radius: 10px; padding: 11px 14px; border-left: 4px solid; display: flex; flex-direction: column; gap: 6px; }
+.fb.ok { background: var(--okbg); border-color: var(--ok); }
+.fb.partial { background: var(--warnbg); border-color: var(--warn); }
+.fb.no { background: var(--nobg); border-color: var(--no); }
+.fb.hint { background: var(--soft); border-color: var(--navy); }
+.fb .lead { font-weight: 700; }
+.fb ul { margin: 0; padding-left: 1.2em; }
+.model { background: var(--soft); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+.checks label { display: flex; gap: 8px; align-items: flex-start; }
+.checks input { margin-top: 5px; accent-color: var(--ok); }
+
+/* figures */
+figure { margin: 0; display: flex; justify-content: center; }
+figure svg { width: 100%; max-width: 340px; height: auto; }
+.f-land { fill: var(--okbg); }
+.f-fence { fill: none; stroke: var(--accent); stroke-width: 5; stroke-dasharray: 12 5; }
+.f-wall { fill: var(--no); }
+.f-text { fill: var(--ink); font: 700 15px var(--body); }
+.f-q { fill: var(--ok); font: 700 44px var(--body); }
+.f-walltext { fill: #FFFFFF; font: 700 12px var(--body); letter-spacing: .1em; }
+.f-cell { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
+.f-cell.on { fill: var(--soft); }
+.f-tick { fill: var(--ok); font: 700 20px var(--body); }
+.f-box { fill: var(--accent); font: 700 20px var(--body); }
+
+/* rectangles table */
+.rrows { display: flex; flex-direction: column; gap: 8px; }
+.rrow { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.rrow .ix { width: 1.4em; color: var(--muted); font-weight: 700; }
+.rrow > label.fld { flex: 1 1 0; min-width: 0; }
+.rrow > label.fld > span { font-size: .78rem; min-height: 2.5em; }
+.rrow > label.fld > input.n { width: 100% !important; }
+.rrow.bad input { border-color: var(--no); }
+.rrow.good input { border-color: var(--ok); }
+.rmsg { font-size: .85rem; color: var(--no); width: 100%; padding-left: 1.9em; }
+
+/* 3x3 card grid */
+.g9 { display: grid; grid-template-columns: 2.4em repeat(3, minmax(0, 1fr)); gap: 6px; align-items: stretch; }
+.g9 .ax { font-size: .74rem; color: var(--muted); display: flex; align-items: center; justify-content: center; text-align: center; font-weight: 600; }
+.g9 .axtop { grid-column: 2 / 5; justify-content: flex-start; font-weight: 700; color: var(--navy); font-size: .85rem; }
+.g9 .axleft { writing-mode: vertical-rl; transform: rotate(180deg); font-weight: 700; color: var(--navy); font-size: .85rem; }
+.slot { min-height: 58px; border: 2px dashed var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); font-weight: 700; padding: 4px; }
+.slot.filled { border-style: solid; border-color: var(--navy); background: var(--paper); }
+.slot.target { border-color: var(--accent); }
+.tray { display: flex; flex-wrap: wrap; gap: 8px; }
+.card { border: 1.5px solid var(--navy); background: var(--paper); color: var(--ink); border-radius: 9px; padding: 8px 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.card.sel { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+
+/* data tables */
+.tablewrap { overflow-x: auto; }
+table.data { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+table.data th, table.data td { border: 1px solid var(--line); padding: 4px 6px; text-align: center; }
+table.data th { background: var(--soft); font-size: .85rem; }
+table.data td.k { font-weight: 700; }
+table.data input { width: 100%; max-width: 6em; padding: 6px 4px; text-align: center; border-radius: 6px; }
+table.data tr.bad td { background: var(--nobg); }
+table.pct td, table.pct th { padding: 4px 8px; }
+
+/* code breaking */
+.msg { display: flex; flex-wrap: wrap; gap: 14px 18px; }
+.word { display: flex; gap: 3px; }
+.dc { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.dc input { width: 1.9em; height: 2.2em; padding: 0; text-align: center; text-transform: uppercase; font-weight: 700; border-radius: 6px; }
+.dc span { font-size: .72rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.keystrip { display: grid; grid-template-columns: repeat(auto-fill, minmax(3.1em, 1fr)); gap: 6px; }
+.keystrip div { border: 1px solid var(--line); border-radius: 7px; text-align: center; padding: 3px 0; font-variant-numeric: tabular-nums; }
+.keystrip b { display: block; min-height: 1.4em; color: var(--accent); }
+.keygrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(4.4em, 1fr)); gap: 6px; }
+.keygrid label { display: flex; align-items: center; gap: 4px; font-weight: 700; }
+.keygrid input { width: 100%; padding: 6px 4px; text-align: center; }
+.coded { font-family: ui-monospace, Menlo, Consolas, monospace; background: var(--soft); border-radius: 10px; padding: 12px; word-break: break-word; min-height: 3em; }
+
+/* home */
+.excard { display: flex; flex-direction: column; gap: 10px; }
+.steps { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 6px; }
+.foot { margin-top: 36px; font-size: .8rem; color: var(--muted); text-align: center; }
+@media (prefers-reduced-motion: no-preference) { .fb { animation: pop .18s ease-out; } @keyframes pop { from { transform: translateY(3px); opacity: .6; } } }
+</style>
+</head>
+<body>
+<nav class="langbar" aria-label="Language"><span lang="en">English / <span lang="hi">हिन्दी</span></span><div id="language"><button type="button" data-lang="en" lang="en" aria-pressed="true">English</button> <button type="button" data-lang="hi" lang="hi" aria-pressed="false">हिन्दी</button></div></nav>
+<div id="storage-status" class="storage-status fb partial" role="status" hidden></div>
+<div class="wrap" id="app"></div>
+<script src="hi.js"></script>
+<script>
+"use strict";
+const STORE = "gtm-maths-explorations-v1";
+
+/* ---------- small helpers ---------- */
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+function num(s) {
+  if (s == null) return NaN;
+  const fractions = { "¼":"1/4", "½":"1/2", "¾":"3/4", "⅐":"1/7", "⅑":"1/9", "⅒":"1/10", "⅓":"1/3", "⅔":"2/3", "⅕":"1/5", "⅖":"2/5", "⅗":"3/5", "⅘":"4/5", "⅙":"1/6", "⅚":"5/6", "⅛":"1/8", "⅜":"3/8", "⅝":"5/8", "⅞":"7/8" };
+  let t = String(s).trim().replace(/[०-९]/g, d => String(d.charCodeAt(0) - 0x0966)).replace(/−/g, "-").replace(/⁄/g, "/");
+  t = t.replace(/([¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])/g, (c, _, i) => (i && /\d/.test(t[i - 1]) ? " " : "") + fractions[c]);
+  if (t.includes(",")) {
+    if (!/^[+-]?(?:\d{1,3}(?:,\d{3})+|\d{1,2}(?:,\d{2})*,\d{3})(?:\.\d+)?$/.test(t)) return NaN;
+    t = t.replace(/,/g, "");
+  }
+  let m = t.match(/^([+-]?\d+)\s+(\d+)\s*\/\s*(\d+)$/);
+  if (m) return +m[3] > 0 ? (m[1].startsWith("-") ? -1 : 1) * (Math.abs(+m[1]) + +m[2] / +m[3]) : NaN;
+  m = t.match(/^([+-]?(?:\d+(?:\.\d*)?|\.\d+))(?:\s*\/\s*([+-]?(?:\d+(?:\.\d*)?|\.\d+)))?$/);
+  if (!m) return NaN;
+  const n = m[2] == null ? +m[1] : (+m[2] === 0 ? NaN : +m[1] / +m[2]);
+  return Number.isFinite(n) ? n : NaN;
+}
+const fmt = x => isFinite(x) ? String(Math.round(x * 100) / 100) : "?";
+const near = (a, b, tol) => Math.abs(a - b) <= tol;
+const isWhole = x => Number.isFinite(x) && Math.abs(x - Math.round(x)) < 1e-8;
+function rect(v, k) {
+  const l = num(v[k + ".l"]), b = num(v[k + ".b"]);
+  return l > 0 && b > 0 ? { l, b, A: l * b, P: 2 * (l + b) } : null;
+}
+const rname = r => `${fmt(r.l)} × ${fmt(r.b)}`;
+
+/* ---------- state ---------- */
+let storageAvailable = true;
+let S = { lang: "en", open: {}, student: { name: "", cls: "", school: "", city: "" }, q: {}, sent: {} };
+try { const raw = localStorage.getItem(STORE); if (raw) S = Object.assign(S, JSON.parse(raw)); } catch (e) { storageAvailable = false; }
+S.student = Object.assign({name:"",cls:"",school:"",city:""},S.student);
+S.lang = S.lang === "hi" ? "hi" : "en";
+S.open = S.open || {};
+function storageNotice() {
+  const el = document.getElementById("storage-status"); if (!el) return;
+  el.hidden = storageAvailable;
+  el.textContent = "This browser could not save your work. Keep your answers in your notebook and send your work before closing this page.";
+  localize(el);
+}
+function save() {
+  try { localStorage.setItem(STORE, JSON.stringify(S)); storageAvailable = true; }
+  catch (e) { storageAvailable = false; }
+  storageNotice(); return storageAvailable;
+}
+function ST(id) { return S.q[id] || (S.q[id] = { v: {}, tries: 0, ok: false, hints: 0, sol: false, first: null, log: [] }); }
+
+/* Hindi changes presentation only; answers, IDs and the English cipher stay intact. */
+let localePatterns;
+function translatedText(text, depth = 0) {
+  if (S.lang !== "hi" || !text || depth > 3) return text;
+  const key = text.replace(/\s+/g, " ").trim(), catalog = window.HI || {};
+  if (!key) return text;
+  const pad = value => text.slice(0, text.search(/\S/)) + value + (text.match(/\s*$/) || [""])[0];
+  if (Object.prototype.hasOwnProperty.call(catalog, key)) return pad(catalog[key]);
+  if (!localePatterns) localePatterns = Object.entries(catalog).filter(([k]) => /\{\d+\}/.test(k)).sort((a,b)=>b[0].replace(/\{\d+\}/g, "").length-a[0].replace(/\{\d+\}/g, "").length).map(([k, value]) => {
+    const ids = [];
+    const pattern = k.split(/(\{\d+\})/g).map(part => {
+      const m = part.match(/^\{(\d+)\}$/);
+      if(m){ids.push(+m[1]);return "(.*?)";}
+      return part.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }).join("");
+    return {re:new RegExp("^"+pattern+"$"), value, ids};
+  });
+  for (const {re,value,ids} of localePatterns) {
+    const match = key.match(re); if (!match) continue;
+    // A placeholder must not swallow several joined feedback sentences.
+    if(match.slice(1).some(part=>/[.!?]\s+[A-Z]/.test(part)))continue;
+    const parts = {}; ids.forEach((id,i)=>parts[id]=translatedText(match[i+1],depth+1));
+    return pad(value.replace(/\{(\d+)\}/g,(_,i)=>parts[i] ?? ""));
+  }
+  const sentences = key.split(/(?<=[.!?])\s+(?=[A-Z])/);
+  if(sentences.length>1) return pad(sentences.map(part=>translatedText(part,depth+1)).join(" "));
+  return text;
+}
+function localize(root) {
+  if (!root || S.lang !== "hi" || !document.createTreeWalker) return;
+  const walker = document.createTreeWalker(root, 4), nodes = [];
+  while(walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node=>{
+    if(node.parentElement?.closest('textarea,script,style,[data-keep-english]'))return;
+    node.textContent=translatedText(node.textContent);
+  });
+  const elements = [root,...root.querySelectorAll("[aria-label],[placeholder]")];
+  elements.forEach(el=>{
+    if(el.closest?.('[data-keep-english]'))return;
+    for(const attr of ["aria-label","placeholder"]){const value=el.getAttribute?.(attr);if(value)el.setAttribute(attr,translatedText(value));}
+  });
+}
+
+/* ---------- task data ---------- */
+const CARDS = [[2, 8], [4, 4], [1, 15], [5, 5], [3, 8], [2, 7], [1, 16], [3, 6], [1, 9]];
+const SECRET = [
+  [[13, 15, 12, 11, 8, 16], [13, 19], [7, 15, 17, 2, 10]],
+  [[13, 6, 11, 18], [14, 19, 1, 17], [11, 18], [2]],
+  [[15, 17, 2, 21, 21, 12], [8, 17, 2, 13], [2, 8, 1]],
+  [[11, 8, 13, 17, 15, 17, 18, 13, 11, 8, 16]],
+  [[3, 2, 12], [13, 19], [17, 20, 4, 21, 19, 15, 17]],
+  [[13, 6, 17], [14, 19, 8, 14, 17, 4, 13], [19, 9]],
+  [[5, 19, 1, 17]],
+];
+const KEY = { 1: "D", 2: "A", 3: "W", 4: "P", 5: "M", 6: "H", 7: "B", 8: "N", 9: "F", 10: "K", 11: "I", 12: "Y", 13: "T", 14: "C", 15: "R", 16: "G", 17: "E", 18: "S", 19: "O", 20: "X", 21: "L" };
+const SECRET_COUNT = {};
+SECRET.flat(2).forEach(n => SECRET_COUNT[n] = (SECRET_COUNT[n] || 0) + 1);
+const SECRET_TOTAL = SECRET.flat(2).length;
+const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const WORDS = ["a", "an", "and", "are", "as", "at", "by", "do", "for", "go", "I", "if", "in", "is", "it", "of", "on", "or", "so", "that", "the", "then", "this", "to", "too", "will"];
+const SAMPLE = "Students at a village school near Nagpur have built a small weather station on the roof of their classroom. It has a rain gauge, a thermometer and a wind vane that the children made from an old plastic bottle. Every morning two students read the instruments and write the numbers on a chart near the door. After three months, the class noticed that the hottest days were not always the driest ones. Their teacher says the project has made the children ask better questions. Now the students want to share their records with farmers in the area, so that families can plan when to sow seeds.";
+const SAMPLE_LETTERS = {}; LETTERS.forEach(L => SAMPLE_LETTERS[L] = 0);
+SAMPLE.toUpperCase().replace(/[^A-Z]/g, "").split("").forEach(c => SAMPLE_LETTERS[c]++);
+const SAMPLE_TOKENS = SAMPLE.split(/[^A-Za-z]+/).filter(Boolean);
+const SAMPLE_WORDS = {}; WORDS.forEach(w => SAMPLE_WORDS[w] = SAMPLE_TOKENS.filter(t => w === "I" ? t === "I" : t.toLowerCase() === w).length);
+const PCT = [["E", 13], ["T", 9], ["A", 8], ["O", 8], ["N", 7], ["I", 6.5], ["R", 6.5], ["S", 6], ["H", 5.5], ["D", 4], ["L", 3.5], ["C", 3], ["M", 3], ["U", 3], ["F", 2.5], ["P", 2], ["Y", 2], ["B", 1.5], ["G", 1.5], ["W", 1.5], ["V", 1], ["J", .5], ["K", .5], ["X", .5], ["Q", .3], ["Z", .2]];
+
+/* ---------- figures ---------- */
+const FIG_FIELD = `<figure><svg viewBox="0 0 300 160" role="img" aria-label="A rectangle of land with a fence all the way round"><rect class="f-land" x="70" y="18" width="160" height="104"/><rect class="f-fence" x="70" y="18" width="160" height="104"/><text class="f-q" x="150" y="86" text-anchor="middle">?</text><text class="f-text" x="150" y="150" text-anchor="middle">40 m of fencing</text></svg></figure>`;
+const FIG_WALL = `<figure><svg viewBox="0 0 300 160" role="img" aria-label="A rectangle of land against a wall, with fence on three sides"><rect class="f-land" x="60" y="18" width="180" height="96"/><path class="f-fence" d="M60 114 V18 H240 V114"/><rect class="f-wall" x="40" y="114" width="220" height="22"/><text class="f-walltext" x="150" y="129" text-anchor="middle">WALL</text><text class="f-q" x="150" y="82" text-anchor="middle">?</text></svg></figure>`;
+function figExt() {
+  const c = 46, x0 = 82, y0 = 46; let s = "";
+  for (let r = 0; r < 3; r++) for (let k = 0; k < 3; k++) s += `<rect class="f-cell on" x="${x0 + k * c}" y="${y0 + r * c}" width="${c}" height="${c}"/><text class="f-tick" x="${x0 + k * c + c / 2}" y="${y0 + r * c + 31}" text-anchor="middle">✓</text>`;
+  [["A", x0 + c, y0 - c], ["B", x0 - c, y0 + c], ["C", x0 + 3 * c, y0 + c], ["D", x0 + c, y0 + 3 * c]].forEach(([t, x, y]) => {
+    s += `<rect class="f-cell" x="${x}" y="${y}" width="${c}" height="${c}"/><text class="f-box" x="${x + c / 2}" y="${y + 30}" text-anchor="middle">${t}</text>`;
+  });
+  return `<figure><svg viewBox="0 0 302 236" role="img" aria-label="The 3 by 3 grid with four extra boxes A above, B left, C right and D below">${s}</svg></figure>`;
+}
+
+/* ---------- the explorations ---------- */
+const EX = {
+  e1: {
+    short: "Exploration 1", title: "Playing with Area and Perimeter",
+    blurb: "Rectangles with the same area, a farmer's fence, and a 3 by 3 card puzzle.",
+    intro: `<div class="defs"><p><b>Area</b> is the space inside a shape. For a rectangle, area = length × breadth.</p><p><b>Perimeter</b> is the distance all the way around a shape. For a rectangle, perimeter = 2 × (length + breadth).</p></div>`,
+    sections: [
+      { h: "Task 1: Same area, different perimeters", text: "You need to make rectangles with an area of <b>24 cm²</b>. Squared paper or graph paper will help.", items: [
+        { id: "t1q1", label: "Question 1", type: "rects", prompt: "Find at least 4 different rectangles with an area of 24 cm². For each one, write its length, its breadth and its perimeter." },
+        { id: "t1q2", label: "Question 2", type: "open", prompt: "Can you make more than four? How many different perimeters do you think are possible? Explain why you think so.",
+          model: "If the sides must be whole numbers, there are only 4 rectangles: 1 by 24, 2 by 12, 3 by 8 and 4 by 6. Their perimeters are 50, 28, 22 and 20 cm. But the sides do not have to be whole numbers. 1.5 by 16, 0.5 by 48 and 2.5 by 9.6 all have area 24 too. You can keep making new ones forever, so there are as many different perimeters as you like.",
+          checks: ["I found the 4 whole-number rectangles", "I thought about sides that are decimals or fractions", "I explained my reason, not just a number"] },
+        { id: "t1q3", label: "Question 3", type: "ask", prompt: "What is the smallest perimeter a rectangle with area 24 cm² can have?",
+          fields: [{ k: "a", kind: "num", label: "Smallest perimeter", unit: "cm" }], reason: "How can you be sure it is the smallest?",
+          judge(v) {
+            const x = num(v.a);
+            if (near(x, 20, .01)) return { ok: "partial", msg: "20 cm (the 4 by 6 rectangle) is the smallest when the sides are whole numbers. Now let the sides be decimals. What is the perimeter of a 4.8 by 5 rectangle? Can you go lower still?" };
+            if (x >= 19.55 && x <= 19.65) return { ok: true, msg: "Yes. The closer a rectangle is to a square, the smaller its perimeter. The smallest comes from a square whose side, multiplied by itself, makes 24. That side is about 4.9 cm, so the perimeter is about 4 × 4.9 = 19.6 cm." };
+            if (x > 0 && x < 19.55) return { ok: false, msg: `Is there really a rectangle with area 24 cm² and perimeter ${fmt(x)} cm? Try to write down its length and breadth.` };
+            return { ok: false };
+          },
+          hints: ["Look at your rectangles from question 1. Which one had the smallest perimeter? What shape is it closest to?", "Try sides that are closer together than 4 and 6, like 4.8 by 5, or 4.9 by 4.9. Work out the area and the perimeter of each."],
+          solution: "About 19.6 cm. It comes from a square with a side of about 4.9 cm (4.9 × 4.9 is about 24). With whole-number sides, the smallest is 20 cm (4 by 6). The closer the rectangle is to a square, the smaller the perimeter." },
+        { id: "t1q4", label: "Question 4", type: "ask", prompt: "What is the largest perimeter a rectangle with area 24 cm² can have?",
+          fields: [{ k: "c", kind: "choice", options: ["50 cm (the 1 by 24 rectangle)", "100 cm", "There is no largest perimeter"] }], reason: "Why do you think so?",
+          judge(v) {
+            if (v.c === 2) return { ok: true, msg: "Right. Make the rectangle thinner and longer: 0.5 by 48 has perimeter 97 cm, 0.1 by 240 has 480.2 cm, and 0.01 by 2400 has more than 4,800 cm. You can always make it thinner, so there is no largest." };
+            if (v.c === 0) return { ok: "partial", msg: "50 cm is the largest when the sides are whole numbers. What if the sides are decimals? Work out the perimeter of a 0.5 by 48 rectangle." };
+            return { ok: false, msg: "Can you find a rectangle with area 24 cm² and a perimeter bigger than 100 cm? Try a very thin one, like 0.2 by 120." };
+          },
+          solution: "There is no largest. Thinner rectangles have bigger perimeters: 0.5 by 48 has 97 cm, 0.1 by 240 has 480.2 cm. You can always make one thinner." },
+        { id: "t1q5", label: "Question 5", type: "ask", prompt: "Can you make a rectangle with an area of 24 cm² and a perimeter of 35 cm? Write its length and breadth.",
+          fields: [{ k: "r", kind: "dims", label: "My rectangle", unit: "cm" }], reason: "How did you find it?",
+          judge(v) {
+            const r = rect(v, "r");
+            if (!r) return { ok: false, msg: "Write a length and a breadth, both bigger than 0." };
+            if (near(r.A, 24, .02) && near(r.P, 35, .02)) return { ok: true, msg: `Yes: ${rname(r)} has area 24 cm² and perimeter 35 cm. Length + breadth must be 17.5 (half of 35), and 16 and 1.5 add up to 17.5 and multiply to make 24.` };
+            return { ok: false, msg: `Your rectangle has area ${fmt(r.A)} cm² and perimeter ${fmt(r.P)} cm. You need area 24 and perimeter 35.` };
+          },
+          hints: ["Half of 35 is 17.5. So length + breadth must be 17.5. Look for two numbers that add up to 17.5 and multiply to make 24.", "One of the sides is not a whole number. Try a breadth of 1.5."],
+          solution: "16 by 1.5. Its area is 16 × 1.5 = 24 cm² and its perimeter is 2 × (16 + 1.5) = 35 cm." },
+        { id: "t1q5b", label: "Question 5 (continued)", type: "open", prompt: "Can any rectangle with an area of 24 cm² have a perimeter that is an odd number? Explain.",
+          model: "Yes, 16 by 1.5 has perimeter 35. When both sides are whole numbers, the perimeter is always even, because it is 2 × (length + breadth). To get an odd perimeter, length + breadth has to end in .5, so at least one side must be a fraction.",
+          checks: ["I gave an example", "I explained why whole-number sides always give an even perimeter"] },
+        { id: "t1h1", label: "A bit harder", type: "ask", prompt: "Find a rectangle whose area is a whole number but whose perimeter is a fraction (not a whole number).",
+          fields: [{ k: "r", kind: "dims", label: "My rectangle", unit: "cm" }], reason: "How did you find it?",
+          judge(v) {
+            const r = rect(v, "r");
+            if (!r) return { ok: false, msg: "Write a length and a breadth, both bigger than 0." };
+            if (!isWhole(r.A)) return { ok: false, msg: `Its area is ${fmt(r.A)}, which is not a whole number.` };
+            if (isWhole(r.P)) return { ok: false, msg: `Its perimeter is ${fmt(r.P)}, a whole number. Try sides like a quarter: 0.25 is a fraction too.` };
+            return { ok: true, msg: `Yes: ${rname(r)} has area ${fmt(r.A)} and perimeter ${fmt(r.P)}. So a whole-number area can come with a fraction perimeter.` };
+          },
+          solution: "One example: 0.25 by 8. Its area is 2 (a whole number) and its perimeter is 2 × 8.25 = 16.5 (a fraction)." },
+        { id: "t1h2", label: "A bit harder", type: "ask", prompt: "Find a rectangle whose perimeter is a whole number but whose area is a fraction.",
+          fields: [{ k: "r", kind: "dims", label: "My rectangle", unit: "cm" }], reason: "How did you find it?",
+          judge(v) {
+            const r = rect(v, "r");
+            if (!r) return { ok: false, msg: "Write a length and a breadth, both bigger than 0." };
+            if (!isWhole(r.P)) return { ok: false, msg: `Its perimeter is ${fmt(r.P)}, which is not a whole number.` };
+            if (isWhole(r.A)) return { ok: false, msg: `Its area is ${fmt(r.A)}, a whole number. Try making one side a half.` };
+            return { ok: true, msg: `Yes: ${rname(r)} has perimeter ${fmt(r.P)} and area ${fmt(r.A)}.` };
+          },
+          solution: "One example: 0.5 by 1. Its perimeter is 2 × 1.5 = 3 (a whole number) and its area is 0.5 (a fraction)." },
+      ] },
+      { h: "Task 2: The farmer's fence", text: "A farmer buys 40 pieces of fencing. Each piece is 1 metre long. He wants to fence off a rectangle of his land, and he wants it to be as big as possible.", fig: FIG_FIELD, items: [
+        { id: "t2a", label: "Question 1", type: "ask", prompt: "What is the largest rectangular area he can fence off with 40 m of fencing?",
+          fields: [{ k: "a", kind: "num", label: "Largest area", unit: "m²" }], reason: "Why do you believe your answer is the largest?",
+          judge(v) {
+            const x = num(v.a);
+            if (near(x, 100, .01)) return { ok: true, msg: "Yes. Length + breadth must be 20. 9 × 11 = 99 and 8 × 12 = 96, but 10 × 10 = 100. The area is biggest when the two sides are equal, so the best rectangle is a square." };
+            if (near(x, 99, .01) || near(x, 96, .01)) return { ok: false, msg: "That's a good rectangle, but you can beat it. Try sides that are closer together." };
+            if (near(x, 400, .01)) return { ok: false, msg: "Check the fence. A 20 by 20 field needs 80 m of fencing to go all the way round." };
+            if (near(x, 40, .01)) return { ok: false, msg: "40 m is the length of the fence. The question asks for the area inside it." };
+            return { ok: false };
+          },
+          hints: ["The fence goes all the way round, so length + breadth = 20. Make a table: 5 by 15, 6 by 14, 7 by 13 ... and work out each area.", "Which rectangle in your table had the biggest area? What do you notice about its sides?"],
+          solution: "100 m², from a 10 by 10 square. Length + breadth must be 20, and the area is biggest when the two sides are equal." },
+        { id: "t2b", label: "Question 2", type: "ask", prompt: "Then the farmer changes his mind. He builds the rectangle against a wall. The fence goes on only three sides, and the wall makes the fourth side. What is the largest area he can fence off now?",
+          fig: FIG_WALL, fields: [{ k: "a", kind: "num", label: "Largest area", unit: "m²" }], reason: "How did you work it out?",
+          judge(v) {
+            const x = num(v.a);
+            if (near(x, 200, .01)) return { ok: true, msg: "Yes. The two sides going out from the wall are 10 m each, and the side along the wall is 20 m. 10 × 20 = 200 m². With a wall, the best shape is not a square: it is twice as long as it is wide." };
+            if (near(x, 100, .01)) return { ok: false, msg: "That's the answer without the wall. Now the fence only covers three sides, so it can stretch further." };
+            if (x > 200) return { ok: false, msg: "Check your rectangle: do its three fenced sides add up to 40 m?" };
+            if (x >= 180 && x < 200) return { ok: false, msg: "Close. Can you find a rectangle that does even better?" };
+            return { ok: false };
+          },
+          hints: ["Call each side going out from the wall x. Then the side along the wall is 40 − 2x. Try x = 5, 8, 10, 12, 15 and work out each area.", "Is the best shape still a square? Compare 10 by 20 with 13.3 by 13.3."],
+          solution: "200 m². The two sides going out from the wall are 10 m each and the side along the wall is 20 m (10 + 20 + 10 = 40 m of fence)." },
+        { id: "t2c", label: "Question 3", type: "ask", prompt: "How do your answers change if he has 80 m of fencing?",
+          fields: [{ k: "a", kind: "num", label: "Largest area with no wall", unit: "m²" }, { k: "b", kind: "num", label: "Largest area against the wall", unit: "m²" }], reason: "What do you notice when the fence is doubled?",
+          judge(v) {
+            const a = num(v.a), b = num(v.b), ga = near(a, 400, .01), gb = near(b, 800, .01);
+            if (ga && gb) return { ok: true, msg: "Yes: a 20 by 20 square gives 400 m², and 20 + 40 + 20 against the wall gives 800 m². Doubling the fence makes the area 4 times as big, because both the length and the breadth double." };
+            if (near(a, 200, .01) || near(b, 400, .01)) return { ok: false, msg: "Doubling the fence doesn't just double the area. Work out the best rectangle again with 80 m." };
+            if (ga) return { ok: "partial", msg: "Your answer with no wall is right. Check the one against the wall." };
+            if (gb) return { ok: "partial", msg: "Your answer against the wall is right. Check the one with no wall." };
+            return { ok: false };
+          },
+          hints: ["Use what you found with 40 m. With no wall the best shape was a square. With a wall, the side along the wall was twice the other sides."],
+          solution: "No wall: 20 by 20 = 400 m². Against the wall: sides of 20, 40 and 20 give 20 × 40 = 800 m². Twice the fence gives 4 times the area." },
+      ] },
+      { h: "Task 3: When area and perimeter are the same number", text: "Area and perimeter have different units (cm² and cm). But can their numbers be the same?", items: [
+        { id: "t3a", label: "Question 1", type: "ask", prompt: "Can you draw a square whose area is the same number as its perimeter? How long is its side? Are there other squares like this?",
+          fields: [{ k: "s", kind: "num", label: "Side of the square", unit: "cm" }, { k: "c", kind: "choice", label: "Are there other squares like this?", options: ["Yes, there are others", "No, this is the only one"] }], reason: "How did you find the side?",
+          judge(v) {
+            const s = num(v.s);
+            if (near(s, 16, .01)) return { ok: false, msg: "16 is the area (and the perimeter). What is the length of the side?" };
+            if (!near(s, 4, .01)) return { ok: false, msg: `A square with side ${fmt(s)} has area ${fmt(s * s)} and perimeter ${fmt(4 * s)}. They are not the same.` };
+            if (v.c === 0) return { ok: "partial", msg: "Side 4 is right. Can you find another square that works? For side s, area = s × s and perimeter = 4 × s. When are these equal?" };
+            return { ok: true, msg: "Yes. Side 4 gives area 16 and perimeter 16. s × s = 4 × s only when s = 4, so it is the only one." };
+          },
+          hints: ["For a square with side s, area = s × s and perimeter = 4 × s. Try s = 1, 2, 3, 4, 5."],
+          solution: "Side 4 cm: area 4 × 4 = 16 and perimeter 4 × 4 = 16. It is the only square like this, because s × s = 4 × s only when s = 4." },
+        { id: "t3b", label: "Question 2", type: "ask", prompt: "Find two different rectangles (not squares) whose area is the same number as their perimeter.",
+          fields: [{ k: "a", kind: "dims", label: "Rectangle 1", unit: "cm" }, { k: "b", kind: "dims", label: "Rectangle 2", unit: "cm" }], reason: "Describe how you searched for them.",
+          judge(v) {
+            const out = [];
+            const good = ["a", "b"].map((k, i) => {
+              const r = rect(v, k);
+              if (!r) { out.push(`Rectangle ${i + 1}: write a length and a breadth.`); return null; }
+              if (near(r.l, r.b, .001)) { out.push(`Rectangle ${i + 1} is a square. Find one that is not.`); return null; }
+              if (!near(r.A, r.P, .05)) { out.push(`Rectangle ${i + 1} has area ${fmt(r.A)} and perimeter ${fmt(r.P)}. Not the same yet.`); return null; }
+              return r;
+            });
+            if (good[0] && good[1]) {
+              const same = near(Math.min(good[0].l, good[0].b), Math.min(good[1].l, good[1].b), .01);
+              if (same) return { ok: "partial", msg: "Both work, but they are the same rectangle. Find a different second one." };
+              return { ok: true, msg: `Both work. ${rname(good[0])} and ${rname(good[1])} each have the same number for area and perimeter.` };
+            }
+            if (good[0] || good[1]) return { ok: "partial", list: ["One of them works.", ...out] };
+            return { ok: false, list: out };
+          },
+          hints: ["Try a breadth of 3. What length makes the area equal to the perimeter?", "For the second one you will need a fraction. Try a breadth of 2.5, or a breadth of 5."],
+          solution: "With whole numbers, 3 by 6 is the only one (area 18, perimeter 18). With fractions there are more: 2.5 by 10 (both 25) and 5 by 3⅓ (both 16⅔)." },
+        { id: "t3c", label: "Question 2 (continued)", type: "open", prompt: "How many such rectangles do you think there are? Why?",
+          model: "With whole-number sides, only 3 by 6 (and the 4 by 4 square). With fractions there are as many as you like. For any length bigger than 2 there is a breadth that works: breadth = 2 × length ÷ (length − 2). For example 10 by 2.5, or 5 by 3⅓.",
+          checks: ["I said what happens with whole numbers", "I said what happens with fractions"] },
+      ] },
+      { h: "Task 4: What have you found out?", text: "These questions are about how the area and the perimeter of a rectangle are connected.", items: [
+        { id: "t4a", label: "Question 1", type: "ask", prompt: "If the area of a rectangle gets bigger, does the perimeter always get bigger?",
+          fields: [{ k: "c", kind: "choice", options: ["Yes, always", "No, not always"] }, { k: "a", kind: "dims", label: "Rectangle A", unit: "cm", showIf: v => v.c === 1 }, { k: "b", kind: "dims", label: "Rectangle B (bigger area than A, but not a bigger perimeter)", unit: "cm", showIf: v => v.c === 1 }], reason: false,
+          judge(v) {
+            if (v.c === 0) return { ok: false, msg: "Compare a 1 by 10 rectangle with a 4 by 4 square. Which has the bigger area? Which has the bigger perimeter?" };
+            const a = rect(v, "a"), b = rect(v, "b");
+            if (!a || !b) return { ok: false, msg: "Now prove it: give two rectangles where B has the bigger area but not the bigger perimeter." };
+            if (!(b.A > a.A)) return { ok: false, msg: `B's area (${fmt(b.A)}) is not bigger than A's (${fmt(a.A)}).` };
+            if (b.P > a.P) return { ok: false, msg: `B has the bigger area, but its perimeter (${fmt(b.P)}) is also bigger than A's (${fmt(a.P)}). Try a long thin A.` };
+            return { ok: true, msg: `Your example proves it. B has the bigger area (${fmt(b.A)} against ${fmt(a.A)}) but its perimeter is ${fmt(b.P)} against A's ${fmt(a.P)}. One example is enough to show "always" is false.` };
+          },
+          solution: "Not always. A = 1 by 10 (area 10, perimeter 22). B = 4 by 4 (area 16, perimeter 16). B has the bigger area but the smaller perimeter." },
+        { id: "t4b", label: "Question 2", type: "ask", prompt: "If you make the area 4 times as big, can you say how many times bigger the perimeter becomes?",
+          fields: [{ k: "c", kind: "choice", options: ["2 times as big", "4 times as big", "You can't say: it depends on the rectangle"] }], reason: "Give an example to show your thinking.",
+          judge(v) {
+            if (v.c === 2) return { ok: true, msg: "Right. If both sides double, 1 by 1 becomes 2 by 2: area × 4, perimeter × 2. But 1 by 1 can also become 1 by 4: area × 4, perimeter 4 → 10, which is × 2.5. The area alone doesn't decide it." };
+            if (v.c === 0) return { ok: "partial", msg: "That's true when you double both the length and the breadth. But 1 by 1 → 1 by 4 also makes the area 4 times as big. What happens to its perimeter?" };
+            return { ok: false, msg: "Try it: a 1 by 1 square has perimeter 4. A 2 by 2 square has 4 times the area. What is its perimeter?" };
+          },
+          solution: "You can't say. 1 by 1 → 2 by 2 multiplies the perimeter by 2, but 1 by 1 → 1 by 4 multiplies it by 2.5." },
+        { id: "t4c", label: "Question 3", type: "ask", prompt: "If the perimeter of a rectangle gets bigger, does the area always get bigger?",
+          fields: [{ k: "c", kind: "choice", options: ["Yes, always", "No, not always"] }, { k: "a", kind: "dims", label: "Rectangle A", unit: "cm", showIf: v => v.c === 1 }, { k: "b", kind: "dims", label: "Rectangle B (bigger perimeter than A, but not a bigger area)", unit: "cm", showIf: v => v.c === 1 }], reason: false,
+          judge(v) {
+            if (v.c === 0) return { ok: false, msg: "Compare a 4 by 4 square with a 1 by 9 rectangle. Which has the bigger perimeter? Which has the bigger area?" };
+            const a = rect(v, "a"), b = rect(v, "b");
+            if (!a || !b) return { ok: false, msg: "Now prove it: give two rectangles where B has the bigger perimeter but not the bigger area." };
+            if (!(b.P > a.P)) return { ok: false, msg: `B's perimeter (${fmt(b.P)}) is not bigger than A's (${fmt(a.P)}).` };
+            if (b.A > a.A) return { ok: false, msg: `B has the bigger perimeter, but its area (${fmt(b.A)}) is also bigger than A's (${fmt(a.A)}). Try a long thin B.` };
+            return { ok: true, msg: `Your example proves it. B has the bigger perimeter (${fmt(b.P)} against ${fmt(a.P)}) but the area is ${fmt(b.A)} against A's ${fmt(a.A)}.` };
+          },
+          solution: "Not always. A = 4 by 4 (perimeter 16, area 16). B = 1 by 9 (perimeter 20, area 9)." },
+        { id: "t4d", label: "Question 4", type: "ask", prompt: "If you make the perimeter 3 times as big, can you say what happens to the area?",
+          fields: [{ k: "c", kind: "choice", options: ["It becomes 3 times as big", "It becomes 9 times as big", "You can't say: it depends on the rectangle"] }], reason: "Give an example to show your thinking.",
+          judge(v) {
+            if (v.c === 2) return { ok: true, msg: "Right. If both sides are tripled, 1 by 1 → 3 by 3, the area is 9 times as big. But 1 by 1 → 1 by 5 also triples the perimeter (4 → 12), and the area only goes from 1 to 5." };
+            if (v.c === 1) return { ok: "partial", msg: "That's true if you triple both the length and the breadth. But 1 by 1 → 1 by 5 also triples the perimeter (4 → 12). What happens to its area?" };
+            return { ok: false, msg: "Try it: 1 by 1 has perimeter 4. 3 by 3 has perimeter 12, three times as much. What happened to the area?" };
+          },
+          solution: "You can't say. 1 by 1 → 3 by 3 makes the area 9 times as big, but 1 by 1 → 1 by 5 makes it only 5 times as big." },
+        { id: "t4e", label: "Sum up", type: "open", prompt: "Write down what you have learned about how the area and the perimeter of a rectangle are connected. Use examples to show each idea.",
+          model: "Some things you may have found: rectangles with the same area can have very different perimeters. For a given area, the square has the smallest perimeter, and long thin rectangles have the biggest. For a given perimeter, the square has the biggest area. A bigger area does not always mean a bigger perimeter, and a bigger perimeter does not always mean a bigger area.",
+          checks: ["I wrote at least two ideas", "I gave an example for each idea"] },
+      ] },
+      { h: "Task 5: The 3 by 3 grid", text: "<b>This one is harder.</b> It is mainly for Classes 7 and 8, but everyone is welcome to try! Place the nine rectangle cards in a 3 by 3 grid so that:<ul class=\"steps\"><li>From left to right, the area gets bigger.</li><li>From top to bottom, the perimeter gets bigger.</li><li>All cards in the middle column have the same area.</li><li>All cards in the middle row have the same perimeter.</li></ul>", items: [
+        { id: "t5a", label: "The nine cards", type: "grid9", prompt: "Tap a card, then tap a box to place it. Tap a placed card to take it back. All lengths are in cm.",
+          hints: ["Start with the middle column. Work out the area of every card, and find three cards with the same area.", "Now the middle row: find three cards with the same perimeter. One card belongs to both the middle row and the middle column.", "Put the other four cards in the corners. Check each row (area grows left to right) and each column (perimeter grows top to bottom)."],
+          solution: "Top row: 2 × 7, 4 × 4, 3 × 6. Middle row: 1 × 9, 2 × 8, 5 × 5. Bottom row: 1 × 15, 1 × 16, 3 × 8." },
+        { id: "t5b", label: "Four more boxes", type: "ask", prompt: "Now look at the bigger grid. The ticks are the nine cards you placed. Can you make a card for each of the boxes A, B, C and D that follows the same rules?",
+          fig: figExt(), fields: ["A", "B", "C", "D"].flatMap(k => [
+            { k: "c" + k, kind: "choice", label: `Box ${k}`, options: ["I can make a card for it", "It can't be filled"] },
+            { k: "r" + k, kind: "dims", label: `My card for box ${k}`, unit: "cm", showIf: v => v["c" + k] === 0 }]),
+          reason: "Not all the boxes can be filled. Explain why.",
+          judge(v) {
+            const rules = {
+              A: { need: "area 16 and a perimeter less than 16", ok: r => near(r.A, 16, .02) && r.P < 16 - 1e-9, possible: false, why: "For area 16, the 4 by 4 square already has the smallest perimeter, so nothing can go above it." },
+              B: { need: "perimeter 20 and an area less than 9", ok: r => near(r.P, 20, .02) && r.A < 9 - 1e-9, possible: true },
+              C: { need: "perimeter 20 and an area more than 25", ok: r => near(r.P, 20, .02) && r.A > 25 + 1e-9, possible: false, why: "For perimeter 20, the 5 by 5 square already has the biggest area, so nothing can go to its right." },
+              D: { need: "area 16 and a perimeter more than 34", ok: r => near(r.A, 16, .02) && r.P > 34 + 1e-9, possible: true },
+            };
+            const lines = []; let right = 0;
+            for (const k of "ABCD") {
+              const R = rules[k], c = v["c" + k];
+              if (c === 1) {
+                if (!R.possible) { right++; lines.push(`Box ${k}: right, it can't be filled.`); }
+                else lines.push(`Box ${k}: with whole numbers that's true. But try a side that is a fraction, like 0.5. Box ${k} needs ${R.need}.`);
+              } else {
+                const r = rect(v, "r" + k);
+                if (!r) lines.push(`Box ${k}: write a length and a breadth.`);
+                else if (R.ok(r)) { right++; lines.push(`Box ${k}: ${rname(r)} works.`); }
+                else lines.push(`Box ${k}: your card has area ${fmt(r.A)} and perimeter ${fmt(r.P)}. Box ${k} needs ${R.need}.`);
+              }
+            }
+            if (right === 4) return { ok: true, list: ["All four are right. Boxes B and D can be filled, but only with fractions (like 0.5 by 9.5 for B and 0.5 by 32 for D).", rules.A.why, rules.C.why] };
+            return { ok: right ? "partial" : false, list: lines };
+          },
+          hints: ["Work out what each box needs. Box A is in the middle column, so its area must be 16, and it is above the 4 by 4, so its perimeter must be less than 16.", "Box C is in the middle row, so its perimeter must be 20. Its area must be more than 25. Is that possible?"],
+          solution: "A can't be filled: for area 16, the 4 by 4 square has the smallest perimeter. B: 0.5 by 9.5 (perimeter 20, area 4.75). C can't be filled: for perimeter 20, the 5 by 5 square has the biggest area. D: 0.5 by 32 (area 16, perimeter 65)." },
+        { id: "t5c", label: "A new set", type: "ask", prompt: "Make a whole new set of nine cards that follow the same rules, with a <b>1 by 5 rectangle</b> in the centre.",
+          fields: ["Top left", "Top middle", "Top right", "Middle left", "Middle right", "Bottom left", "Bottom middle", "Bottom right"].map((label, i) => ({ k: "p" + i, kind: "dims", label, unit: "cm" })),
+          reason: "Which card did you work out first, and why?",
+          judge(v) {
+            const pos = [0, 1, 2, 3, null, 4, 5, 6, 7], g = [];
+            for (let i = 0; i < 9; i++) {
+              if (pos[i] === null) { g.push({ l: 1, b: 5, A: 5, P: 12 }); continue; }
+              const r = rect(v, "p" + pos[i]);
+              if (!r) return { ok: false, msg: "Fill in all eight cards." };
+              g.push(r);
+            }
+            return judgeGrid(g, true);
+          },
+          hints: ["The middle column needs area 5. The 1 by 5 has perimeter 12, so the top-middle card needs area 5 and a smaller perimeter (try 2 by 2.5). The bottom-middle needs area 5 and a bigger perimeter.", "The middle row needs perimeter 12, so length + breadth = 6 for all three. You will need some fractions."],
+          solution: "One answer. Top row: 1 by 2, 2 by 2.5, 2.5 by 2.5. Middle row: 0.5 by 5.5, 1 by 5, 3 by 3. Bottom row: 0.5 by 8, 0.5 by 10, 4 by 4. There are many others." },
+      ] },
+    ],
+  },
+  e2: {
+    short: "Exploration 2", title: "Secret Codes",
+    blurb: "Solve a secret message, then make your own code for someone else to solve.",
+    intro: `<p>Try making and solving secret messages. Count how often letters appear and use percentages to help solve a code.</p><div class="defs"><p>Use a notebook for your working. For the extra counting problems, you can use the English news story given on this page.</p></div>`,
+    sections: [
+      { h: "Part 1: Counting letters and words", text: "Choose a paragraph of about 100 words from a news article. Count how many times each letter appears in it. This number is the <b>frequency</b> of that letter. Then find the percent for each letter: <b>percent = (frequency ÷ total) × 100</b>. Round to one decimal place (for example, 7.3%).", items: [
+        { id: "p1src", label: "Your paragraph", type: "source" },
+        { id: "p1let", label: "Letter table", type: "freq", what: "letters" },
+        { id: "p1wrd", label: "Word table", type: "freq", what: "words" },
+        { id: "p1q1", label: "Question 1", type: "ask", prompt: "Which letter appeared the most in your paragraph? Which appeared the least?",
+          fields: [{ k: "m", kind: "text", label: "Most", mode: "letter" }, { k: "l", kind: "text", label: "Least", mode: "letter" }], reason: false,
+          judge(v) {
+            const f = (S.q.p1let || {}).v || {};
+            const counts = LETTERS.map(L => [L, num(f["f" + L]) || 0]);
+            if (!counts.some(c => c[1] > 0)) return { ok: false, msg: "Fill in your letter table first." };
+            const max = Math.max(...counts.map(c => c[1])), min = Math.min(...counts.map(c => c[1]));
+            const m = String(v.m || "").trim().toUpperCase(), l = String(v.l || "").trim().toUpperCase();
+            const gm = counts.some(c => c[0] === m && c[1] === max), gl = counts.some(c => c[0] === l && c[1] === min);
+            if (gm && gl) return { ok: true, msg: "That matches your table." };
+            return { ok: false, msg: [gm ? "" : "Look at your table again for the most.", gl ? "" : "Look at your table again for the least (letters that never appeared count too)."].join(" ").trim() };
+          } },
+        { id: "p1q2", label: "Question 2", type: "open", prompt: "Did some letters appear about the same number of times? Which ones?", model: "Usually a few groups of letters come out close together. For example, A, O and I are often close, and so are D and L, or C, M and U. In a short paragraph the numbers jump around a bit.", checks: ["I named letters from my own table"] },
+        { id: "p1q3", label: "Question 3", type: "open", prompt: "Compare the percent of A's with the percent of D's. What do you notice? Then compare the percent of T's with the percent of C's.", model: "In most English writing A is used about twice as often as D, and T about three times as often as C. Your paragraph may be close to this, or a bit different because it is short.", checks: ["I used my own numbers", "I said which letter was more common in each pair"] },
+        { id: "p1q4", label: "Question 4", type: "open", prompt: "Were there words not in the table that appeared as often as the words in the table? Why might that be?", model: "Often yes. Words about the topic of the article (like a name, a place or 'water' in a story about rain) can repeat many times. The small words in the table (the, of, and, to) are common in every article, but topic words are common only in one.", checks: ["I gave an example from my paragraph", "I gave a reason"] },
+        { id: "p1q5", label: "Question 5", type: "open", prompt: "How could you get more accurate results?", model: "Count more writing: a longer article, several articles, or put your results together with friends' results. The more letters you count, the closer your percents get to the percents for English in general.", checks: ["I suggested counting more text", "I said why that helps"] },
+      ] },
+      { h: "Part 2: Making the words fit", text: "People who print books and newspapers measure the height of letters in <b>points</b>. 1 point is 1/72 of an inch, so 72 points make 1 inch. (1 inch is about 2.5 cm.) When you choose font size 12 on a computer, you are choosing 12 points. A <b>pica</b> is another unit: 1 pica = 12 points.", items: [
+        { id: "p2q7", label: "Question 7", type: "ask", prompt: "What fraction of an inch is a 12-point letter?",
+          fields: [{ k: "a", kind: "num", label: "Fraction of an inch", mode: "frac" }], reason: "How did you work it out?",
+          judge(v) {
+            const x = num(v.a);
+            if (near(x, 1 / 6, .002)) return { ok: true, msg: "Yes. 12 points out of 72 is 12/72, which is 1/6 of an inch." };
+            if (near(x, 6, .01)) return { ok: false, msg: "Close. 72 ÷ 12 = 6, so six 12-point letters fit in an inch. What fraction of an inch is one of them?" };
+            if (near(x, 12, .01)) return { ok: false, msg: "12 is the number of points. What fraction of 72 is 12?" };
+            return { ok: false };
+          },
+          hints: ["1 inch = 72 points. A 12-point letter is 12 out of those 72."],
+          solution: "12/72 = 1/6 of an inch." },
+        { id: "p2q8", label: "Question 8", type: "ask", prompt: "In a newspaper advertisement, you find a capital letter that is 3 inches tall. How many points is it?",
+          fields: [{ k: "a", kind: "num", label: "Points" }], reason: "How did you work it out?",
+          judge(v) {
+            const x = num(v.a);
+            if (near(x, 216, .01)) return { ok: true, msg: "Yes. 3 × 72 = 216 points." };
+            if (near(x, 24, .01)) return { ok: false, msg: "3 inches is more than 1 inch, so it must be more than 72 points." };
+            if (near(x, 75, .01)) return { ok: false, msg: "It looks like you added. Each inch is 72 points, and there are 3 inches." };
+            return { ok: false };
+          },
+          hints: ["Each inch is 72 points."], solution: "3 × 72 = 216 points." },
+        { id: "p2q9", label: "Question 9", type: "ask", prompt: "Find a word with a capital letter in a newspaper. Measure the height of the capital letter with a ruler. Change it into inches, then points, then picas.",
+          fields: [{ k: "cm", kind: "num", label: "Height I measured", unit: "cm" }, { k: "in", kind: "num", label: "In inches", unit: "inches" }, { k: "pt", kind: "num", label: "In points", unit: "points" }, { k: "pc", kind: "num", label: "In picas", unit: "picas" }], reason: false,
+          judge(v) {
+            const cm = num(v.cm), inch = num(v.in), pt = num(v.pt), pc = num(v.pc), out = [];
+            const rel = (a, b) => Math.abs(a - b) <= .04 * Math.abs(b) + .01;
+            if (!(cm > 0)) return { ok: false, msg: "Write the height you measured." };
+            if (!(rel(inch, cm / 2.5) || rel(inch, cm / 2.54))) out.push("Inches: 1 inch is about 2.5 cm, so divide your cm by 2.5.");
+            if (!rel(pt, inch * 72)) out.push("Points: each inch is 72 points. Use your answer in inches.");
+            if (!rel(pc, pt / 12)) out.push("Picas: 12 points make 1 pica. Use your answer in points.");
+            if (!out.length) return { ok: true, msg: `All three steps work. You have expressed the same measured length in three different units. This is not the font size.` };
+            return { ok: false, list: out };
+          } },
+      ] },
+      { h: "Part 3: The Fog Index", text: "The <b>Fog Index</b> tells you how easy a piece of writing is to read. It gives the school class you need to be in to understand it. Choose an article from the front page of an English newspaper. The longer the article, the better.<br><br><b>Big words</b> are words with three or more syllables (sound parts), like im-por-tant or gov-ern-ment. <b>Do not count:</b> names and other words that start with a capital letter; words made by joining two smaller words (like skateboarder); and words that only reach three syllables because of -es or -ed at the end (like surprises).", items: [
+        { id: "p3fog", label: "Questions 10 to 16", type: "ask", prompt: "Work through the steps. Each answer uses the ones before it.",
+          fields: [{ k: "w", kind: "num", label: "10. Number of words" }, { k: "s", kind: "num", label: "11. Number of sentences" }, { k: "avg", kind: "num", label: "12. Average sentence length (words ÷ sentences)" }, { k: "big", kind: "num", label: "13. Number of big words" }, { k: "pct", kind: "num", label: "14. Percent of big words ((big words ÷ words) × 100)", unit: "%" }, { k: "sum", kind: "num", label: "15. Answer 12 + answer 14" }, { k: "fog", kind: "num", label: "16. Answer 15 × 0.4 = the Fog Index" }], reason: false,
+          judge(v) {
+            const w = num(v.w), s = num(v.s), avg = num(v.avg), big = num(v.big), pct = num(v.pct), sum = num(v.sum), fog = num(v.fog), out = [];
+            const ok = (a, b) => Math.abs(a - b) <= Math.max(.06, .015 * Math.abs(b));
+            if (!(Number.isInteger(w) && Number.isInteger(s) && w > 0 && s > 0 && s <= w)) return { ok: false, msg: "Write the number of words and sentences first." };
+            if (!Number.isInteger(big) || big < 0) return {ok:false,msg:"The number of big words must be a whole number, zero or more."};
+            if (big > w) out.push("13: you can't have more big words than words.");
+            if (!ok(avg, w / s)) out.push("12: check your division, words ÷ sentences.");
+            if (!ok(pct, big / w * 100)) out.push("14: check the percent: big words ÷ words, then × 100.");
+            if (!ok(sum, avg + pct)) out.push("15: check your addition of answers 12 and 14.");
+            if (!ok(fog, sum * .4)) out.push("16: check your multiplication by 0.4.");
+            if (!out.length) return { ok: true, msg: `Your article has a Fog Index of about ${fmt(fog)}. Higher values suggest longer sentences or more long words. This is only a rough indicator, not a judgement of your reading ability.` };
+            return { ok: false, list: out };
+          } },
+        { id: "p3ref", label: "Think about it", type: "open", prompt: "What class is your article written for? Is that what you expected? What made it easy or hard to read?", model: "Many writers try to keep the Fog Index below 12, because higher scores are hard for most readers. Long sentences and many big words push the index up. Short sentences with everyday words bring it down.", checks: ["I used my own Fog Index", "I said what made the article easy or hard"] },
+      ] },
+      { h: "Part 4: Mode Code", text: "The word <b>cryptology</b> comes from two Greek words: <b>kryptos</b>, meaning \"hidden\", and <b>logos</b>, meaning \"word\". Code breakers are helped by one fact: in English, some letters are used much more often than others. Here are the percentages for English writing in general. The <b>mode</b> is the value that appears most often.", items: [
+        { id: "p4tbl", type: "pcttable" },
+        { id: "p4q17", label: "Question 17", type: "ask", prompt: "In a long piece of English writing, which letter would you expect to be the mode?",
+          fields: [{ k: "a", kind: "text", label: "Letter", mode: "letter" }], reason: "Why?",
+          judge(v) { const a = String(v.a || "").trim().toUpperCase(); if (a === "E") return { ok: true, msg: "Yes. E is 13% of all letters, more than any other letter." }; if (a === "T") return { ok: false, msg: "T is second. Which letter has a bigger percent?" }; return { ok: false, msg: "Look at the table: which letter has the biggest percent?" }; },
+          solution: "E, at about 13%." },
+        { id: "p4q18", label: "Question 18", type: "ask", prompt: "About what percent of the letters would you expect to be vowels (A, E, I, O, U)? Do not count Y.",
+          fields: [{ k: "a", kind: "num", label: "Vowels", unit: "%" }], reason: "How did you work it out?",
+          judge(v) { const x = num(v.a); if (x >= 38 && x <= 39) return { ok: true, msg: "Yes. 8 + 13 + 6.5 + 8 + 3 = 38.5%. So more than a third of all letters are vowels." }; if (near(x, 40.5, .2)) return { ok: false, msg: "Did you include Y? Leave it out." }; if (near(x, 5, .01)) return { ok: false, msg: "There are 5 vowels, but the question asks what percent of the letters are vowels. Add up their percents." }; return { ok: false }; },
+          hints: ["Find A, E, I, O and U in the table and add their percents."], solution: "A 8 + E 13 + I 6.5 + O 8 + U 3 = 38.5%." },
+        { id: "p4q19", label: "Question 19", type: "ask", prompt: "In a message with 1,270 letters, about how many times would you expect the letter E to appear?",
+          fields: [{ k: "a", kind: "num", label: "About how many E's" }], reason: "How did you work it out?",
+          judge(v) { const x = num(v.a); if (x >= 160 && x <= 170) return { ok: true, msg: "Yes. 13% of 1,270 is 0.13 × 1,270 = 165.1, so about 165." }; if (near(x, 13, .01)) return { ok: false, msg: "13 is the percent. How many is 13% of 1,270?" }; return { ok: false }; },
+          hints: ["13% means 13 out of every 100. How many hundreds are there in 1,270?"], solution: "13% of 1,270 = 0.13 × 1,270 ≈ 165." },
+        { id: "p4q20", label: "Question 20", type: "ask", prompt: "In a message with 1,270 letters, about how many vowels (not counting Y) would you expect?",
+          fields: [{ k: "a", kind: "num", label: "About how many vowels" }], reason: "How did you work it out?",
+          judge(v) { const x = num(v.a); if (x >= 478 && x <= 500) return { ok: true, msg: "Yes. 38.5% of 1,270 is about 489." }; if (near(x, 38.5, .1)) return { ok: false, msg: "38.5 is the percent. How many is 38.5% of 1,270?" }; return { ok: false }; },
+          hints: ["Use your answer to question 18: what is 38.5% of 1,270?"], solution: "38.5% of 1,270 = 0.385 × 1,270 ≈ 489." },
+        { id: "p4intro", type: "note", html: "The secret message below was made by replacing each letter with a number. The same number always stands for the same letter. The message uses only 21 different letters of the alphabet." },
+        { id: "p4tally", label: "Count the numbers", type: "tally", prompt: "Count how many times each number appears in the secret message above. Then find the percent for each number, to one decimal place." },
+        { id: "p4q21", label: "Questions 21 and 22", type: "ask", prompt: "Which number in the secret message is the mode? Which number appears the second most often?",
+          fields: [{ k: "a", kind: "num", label: "The mode" }, { k: "b", kind: "num", label: "Second most often" }], reason: "Which letters do you think they stand for, and why?",
+          judge(v) { const a = num(v.a), b = num(v.b); if (a === 17 && b === 13) return { ok: true, msg: "Yes. 17 appears 11 times and 13 appears 9 times. Now use the letter table: which letters are most common in English?" }; if (a === 17) return { ok: "partial", msg: "17 is the mode. Check your count for the second most often." }; return { ok: false, msg: "Use your counts from the table above. Which number has the biggest count?" }; },
+          solution: "17 is the mode (11 times). 13 is second (9 times)." },
+        { id: "p4code", label: "The secret message", type: "decoder",
+          hints: ["17 is the mode of the message. Which letter is the mode in English?", "Look at the one-letter word, 2. English has only two one-letter words.", "13 19 is a two-letter word. 13 is the second most common number. Which letter is second most common in English?"],
+          solution: "TRYING TO BREAK THIS CODE IS A REALLY NEAT AND INTERESTING WAY TO EXPLORE THE CONCEPT OF MODE" },
+      ] },
+      { h: "Part 5: Make your own code", text: "Choose a different number or symbol for each English letter. Your list of letters and their codes is called a key. Write a message in English using at least 50 letters. Share only the coded message with a friend or someone at home. Can they work out what it says without seeing your key?", items: [
+        { id: "p5enc", label: "Your code", type: "encoder" },
+      ] },
+    ],
+  },
+};
+const oldMaths = EX.e1.sections, oldCodes = EX.e2.sections;
+const item = (sections, id) => sections.flatMap(sec => sec.items).find(d => d.id === id);
+const mathsItems = ids => ids.map(id => item(oldMaths, id));
+EX.e1.intro += `<p>Start with the two short activities below, then try the questions about what you notice. You can stop whenever you like. The harder challenges are optional.</p>`;
+EX.e1.sections = [
+  { h: "Start here: The farmer's fence", text: "A farmer has 40 m of fencing to go all the way around a rectangle. Each of these rectangles uses exactly 40 m: 5 × 15, 8 × 12 and 10 × 10. These lengths are in metres. Make small sketches in your notebook and write the lengths beside the sides.", fig: FIG_FIELD, items: [
+    { id:"fenceTry", label:"Compare three rectangles", type:"ask", prompt:"Work out the area inside each fence.", reason:false,
+      fields:[{k:"a",kind:"num",label:"5 m × 15 m",unit:"m²"},{k:"b",kind:"num",label:"8 m × 12 m",unit:"m²"},{k:"c",kind:"num",label:"10 m × 10 m",unit:"m²"}],
+      judge(v) { const wanted={a:75,b:96,c:100}, labels={a:"5 × 15",b:"8 × 12",c:"10 × 10"}; const wrong=Object.keys(wanted).filter(k=>!near(num(v[k]),wanted[k],.01)); return wrong.length ? {ok:false,list:wrong.map(k=>`Check ${labels[k]}. Area = length × breadth.`)} : {ok:true,msg:"Yes: 75 m², 96 m² and 100 m². The same amount of fencing can go around rectangles with different areas."}; },
+      hints:["Area is length × breadth. For the first rectangle, multiply 5 by 15. You can add 15 five times: 15 + 15 + 15 + 15 + 15."], solution:"5 × 15 = 75 m²; 8 × 12 = 96 m²; 10 × 10 = 100 m²." },
+    item(oldMaths,"t2a") ] },
+  { h:"Try next: Same area, different fences", text:"Now keep the area at 24 cm² and change the sides. Begin with whole-number lengths. Squared paper can help.", items:[item(oldMaths,"t1q1"),
+    {id:"rectNotice",label:"What do you notice?",type:"open",prompt:"Which of your rectangles needs the least fencing? Which needs the most? What do you notice about their shapes?",model:"For whole-number sides, 4 × 6 needs the least fencing: 20 cm. The long, thin 1 × 24 rectangle needs the most: 50 cm. All four rectangles have the same area, but their perimeters differ.",checks:["I compared the perimeters","I described the shapes"]}
+  ] },
+  {h:"What have you noticed?",text:"Does a bigger area always mean a bigger perimeter? Try examples. If you find one where this does not happen, always cannot be right.",items:mathsItems(["t4a","t4c"])},
+  {h:"Share what you tried",items:[{id:"send-e1",type:"send",ex:"e1"}]},
+  {h:"Optional: A wall and a longer fence",optional:true,text:oldMaths[1].text,items:mathsItems(["t2b","t2c"])},
+  {h:"Optional challenge: Fractions and thinner rectangles",optional:true,text:"Here the sides may be fractions or decimals. These questions are harder; there is no need to finish them all.",items:mathsItems(["t1q2","t1q3","t1q4","t1q5","t1q5b","t1h1","t1h2"])},
+  {...oldMaths[2],h:"Optional challenge: Equal numbers for area and perimeter",optional:true},
+  {...oldMaths[3],h:"Optional: More connections",optional:true,items:mathsItems(["t4b","t4d","t4e"])},
+  {...oldMaths[4],h:"Optional challenge: The 3 by 3 grid",optional:true},
+];
+item(EX.e1.sections,"t2a").label = "Which rectangle is biggest?";
+item(EX.e1.sections,"t1q1").label = "Your rectangles";
+item(EX.e1.sections,"t1q1").hints = ["Start with 1 × 24. Its area is 24 cm². Its perimeter is 2 × (1 + 24) = 50 cm. Find other pairs of whole numbers that multiply to 24."];
+item(EX.e1.sections,"t1q1").solution = "1 × 24 has perimeter 50 cm; 2 × 12 has 28 cm; 3 × 8 has 22 cm; 4 × 6 has 20 cm.";
+item(EX.e1.sections,"t4a").label = "A bigger area";
+item(EX.e1.sections,"t4c").label = "A bigger perimeter";
+EX.e2.intro = `<p>A secret message is waiting for you. First, try a short counting puzzle and a percentage question. Then work out what the secret message says.</p><div class="defs"><p>The secret message uses English letters. Write your working in a notebook. You can explain your ideas in English or Hindi.</p></div><p>Further down this page, there are extra problems. In one of them, you count letters and words in a short news story. You can use the story given on this page.</p>`;
+const codeItems = ids => ids.map(id => item(oldCodes,id));
+EX.e2.sections = [
+  {h:"Start here: Spot what repeats",text:"Look at these ten numbers: 4, 2, 4, 1, 4, 2, 3, 4, 2, 1. Frequency means how many times something appears. The mode is the value that appears most often.",items:[
+    {id:"codeWarm",label:"A quick counting puzzle",type:"ask",prompt:"Which number appears most often, and how many times does it appear?",reason:false,fields:[{k:"mode",kind:"num",label:"The mode"},{k:"count",kind:"num",label:"How many times?"}],judge(v){return num(v.mode)===4&&num(v.count)===4?{ok:true,msg:"Yes. 4 appears four times, more than any other number. So 4 is the mode."}:{ok:false,msg:"Copy the ten numbers into your notebook. Put a tick beside each 4 as you count."};},hints:["Count one number at a time: 1 appears twice, 2 appears three times, and 3 appears once. Now count the 4s."],solution:"The mode is 4. It appears four times."},
+    {id:"codePercent",label:"One percentage",type:"ask",prompt:"The number 2 appears 3 times out of 10: (3 ÷ 10) × 100 = 30%. The number 4 appears 4 times out of 10. What percent is that?",fields:[{k:"a",kind:"num",label:"Percent of the numbers that are 4",unit:"%"}],reason:"Show your calculation. A short calculation is enough.",judge(v){return near(num(v.a),40,.01)?{ok:true,msg:"Yes. (4 ÷ 10) × 100 = 40%. Frequency counts how often; percent tells us the share of the total."}:{ok:false,msg:"Use the same steps as the example: divide 4 by 10, then multiply by 100."};},hints:["4 ÷ 10 = 0.4. Now multiply 0.4 by 100."],solution:"(4 ÷ 10) × 100 = 40%."}
+  ]},
+  {h:"Crack the secret message",text:"In English, some letters are more common than others. The table below gives approximate percentages. In our secret message, the number 17 appears most often (11 times), followed by 13 (9 times). Use this as a starting clue, then look for words that make sense.",items:[...codeItems(["p4tbl","p4q17","p4intro","p4code"])]},
+  {...oldCodes[4],h:"Try it: Make your own code"},
+  {h:"Share what you tried",items:[{id:"send-e2",type:"send",ex:"e2"}]},
+  {h:"Optional: Investigate the secret message",optional:true,text:"Count the message yourself and try some more percentage questions. You can return to the decoder above at any time.",items:codeItems(["p4tally","p4q18","p4q19","p4q20","p4q21"])},
+  {...oldCodes[0],h:"Optional: Investigate a news paragraph",optional:true},
+  {...oldCodes[1],h:"Optional: Points, picas and printed lengths",optional:true},
+  {...oldCodes[2],h:"Optional: Investigate reading difficulty",optional:true},
+  {h:"",items:[{id:"credit-e2",type:"note",html:'<span class="small muted">Exploration 2 is adapted from Mathematics Teaching in the Middle School (February 1998 and April 1999).</span>'}]}
+];
+item(EX.e2.sections,"p4q17").label="A useful clue";
+item(EX.e2.sections,"p4code").label="Your secret message";
+EX.e2.sections.find(sec=>sec.items.some(d=>d.id==="p2q7")).text = "Points and picas are units of length used in printing. 1 inch = 72 points, and 1 pica = 12 points. 1 inch is exactly 2.54 cm. Here we will measure printed shapes and change the units. A letter's measured height does not tell us its font size.";
+item(EX.e2.sections,"p2q7").prompt="What fraction of an inch is a length of 12 points?";
+item(EX.e2.sections,"p2q8").prompt="A printed design is 3 inches tall. How many points tall is it?";
+item(EX.e2.sections,"p2q9").prompt="Measure the height of a printed shape or capital letter with a ruler. Convert this measured length into inches, points and picas. This does not tell you the font size.";
+EX.e2.sections.find(sec=>sec.items.some(d=>d.id==="p3fog")).text = "The Fog Index is a rough indicator of reading difficulty, based on sentence length and the share of long words. It is not a test of your reading ability and cannot tell exactly who will understand an article. Choose an English news article. Big words have three or more syllables (sound parts), like im-por-tant. Do not count names, familiar compound words, or words that reach three syllables only because of an -es or -ed ending. An ordinary word at the start of a sentence can still count even though it starts with a capital letter.";
+item(EX.e2.sections,"p3ref").prompt="Does the index match how easy or hard you found the article? What helped you understand it, and what made it harder?";
+
+const extraHints = {
+  t1q4:["Keep the area at 24. Compare 1 × 24 with 0.5 × 48. What happens to the perimeter?"],
+  t1h1:["Try a side of 0.25 cm. What other side makes the area a whole number? Then check the perimeter."],
+  t1h2:["Try a side of 0.5 cm and a whole-number second side. Check the area and perimeter separately."],
+  t4a:["Compare 1 × 10 with 4 × 4. Work out both the area and perimeter of each."],
+  t4b:["Compare 1 × 1 → 2 × 2, then 1 × 1 → 1 × 4. Both changes multiply the area by four."],
+  t4c:["Compare 4 × 4 with 1 × 9. Work out both the perimeter and area of each."],
+  t4d:["Compare 1 × 1 → 3 × 3, then 1 × 1 → 1 × 5. Both changes triple the perimeter."],
+  p1q1:["Find the biggest and smallest frequencies in your letter table. A letter that appears zero times can be one of the least common."],
+  p2q9:["Divide centimetres by 2.54 to get inches. Multiply inches by 72 to get points, then divide points by 12 to get picas."],
+  p3fog:["Count the words and sentences first. For step 12, divide the number of words by the number of sentences. Write each step in your notebook before going to the next one."],
+  p4q17:["Look for the largest percentage in the letter table."],
+};
+for (const ex of Object.values(EX)) for (const sec of ex.sections) for (const d of sec.items) {
+  if(extraHints[d.id]) d.hints=extraHints[d.id];
+  if(d.type==="freq") d.hints=["Count one letter or word at a time, using tally marks. Then add your frequencies and use frequency ÷ total × 100 for each percent."];
+  if(d.type==="tally") d.hints=["Copy the coded numbers into your notebook. Count one number at a time. Cross off each copy as you count it, so you do not count it twice. Then use frequency ÷ total × 100."];
+}
+
+const DEF = {};
+for (const ex of Object.keys(EX)) for (const sec of EX[ex].sections) for (const d of sec.items) { d.ex = ex; d.optional = !!sec.optional; DEF[d.id] = d; }
+const COUNTED = d => !["note", "pcttable", "source", "send"].includes(d.type);
+
+function judgeGrid(g, numbers) {
+  const rowN = ["top", "middle", "bottom"], colN = ["left", "middle", "right"], out = [];
+  for (let r = 0; r < 3; r++) { const a = [0, 1, 2].map(c => g[r * 3 + c].A); if (!(a[0] < a[1] - 1e-9 && a[1] < a[2] - 1e-9)) out.push(`In the ${rowN[r]} row, the area does not get bigger from left to right.`); }
+  for (let c = 0; c < 3; c++) { const p = [0, 1, 2].map(r => g[r * 3 + c].P); if (!(p[0] < p[1] - 1e-9 && p[1] < p[2] - 1e-9)) out.push(`In the ${colN[c]} column, the perimeter does not get bigger from top to bottom.`); }
+  if (![1, 4, 7].every(i => near(g[i].A, g[4].A, .02))) out.push("The cards in the middle column don't all have the same area.");
+  if (![3, 4, 5].every(i => near(g[i].P, g[4].P, .02))) out.push("The cards in the middle row don't all have the same perimeter.");
+  if (!out.length) return { ok: true, msg: numbers ? "Every rule works. You built a whole new set of cards." : "Every rule works. Did you notice the card in the centre is in both the middle row and the middle column? That is why it is a good place to start." };
+  return { ok: false, list: out };
+}
+
+/* ---------- done / status ---------- */
+function isDone(d) {
+  const st = S.q[d.id]; if (!st) return false;
+  return !!(st.ok || st.sol || st.revealed);
+}
+function progress(ex, optional = false) {
+  const items = EX[ex].sections.filter(s => !!s.optional === optional).flatMap(s => s.items).filter(COUNTED);
+  return [items.filter(isDone).length, items.length];
+}
+
+/* ---------- rendering ---------- */
+const app = document.getElementById("app");
+function brand() {
+  return `<div class="brand"><span class="chip"><img class="gtm" src="gtm-logo.png" alt="Godrej Tomorrow Makers"></span><span class="chip"><img class="gw" src="genwise-logo.png" alt="GenWise"></span></div>`;
+}
+function home() {
+  const s = S.student;
+  const exCard = ex => {
+    const [d, n] = progress(ex), e = EX[ex];
+    return `<div class="q excard"><span class="eyebrow">${e.short}</span><h2>${e.title}</h2><p class="muted">${e.blurb}</p>
+      <div class="meter" aria-hidden="true"><i style="width:${Math.round(100 * d / n)}%"></i></div>
+      <div class="actions"><button class="btn" data-act="go" data-to="${ex}">${d ? "Continue" : "Start"}</button><span class="prog">${d} of ${n} starting questions explored</span></div></div>`;
+  };
+  return `${brand()}
+  <div class="paperband"><span class="eyebrow">Challenges to try at home</span><h1>Two Maths Explorations</h1>
+    <p>Choose one activity to begin with. You do not need to finish everything. There is no time limit and there are no marks. Take your time, try your own ideas, and write down how you are thinking. <b>The way you think matters more than getting every answer right.</b></p><p>We would love you to try some of the harder problems too! Look for the sections marked Optional further down each page. Tap a heading to see its questions. Optional means you can choose whether to try them. Take your time and use the clues if you get stuck.</p></div>
+  <div class="section">
+    <div class="q"><h3>How this works</h3><ol class="steps">
+      <li>Work on each question in your notebook first.</li>
+      <li>Type your answer and how you got it. A short calculation is enough. You can explain in English or Hindi. The page checks the answer; compare your reasoning with the explanation shown.</li>
+      <li>Use Help me start whenever you need a clue, even before your first try. After two tries you can see a worked solution.</li>
+      <li>Your work is saved in this browser when storage is available. Use the same browser to return to it. You can send whatever you have tried, even if it is unfinished.</li></ol></div>
+    <div class="q"><h3>Sharing your work</h3><p>GenWise collects the work you send. Please do not expect an individual response. You do not have to complete every activity before sending.</p></div>
+    <div class="q"><h3>About you</h3>
+      <label class="fld"><span>Your name</span><input type="text" id="st-name" data-st="name" value="${esc(s.name)}" autocomplete="name"></label>
+      <label class="fld"><span>Your class</span><select id="st-cls" data-st="cls">${["", "6", "7", "8", "Other"].map(c => `<option value="${c}" ${s.cls === c ? "selected" : ""}>${c ? (c === "Other" ? "Other" : "Class " + c) : "Choose"}</option>`).join("")}</select></label>
+      <label class="fld"><span>Your school</span><input type="text" id="st-school" data-st="school" value="${esc(s.school)}"></label>
+      <label class="fld"><span>City / town / village</span><input type="text" id="st-city" data-st="city" value="${esc(s.city)}" autocomplete="address-level2"></label></div>
+    ${exCard("e1")}${exCard("e2")}
+  </div>
+  <p class="foot">Godrej Tomorrow Makers × GenWise</p>`;
+}
+function exView(ex) {
+  const e = EX[ex], [d, n] = progress(ex);
+  let h = `<div class="bar"><button class="btn ghost" data-act="go" data-to="home" aria-label="Back to the start">←</button><span class="t">${e.title}</span><span class="prog" id="prog">${d} of ${n} starting questions explored</span></div>
+  <div class="paperband"><span class="eyebrow">${e.short}</span><h1>${e.title}</h1>${e.intro}</div>`;
+  for (const sec of e.sections) {
+    if (sec.optional) h += `<details class="optional" data-section="${ex}-${e.sections.indexOf(sec)}" ${S.open[ex + "-" + e.sections.indexOf(sec)] ? "open" : ""}><summary>${sec.h}</summary>`;
+    h += `<div class="section">${sec.optional || !sec.h ? "" : `<h2>${sec.h}</h2>`}${sec.text ? `<div>${sec.text}</div>` : ""}${sec.fig || ""}`;
+    for (const it of sec.items) h += `<div class="q${isDone(it) ? " done" : ""}" id="q-${it.id}">${inner(it)}</div>`;
+    h += `</div>`;
+    if (sec.optional) h += `</details>`;
+  }
+  const other = ex === "e1" ? "e2" : "e1";
+  h += `<div class="section"><div class="actions"><button class="btn ghost" data-act="go" data-to="home">Back to the start</button><button class="btn ghost" data-act="go" data-to="${other}">Go to ${EX[other].short}</button></div></div><p class="foot">Godrej Tomorrow Makers × GenWise</p>`;
+  return h;
+}
+function head(d) {
+  const st = S.q[d.id] || {};
+  const pill = st.ok || st.revealed ? `<span class="pill">✓ Done</span>` : st.sol ? `<span class="pill seen">Solution seen</span>` : "";
+  return d.label || pill ? `<div class="qhead"><span class="qlabel">${d.label || ""}</span>${pill}</div>` : "";
+}
+function fbBox(st) {
+  if (!st.kind) return "";
+  const lead = { ok: "That works.", partial: "Part of the way there.", no: "Not yet." }[st.kind];
+  const body = st.list ? `<ul>${st.list.map(x => `<li>${x}</li>`).join("")}</ul>` : `<p>${st.msg || "Look at your working again, step by step."}</p>`;
+  return `<div class="fb ${st.kind}" role="status"><span class="lead">${lead}</span>${body}</div>`;
+}
+function helpBox(d, st) {
+  if (st.ok) return "";
+  let h = "";
+  const hints = d.hints || [];
+  for (let i = 0; i < Math.min(st.hints, hints.length); i++) h += `<div class="fb hint"><span class="lead">Clue ${i + 1}</span><p>${hints[i]}</p></div>`;
+  const acts = [];
+  if (st.hints < hints.length) acts.push(`<button class="link" data-act="hint" data-q="${d.id}">${st.hints ? "Show another clue" : "Help me start"}</button>`);
+  if (d.solution && st.tries >= 2 && !st.sol) acts.push(`<button class="link" data-act="sol" data-q="${d.id}">Show the solution</button>`);
+  if (st.sol) h += `<div class="model"><b>Solution</b><p>${d.solution}</p></div>`;
+  if (acts.length) h += `<div class="actions">${acts.join("")}</div>`;
+  return h;
+}
+function fieldHTML(d, f, st) {
+  const v = st.v, dis = "", id = `${d.id}-${f.k}`;
+  if (f.showIf && !f.showIf(v)) return "";
+  if (f.kind === "choice") {
+    return `<fieldset class="choices">${f.label ? `<legend>${f.label}</legend>` : ""}${f.options.map((o, i) => `<label class="opt"><input type="radio" name="${id}" id="${id}-${i}" data-q="${d.id}" data-f="${f.k}" value="${i}" ${v[f.k] === i ? "checked" : ""} ${dis}><span>${o}</span></label>`).join("")}</fieldset>`;
+  }
+  if (f.kind === "dims") {
+    return `<div class="fld"><span>${f.label}</span><span class="inrow"><input type="text" class="n" id="${id}-l" data-q="${d.id}" data-f="${f.k}.l" value="${esc(v[f.k + ".l"])}" inputmode="decimal" placeholder="length" aria-label="${f.label}: length" ${dis}><span class="times">×</span><input type="text" class="n" id="${id}-b" data-q="${d.id}" data-f="${f.k}.b" value="${esc(v[f.k + ".b"])}" inputmode="decimal" placeholder="breadth" aria-label="${f.label}: breadth" ${dis}><span class="unit">${f.unit || ""}</span></span></div>`;
+  }
+  const im = f.kind === "num" && f.mode !== "frac" ? 'inputmode="decimal"' : "";
+  const cls = f.mode === "letter" ? "s" : "n";
+  return `<label class="fld"><span>${f.label || "Your answer"}</span><span class="inrow"><input type="text" class="${cls}" id="${id}" data-q="${d.id}" data-f="${f.k}" value="${esc(v[f.k])}" ${im} ${f.mode === "letter" ? 'maxlength="1" autocapitalize="characters"' : ""} ${dis}>${f.unit ? `<span class="unit">${f.unit}</span>` : ""}</span>${f.mode === "frac" ? `<span class="reasonhint">You can type a fraction like 3/4.</span>` : ""}</label>`;
+}
+function reasonHTML(d, st, prompt) {
+  return `<label class="fld"><span>${prompt}</span><textarea id="${d.id}-reason" data-q="${d.id}" data-f="_reason" >${esc(st.v._reason)}</textarea></label>`;
+}
+function checkBtn(d, st, label) {
+  return `<div class="actions"><button class="btn" data-act="check" data-q="${d.id}" ${ready(d, st) ? "" : "disabled"}>${label || "Check my answer"}</button>${d.reason !== false && d.type === "ask" ? `<span class="why" id="${d.id}-why">${reasonShort(d, st) ? "Write your reason to check." : ""}</span>` : ""}</div>`;
+}
+const reasonShort = (d, st) => d.reason !== false && String(st.v._reason || "").trim().length === 0;
+
+function inner(d) {
+  const st = ST(d.id);
+  switch (d.type) {
+    case "note": return d.html;
+    case "pcttable": return pctTable();
+    case "ask": return head(d) + `<div class="prompt">${d.prompt}</div>${d.fig || ""}` + d.fields.map(f => fieldHTML(d, f, st)).join("") + (d.reason === false ? "" : reasonHTML(d, st, d.reason || "How did you get your answer?")) + checkBtn(d, st) + fbBox(st) + helpBox(d, st);
+    case "open": {
+      let h = head(d) + `<div class="prompt">${d.prompt}</div><label class="fld"><span>Your answer</span><textarea id="${d.id}-text" data-q="${d.id}" data-f="text" ${st.revealed ? "disabled" : ""}>${esc(st.v.text)}</textarea></label>`;
+      if (!st.revealed) return h + `<div class="actions"><button class="btn" data-act="reveal" data-q="${d.id}" ${ready(d, st) ? "" : "disabled"}>Compare with a model answer</button></div><span class="why">Write your own answer first. There is no single right answer here.</span>`;
+      h += `<div class="model"><b>One good answer</b><p>${d.model}</p><div class="checks">${d.checks.map((c, i) => `<label><input type="checkbox" id="${d.id}-ck${i}" data-q="${d.id}" data-f="ck${i}" ${st.v["ck" + i] ? "checked" : ""}><span>${c}</span></label>`).join("")}</div></div>`;
+      h += `<label class="fld"><span>Anything you would add now? (optional)</span><textarea id="${d.id}-more" data-q="${d.id}" data-f="more">${esc(st.v.more)}</textarea></label>`;
+      return h;
+    }
+    case "rects": return rectsHTML(d, st);
+    case "grid9": return grid9HTML(d, st);
+    case "source": return sourceHTML(d, st);
+    case "freq": return freqHTML(d, st);
+    case "tally": return tallyHTML(d, st);
+    case "decoder": return decoderHTML(d, st);
+    case "encoder": return encoderHTML(d, st);
+    case "send": return sendHTML(d, st);
+  }
+  return "";
+}
+function ready(d, st) {
+  const v = st.v;
+  if (d.type === "open") return String(v.text || "").trim().length > 0;
+  if (d.type === "ask") {
+    for (const f of d.fields) {
+      if (f.showIf && !f.showIf(v)) continue;
+      if (f.kind === "choice") { if (v[f.k] == null) return false; }
+      else if (f.kind === "dims") { if (!String(v[f.k + ".l"] || "").trim() || !String(v[f.k + ".b"] || "").trim()) return false; }
+      else if (!String(v[f.k] || "").trim()) return false;
+    }
+    if (reasonShort(d, st)) return false;
+    return st.lastSig !== sig(d, st);
+  }
+  if (d.type === "grid9") return Object.keys(v.place || {}).length === 9 && String(v._reason || "").trim().length > 0 && st.lastSig !== JSON.stringify([v.place, v._reason]);
+  if (d.type === "decoder") return Object.values(v.map || {}).some(Boolean) && String(v._reason || "").trim().length > 0;
+  return true;
+}
+const sig = (d, st) => JSON.stringify([st.v._reason, d.fields.filter(f => !f.showIf || f.showIf(st.v)).map(f => f.kind === "dims" ? [st.v[f.k + ".l"], st.v[f.k + ".b"]] : st.v[f.k])]);
+
+/* rectangles with area 24 */
+function rectsHTML(d, st) {
+  const rows = st.v.rows || (st.v.rows = [{}, {}, {}, {}]);
+  const res = st.res || [];
+  let h = head(d) + `<div class="prompt">${d.prompt}</div><div class="rrows">`;
+  rows.forEach((r, i) => {
+    const cls = res[i] ? (res[i].ok ? "good" : "bad") : "";
+    const dis = "";
+    h += `<div class="rrow ${cls}"><span class="ix">${i + 1}.</span><label class="fld"><span>Length (cm)</span><input type="text" class="n" style="width:4.4em" id="${d.id}-${i}-l" data-q="${d.id}" data-row="${i}" data-c="l" value="${esc(r.l)}" inputmode="decimal" aria-label="Rectangle ${i + 1} length" ${dis}></label><label class="fld"><span>Breadth (cm)</span><input type="text" class="n" style="width:4.4em" id="${d.id}-${i}-b" data-q="${d.id}" data-row="${i}" data-c="b" value="${esc(r.b)}" inputmode="decimal" aria-label="Rectangle ${i + 1} breadth" ${dis}></label><label class="fld"><span>Perimeter (cm)</span><input type="text" class="n" style="width:4.4em" id="${d.id}-${i}-p" data-q="${d.id}" data-row="${i}" data-c="p" value="${esc(r.p)}" inputmode="decimal" aria-label="Rectangle ${i + 1} perimeter" ${dis}></label>${res[i] && res[i].msg ? `<span class="rmsg">${res[i].msg}</span>` : ""}</div>`;
+  });
+  h += `</div>`;
+  h += `<div class="actions"><button class="btn" data-act="check" data-q="${d.id}">Check my rectangles</button><button class="link" data-act="addrow" data-q="${d.id}">Add another rectangle</button></div>`;
+  return h + fbBox(st) + helpBox(d, st);
+}
+function judgeRects(st) {
+  const seen = {}; let good = 0;
+  st.res = st.v.rows.map((r, i) => {
+    if (!String(r.l || "").trim() && !String(r.b || "").trim() && !String(r.p || "").trim()) return null;
+    const l = num(r.l), b = num(r.b), p = num(r.p);
+    if (!(l > 0 && b > 0)) return { ok: false, msg: "Write a length and a breadth." };
+    if (!near(l * b, 24, .02)) return { ok: false, msg: `${fmt(l)} × ${fmt(b)} = ${fmt(l * b)}, not 24.` };
+    const key = [Math.min(l, b), Math.max(l, b)].map(x => x.toFixed(3)).join("x");
+    if (seen[key] != null) return { ok: false, msg: `This is the same rectangle as number ${seen[key] + 1}, turned around.` };
+    seen[key] = i;
+    if (!near(p, 2 * (l + b), .02)) return { ok: false, msg: `The sides are right. Check the perimeter: 2 × (${fmt(l)} + ${fmt(b)}).` };
+    good++; return { ok: true };
+  });
+  if (good >= 4 && st.res.every(r=>!r || r.ok)) return { ok: true, msg: "All of these work. Same area, but different perimeters. Which shapes have the biggest perimeters, and which the smallest?" };
+  return { ok: good ? "partial" : false, msg: `${good} of your rectangles ${good === 1 ? "works" : "work"} so far. You need at least 4 different ones.` };
+}
+
+/* 3 by 3 card grid */
+const cardName = i => `${CARDS[i][0]} × ${CARDS[i][1]}`;
+function grid9HTML(d, st) {
+  const place = st.v.place || (st.v.place = {});
+  const used = new Set(Object.values(place));
+  let h = head(d) + `<div class="prompt">${d.prompt}</div><div class="g9"><span></span><span class="ax axtop">Area gets bigger →</span><span></span>`;
+  h += `<span class="ax">less</span><span class="ax">same</span><span class="ax">more</span>`;
+  const rowsLab = ["less", "same", "more"];
+  for (let r = 0; r < 3; r++) {
+    h += `<span class="ax">${rowsLab[r]}</span>`;
+    for (let c = 0; c < 3; c++) {
+      const i = r * 3 + c, card = place[i];
+      h += `<button class="slot ${card != null ? "filled" : ""} ${st.sel != null && card == null ? "target" : ""}" data-act="slot" data-q="${d.id}" data-i="${i}"  aria-label="Row ${r + 1}, column ${c + 1}">${card != null ? cardName(card) : ""}</button>`;
+    }
+  }
+  h += `</div><p class="small muted">Rows, top to bottom: perimeter less, same, more.</p>`;
+  if (!st.ok) h += `<div class="tray">${CARDS.map((c, i) => used.has(i) ? "" : `<button class="card ${st.sel === i ? "sel" : ""}" data-act="card" data-q="${d.id}" data-i="${i}">${cardName(i)}</button>`).join("")}</div>`;
+  h += reasonHTML(d, st, "How did you decide where to start?") + (st.ok ? "" : `<div class="actions"><button class="btn" data-act="check" data-q="${d.id}" ${ready(d, st) ? "" : "disabled"}>Check my grid</button></div>`) + fbBox(st);
+  return h + helpBox(d, st);
+}
+
+/* Part 1 helpers */
+function sourceHTML(d, st) {
+  const v = st.v;
+  return `<span class="qlabel">${d.label}</span><fieldset class="choices"><legend>Which paragraph are you using?</legend>
+    <label class="opt"><input type="radio" name="src" id="src-0" data-q="${d.id}" data-f="src" value="0" ${v.src === 0 ? "checked" : ""}><span>A paragraph from a newspaper or news website</span></label>
+    <label class="opt"><input type="radio" name="src" id="src-1" data-q="${d.id}" data-f="src" value="1" ${v.src === 1 ? "checked" : ""}><span>I don't have a newspaper. I'll use the paragraph below.</span></label></fieldset>
+    ${v.src === 1 ? `<div class="model"><b>Practice paragraph</b><p lang="en" data-keep-english>${SAMPLE}</p><span class="small muted">This is a made-up news story written for this task. If you use it, the page can also check your counting.</span></div>` : ""}`;
+}
+const usingSample = () => ((S.q.p1src || {}).v || {}).src === 1;
+function freqHTML(d, st) {
+  const L = d.what === "letters", keys = L ? LETTERS : WORDS, v = st.v, bad = new Set(st.badRows || []);
+  let h = head(d) + `<div class="prompt">${L ? "Write the frequency of each letter, the total, and each percent." : "Count how many times each of these words appears. For the total, count <b>all</b> the words in your paragraph, not just the ones in the table."}</div>`;
+  h += `<div class="tablewrap"><table class="data"><thead><tr><th>${L ? "Letter" : "Word"}</th><th>Frequency</th><th>Percent</th></tr></thead><tbody>`;
+  keys.forEach(k => {
+    h += `<tr class="${bad.has(k) ? "bad" : ""}"><td class="k" data-keep-english>${k}</td><td><input type="text" id="${d.id}-f-${k}" data-q="${d.id}" data-f="f${k}" value="${esc(v["f" + k])}" inputmode="decimal" aria-label="${k} frequency"></td><td><input type="text" id="${d.id}-p-${k}" data-q="${d.id}" data-f="p${k}" value="${esc(v["p" + k])}" inputmode="decimal" aria-label="${k} percent"></td></tr>`;
+  });
+  h += `<tr><td class="k">${L ? "Total letters" : "Total words"}</td><td><input type="text" id="${d.id}-total" data-q="${d.id}" data-f="total" value="${esc(v.total)}" inputmode="decimal" aria-label="Total"></td><td></td></tr></tbody></table></div>`;
+  return h + `<div class="actions"><button class="btn" data-act="check" data-q="${d.id}">Check my table</button></div>` + fbBox(st) + helpBox(d,st);
+}
+function judgeFreq(d, st) {
+  const L = d.what === "letters", keys = L ? LETTERS : WORDS, v = st.v, out = [], bad = new Set();
+  const f = k => num(v["f" + k]) || 0;
+  const sum = keys.reduce((a, k) => a + f(k), 0), total = num(v.total);
+  if (keys.some(k => String(v["f" + k] || "").trim() && (!Number.isInteger(num(v["f" + k])) || num(v["f" + k]) < 0))) return { ok:false,msg:"Frequencies must be whole numbers, zero or more." };
+  if (!Number.isInteger(total) || total <= 0) return {ok:false,msg:"The total must be a whole number greater than zero."};
+  if (!sum) return { ok: false, msg: "Fill in some frequencies first." };
+  if (!(total > 0)) return { ok: false, msg: `Write the total number of ${L ? "letters" : "words"}.` };
+  if (L && !near(total, sum, .01)) out.push("Your total does not match your frequency column. Add the column again.");
+  if (!L && total < sum) out.push("Your total number of words is smaller than the words counted in your table. Count all the words in the paragraph.");
+  if (usingSample()) {
+    const truth = L ? SAMPLE_LETTERS : SAMPLE_WORDS, wrong = keys.filter(k => f(k) !== truth[k]);
+    wrong.forEach(k => bad.add(k));
+    if (wrong.length) out.push(`Recount ${wrong.length === 1 ? "this" : "these"}: ${wrong.slice(0, 8).join(", ")}${wrong.length > 8 ? ` and ${wrong.length - 8} more` : ""}.`);
+    const tt = L ? Object.values(SAMPLE_LETTERS).reduce((a, b) => a + b, 0) : SAMPLE_TOKENS.length;
+    if (!near(total, tt, .01) && !(L && out.length)) out.push(`Check your total number of ${L ? "letters" : "words"}.`);
+  }
+  const offPct = keys.filter(k => { const p = String(v["p" + k] || "").trim(); if (!f(k) && !p) return false; return !near(num(p), f(k) / total * 100, .151); });
+  offPct.forEach(k => bad.add(k));
+  if (offPct.length) out.push(`Check the percent for: ${offPct.slice(0, 8).join(", ")}${offPct.length > 8 ? ` and ${offPct.length - 8} more` : ""}. Percent = frequency ÷ ${L ? "total letters" : "total words"} × 100, rounded to one decimal place.`);
+  st.badRows = [...bad];
+  if (!out.length) return { ok: true, msg: L ? "Your table is consistent: the total matches and every percent is right for your counts." : "Your word table is consistent." };
+  return { ok: false, list: out };
+}
+function pctTable() {
+  const half = Math.ceil(PCT.length / 2);
+  let h = `<div class="tablewrap"><table class="data pct"><thead><tr><th>Letter</th><th>Percent</th><th>Letter</th><th>Percent</th></tr></thead><tbody>`;
+  for (let i = 0; i < half; i++) { const a = PCT[i], b = PCT[i + half]; h += `<tr><td class="k">${a[0]}</td><td>${a[1]}%</td><td class="k">${b ? b[0] : ""}</td><td>${b ? b[1] + "%" : ""}</td></tr>`; }
+  return h + `</tbody></table></div>`;
+}
+
+/* tally of the secret message */
+function tallyHTML(d, st) {
+  const v = st.v, bad = new Set(st.badRows || []);
+  let h = head(d) + `<div class="prompt">${d.prompt}</div><div class="tablewrap"><table class="data"><thead><tr><th>Number</th><th>Frequency</th><th>Percent</th></tr></thead><tbody>`;
+  for (let n = 1; n <= 21; n++) h += `<tr class="${bad.has(n) ? "bad" : ""}"><td class="k">${n}</td><td><input type="text" id="${d.id}-f-${n}" data-q="${d.id}" data-f="f${n}" value="${esc(v["f" + n])}" inputmode="decimal" aria-label="${n} frequency"></td><td><input type="text" id="${d.id}-p-${n}" data-q="${d.id}" data-f="p${n}" value="${esc(v["p" + n])}" inputmode="decimal" aria-label="${n} percent"></td></tr>`;
+  h += `<tr><td class="k">Total</td><td><input type="text" id="${d.id}-total" data-q="${d.id}" data-f="total" value="${esc(v.total)}" inputmode="decimal" aria-label="Total"></td><td></td></tr></tbody></table></div>`;
+  return h + `<div class="actions"><button class="btn" data-act="check" data-q="${d.id}">Check my counts</button></div>` + fbBox(st) + helpBox(d,st);
+}
+function judgeTally(st) {
+  const v = st.v, out = [], bad = new Set(), f = n => num(v["f" + n]) || 0;
+  if (Array.from({length:21},(_,i)=>i+1).some(n=>String(v["f"+n]||"").trim() && (!Number.isInteger(num(v["f"+n])) || num(v["f"+n])<0))) return {ok:false,msg:"Frequencies must be whole numbers, zero or more."};
+  if (!Number.isInteger(num(v.total)) || num(v.total)<=0) return {ok:false,msg:"The total must be a whole number greater than zero."};
+  const wrong = []; for (let n = 1; n <= 21; n++) if (f(n) !== SECRET_COUNT[n]) wrong.push(n);
+  wrong.forEach(n => bad.add(n));
+  if (wrong.length) out.push(`Recount ${wrong.length === 1 ? "this number" : "these numbers"}: ${wrong.slice(0, 8).join(", ")}${wrong.length > 8 ? ` and ${wrong.length - 8} more` : ""}. Tip: cross out each number in your notebook as you count it.`);
+  const sum = Array.from({ length: 21 }, (_, i) => f(i + 1)).reduce((a, b) => a + b, 0), total = num(v.total);
+  if (!near(total, sum, .01)) out.push("Your total does not match your frequency column. Add the column again.");
+  const off = []; if (total > 0) for (let n = 1; n <= 21; n++) { const p = String(v["p" + n] || "").trim(); if (!f(n) && !p) continue; if (!near(num(p), f(n) / total * 100, .151)) off.push(n); }
+  off.forEach(n => bad.add(n));
+  if (off.length) out.push(`Check the percent for: ${off.slice(0, 8).join(", ")}${off.length > 8 ? ` and ${off.length - 8} more` : ""}.`);
+  st.badRows = [...bad];
+  if (!out.length) return { ok: true, msg: `All your counts are right: ${SECRET_TOTAL} numbers in all, and your percents match.` };
+  return { ok: false, list: out };
+}
+
+/* decoder */
+function decoderHTML(d, st) {
+  const map = st.v.map || (st.v.map = {}), dis = "";
+  let h = head(d) + `<div class="prompt">Tap the empty box above a number and type an English letter. It will appear above every matching number. Use the letter percentages to help you guess. Start with the short words.</div><div class="msg">`;
+  let pos = 0;
+  for (const line of SECRET) for (const w of line) {
+    h += `<div class="word">${w.map(n => `<span class="dc"><input type="text" id="dc-${pos++}" data-q="${d.id}" data-n="${n}" value="${esc(map[n] || "")}" maxlength="1" autocapitalize="characters" autocomplete="off" aria-label="Letter for number ${n}" ${dis}><span>${n}</span></span>`).join("")}</div>`;
+  }
+  h += `</div><div class="keystrip" aria-label="Your key so far">${Array.from({ length: 21 }, (_, i) => `<div>${i + 1}<b data-key="${i + 1}">${esc(map[i + 1] || "")}</b></div>`).join("")}</div>`;
+  h += reasonHTML(d, st, "Which number did you crack first, and what clue did you use?");
+  h += `<div class="actions"><button class="btn" data-act="check" data-q="${d.id}" ${ready(d, st) ? "" : "disabled"}>Check my letters</button></div>`;
+  h += fbBox(st);
+  return h + helpBox(d, st);
+}
+function judgeDecoder(st) {
+  const map = st.v.map || {}; let right = 0;
+  for (let n = 1; n <= 21; n++) if (map[n] === KEY[n]) right++;
+  if (right === 21) return { ok: true, msg: "You cracked it! The mode helped: 17 is the most common number, and E is the most common letter in English." };
+  return { ok: right ? "partial" : false, msg: `${right} of the 21 numbers have the right letter. Keep going, and check that the words make sense.` };
+}
+
+/* encoder */
+function encoderHTML(d, st) {
+  const v = st.v, key = v.key || (v.key = {});
+  let h = head(d) + `<div class="prompt">1. Make your key: choose a different number or symbol for each English letter.</div><div class="keygrid">`;
+  h += LETTERS.map(L => `<label>${L}<input type="text" id="enc-${L}" data-q="${d.id}" data-key="${L}" value="${esc(key[L])}" maxlength="3" aria-label="Code for ${L}"></label>`).join("");
+  h += `</div><div id="enc-dup"></div><label class="fld"><span>2. Write a message in English using A–Z. Use at least 50 letters; spaces do not count.</span><textarea id="enc-msg" data-q="${d.id}" data-f="msg" lang="en">${esc(v.msg)}</textarea></label>`;
+  h += `<div class="fld"><span>Your message in code</span><div class="coded" id="enc-out" data-keep-english></div><span class="small muted" id="enc-info"></span></div>`;
+  h += `<div class="actions"><button class="btn ghost" data-act="copy" data-q="${d.id}">Copy the coded message</button><span class="small muted" id="enc-copied"></span></div>`;
+  return h;
+}
+function encoderUpdate() {
+  const st = ST("p5enc"), key = st.v.key || {}, msg = String(st.v.msg || "");
+  const out = document.getElementById("enc-out"); if (!out) return;
+  const words = msg.toUpperCase().split(/[^A-Z]+/).filter(Boolean);
+  out.textContent = words.map(w => w.split("").map(c => key[c] ? key[c] : "?").join(" ")).join("  /  ");
+  const letters = words.join("").length, missing = [...new Set(words.join("").split("").filter(c => !key[c]))];
+  const otherLetters = [...msg].some(c => /\p{L}/u.test(c) && !/[A-Za-z]/.test(c));
+  const codes = {}; LETTERS.forEach(L => { const k = String(key[L] || "").trim(); if (k) (codes[k] = codes[k] || []).push(L); });
+  const dups = Object.entries(codes).filter(([, ls]) => ls.length > 1);
+  document.getElementById("enc-dup").innerHTML = dups.length ? `<div class="fb partial"><span class="lead">Two letters share a code</span>${dups.map(([k, ls]) => `<p>${ls.join(", ")} both use ${esc(k)}</p>`).join("")}<p>Each letter needs its own code, or your friend can't crack it.</p></div>` : "";
+  document.getElementById("enc-info").innerHTML = `<span>${letters} letters</span>` + (missing.length ? `<span>. No code yet for: ${missing.join(", ")}</span>` : "");
+  if(otherLetters) document.getElementById("enc-info").innerHTML += `<span> Please use English A–Z letters for your message. You can write your explanation in English or Hindi.</span>`;
+  const done = letters >= 50 && !missing.length && !dups.length && !otherLetters;
+  localize(document.getElementById("enc-dup")); localize(document.getElementById("enc-info"));
+  if (done !== !!st.ok) { st.ok = done; save(); markDone("p5enc"); }
+}
+
+/* sending */
+function sendHTML(d) {
+  const ex = d.ex, [dn, n] = progress(ex), s = S.student, sent = S.sent[ex];
+  const missing = !s.name.trim() || !s.cls;
+  const [od, on] = progress(ex, true);
+  let h = `<p>You have explored ${dn} of ${n} starting questions and ${od} optional questions in ${EX[ex].short}. Send whatever you have tried; you do not need to finish everything.</p><p>GenWise collects the work you send. Please do not expect an individual response. Sending again submits another copy.</p>`;
+  if (missing) h += `<p class="small muted">Add your name and class on the start page first.</p>`;
+  h += `<div class="actions"><button class="btn" data-act="send" data-q="${d.id}" ${missing ? "disabled" : ""}>Send my work</button>${missing ? `<button class="link" data-act="go" data-to="home">Go to the start page</button>` : ""}</div>`;
+  if (sent) h += `<div class="fb ${sent.ok ? "ok" : "no"}" role="status"><p>${sent.ok ? `Sent on ${esc(sent.at)}. Thank you! GenWise has received your work. Please do not expect an individual response.` : esc(sent.err)}</p></div>`;
+  if (sent && sent.dirty) h += `<p class="small muted">You have changed your work since your last submission. Send again to share the changes.</p>`;
+  return h;
+}
+function packWork(ex) {
+  const items = EX[ex].sections.flatMap(s => s.items).filter(COUNTED), work = {}, lines = [];
+  for (const d of items) {
+    const st = S.q[d.id]; if (!st) { lines.push(`${d.id}: not started`); continue; }
+    work[d.id] = { v: st.v, tries: st.tries, first: st.first, hints: st.hints, sol: st.sol, ok: !!st.ok, revealed: !!st.revealed };
+    lines.push(`${d.id}: ${st.ok ? (st.first ? "right first time" : `right after ${st.tries} tries`) : st.sol ? "saw solution" : st.revealed ? "compared with model" : st.tries ? `${st.tries} tries, not yet` : "not started"}${st.hints ? `, ${st.hints} clue(s)` : ""}`);
+  }
+  return { work, summary: lines.join("\n") };
+}
+async function send(ex) {
+  const s = S.student, [dn, n] = progress(ex), { work, summary } = packWork(ex);
+  const body = new URLSearchParams({ page: "maths-explorations", name: s.name, class: s.cls, school: s.school, city: s.city || "", exploration: EX[ex].short, progress: `${dn} of ${n} starting questions; ${progress(ex, true)[0]} optional`, summary, work: JSON.stringify(work) });
+  try {
+    if (location.protocol === "file:") throw new Error("local");
+    const r = await fetch("/api/forms/maths-explorations", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: body.toString() });
+    if (!r.ok) throw new Error(String(r.status));
+    S.sent[ex] = { ok: true, at: new Date().toLocaleString() };
+  } catch (e) {
+    S.sent[ex] = { ok: false, err: "Could not send. Check your internet connection and try again. Keep your answers in your notebook. If browser storage is available, your work is also saved here." };
+  }
+  save(); refresh("send-" + ex);
+}
+
+/* ---------- updating ---------- */
+function invalidate(id) {
+  const st = ST(id), d = DEF[id];
+  st.ok = false; delete st.kind; delete st.msg; delete st.list; delete st.badRows;
+  if (S.sent[d.ex]) S.sent[d.ex].dirty = true;
+  const el = document.getElementById("q-" + id);
+  if (el) { el.querySelectorAll(".fb:not(.hint)").forEach(x => x.remove()); const pill=el.querySelector(".pill"); if(pill && !st.sol && !st.revealed) pill.remove(); }
+  if (id === "p1let" || id === "p1src") {
+    const dep = S.q.p1q1; if(dep){dep.ok=false;delete dep.kind;delete dep.lastSig;refresh("p1q1");}
+  }
+  markDone(id);
+}
+function refresh(id) {
+  const el = document.getElementById("q-" + id); if (!el) return;
+  el.innerHTML = inner(DEF[id]); el.classList.toggle("done", isDone(DEF[id]));
+  if (id === "p5enc") encoderUpdate();
+  localize(el);
+}
+function markDone(id) {
+  const el = document.getElementById("q-" + id); if (el) el.classList.toggle("done", isDone(DEF[id]));
+  const p = document.getElementById("prog"), ex = DEF[id] && DEF[id].ex;
+  if (p && ex) { const [d, n] = progress(ex); p.textContent = `${d} of ${n} starting questions explored`; localize(p); }
+  if (ex) refresh("send-" + ex);
+}
+function updateReady(id) {
+  const d = DEF[id], st = ST(id), b = document.querySelector(`#q-${id} [data-act="check"], #q-${id} [data-act="reveal"]`);
+  if (b && ["ask", "open", "grid9", "decoder"].includes(d.type)) b.disabled = !ready(d, st);
+  const w = document.getElementById(id + "-why"); if (w) { w.textContent = reasonShort(d, st) ? "Write your reason to check." : ""; localize(w); }
+}
+function check(id) {
+  const d = DEF[id], st = ST(id);
+  let res;
+  if (d.type === "rects") res = judgeRects(st);
+  else if (d.type === "grid9") { const g = [...Array(9).keys()].map(i => { const [l, b] = CARDS[st.v.place[i]]; return { l, b, A: l * b, P: 2 * (l + b) }; }); res = judgeGrid(g, false); st.lastSig = JSON.stringify([st.v.place, st.v._reason]); }
+  else if (d.type === "freq") res = judgeFreq(d, st);
+  else if (d.type === "tally") res = judgeTally(st);
+  else if (d.type === "decoder") res = judgeDecoder(st);
+  else { res = d.judge(st.v); st.lastSig = sig(d, st); }
+  st.tries++;
+  if (st.first == null) st.first = res.ok === true;
+  st.log.push({ at: Date.now(), ok: res.ok, v: JSON.parse(JSON.stringify(st.v)) });
+  if (st.log.length > 30) st.log.shift();
+  st.ok = res.ok === true;
+  st.kind = res.ok === true ? "ok" : res.ok === "partial" ? "partial" : "no";
+  st.msg = res.msg; st.list = res.list;
+  save(); refresh(id); markDone(id);
+}
+
+function render(keepPosition = false) {
+  const y = window.scrollY || 0;
+  const view = (location.hash || "").replace("#", "");
+  app.innerHTML = EX[view] ? exView(view) : home();
+  if (EX[view]) encoderUpdate();
+  localize(app);
+  if (document.documentElement) document.documentElement.lang = S.lang;
+  document.title = translatedText("Two Maths Explorations");
+  document.querySelector(".langbar")?.setAttribute("aria-label",translatedText("Language"));
+  document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === S.lang)));
+  storageNotice();
+  window.scrollTo(0, keepPosition === true ? y : 0);
+}
+window.addEventListener("hashchange", () => render());
+document.getElementById("language")?.addEventListener("click", e => { const b=e.target.closest("[data-lang]"); if(!b)return; S.lang=b.dataset.lang; save(); render(true); });
+app.addEventListener("toggle", e => { if(e.target.matches("details[data-section]")){ S.open[e.target.dataset.section]=e.target.open; save(); } }, true);
+
+app.addEventListener("click", e => {
+  const b = e.target.closest("[data-act]"); if (!b) return;
+  const act = b.dataset.act, id = b.dataset.q, st = id ? ST(id) : null;
+  if (act === "go") { location.hash = b.dataset.to === "home" ? "" : b.dataset.to; if (b.dataset.to === "home") render(); return; }
+  if (act === "check") return check(id);
+  if (act === "reveal") { st.revealed = true; save(); refresh(id); markDone(id); return; }
+  if (act === "hint") { st.hints++; save(); refresh(id); return; }
+  if (act === "sol") { st.sol = true; save(); refresh(id); markDone(id); return; }
+  if (act === "addrow") { st.v.rows.push({}); save(); refresh(id); return; }
+  if (act === "send") { b.disabled = true; b.textContent = translatedText("Sending..."); send(DEF[id].ex); return; }
+  if (act === "card") { const i = +b.dataset.i; st.sel = st.sel === i ? null : i; refresh(id); return; }
+  if (act === "slot") {
+    invalidate(id);
+    const i = +b.dataset.i, place = st.v.place, cur = place[i];
+    if (st.sel != null) { place[i] = st.sel; st.sel = null; }
+    else if (cur != null) delete place[i];
+    save(); refresh(id); return;
+  }
+  if (act === "copy") {
+    const t = document.getElementById("enc-out").textContent, note = document.getElementById("enc-copied");
+    const fallback = () => {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById("enc-out")); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); note.textContent = "Selected. Copy it from your phone's menu.";
+      localize(note);
+    };
+    if(navigator.clipboard?.writeText) navigator.clipboard.writeText(t).then(() => { note.textContent = "Copied. Paste it into a message to your friend."; localize(note); }, fallback);
+    else fallback();
+  }
+});
+app.addEventListener("input", e => {
+  const el = e.target;
+  if (el.dataset.st) { S.student[el.dataset.st] = el.value; save(); return; }
+  const id = el.dataset.q; if (!id) return;
+  const st = ST(id), d = DEF[id];
+  if (el.type === "radio") return;
+  if (el.type !== "checkbox") invalidate(id);
+  if (el.dataset.row != null) { st.v.rows[+el.dataset.row][el.dataset.c] = el.value; save(); return; }
+  if (el.dataset.n) {
+    const n = +el.dataset.n, L = el.value.toUpperCase().replace(/[^A-Z]/g, "").slice(-1);
+    st.v.map[n] = L;
+    document.querySelectorAll(`#q-${id} input[data-n="${n}"]`).forEach(x => { if (x.value !== L) x.value = L; });
+    const k = document.querySelector(`#q-${id} [data-key="${n}"]`); if (k) k.textContent = L;
+    save(); updateReady(id); return;
+  }
+  if (d.type === "encoder") {
+    if (el.dataset.key) st.v.key[el.dataset.key] = el.value.trim(); else st.v[el.dataset.f] = el.value;
+    save(); encoderUpdate(); return;
+  }
+  if (el.type === "checkbox") { st.v[el.dataset.f] = el.checked; save(); return; }
+  st.v[el.dataset.f] = el.value; save(); updateReady(id);
+});
+app.addEventListener("change", e => {
+  const el = e.target;
+  if (el.dataset.st) { S.student[el.dataset.st] = el.value; save(); return; }
+  if (el.type === "checkbox" && el.dataset.q) { ST(el.dataset.q).v[el.dataset.f] = el.checked; save(); return; }
+  if (el.type !== "radio" || !el.dataset.q) return;
+  const id = el.dataset.q; invalidate(id); ST(id).v[el.dataset.f] = +el.value; save(); refresh(id);
+  if (id === "p1src") { for(const q of ["p1let","p1wrd"]){invalidate(q);refresh(q);} }
+});
+
+render();
+</script>
+</body>
+</html>
