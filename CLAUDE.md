@@ -1,5 +1,9 @@
 # GenWise Static Pages - Best Practices
 
+## Merging someone else's PR (read first)
+Hand Rajesh one command: `gh auth switch -u GenWise && gh pr merge N --repo GenWise/static-pages --squash --admin --delete-branch; gh auth switch -u rpanchanathan`.
+`rpanchanathan` has read-only access (its approval doesn't count) and the GenWise token can't post reviews, so `--admin` as GenWise is the only CLI path. Detail: `~/code/wiki/patterns/wordpress-static-pages.md`.
+
 ## Architecture Pattern
 
 **GitHub Pages + WordPress iframe = Best approach for complex web pages**
