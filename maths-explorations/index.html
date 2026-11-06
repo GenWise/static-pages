@@ -440,14 +440,14 @@ const EX = {
           fields: [{ k: "a", kind: "num", label: "Largest area with no wall", unit: "m²" }, { k: "b", kind: "num", label: "Largest area against the wall", unit: "m²" }], reason: "What do you notice when the fence is doubled?",
           judge(v) {
             const a = num(v.a), b = num(v.b), ga = near(a, 400, .01), gb = near(b, 800, .01);
-            if (ga && gb) return { ok: true, msg: "Yes: a 20 by 20 square gives 400 m², and 20 + 40 + 20 against the wall gives 800 m². Doubling the fence makes the area 4 times as big, because both the length and the breadth double." };
+            if (ga && gb) return { ok: true, msg: "Yes: a 20 by 20 square gives 400 m², and 20 + 40 + 20 against the wall gives 800 m². With 40 m of fence you got 100 m² and 200 m². Twice the fence gives 4 times the area, because both the length and the breadth double." };
             if (near(a, 200, .01) || near(b, 400, .01)) return { ok: false, msg: "Doubling the fence doesn't just double the area. Work out the best rectangle again with 80 m." };
             if (ga) return { ok: "partial", msg: "Your answer with no wall is right. Check the one against the wall." };
             if (gb) return { ok: "partial", msg: "Your answer against the wall is right. Check the one with no wall." };
             return { ok: false };
           },
           hints: ["Use what you found with 40 m. With no wall the best shape was a square. With a wall, the side along the wall was twice the other sides."],
-          solution: "No wall: 20 by 20 = 400 m². Against the wall: sides of 20, 40 and 20 give 20 × 40 = 800 m². Twice the fence gives 4 times the area." },
+          solution: "No wall: 20 by 20 = 400 m². Against the wall: sides of 20, 40 and 20 give 20 × 40 = 800 m². With 40 m of fence the answers were 100 m² and 200 m². Twice the fence gives 4 times the area, because both the length and the breadth double." },
       ] },
       { h: "Task 3: When area and perimeter are the same number", text: "Area and perimeter have different units (cm² and cm). But can their numbers be the same?", items: [
         { id: "t3a", label: "Question 1", type: "ask", prompt: "Can you draw a square whose area is the same number as its perimeter? How long is its side? Are there other squares like this?",
@@ -1112,17 +1112,22 @@ function sendHTML(d) {
   return h;
 }
 function packWork(ex) {
-  const items = EX[ex].sections.flatMap(s => s.items).filter(COUNTED), work = {}, lines = [];
-  for (const d of items) {
-    const st = S.q[d.id]; if (!st) { lines.push(`${d.id}: not started`); continue; }
+  // Summary: questions numbered in page order, with their section, leaving out the ones not started.
+  const work = {}, lines = []; let qn = 0;
+  for (const sec of EX[ex].sections) for (const d of sec.items.filter(COUNTED)) {
+    qn++;
+    const st = S.q[d.id]; if (!st) continue;
     work[d.id] = { v: st.v, tries: st.tries, first: st.first, hints: st.hints, sol: st.sol, ok: !!st.ok, revealed: !!st.revealed };
-    lines.push(`${d.id}: ${st.ok ? (st.first ? "right first time" : `right after ${st.tries} tries`) : st.sol ? "saw solution" : st.revealed ? "compared with model" : st.tries ? `${st.tries} tries, not yet` : "not started"}${st.hints ? `, ${st.hints} clue(s)` : ""}`);
+    const how = st.ok ? (st.first ? "right first time" : `right after ${st.tries} tries`) : st.sol ? "saw solution" : st.revealed ? "compared with model" : st.tries ? `${st.tries} ${st.tries === 1 ? "try" : "tries"}, not yet` : "";
+    if (!how && !st.hints) continue;
+    lines.push(`Q${qn}. ${sec.h} - ${d.label}: ${how || "clue only"}${st.hints ? `, ${st.hints} clue(s)` : ""}`);
   }
+  if (!lines.length) lines.push("No questions started yet.");
   return { work, summary: lines.join("\n") };
 }
 async function send(ex) {
   const s = S.student, [dn, n] = progress(ex), { work, summary } = packWork(ex);
-  const body = new URLSearchParams({ page: "maths-explorations", name: s.name, class: s.cls, school: s.school, city: s.city || "", exploration: EX[ex].short, progress: `${dn} of ${n} starting questions; ${progress(ex, true)[0]} optional`, summary, work: JSON.stringify(work) });
+  const body = new URLSearchParams({ page: "maths-explorations", name: s.name, class: s.cls, school: s.school, city: s.city || "", exploration: EX[ex].title, progress: `${dn} of ${n} starting questions; ${progress(ex, true)[0]} optional`, summary, work: JSON.stringify(work) });
   try {
     if (location.protocol === "file:") throw new Error("local");
     const r = await fetch("/api/forms/maths-explorations", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: body.toString() });
