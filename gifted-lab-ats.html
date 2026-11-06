@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gifted Lab for ASSET Talent Search students | GenWise</title>
+    <meta name="robots" content="noindex">
+    <meta name="description" content="Students registered for the Ei ASSET Talent Search are eligible for GenWise Gifted Lab, with a discount on the trial and the full year.">
+    <style>
+        /* Reset & Base */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #f5f6f7;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5 {
+            color: #063852;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2.25rem; }
+        h3 { font-size: 1.875rem; font-weight: 600; }
+        h4 { font-size: 1.5rem; font-weight: 600; }
+
+        @media (min-width: 768px) {
+            h1 { font-size: 3rem; }
+        }
+
+        @media (min-width: 1024px) {
+            h1 { font-size: 3.75rem; }
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .container-sm {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 35px;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #063852;
+            transition: color 0.2s;
+        }
+
+        .nav-logo:hover {
+            color: #ff8d39;
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            padding: 0.375rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.875rem;
+            color: #374151;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background: #f3f4f6;
+            color: #063852;
+        }
+
+        .nav-link.active {
+            background: #ff8d39;
+            color: white;
+            box-shadow: 0 2px 4px rgba(255,141,57,0.3);
+        }
+
+        .nav-cta {
+            padding: 0.375rem 1rem;
+            background: #ff8d39;
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(255,141,57,0.3);
+        }
+
+        .nav-cta:hover {
+            background: #e67d30;
+            transform: scale(1.02);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: flex;
+            padding: 0.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #374151;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        .mobile-menu {
+            display: none;
+            padding-bottom: 1rem;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+
+        .mobile-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .mobile-link:hover {
+            background: #f3f4f6;
+        }
+
+        .mobile-link.active {
+            background: #ff8d39;
+            color: white;
+        }
+
+        .mobile-cta {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            background: #ff8d39;
+            color: white;
+            font-weight: 600;
+            border-radius: 6px;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: #ff8d39;
+            color: white;
+            box-shadow: 0 4px 6px rgba(255,141,57,0.3);
+        }
+
+        .btn-primary:hover {
+            background: #e67d30;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: #063852;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #053042;
+            transform: scale(1.05);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-white {
+            background: white;
+        }
+
+        .section-gray {
+            background: #f5f6f7;
+        }
+
+        .section-gradient {
+            background: linear-gradient(to bottom, white, #f5f6f7);
+        }
+
+        .section-gradient-reverse {
+            background: linear-gradient(to bottom, #f5f6f7, white);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, white, #f5f6f7);
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #374151;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-quote {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-quote blockquote {
+            font-size: 1.125rem;
+            font-style: italic;
+            color: #374151;
+            margin-bottom: 1rem;
+            border-left: 4px solid #ff8d39;
+            padding-left: 1.5rem;
+        }
+
+        .hero-quote cite {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .hero-note {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 1rem;
+        }
+
+        .hero-note strong {
+            color: #063852;
+        }
+
+        /* Trust Section */
+        .trust-text {
+            font-size: 1.125rem;
+            color: #374151;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.8;
+        }
+
+        .trust-heading {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .schools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            align-items: start;
+        }
+
+        @media (min-width: 768px) {
+            .schools-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .schools-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        .school-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .school-logo {
+            width: 96px;
+            height: 96px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .school-logo-inner {
+            width: 80px;
+            height: 80px;
+            background: #f3f4f6;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            font-size: 0.75rem;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .school-logo img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .school-logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #063852, #3399ff);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 0.25rem;
+            line-height: 1.2;
+        }
+
+        .school-name {
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-card blockquote {
+            font-style: italic;
+            color: #374151;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .testimonial-card cite {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        /* What is Gifted Lab */
+        .content-prose {
+            font-size: 1.125rem;
+            color: #374151;
+            line-height: 1.8;
+        }
+
+        .content-prose p {
+            margin-bottom: 1.5rem;
+        }
+
+        .content-prose ul {
+            margin-bottom: 2rem;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .content-prose li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .content-prose li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #ff8d39;
+            font-weight: bold;
+        }
+
+        .link-arrow {
+            color: #ff8d39;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .link-arrow:hover {
+            text-decoration: underline;
+        }
+
+        /* Info Boxes */
+        .info-box {
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+        }
+
+        .info-box-blue {
+            background: #eff6ff;
+            border-left: 4px solid #063852;
+        }
+
+        .info-box-orange {
+            background: #fff7ed;
+            border-left: 4px solid #ff8d39;
+        }
+
+        .info-box h3 {
+            margin-bottom: 1rem;
+        }
+
+        .info-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box-steps {
+            margin-top: 1.5rem;
+        }
+
+        .info-box-step {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box-step h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box-step p {
+            color: #374151;
+        }
+
+        /* Child Profiles */
+        .profiles-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .profiles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .profile-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #ff8d39;
+        }
+
+        .profile-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .profile-card p {
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        .system-gap {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .system-gap h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .system-gap p {
+            color: #374151;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Pricing Table */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .pricing-table th {
+            background: #063852;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .pricing-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .pricing-table tbody tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        .pricing-table tbody tr:last-child td {
+            font-weight: 700;
+        }
+
+        .pricing-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-info-item {
+            background: #eff6ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .pricing-info-item p {
+            color: #374151;
+        }
+
+        .scholarship-box {
+            background: #fef9c3;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #ff8d39;
+        }
+
+        .scholarship-box h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .scholarship-box p {
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+            background: linear-gradient(to bottom, #f5f6f7, white);
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            color: #374151;
+            margin-bottom: 2rem;
+            font-size: 1.25rem;
+            line-height: 1.7;
+        }
+
+        .cta-dates {
+            font-size: 1.125rem;
+            color: #374151;
+            margin-top: 1.5rem;
+        }
+
+        .cta-note {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        .cta-contact {
+            margin-top: 1rem;
+            color: #374151;
+        }
+
+        .cta-contact a {
+            color: #ff8d39;
+        }
+
+        .cta-contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Accordion */
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .accordion-item {
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .accordion-trigger {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .accordion-trigger:hover {
+            background: #f3f4f6;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #6b7280;
+            transition: transform 0.3s;
+        }
+
+        .accordion-item.open .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 0 1.5rem 1.25rem;
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        .accordion-item.open .accordion-content {
+            display: block;
+        }
+
+        .accordion-content p {
+            margin-bottom: 1rem;
+        }
+
+        .accordion-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Responsive table wrapper */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        /* Utility classes */
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-8 { margin-top: 2rem; }
+
+        /* Interest Form */
+        .interest-form {
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            text-align: left;
+        }
+
+        .form-row {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .form-row-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ff8d39;
+            box-shadow: 0 0 0 3px rgba(255, 141, 57, 0.2);
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d1fae5;
+            color: #065f46;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #fee2e2;
+            color: #991b1b;
+            display: block;
+        }
+
+        /* Trial payment panel */
+        .pay-panel {
+            background: white;
+            border: 2px solid #ff8d39;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .pay-entry {
+            background: #fff7ed;
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            color: #374151;
+            margin-bottom: 1.5rem;
+        }
+
+        .pay-check {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            font-size: 0.9rem;
+            color: #374151;
+            margin-top: 1.25rem;
+        }
+
+        .pay-check input {
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .pay-amount {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+        }
+
+        .pay-amount .amt {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #063852;
+        }
+
+        .pay-note {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .pay-success {
+            text-align: center;
+        }
+
+        .pay-success h3 {
+            color: #065f46;
+            margin-bottom: 1rem;
+        }
+
+        .pay-success p {
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+
+        .pay-success .ref {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        .hp {
+            position: absolute;
+            left: -9999px;
+        }
+
+        /* A single quote set beside the claim it evidences, rather than
+           stacked with the others in the testimonial strip. */
+        .pull-quote {
+            border-left: 4px solid #ff8d39;
+            padding: 0.25rem 0 0.25rem 1.5rem;
+            margin: 0 0 2rem;
+        }
+
+        .pull-quote blockquote {
+            font-style: italic;
+            color: #374151;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .pull-quote cite {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        /* Separates the "or talk to us first" path from the payment panel
+           above it, so the second form does not read as part of checkout. */
+        .ats-banner {
+            background: #fff7ed;
+            border: 2px solid #ff8d39;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin: 0 auto 2rem;
+            max-width: 46rem;
+            font-size: 1.05rem;
+            color: #1f2937;
+            text-align: center;
+        }
+        .ats-banner strong { color: #c2410c; }
+        .ats-col { background: #fff7ed; font-weight: 600; color: #c2410c; }
+
+        .path-divider {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .path-divider hr {
+            border: none;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .path-divider p {
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-top: -0.75rem;
+        }
+
+        .path-divider span {
+            background: #f5f6f7;
+            padding: 0 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <a href="https://genwise.in/" class="nav-link" target="_top" style="color: #ff8d39; font-weight: 600; font-size: 0.8rem;">← GenWise</a>
+                <span style="color: #d1d5db;">|</span>
+                <a href="https://genwise.in/gifted-lab/" class="nav-logo" target="_top">Gifted Lab</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="https://genwise.in/gifted-lab/" class="nav-link active" target="_top">Home</a>
+                <a href="https://genwise.in/gifted-lab-what-students-learn/" class="nav-link" target="_top">What Students Learn</a>
+                <a href="https://genwise.in/gifted-lab-how-it-works/" class="nav-link" target="_top">How It Works</a>
+                <a href="https://genwise.in/gifted-lab-mentors/" class="nav-link" target="_top">Our Mentors</a>
+                <a href="#ats-form" class="nav-cta">Claim ATS discount</a>
+            </div>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg id="close-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+                    <path d="M6 6l12 12M6 18L18 6"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <div style="padding: 0 1rem;">
+                <a href="https://genwise.in/" class="mobile-link" target="_top" style="color: #ff8d39; font-weight: 600;">← GenWise</a>
+                <a href="https://genwise.in/gifted-lab/" class="mobile-link active" target="_top">Home</a>
+                <a href="https://genwise.in/gifted-lab-what-students-learn/" class="mobile-link" target="_top">What Students Learn</a>
+                <a href="https://genwise.in/gifted-lab-how-it-works/" class="mobile-link" target="_top">How It Works</a>
+                <a href="https://genwise.in/gifted-lab-mentors/" class="mobile-link" target="_top">Our Mentors</a>
+                <a href="#ats-form" class="mobile-cta">Claim ATS discount</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container text-center">
+            <div class="ats-banner">Registered for the <strong>Ei ASSET Talent Search</strong>? Your child is eligible for Gifted Lab, with <strong>up to &#8377;5,000 off the year</strong>. Claim it by <strong>15 November 2026</strong>.</div>
+
+            <h1>Year-round advanced learning for bright students who are ready for more.</h1>
+
+            <p class="hero-subtitle">
+                A rigorous online Science and Mathematics programme for curious students in Grades 5–8. Expert mentors. Deep understanding. The challenge bright minds deserve. We start from first principles, then push ideas to their limits - so learning feels clearer and more advanced.
+            </p>
+
+            <div class="hero-quote">
+                <blockquote>
+                    "I think I have learnt a lot more in these past five sessions compared to what I could've learnt in half a school year. Learning is one thing and understanding is different... Here I have understood stuff a lot better."
+                </blockquote>
+                <cite>&ndash; Grade 8 student, Vasudev C Wadhwa Arya Vidya Mandir, Mumbai</cite>
+            </div>
+
+            <a href="#ats-form" class="btn btn-primary">Claim the ATS discount</a>
+
+            <p class="hero-note">
+                Registering for ATS is enough - no score or result is needed to join. Next entry: <strong class="next-entry">11 December 2026</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- Trust & Credibility -->
+    <section class="section section-white">
+        <div class="container text-center">
+            <p class="trust-text">
+                Since 2016, GenWise has worked with advanced learners from more than 800 schools across India and overseas. Our work began with Duke University's Talent Identification Program in India and with Educational Initiatives, the makers of ASSET.
+            </p>
+
+            <h3 class="trust-heading">Students have joined Gifted Lab from schools including:</h3>
+
+            <div class="schools-grid">
+                <div class="school-item">
+                    <div class="school-logo">
+                        <img src="images/schools/shiv-nadar.png" alt="Shiv Nadar Schools logo">
+                    </div>
+                    <span class="school-name">Shiv Nadar Schools</span>
+                </div>
+                <div class="school-item">
+                    <div class="school-logo">
+                        <img src="images/schools/gems-dubai.png" alt="GEMS Modern Academy logo">
+                    </div>
+                    <span class="school-name">GEMS Modern Academy, Dubai</span>
+                </div>
+                <div class="school-item">
+                    <div class="school-logo">
+                        <img src="images/schools/sri-kumarans.png" alt="Sri Kumarans logo">
+                    </div>
+                    <span class="school-name">Sri Kumarans, Bengaluru</span>
+                </div>
+                <div class="school-item">
+                    <div class="school-logo">
+                        <img src="images/schools/dais-mumbai.jpg" alt="DAIS Mumbai logo">
+                    </div>
+                    <span class="school-name">Dhirubhai Ambani International School, Mumbai</span>
+                </div>
+                <div class="school-item">
+                    <div class="school-logo">
+                        <img src="images/schools/fountainhead.png" alt="Fountainhead School logo">
+                    </div>
+                    <span class="school-name">Fountainhead School, Surat</span>
+                </div>
+                <div class="school-item">
+                    <div class="school-logo">
+                        <div class="school-logo-placeholder">Sanskriti The Gurukul</div>
+                    </div>
+                    <span class="school-name">Sanskriti The Gurukul, Guwahati</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <blockquote>"I can easily top my class in school. But here, everyone is very intelligent. I felt challenged and that made me interested in the course."</blockquote>
+                    <cite>&ndash; Student, GEMS Modern Academy, Dubai</cite>
+                </div>
+                <div class="testimonial-card">
+                    <blockquote>"In school, they write points on the board and ask us to copy notes. Here, they ask why this happens - if I change this, how does that change the outcome."</blockquote>
+                    <cite>&ndash; Adithya, Grade 8, Sri Kumarans, Bengaluru</cite>
+                </div>
+                <div class="testimonial-card">
+                    <blockquote>"I've seen him getting disconnected with other classes after the class is over, but here it was very much engaging even after the class."</blockquote>
+                    <cite>&ndash; Parent of a Grade 7 student, GEMS Modern Academy, Dubai</cite>
+                </div>
+                <div class="testimonial-card">
+                    <blockquote>"Not coaching, not increasing your marks from 90 to 100% - that was never the goal. The goal was to make sure the child understands, and enjoys the real deep understanding."</blockquote>
+                    <cite>&ndash; Parent of a Grade 8 student, Sri Kumarans, Bengaluru</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Gifted Lab -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="text-center mb-8">What is Gifted Lab?</h2>
+
+            <div class="content-prose">
+                <p>
+                    Gifted Lab is GenWise's year-round programme for advanced learners. Most smart students want to go faster. Gifted Lab goes deeper. We start with simple foundations, then extend concepts to advanced cases - so students don't just know, they can explain and apply.
+                </p>
+
+                <h3 class="mb-4">The programme in a nutshell:</h3>
+
+                <ul>
+                    <li><strong>Integrated Science</strong> (Physics, Chemistry, Biology) and <strong>Mathematics</strong> beyond the school syllabus - starting from fundamentals and extending to advanced applications and reasoning.</li>
+                    <li><strong>42 weeks</strong> across the academic year: <strong>6 modules + 12 problem-solving weeks</strong>. Each module is five weeks of classes; the problem-solving weeks fall between modules - one-hour sessions working together on hard, enjoyable problems, easy to start, no ceiling, many ways in</li>
+                    <li><strong>Small cohorts</strong> of 10–20 students, meeting week after week with the same mentor and the same peers</li>
+                    <li><strong>Open to every ATS student:</strong> a child registered for the Ei ASSET Talent Search is eligible for Gifted Lab. No score is needed, and the five-week trial helps everyone judge fit.</li>
+                    <li><strong>Discussion-based classes:</strong> Students think, argue, explain - they aren't passive listeners</li>
+                    <li><strong>Expert mentors:</strong> PhDs and experienced educators who teach for understanding, not exam prep</li>
+                    <li><strong>Depth-first progression:</strong> We begin with core ideas, then extend to harder cases and unfamiliar contexts (that's where the 'advanced' comes from).</li>
+                </ul>
+
+                <p>Students can take Science only, Mathematics only, or both.</p>
+
+                <div class="pull-quote">
+                    <blockquote>"Sukanya ma'am is different from all the other teachers I've had. I've understood concepts I haven't been able to in the past because of her teaching style."</blockquote>
+                    <cite>&ndash; Ridhi, Deens Academy, Bengaluru</cite>
+                </div>
+
+                <a href="https://genwise.in/gifted-lab-what-students-learn/" class="link-arrow" target="_top">→ See what students learn, and watch a sample class</a>
+            </div>
+
+            <!-- What 'advanced' means here -->
+            <div class="info-box info-box-blue">
+                <h3>What 'advanced' means here</h3>
+                <p><strong>Not:</strong> racing ahead through the school syllabus, or coaching-style coverage.</p>
+                <p><strong>Yes:</strong> starting from first principles, then pushing an idea further - deriving it, testing where it breaks down, and applying it to an unfamiliar problem.</p>
+                <p><strong>In practice:</strong> it can feel slower and more challenging, because the thinking goes deeper.</p>
+
+                <div class="pull-quote mt-8" style="margin-bottom: 0;">
+                    <blockquote>"I learned the importance of asking small questions that can lead you to a bigger realisation - and that you can solve difficult problems using very simple concepts."</blockquote>
+                    <cite>&ndash; Prisha, Kunskapsskolan, Gurgaon</cite>
+                </div>
+            </div>
+
+            <!-- How to get started -->
+            <div class="info-box info-box-orange">
+                <h3>How to get started</h3>
+                <div class="info-box-steps">
+                    <div class="info-box-step">
+                        <h4>1. <a href="https://giftedworld.org/parent-hours/" style="color: #ff8d39;" target="_blank" rel="noopener">Come to a Parent Hour</a></h4>
+                        <p>A free online session, every second week, where we explain how Gifted Lab works and answer your questions directly. It is the best way to judge fit before you spend anything. Prefer to write to us instead? <a href="#express-interest" style="color: #ff8d39;">Leave your details</a>.</p>
+                    </div>
+                    <div class="info-box-step">
+                        <h4>2. Send us your child's ASSET PAN</h4>
+                        <p><a href="#ats-form" style="color: #ff8d39;">Fill in the form</a> with the PAN from your child's ATS registration. We check it and, within 24 hours, send you a payment link for the trial module with the ATS discount. Your child then attends 5 weekends of classes. <a href="#fees" style="color: #ff8d39;">See fees</a></p>
+                    </div>
+                    <div class="info-box-step">
+                        <h4>3. Join the programme</h4>
+                        <p>If the trial worked, continue for the year and the trial fee comes off the annual fee in full. The year includes problem-solving weeks between modules. Next module starts: <strong class="next-entry">11 December 2026</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Is This Your Child? -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="text-center mb-4">Is this your child?</h2>
+            <p class="text-center mb-12" style="font-size: 1.25rem; color: #374151;">You might recognise your child in one of these:</p>
+
+            <div class="profiles-grid">
+                <div class="profile-card">
+                    <h3>The Coaster</h3>
+                    <p>Finishes classwork early. Gets bored. Tests are fine, so everyone says 'They're doing well.' But you sense they're not pushing to their full potential - and they haven't learned how to struggle productively.</p>
+                </div>
+                <div class="profile-card">
+                    <h3>The Anxious Topper</h3>
+                    <p>Always near the top. One 'bad' test shakes them completely. They haven't had a chance to learn from failure. Their confidence is tied to marks, not understanding.</p>
+                </div>
+                <div class="profile-card">
+                    <h3>The Invisible Advanced Child</h3>
+                    <p>Reads widely, asks sharp questions, sometimes studies ahead. Teachers say 'She's doing great' but can't suggest how to challenge her further. You sense there's more potential than school can use.</p>
+                </div>
+                <div class="profile-card">
+                    <h3>The Self-Taught Kid</h3>
+                    <p>Already watching physics videos or solving problems for fun. But their learning is scattered. No structured path, no mentor, no peer group at their level.</p>
+                </div>
+            </div>
+
+            <div class="system-gap">
+                <h3>The System Gap</h3>
+                <p>School moves at the median pace. Tuition adds more of the same. Coaching promises acceleration but optimises for exams, not understanding.</p>
+                <p>The result? Bright students become experts at reproducing answers, not thinking deeply. They may do well through school - then hit a wall later, in Olympiads, university, or any place that rewards genuine understanding.</p>
+                <p><strong>Ages 10–14 are the critical window.</strong> This is when habits form: whether your child learns to coast, to crumble under pressure - or to enjoy being challenged.</p>
+                <p>Gifted Lab exists for families who don't want to wait and see which habits stick.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section section-white" id="fees">
+        <div class="container-sm">
+            <h2 class="text-center mb-4">Programme Fees</h2>
+            <p class="text-center mb-12" style="font-size: 1.25rem; color: #374151;">GenWise Gifted Lab - Full Year Online Enrichment for Gifted Students</p>
+
+            <div class="table-wrapper">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Subjects</th>
+                            <th>Duration</th>
+                            <th>Grades 5–6</th>
+                            <th>Grades 7–8</th>
+                            <th>ATS discount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Math or Science</td>
+                            <td>42 weeks<br><span style="font-weight: 400; font-size: 0.9rem;">6 modules<br>+ 12 problem-solving weeks</span></td>
+                            <td>₹40,000</td>
+                            <td>₹50,000</td>
+                            <td class="ats-col">&#8377;2,500</td>
+                        </tr>
+                        <tr>
+                            <td>Both</td>
+                            <td>42 weeks<br><span style="font-weight: 400; font-size: 0.9rem;">6 modules<br>+ 12 problem-solving weeks</span></td>
+                            <td>₹75,000</td>
+                            <td>₹90,000</td>
+                            <td class="ats-col">&#8377;5,000</td>
+                        </tr>
+                        <tr>
+                            <td>Trial<br><span style="font-weight: 400; font-size: 0.9rem;">Both subjects</span></td>
+                            <td>5 weeks<br><span style="font-weight: 400; font-size: 0.9rem;">1 module<br>+ 2 problem-solving weeks</span></td>
+                            <td>₹12,500</td>
+                            <td>₹15,000</td>
+                            <td class="ats-col">&#8377;2,500</td>
+                        </tr>
+                        <tr>
+                            <td>Trial<br><span style="font-weight: 400; font-size: 0.9rem;">Math or Science</span></td>
+                            <td>5 weeks<br><span style="font-weight: 400; font-size: 0.9rem;">1 module<br>+ 2 problem-solving weeks</span></td>
+                            <td>₹6,250</td>
+                            <td>₹7,500</td>
+                            <td class="ats-col">&#8377;1,250</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pricing-info">
+                <div class="pricing-info-item">
+                    <p><strong>The ATS discount:</strong> &#8377;2,500 off a both-subjects trial, or &#8377;1,250 off a one-subject trial. If you continue, the year costs &#8377;5,000 less for both subjects, or &#8377;2,500 less for one, than the listed fee. The trial fee you paid is credited in full, so the discount on the year includes what you saved on the trial. The discount is for students registered for the ASSET Talent Search: fill in the form by <strong>15 November 2026</strong>, and we confirm the registration before sending the payment link.</p>
+                </div>
+                <div class="pricing-info-item">
+                    <p><strong>Trial module:</strong> New students begin with a trial module as listed above - five weekends of classes plus two problem-solving weeks, in one subject or both. If you continue for the year, the trial fee is credited in full against the annual fee. The trial fee is not refundable once the trial has begun.</p>
+                </div>
+                <div class="pricing-info-item">
+                    <p><strong>Payment:</strong> All major methods of online payment are accepted. The annual fee can be paid in two equal instalments, for one subject or both. The trial fee comes off the first instalment.</p>
+                </div>
+            </div>
+
+            <div class="scholarship-box">
+                <h3>Need-based scholarships available</h3>
+                <p>We believe all gifted students deserve proper enrichment, regardless of financial circumstances. Contact <strong>gifted-lab@genwise.in</strong> with details if you're interested.</p>
+            </div>
+
+            <p class="text-center mt-8">
+                <a href="#ats-form" class="link-arrow">→ Claim the ATS discount</a><br>
+                <a href="https://genwise.in/gifted-lab-how-it-works/" class="link-arrow" target="_top">→ Full details on fees, trial, and scholarships</a>
+            </p>
+        </div>
+    </section>
+
+
+    <!-- CTA Block -->
+    <section class="cta-section" id="ats-form">
+        <div class="cta-content container">
+            <h2>Claim the ATS discount</h2>
+            <p>Fill this in by <strong>15 November 2026</strong> with your child's ASSET PAN. We'll confirm the ATS registration and send you a payment link for the trial module, with the discount, within 24 hours. Want to ask us something first? Come to a <a href="https://giftedworld.org/parent-hours/" style="color: #ff8d39;" target="_blank" rel="noopener">Parent Hour</a> - it is free.</p>
+
+            <form class="interest-form" id="interest-form" onsubmit="submitInterestForm(event)">
+                <div class="form-row form-row-2">
+                    <div class="form-group">
+                        <label for="parent-name">Parent Name *</label>
+                        <input type="text" id="parent-name" name="parent_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="child-name">Child's Name *</label>
+                        <input type="text" id="child-name" name="child_name" required>
+                    </div>
+                </div>
+                <div class="form-row form-row-2">
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                <div class="form-row form-row-2">
+                    <div class="form-group">
+                        <label for="asset-pan">Child's ASSET PAN (the one used to register for ATS) *</label>
+                        <input type="text" id="asset-pan" name="asset_pan" required autocomplete="off" spellcheck="false" style="text-transform: uppercase;">
+                    </div>
+                    <div class="form-group">
+                        <label for="trial-choice">Trial module *</label>
+                        <select id="trial-choice" name="trial_choice" required>
+                            <option value="">Select</option>
+                            <option value="both">Math and Science</option>
+                            <option value="math">Math only</option>
+                            <option value="science">Science only</option>
+                            <option value="unsure">Not sure yet</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row form-row-2">
+                    <div class="form-group">
+                        <label for="grade">Child's Current Grade *</label>
+                        <select id="grade" name="grade" required>
+                            <option value="">Select grade</option>
+                                                        <option value="5">Grade 5</option>
+                            <option value="6">Grade 6</option>
+                            <option value="7">Grade 7</option>
+                            <option value="8">Grade 8</option>
+                                                    </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="hear-about">How did you hear of us?</label>
+                    <input type="text" id="hear-about" name="hear_about">
+                </div>
+                <div class="form-group">
+                    <label for="why-gifted-lab">What makes you think Gifted Lab might suit your child?</label>
+                    <input type="text" id="why-gifted-lab" name="why_gifted_lab">
+                </div>
+                <p style="text-align: center; font-size: 0.9rem; color: #6b7280; margin-top: 1rem;">We'll send the payment link by email and WhatsApp within 24 hours. Nothing is charged until you pay that link.</p>
+                <button type="submit" class="btn btn-primary form-submit" id="submit-btn">Send my details</button>
+                <div class="form-message" id="form-message"></div>
+            </form>
+
+            <p class="cta-dates"><strong>Next entry:</strong> <span class="next-entry">11 December 2026</span></p>
+            <p class="cta-contact">Questions? Email <a href="mailto:gifted-lab@genwise.in">gifted-lab@genwise.in</a></p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-white">
+        <div class="container-sm">
+            <h2 class="text-center mb-12">Quick FAQ</h2>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <span>What is the ASSET PAN, and where do I find it?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>The PAN is your child's ASSET registration number. It is the PAN you used to register your child for the ASSET Talent Search. It is not an income-tax PAN. If you cannot find it, write to <strong>gifted-lab@genwise.in</strong> with your child's name and school and we will help.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <span>Does my child need a particular ATS score?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>No. Registering for the ASSET Talent Search is enough to join Gifted Lab and to get the discount. The five-week trial module is how you and we judge whether the programme suits your child.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <span>How is this different from coaching?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Coaching optimises for exam performance. Topics are covered in test sequence. Understanding is secondary to pattern recognition.</p>
+                        <p>Gifted Lab optimises for thinking. We cover fewer topics but go deeper. We care about whether students can explain <em>why</em>, not just solve <em>how</em>. Students who build understanding here find that exam preparation later becomes a matter of format familiarity, not conceptual catch-up.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <span>Will this add stress to my child's schedule?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>We deliberately calibrate workload. Mathematics is 1.5 hours live per week. Science is 1.5 hours for Grades 5–6 and 2 hours for Grades 7–8. Add 2–3 hours of independent work. Less time than most sports or music commitments. Enough to stretch the mind, never to burn it out.</p>
+                        <p>Every session falls on a Friday evening or a weekend, so no school day is affected. Grades 5–6 have Science on Friday evening and Mathematics on Saturday morning; Grades 7–8 have Mathematics on Friday evening and Science on Saturday afternoon. Recordings are available for a week if your child must miss a session.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <span>My child is already good at this subject. Won't this be slow?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>It can feel slower because we don't skip steps. That is exactly what makes it advanced: we take a concept further - deriving it, testing where it breaks down, applying it to an unfamiliar problem.</p>
+                        <p>Being ahead does not always mean every foundation has been explored deeply. Some students solve familiar problems quickly but have had fewer chances to derive an idea, explain why it works, or use it somewhere they haven't seen it before. Gifted Lab gives them that chance. The pace may feel slower than coaching - but students tell us they "cover more" because they actually understand. Going deeper is often harder than going faster.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <span>What technology does my child need?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Students should join live sessions from a <strong>laptop or computer</strong> (not a phone or tablet). A stable internet connection and a quiet space for focused participation are essential.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center mt-8">
+                <a href="https://genwise.in/gifted-lab-how-it-works/#faq" class="link-arrow" target="_top">→ More questions? See the full FAQ</a>
+            </p>
+        </div>
+    </section>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            menu.classList.toggle('open');
+
+            if (menu.classList.contains('open')) {
+                menuIcon.style.display = 'none';
+                closeIcon.style.display = 'block';
+            } else {
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            }
+        }
+
+        function toggleAccordion(trigger) {
+            const item = trigger.parentElement;
+            const wasOpen = item.classList.contains('open');
+
+            // Close all items
+            document.querySelectorAll('.accordion-item').forEach(i => {
+                i.classList.remove('open');
+            });
+
+            // Open clicked item if it wasn't open
+            if (!wasOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        async function submitInterestForm(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('interest-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const messageDiv = document.getElementById('form-message');
+
+            // Get form data
+            const formData = {
+                parent_name: form.parent_name.value,
+                child_name: form.child_name.value,
+                email: form.email.value,
+                phone: form.phone.value,
+                grade: form.grade.value,
+                hear_about: 'ATS discount | PAN: ' + form.asset_pan.value.trim().toUpperCase() +
+                    ' | Trial: ' + form.trial_choice.value +
+                    (form.hear_about.value ? ' | ' + form.hear_about.value : ''),
+                why_gifted_lab: form.why_gifted_lab.value,
+                asset_pan: form.asset_pan.value.trim().toUpperCase(),
+                trial_choice: form.trial_choice.value,
+                source: 'gifted-lab-ats'
+            };
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            messageDiv.className = 'form-message';
+            messageDiv.style.display = 'none';
+
+            try {
+                const response = await fetch('https://genwise.in/api/forms/gifted-lab', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    messageDiv.textContent = 'Thank you. We will check the ASSET PAN and send your payment link with the ATS discount within 24 hours.';
+                    messageDiv.className = 'form-message success';
+                    form.reset();
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                messageDiv.textContent = 'Something went wrong. Please email us directly at gifted-lab@genwise.in';
+                messageDiv.className = 'form-message error';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send my details';
+            }
+        }
+
+        // Next entry date from the Worker, so every <span class="next-entry">
+        // follows module_start. This page takes no payment: the ATS discount
+        // is applied by a payment link sent after the PAN is checked.
+        async function paintNextEntry() {
+            try {
+                const resp = await fetch('https://genwise.in/api/gifted-lab/context');
+                const ctx = await resp.json();
+                if (!ctx || !ctx.module_start) return;
+                const d = new Date(ctx.module_start + 'T00:00:00');
+                const text = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+                document.querySelectorAll('.next-entry').forEach(el => { el.textContent = text; });
+            } catch (e) { /* keep the date written in the HTML */ }
+        }
+
+        document.addEventListener('DOMContentLoaded', paintNextEntry);
+    </script>
+</body>
+</html>
