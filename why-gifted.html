@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="A graded research brief on how seven education systems provide for their most able students, and what that means for a school in India.">
+<meta name="color-scheme" content="light dark">
+<title>Who Teaches the Ablest Child</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+
+<style>
+:root {
+  /* institutional paper — green-biased, ledger stock */
+  --ground:      #F2F4F1;
+  --ground-deep: #E7EBE6;
+  --card:        #FBFCFA;
+  --ink:         #16211C;
+  --ink-soft:    #3C4A43;
+  --muted:       #667369;
+  --rule:        #D3DBD4;
+  --rule-strong: #B6C2B8;
+
+  --brand:       #063852;   /* GenWise deep teal */
+  --brand-soft:  #E2EDF1;
+  --accent:      #C25400;   /* GenWise orange, darkened for AA on paper */
+  --accent-pure: #FF8D39;
+
+  /* delivery-model hues — colour encodes the model, not the country */
+  --m-centre:    #063852;   /* weekly pull-out to a centre */
+  --m-inschool:  #4F6B3A;   /* provision inside the ordinary school */
+  --m-separate:  #8A4B2A;   /* full-time separation / selective */
+  --m-none:      #7A7F7B;   /* no provision */
+
+  --grade-high:  #2F5D3F;
+  --grade-med:   #6B5A18;
+  --grade-low:   #8A4B2A;
+
+  --measure: 34rem;
+  --shell: 78rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:      #0E1613;
+    --ground-deep: #0A1010;
+    --card:        #16201C;
+    --ink:         #E4EAE4;
+    --ink-soft:    #B6C1B8;
+    --muted:       #8A968C;
+    --rule:        #26332C;
+    --rule-strong: #3A4A40;
+
+    --brand:       #6FB4CF;
+    --brand-soft:  #14262E;
+    --accent:      #FF9C52;
+    --accent-pure: #FF8D39;
+
+    --m-centre:    #6FB4CF;
+    --m-inschool:  #9CBE7C;
+    --m-separate:  #D89468;
+    --m-none:      #8A968C;
+
+    --grade-high:  #86BF9A;
+    --grade-med:   #CBB25F;
+    --grade-low:   #D89468;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground:      #0E1613;
+  --ground-deep: #0A1010;
+  --card:        #16201C;
+  --ink:         #E4EAE4;
+  --ink-soft:    #B6C1B8;
+  --muted:       #8A968C;
+  --rule:        #26332C;
+  --rule-strong: #3A4A40;
+
+  --brand:       #6FB4CF;
+  --brand-soft:  #14262E;
+  --accent:      #FF9C52;
+  --accent-pure: #FF8D39;
+
+  --m-centre:    #6FB4CF;
+  --m-inschool:  #9CBE7C;
+  --m-separate:  #D89468;
+  --m-none:      #8A968C;
+
+  --grade-high:  #86BF9A;
+  --grade-med:   #CBB25F;
+  --grade-low:   #D89468;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .num, .pull {
+  font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+  font-variation-settings: "SOFT" 0, "WONK" 1;
+  text-wrap: balance;
+  margin: 0;
+}
+
+a { color: inherit; }
+a:focus-visible,
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* ─── shell ─────────────────────────────────────────── */
+.shell {
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3.5rem);
+}
+
+/* the dossier grid: mono metadata rail + reading measure */
+.rail {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, var(--measure));
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+@media (max-width: 61rem) {
+  .rail { grid-template-columns: minmax(0, 1fr); gap: 0.9rem; }
+}
+
+.meta {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-top: 0.4rem;
+}
+@media (max-width: 61rem) {
+  .meta { flex-direction: row; flex-wrap: wrap; gap: 0.35rem 0.9rem; padding-top: 0; }
+}
+
+.grade {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+.grade::before {
+  content: "";
+  width: 0.5rem; height: 0.5rem;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+.g-high { color: var(--grade-high); }
+.g-med  { color: var(--grade-med); }
+.g-low  { color: var(--grade-low); }
+
+/* ─── masthead ──────────────────────────────────────── */
+.masthead {
+  border-bottom: 1px solid var(--rule-strong);
+  padding: 1.1rem 0;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.masthead strong { color: var(--ink); font-weight: 600; letter-spacing: 0.14em; }
+
+/* ─── hero ──────────────────────────────────────────── */
+.hero { padding: clamp(3.5rem, 9vw, 7rem) 0 clamp(2.5rem, 6vw, 4.5rem); }
+.hero h1 {
+  font-size: clamp(2.4rem, 6.2vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.022em;
+  max-width: 19ch;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--brand);
+}
+.hero .standfirst {
+  margin: 1.75rem 0 0;
+  font-size: clamp(1.0625rem, 1.7vw, 1.25rem);
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+.hero .standfirst + .standfirst { margin-top: 0.9rem; }
+
+.caveat {
+  margin-top: 2.75rem;
+  padding: 1.05rem 1.25rem;
+  border-left: 2px solid var(--rule-strong);
+  background: var(--ground-deep);
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+  max-width: 52ch;
+}
+.caveat b { color: var(--ink); font-weight: 600; }
+
+/* ─── section furniture ─────────────────────────────── */
+section { padding: clamp(3rem, 7vw, 5.5rem) 0; border-top: 1px solid var(--rule); }
+
+.eyebrow {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.9rem;
+}
+h2 {
+  font-size: clamp(1.65rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  line-height: 1.1;
+  max-width: 20ch;
+}
+.lede {
+  margin: 1.1rem 0 0;
+  max-width: 54ch;
+  color: var(--ink-soft);
+  font-size: 1.0625rem;
+}
+
+/* ─── delivery-model diagram ────────────────────────── */
+.models {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.model {
+  background: var(--card);
+  padding: 1.4rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.model svg { width: 100%; height: auto; display: block; }
+.model h3 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.model p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.model .who {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: auto;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* ─── case bands ────────────────────────────────────── */
+.cases { display: flex; flex-direction: column; }
+
+.case {
+  border-top: 1px solid var(--rule);
+  padding: clamp(2rem, 4.5vw, 3.25rem) 0;
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+@media (max-width: 61rem) {
+  .case { grid-template-columns: minmax(0, 1fr); gap: 1.1rem; }
+}
+.case:first-child { border-top: 2px solid var(--rule-strong); }
+
+.case-figure { display: flex; flex-direction: column; gap: 0.3rem; }
+.num {
+  font-size: clamp(2.6rem, 6vw, 3.9rem);
+  font-weight: 900;
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  color: var(--model, var(--brand));
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.num small {
+  font-size: 0.42em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.num-note {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.case-body h3 {
+  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+.case-body h3 span {
+  display: block;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+.case-body p { margin: 0.9rem 0 0; max-width: 58ch; }
+.case-body p.tight { max-width: 58ch; }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.1rem;
+  padding: 0.28rem 0.6rem 0.28rem 0.5rem;
+  border: 1px solid var(--model, var(--brand));
+  color: var(--model, var(--brand));
+  border-radius: 2px;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.tag::before {
+  content: "";
+  width: 0.45rem; height: 0.45rem;
+  background: currentColor;
+  flex: none;
+}
+
+.src {
+  margin-top: 1.15rem;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.6875rem;
+  line-height: 1.6;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+  max-width: 58ch;
+}
+.src a { color: var(--brand); text-underline-offset: 2px; }
+.src a:hover { color: var(--accent); }
+
+/* ─── the counter-case, inverted ────────────────────── */
+.counter {
+  background: var(--ink);
+  color: var(--ground);
+  border-top: none;
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+}
+.counter .eyebrow,
+.counter .num-note,
+.counter .src { color: color-mix(in srgb, var(--ground) 58%, transparent); }
+.counter h2, .counter h3 { color: var(--ground); }
+.counter p { color: color-mix(in srgb, var(--ground) 82%, transparent); }
+.counter .num { color: var(--accent-pure); }
+.counter .src a { color: var(--accent-pure); }
+.counter .case { border-top-color: color-mix(in srgb, var(--ground) 18%, transparent); }
+
+/* ─── questions ─────────────────────────────────────── */
+.qs {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.q { background: var(--card); padding: clamp(1.5rem, 3vw, 2.25rem); }
+.q .pull {
+  font-size: clamp(1.15rem, 2.3vw, 1.5rem);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.012em;
+  color: var(--brand);
+  max-width: 34ch;
+}
+.q p { margin: 1rem 0 0; max-width: 62ch; color: var(--ink-soft); }
+.q p strong { color: var(--ink); font-weight: 600; }
+
+.limits {
+  margin-top: 1.75rem;
+  padding: 1.05rem 1.25rem;
+  border-left: 2px solid var(--grade-low);
+  background: var(--ground-deep);
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+  max-width: 58ch;
+}
+.limits b { color: var(--ink); font-weight: 600; }
+
+/* ─── convergence ledger ────────────────────────────── */
+.ledger-wrap { margin-top: clamp(2rem, 4vw, 3rem); overflow-x: auto; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 40rem;
+  font-size: 0.9375rem;
+}
+th, td { text-align: left; padding: 0.85rem 1rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+thead th {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  border-bottom: 1px solid var(--rule-strong);
+}
+tbody th { font-weight: 600; color: var(--ink); width: 34%; }
+td { color: var(--ink-soft); }
+td.yes { color: var(--grade-high); font-weight: 600; }
+
+/* ─── close ─────────────────────────────────────────── */
+.close { background: var(--brand-soft); border-top: 1px solid var(--rule); }
+.close h2 { max-width: 22ch; }
+.close .lede { max-width: 56ch; }
+
+.cta {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.9rem 1.6rem;
+  background: var(--accent-pure);
+  color: #16211C;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.cta:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,0.16); }
+.cta-note {
+  margin: 0.9rem 0 0;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─── sources ───────────────────────────────────────── */
+.sources { background: var(--ground-deep); }
+.src-group { margin-top: 2rem; }
+.src-group h3 {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+  font-variation-settings: normal;
+}
+.src-group ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.src-group li { font-size: 0.9375rem; color: var(--ink-soft); max-width: 64ch; line-height: 1.55; }
+.src-group li a { color: var(--brand); text-underline-offset: 2px; }
+.src-group li a:hover { color: var(--accent); }
+
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 2rem 0 3.5rem;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─── motion ────────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .cta { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="masthead">
+    <span><strong>GenWise</strong> &nbsp;/&nbsp; Research brief</span>
+    <span>Comparative provision for high-ability students &nbsp;·&nbsp; August 2026</span>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="hero">
+    <div class="rail">
+      <div class="meta">
+        <span>Brief 01</span>
+        <span>7 systems</span>
+        <span class="grade g-high">Sourced</span>
+      </div>
+      <div>
+        <h1>Every system that takes its ablest children seriously has arrived at <em>roughly the same design</em>.</h1>
+        <p class="standfirst">Singapore has just spent two years redesigning towards it. Israel has run it at national scale for decades. New South Wales has made it every school's legal obligation. England dismantled its version in 2010 and can show you what followed.</p>
+        <p class="standfirst">India has none of it. This brief sets out what the provision actually looks like day to day, what the research says about the three objections school leaders raise, and what a single school here can do about it.</p>
+
+        <div class="caveat">
+          <b>Read the percentages carefully.</b> &ldquo;6% in the US&rdquo; and &ldquo;10% in Singapore&rdquo; are not measuring the same thing — some count children receiving any service, some count children carrying a formal label, some count seats in one programme. They indicate ambition, not rank. What differs meaningfully is the <b>delivery model</b>: where the child physically is when the provision happens. That is where the useful lessons sit.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <section class="reveal">
+    <div class="rail">
+      <div class="meta">
+        <span>Section 01</span>
+        <span>Delivery models</span>
+      </div>
+      <div>
+        <p class="eyebrow">The only question that matters</p>
+        <h2>Where is the child when the provision happens?</h2>
+        <p class="lede">Strip away the vocabulary and every system in this brief uses one of four arrangements, or a combination. Throughout this page, colour marks the model — so you can see at a glance which systems agree with which.</p>
+      </div>
+    </div>
+
+    <div class="models">
+      <div class="model" style="--model: var(--m-inschool)">
+        <svg viewBox="0 0 120 62" role="img" aria-label="Diagram: one classroom, the able children marked within it">
+          <rect x="4" y="6" width="112" height="50" rx="2" fill="none" stroke="var(--rule-strong)" stroke-width="1.4"/>
+          <g fill="var(--rule-strong)">
+            <circle cx="22" cy="22" r="4"/><circle cx="42" cy="22" r="4"/><circle cx="82" cy="22" r="4"/>
+            <circle cx="22" cy="42" r="4"/><circle cx="62" cy="42" r="4"/><circle cx="102" cy="42" r="4"/>
+            <circle cx="102" cy="22" r="4"/>
+          </g>
+          <g fill="var(--m-inschool)">
+            <circle cx="62" cy="22" r="4"/><circle cx="42" cy="42" r="4"/><circle cx="82" cy="42" r="4"/>
+          </g>
+        </svg>
+        <h3>Inside the ordinary class</h3>
+        <p>Differentiation, extension and acceleration by the child's own teacher. Cheapest, hardest to do well, and entirely dependent on teacher capability.</p>
+        <p class="who">NSW · Singapore layer one · US differentiation</p>
+      </div>
+
+      <div class="model" style="--model: var(--m-centre)">
+        <svg viewBox="0 0 120 62" role="img" aria-label="Diagram: children leaving three schools for one shared centre">
+          <g fill="none" stroke="var(--rule-strong)" stroke-width="1.4">
+            <rect x="4" y="6" width="30" height="20" rx="2"/>
+            <rect x="4" y="34" width="30" height="20" rx="2"/>
+          </g>
+          <rect x="74" y="16" width="42" height="30" rx="2" fill="none" stroke="var(--m-centre)" stroke-width="1.8"/>
+          <g stroke="var(--m-centre)" stroke-width="1.4" stroke-dasharray="3 3">
+            <path d="M34 16 H74" /><path d="M34 44 H62 V38 H74" />
+          </g>
+          <g fill="var(--m-centre)">
+            <circle cx="86" cy="27" r="3.5"/><circle cx="98" cy="27" r="3.5"/><circle cx="92" cy="37" r="3.5"/><circle cx="104" cy="37" r="3.5"/>
+          </g>
+        </svg>
+        <h3>Weekly, at a centre</h3>
+        <p>The child leaves their school for a fixed session — a half-day or a full day — with able children drawn from other schools, then returns. Home school and friendships stay intact.</p>
+        <p class="who">Israel · Singapore layer two · Korea · <b>Gifted Lab</b></p>
+      </div>
+
+      <div class="model" style="--model: var(--m-separate)">
+        <svg viewBox="0 0 120 62" role="img" aria-label="Diagram: a separate school containing only able children">
+          <rect x="4" y="6" width="50" height="50" rx="2" fill="none" stroke="var(--rule-strong)" stroke-width="1.4" opacity="0.45"/>
+          <rect x="66" y="6" width="50" height="50" rx="2" fill="none" stroke="var(--m-separate)" stroke-width="1.8"/>
+          <g fill="var(--m-separate)">
+            <circle cx="78" cy="22" r="4"/><circle cx="91" cy="22" r="4"/><circle cx="104" cy="22" r="4"/>
+            <circle cx="78" cy="40" r="4"/><circle cx="91" cy="40" r="4"/><circle cx="104" cy="40" r="4"/>
+          </g>
+        </svg>
+        <h3>Full-time separation</h3>
+        <p>A selective school or a self-contained class, five days a week. The oldest model, and the one the wellbeing evidence is least kind to.</p>
+        <p class="who">Selective high schools · Korean gifted schools</p>
+      </div>
+
+      <div class="model" style="--model: var(--m-centre)">
+        <svg viewBox="0 0 120 62" role="img" aria-label="Diagram: one expert mentor working with a handful of students">
+          <circle cx="26" cy="31" r="11" fill="none" stroke="var(--m-centre)" stroke-width="1.8"/>
+          <circle cx="26" cy="31" r="4.5" fill="var(--m-centre)"/>
+          <g stroke="var(--rule-strong)" stroke-width="1.4">
+            <path d="M37 31 H62"/><path d="M37 27 C50 18, 54 16, 62 15"/><path d="M37 35 C50 44, 54 46, 62 47"/>
+          </g>
+          <g fill="var(--rule-strong)">
+            <circle cx="70" cy="15" r="4"/><circle cx="70" cy="31" r="4"/><circle cx="70" cy="47" r="4"/>
+          </g>
+        </svg>
+        <h3>Mentorship by a researcher</h3>
+        <p>A working scientist takes a handful of students for a year, in their own laboratory. Rare, expensive, and the only model that reaches the very top of the ability range.</p>
+        <p class="who">China 英才计划 · <b>Gifted Lab mentors</b></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="shell">
+  <section class="reveal">
+    <div class="rail">
+      <div class="meta">
+        <span>Section 02</span>
+        <span>Six systems</span>
+        <span class="grade g-high">Primary sources</span>
+      </div>
+      <div>
+        <p class="eyebrow">The record</p>
+        <h2>What provision actually looks like, country by country</h2>
+        <p class="lede">Each case gives the identification rate, the delivery model, and how the system handles the social and emotional side — because that is the part school leaders press on hardest.</p>
+      </div>
+    </div>
+
+    <div class="cases">
+
+      <article class="case" style="--model: var(--m-centre)">
+        <div class="case-figure">
+          <p class="num">~10<small>%</small></p>
+          <p class="num-note">of the cohort<br>from 2027</p>
+        </div>
+        <div class="case-body">
+          <h3>Singapore<span>The closest thing to Gifted Lab that exists</span></h3>
+          <p>The forty-year-old Gifted Education Programme is ending; the replacement was published by the Ministry of Education in March 2026. Identification is a single standardised exercise in Primary 3, supplemented by teacher observation and samples of the child's work — and children can be identified again at the end of each semester in Primary 4 and Primary 5, so there is no make-or-break gate.</p>
+          <p>Delivery runs in two layers. In their own school, around 10% of the cohort access in-curriculum extensions and after-school programmes. Children assessed as needing more attend <strong>weekly two-hour advanced modules</strong> at one of 15 designated schools, chosen for public-transport access, taught by teachers specially trained in working with high-ability students. MOE states plainly that the modules are not designed to prepare students for examinations.</p>
+          <p>The redesign exists because of the social-emotional problem. Under the old model a child identified at Primary 3 transferred to one of nine GEP schools at Primary 4 — leaving their school, their teachers and their friends at age nine. The new model keeps them in place, and names psychosocial development and building communities of like-minded peers as design goals of the centre modules.</p>
+          <p class="tag">Weekly, at a centre + in-school</p>
+          <p class="src">MOE Singapore, <a href="https://www.moe.gov.sg/news/press-releases/20260303-learning-together-with-different-strengths-and-needs">Learning Together with Different Strengths and Needs</a>, 3 Mar 2026 · <a href="https://www.moe.gov.sg/news/press-releases/20240819-strengthening-support-for-higher-ability-learners">Strengthening Support for Higher-Ability Learners</a>, 19 Aug 2024</p>
+        </div>
+      </article>
+
+      <article class="case" style="--model: var(--m-centre)">
+        <div class="case-figure">
+          <p class="num">1.5&ndash;3<small>%</small></p>
+          <p class="num-note">near-universal<br>screening, Gr 2&ndash;3</p>
+        </div>
+        <div class="case-body">
+          <h3>Israel<span>The weekly pull-out day, at national scale</span></h3>
+          <p>One of very few countries to screen nearly the whole school population. A first-stage filter goes to all students in Grade 2 or 3; roughly the top 15% of each class sit a second-stage general ability test; those in roughly the top 1.5–3% are invited in. Around 5,000 students a year.</p>
+          <p>The dominant model is <strong>one full day a week at a regional enrichment centre</strong> — some 50 to 56 centres nationally, with organised transport. Children are pulled from their normal school for that day and return the next. The literature describes the day as a means of meeting other gifted children and as a refuge for students bored in their regular classes the other five days.</p>
+          <p><strong>What is contested, and a well-read principal may know it:</strong> Hanna David, the field's most persistent Israeli critic, documents high refusal rates and high attrition — in one town she tracked, of roughly 200 Grade 3 students entering the weekly programme, more than 80% had dropped out by Grade 9. Her diagnosis is a shortage of trained teachers: Israel has no national framework for preparing gifted-education teachers. A well-designed structure staffed by untrained teachers loses its students over time.</p>
+          <p class="tag">Weekly, at a centre</p>
+          <p class="src">David, H., <a href="https://www.gate2gifted.eu/wp-content/uploads/2024/01/ARTICLE_Diagnosing-and-schooling-of-gifted-children-The-example-of-Israel.pdf">Diagnosing and schooling of gifted children: the example of Israel</a></p>
+        </div>
+      </article>
+
+      <article class="case" style="--model: var(--m-inschool)">
+        <div class="case-figure">
+          <p class="num">~6<small>%</small></p>
+          <p class="num-note">of public school<br>students</p>
+        </div>
+        <div class="case-body">
+          <h3>United States<span>A market, not a system</span></h3>
+          <p>No national standard; every district sets its own, usually identifying in Grade 2 or 3. Part-time pull-out is the dominant elementary model — one study put it at 51.9% of identified elementary students. At middle school it becomes grouped classes; at high school, Advanced Placement, which one study found was the main provision for 90.7% of gifted high schoolers.</p>
+          <p><strong>The most-documented failure is worth borrowing.</strong> A recurring research finding is weak alignment between what children are identified <em>for</em> and what they are then <em>taught</em>: districts identify a child as gifted in mathematics, then provide no correspondingly specialised curriculum. Identification without a matched curriculum produces a label and nothing else.</p>
+          <p class="tag">Mixed — pull-out, grouping, AP</p>
+          <p class="src"><a href="https://www.nagc.org/pull-out-programs-specialized-classes">NAGC, Pull-Out Programs / Specialized Classes</a> · <a href="https://nces.ed.gov/programs/digest/d23/tables/dt23_204.90.asp">NCES Digest Table 204.90</a> · Siegle et al. (2026), <a href="https://journals.sagepub.com/doi/10.1177/00169862251370673">Gifted Child Quarterly</a></p>
+        </div>
+      </article>
+
+      <article class="case" style="--model: var(--m-inschool)">
+        <div class="case-figure">
+          <p class="num">Every</p>
+          <p class="num-note">school, by law,<br>since Jan 2021</p>
+        </div>
+        <div class="case-body">
+          <h3>New South Wales<span>The whole-school mandate</span></h3>
+          <p>The High Potential and Gifted Education policy has applied to every NSW public school since 27 January 2021. It is mandatory, and schools are explicitly told not to write their own separate policy. It sets no fixed percentage — drawing on Gagné's model, it treats potential as a continuum rather than a category.</p>
+          <p>Potential is recognised across four domains: intellectual, creative, physical and <strong>social-emotional</strong>. That last one is the most useful piece of vocabulary in this brief, because it makes &ldquo;gifted&rdquo; mean something other than &ldquo;tops the class&rdquo; without diluting it into meaninglessness. Social-emotional ability is treated both as a domain a child can be gifted in <em>and</em> as a wellbeing obligation the school owes.</p>
+          <p>NSW is also the clearest evidence that the responsibility sits with the school rather than with an outside institute — and that a partner's job is to supply the capability a school cannot build alone.</p>
+          <p class="tag">Inside the ordinary class + selective stream</p>
+          <p class="src"><a href="https://education.nsw.gov.au/policy-library/policies/pd-2004-0051">NSW DoE, High Potential and Gifted Education Policy</a></p>
+        </div>
+      </article>
+
+      <article class="case" style="--model: var(--m-separate)">
+        <div class="case-figure">
+          <p class="num">~1<small>%</small></p>
+          <p class="num-note">under the 2000<br>Promotion Act</p>
+        </div>
+        <div class="case-body">
+          <h3>South Korea<span>Legislated, centre-based, STEM-focused</span></h3>
+          <p>The Gifted Education Promotion Act established three channels: gifted classes inside ordinary schools, gifted education centres run as pull-out programmes by universities and regional education offices, and dedicated gifted high schools. For elementary and middle school students, provision runs outside school hours — after school, weekends, holidays.</p>
+          <p>The university-based science centres are the higher-status route: classes often under 15 students, courses running around 300 hours over three years, from Grade 4 upwards. Korea is the proof that weekend and holiday delivery works when weekday time cannot be found — and 300 hours over three years is a useful sanity check on dosage.</p>
+          <p>On the social and emotional side it is the weakest system here. Korean policy frames the aim as nurturing STEM creativity while <em>minimising</em> the harm of intense competition — an acknowledgement of the pressure problem rather than a programme to address it.</p>
+          <p class="tag">Weekend / holiday centres + gifted schools</p>
+          <p class="src"><a href="https://ncee.org/korea/">NCEE country profile, Korea</a> · course-hour detail from Gifted Phoenix (2012) — dated; verify current figures with KEDI before quoting</p>
+        </div>
+      </article>
+
+      <article class="case" style="--model: var(--m-centre)">
+        <div class="case-figure">
+          <p class="num">5</p>
+          <p class="num-note">students per<br>mentor, maximum</p>
+        </div>
+        <div class="case-body">
+          <h3>China<span>Mentorship at the top of the pyramid</span></h3>
+          <p>China publishes no national percentage comparable to the US or Singapore, so no like-for-like number is possible. What it has instead is the Middle School Student Talent Programme (中学生英才计划), run jointly by the China Association for Science and Technology and the Ministry of Education since 2013.</p>
+          <p>Around 1,800 students a year are selected across mathematics, physics, chemistry, biology and computer science, and mentored for a <strong>full academic year by senior scientists</strong> — academicians of the Chinese Academies of Sciences and Engineering, Changjiang Scholars — at 58 participating universities. Each mentor takes no more than five students, who are expected to meet them at least monthly.</p>
+          <p>One structural detail is sharper than anything else in this brief: the participating school appoints a named teacher to support the student's research work between mentor meetings. Not a training entitlement — a role.</p>
+          <p class="tag">Mentorship by a researcher</p>
+          <p class="src"><a href="https://www.cast.org.cn/kc/zxsycjh/tw/art/2024/art_84a74679cb5343919a264b5967b980b2.html">CAST on the programme's policy status</a>. Circulating outcome figures (11,000 alumni; 73% to 985/211 universities) come from a commercial site and are heavily confounded by selection — cite the structure, not the outcomes.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</div>
+
+<div class="counter">
+  <div class="shell">
+    <section class="reveal" style="border-top: none">
+      <div class="rail">
+        <div class="meta">
+          <span>Section 03</span>
+          <span>Counter-case</span>
+        </div>
+        <div>
+          <p class="eyebrow">What happens when nobody owns it</p>
+          <h2>England ran a national programme for eleven years, then closed it.</h2>
+        </div>
+      </div>
+
+      <div class="cases">
+        <article class="case" style="--model: var(--accent-pure)">
+          <div class="case-figure">
+            <p class="num">22<small>%</small></p>
+            <p class="num-note">identified, against<br>a 5&ndash;10% design</p>
+          </div>
+          <div class="case-body">
+            <h3>The identification drift</h3>
+            <p>Schools were encouraged to identify roughly 5–10% of pupils. Around 22% were identified at some point between 2007 and 2010. Pupils from the most advantaged backgrounds were 19 percentage points more likely to carry the label — and about 6 points more likely even after controlling for prior attainment.</p>
+            <p>Generous identification without a corresponding programme produces a label, a socioeconomic skew, and nothing else. Any programme that widens its gate to fill cohorts is walking into this.</p>
+          </div>
+        </article>
+
+        <article class="case" style="--model: var(--accent-pure)">
+          <div class="case-figure">
+            <p class="num">1 in 2</p>
+            <p class="num-note">schools made no<br>provision at all</p>
+          </div>
+          <div class="case-body">
+            <h3>And then the withdrawal</h3>
+            <p>The programme closed in 2010 and its funding was redirected. There has been no national definition or programme since. Ofsted's reviews in 2013 and 2015 found half the schools visited made no special provision for their most able pupils at all. The Sutton Trust's <em>Missing Talent</em> found 15% of previously high-attaining pupils failed to reach the top quartile at GCSE.</p>
+            <p>This is the honest cautionary case, and it cuts both ways — it shows the cost of a badly drawn gate, and the cost of no one owning the responsibility at all.</p>
+            <p class="src"><a href="https://commonslibrary.parliament.uk/research-briefings/cbp-9065/">House of Commons Library, CBP-9065</a> · <a href="https://ffteducationdatalab.org.uk/2026/03/the-education-and-labour-market-outcomes-of-englands-gifted-and-talented-children/">FFT Education Datalab, Mar 2026</a> · <a href="https://www.suttontrust.com/our-research/potential-for-success-schools-high-attainers/">Sutton Trust</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="shell">
+  <section class="reveal">
+    <div class="rail">
+      <div class="meta">
+        <span>Section 04</span>
+        <span>The objections</span>
+        <span class="grade g-high">Peer-reviewed</span>
+      </div>
+      <div>
+        <p class="eyebrow">Answered directly</p>
+        <h2>The three questions school leaders actually press on</h2>
+        <p class="lede">These come up in almost every conversation, usually in this order. The evidence gives reasonably clear answers to all three — and one honest limit at the end.</p>
+      </div>
+    </div>
+
+    <div class="qs">
+      <div class="q">
+        <p class="pull">&ldquo;Won't taking them out make them arrogant, or isolate them from their classmates?&rdquo;</p>
+        <p>The finding is subtler than either fear. A longitudinal Dutch study of high-ability students found they rated their relationships with teachers and peers as positively as ordinary students did. Over time, their perceived relationships with peers <em>in their regular classes</em> became slightly more negative than their relationships within the pull-out programme.</p>
+        <p>Read carefully, that says <strong>the pull-out group becomes the place where the child feels socially at home</strong> — which is the point of it — while the drift in the regular class is gradual rather than dramatic.</p>
+        <p class="src">van Rossen, Hornstra &amp; Poorthuis (2021), <em>Journal of School Psychology</em> 85, 1–16</p>
+      </div>
+
+      <div class="q">
+        <p class="pull">&ldquo;Won't they lose confidence when they're suddenly not the best in the room?&rdquo;</p>
+        <p>This is the big-fish-little-pond effect, and it is real: put a strong student into a class of equally strong students and their academic self-concept falls. It has been replicated across countries and school types, including in Israeli gifted classes, where it depressed self-concept and raised test anxiety.</p>
+        <p>The qualification is the whole answer: <strong>the effect is much weaker in part-time and flexible grouping than in full-time separation</strong> — which is why the Australian literature recommends high-ability grouping be run part-time. A weekly day with intellectual peers, followed by four days as the strong student in an ordinary class, is close to the arrangement the evidence favours.</p>
+      </div>
+
+      <div class="q">
+        <p class="pull">&ldquo;Wouldn't a separate full-time class be better?&rdquo;</p>
+        <p>On wellbeing grounds, no. A 2022 study compared Grade 5–6 students across three conditions — self-contained gifted programmes, pull-out programmes, and no gifted services. Students in a mathematics pull-out reported <strong>higher mathematics self-concept</strong> than both the no-service group and the self-contained group. Students in self-contained programmes reported <strong>higher maladaptive perfectionism and greater loneliness</strong> than those in pull-out programmes.</p>
+        <p>Part-time outperforms full-time separation on self-concept, perfectionism and loneliness simultaneously. That is an unusually clean result.</p>
+        <p class="src">Cash &amp; Lin (2022), <em>Gifted Child Quarterly</em> 66(3), 188–207</p>
+      </div>
+    </div>
+
+    <div class="rail" style="margin-top: 1.75rem">
+      <div class="meta"><span class="grade g-med">Limit</span></div>
+      <div class="limits" style="margin-top: 0">
+        <b>One caveat on all of the above.</b> Nearly all this research compares pull-out against full-time separation, or against nothing at all. Very little of it compares pull-out designs <em>against each other</em> — which means it validates the shape of a programme like this one, but says almost nothing about whether any particular week's session is any good. The evidence base is decent on structure and thin on quality. Judge the sessions themselves on the work the children produce.
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="shell">
+  <section class="reveal">
+    <div class="rail">
+      <div class="meta">
+        <span>Section 05</span>
+        <span>Convergence</span>
+      </div>
+      <div>
+        <p class="eyebrow">Where this leaves us</p>
+        <h2>Six systems, five design decisions, one answer each</h2>
+        <p class="lede">Set side by side, the systems agree on more than they disagree on. Gifted Lab was designed before this brief was written; the convergence is the finding, not the pitch.</p>
+      </div>
+    </div>
+
+    <div class="ledger-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Design decision</th>
+            <th scope="col">What the systems converged on</th>
+            <th scope="col">Gifted Lab</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Part-time or full-time?</th>
+            <td>Part-time, on the strongest available wellbeing evidence. Full-time separation costs self-concept and raises loneliness.</td>
+            <td class="yes">Weekly, part-time</td>
+          </tr>
+          <tr>
+            <th scope="row">Peers from where?</th>
+            <td>Mixed groups drawn from several schools — Singapore's designed peer community, Israel's stated social aim.</td>
+            <td class="yes">Several schools</td>
+          </tr>
+          <tr>
+            <th scope="row">One gate or many?</th>
+            <td>Many. Singapore has just moved from a single Primary 4 gate to semester-end re-entry, precisely to remove the make-or-break moment.</td>
+            <td class="yes">Entry at each module</td>
+          </tr>
+          <tr>
+            <th scope="row">Exam preparation?</th>
+            <td>No — stated explicitly by Singapore's MOE about its own advanced modules.</td>
+            <td class="yes">Not exam prep</td>
+          </tr>
+          <tr>
+            <th scope="row">Which years?</th>
+            <td>The transition from potential to competence, before board pressure closes the window.</td>
+            <td class="yes">Grades 5&ndash;8</td>
+          </tr>
+          <tr>
+            <th scope="row">How wide is the gate?</th>
+            <td>Singapore ~10%, US ~6%, Israel and Korea 1&ndash;3%. England drifted to 22% and lost the plot.</td>
+            <td class="yes">Top 2.5% nationally</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<div class="close">
+  <div class="shell">
+    <section class="reveal" style="border-top: none">
+      <div class="rail">
+        <div class="meta">
+          <span>Section 06</span>
+          <span>The ask</span>
+        </div>
+        <div>
+          <p class="eyebrow">For a school in India</p>
+          <h2>No ministry is going to mandate this here. A school can simply decide to do it.</h2>
+          <p class="lede">Singapore needed two years and a national consultation to arrive at a weekly session, out of the home school but not out of its care, with a mixed peer group and multiple entry points. A single school can start that in one term, for the twenty or thirty children in it who need it.</p>
+          <p class="lede">Gifted Lab is a chapter inside your school: a weekly session for your ablest students in Grades 5–8, taught by working researchers, with your own teacher alongside as facilitator. You keep the children, the relationship and the credit. We supply the capability that no single school can build alone.</p>
+          <a class="cta" href="https://www.genwise.in/gifted-lab-in-schools">See how a chapter works</a>
+          <p class="cta-note">Or write to siddharth@genwise.in</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="sources">
+  <div class="shell">
+    <section style="border-top: none">
+      <div class="rail">
+        <div class="meta">
+          <span>Apparatus</span>
+          <span>Aug 2026</span>
+        </div>
+        <div>
+          <p class="eyebrow">Sources, graded</p>
+          <h2>Every claim above, and how far we would push it</h2>
+          <p class="lede">Grading our own evidence is unusual on a page like this. We do it because the alternative — asserting everything at the same confidence — is how the field got its reputation.</p>
+
+          <div class="src-group">
+            <h3 class="grade g-high">High confidence &mdash; primary documents</h3>
+            <ul>
+              <li>Singapore MOE, <a href="https://www.moe.gov.sg/news/press-releases/20260303-learning-together-with-different-strengths-and-needs">Learning Together with Different Strengths and Needs</a> (3 March 2026) and <a href="https://www.moe.gov.sg/news/press-releases/20240819-strengthening-support-for-higher-ability-learners">Strengthening Support for Higher-Ability Learners</a> (19 August 2024)</li>
+              <li>NSW Department of Education, <a href="https://education.nsw.gov.au/policy-library/policies/pd-2004-0051">High Potential and Gifted Education Policy</a></li>
+              <li>US NCES, <a href="https://nces.ed.gov/programs/digest/d23/tables/dt23_204.90.asp">Digest Table 204.90</a> (Civil Rights Data Collection)</li>
+              <li>China Association for Science and Technology, <a href="https://www.cast.org.cn/kc/zxsycjh/tw/art/2024/art_84a74679cb5343919a264b5967b980b2.html">on the Talent Programme's policy status</a></li>
+              <li>House of Commons Library, <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-9065/">Support for more able and talented children in schools</a> (CBP-9065)</li>
+            </ul>
+          </div>
+
+          <div class="src-group">
+            <h3 class="grade g-high">Medium-high confidence &mdash; peer-reviewed research</h3>
+            <ul>
+              <li>Cash, T. N., &amp; Lin, T-J. (2022). Psychological well-being of intellectually and academically gifted students in self-contained and pull-out gifted programs. <em>Gifted Child Quarterly</em>, 66(3), 188–207.</li>
+              <li>van Rossen, J. M., Hornstra, L., &amp; Poorthuis, A. M. G. (2021). High-ability students in pull-out programs and regular classes. <em>Journal of School Psychology</em>, 85, 1–16.</li>
+              <li>Siegle, D., et al. (2026). What Really Happens in Gifted and Talented Education? A Portrait of Three States. <a href="https://journals.sagepub.com/doi/10.1177/00169862251370673"><em>Gifted Child Quarterly</em></a>.</li>
+              <li>NAGC, <a href="https://www.nagc.org/pull-out-programs-specialized-classes">Pull-Out Programs / Specialized Classes</a> — the best single summary of delivery models and their effects.</li>
+              <li>FFT Education Datalab (March 2026), <a href="https://ffteducationdatalab.org.uk/2026/03/the-education-and-labour-market-outcomes-of-englands-gifted-and-talented-children/">outcomes of England's gifted and talented children</a>; Sutton Trust, <a href="https://www.suttontrust.com/our-research/potential-for-success-schools-high-attainers/">Potential for Success</a>.</li>
+              <li>David, H., <a href="https://www.gate2gifted.eu/wp-content/uploads/2024/01/ARTICLE_Diagnosing-and-schooling-of-gifted-children-The-example-of-Israel.pdf">Diagnosing and schooling of gifted children: the example of Israel</a>.</li>
+            </ul>
+          </div>
+
+          <div class="src-group">
+            <h3 class="grade g-low">Verify before quoting</h3>
+            <ul>
+              <li><strong>Korean delivery detail</strong> (course hours, centre operation) draws on a 2012 review that is thorough but fourteen years old, and enrolment has since declined. Confirm current figures with KEDI before using in a pitch.</li>
+              <li><strong>Chinese Talent Programme outcomes</strong> (11,000 cumulative; 73% to 985/211 universities; 40% continuing in basic sciences) come from a commercial guidance site, not a CAST publication, and are heavily confounded by selection. The structure is solid; the outcomes are not.</li>
+              <li><strong>Cross-country percentages</strong> are not measuring the same population, as set out at the top. Use them to indicate ambition, never to rank systems.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="rail">
+        <div class="meta"><span>GenWise</span></div>
+        <div>Research brief 01 &nbsp;·&nbsp; Comparative provision for high-ability students &nbsp;·&nbsp; August 2026 &nbsp;·&nbsp; Corrections to siddharth@genwise.in</div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script>
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    els.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
